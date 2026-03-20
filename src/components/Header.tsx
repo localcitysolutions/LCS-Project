@@ -2,12 +2,19 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
-const NAV_LINKS = ["Services", "Riyadh", "Industries", "Blog", "About"];
+interface HeaderProps {
+  locale: string;
+}
 
-export default function Header() {
+export default function Header({ locale }: HeaderProps) {
+  const t = useTranslations("nav");
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const isRTL = locale === "ar";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -17,8 +24,25 @@ export default function Header() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
+
+  // Build nav links with locale-correct hrefs
+  const prefix = isRTL ? "/ar" : "";
+  const navLinks = [
+    { label: t("services"), href: `${prefix}/services` },
+    { label: t("riyadh"), href: `${prefix}/riyadh` },
+    { label: t("industries"), href: `${prefix}/industries` },
+    { label: t("blog"), href: `${prefix}/blog` },
+    { label: t("about"), href: `${prefix}/about` },
+  ];
+
+  // Language toggle: strip or add /ar prefix
+  const toggleHref = isRTL
+    ? pathname.replace(/^\/ar/, "") || "/"
+    : `/ar${pathname}`;
 
   return (
     <header
@@ -33,7 +57,7 @@ export default function Header() {
 
           {/* Logo */}
           <Link
-            href="/"
+            href={isRTL ? "/ar" : "/"}
             onClick={() => setMenuOpen(false)}
             className="text-white font-bold text-base md:text-xl tracking-tight shrink-0"
           >
@@ -42,13 +66,13 @@ export default function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Main navigation">
-            {NAV_LINKS.map((item) => (
+            {navLinks.map((item) => (
               <Link
-                key={item}
-                href={`/${item.toLowerCase()}`}
+                key={item.href}
+                href={item.href}
                 className="text-white/60 hover:text-white text-sm font-medium transition-colors duration-200"
               >
-                {item}
+                {item.label}
               </Link>
             ))}
           </nav>
@@ -56,10 +80,10 @@ export default function Header() {
           {/* Right controls */}
           <div className="flex items-center gap-2 md:gap-3">
             <Link
-              href="/ar"
+              href={toggleHref}
               className="px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-white/20 text-white/60 text-xs md:text-sm font-medium hover:border-[#F5C518]/40 hover:text-[#F5C518] transition-all duration-200"
             >
-              عربي
+              {t("langToggle")}
             </Link>
             <a
               href="https://wa.me/966564229190"
@@ -67,7 +91,7 @@ export default function Header() {
               rel="noopener noreferrer"
               className="hidden md:inline-flex px-5 py-2 rounded-full bg-[#F5C518] text-[#080E1A] text-sm font-bold hover:bg-[#F5C518]/90 transition-all duration-200 shadow-lg shadow-[#F5C518]/20"
             >
-              Free Audit →
+              {t("freeAudit")}
             </a>
             <button
               className="md:hidden text-white p-1 -mr-1"
@@ -95,14 +119,14 @@ export default function Header() {
         }`}
       >
         <div className="px-4 py-6 flex flex-col gap-1">
-          {NAV_LINKS.map((item) => (
+          {navLinks.map((item) => (
             <Link
-              key={item}
-              href={`/${item.toLowerCase()}`}
+              key={item.href}
+              href={item.href}
               onClick={() => setMenuOpen(false)}
-              className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/[0.03] rounded-lg text-base font-medium transition-colors"
+              className={`block px-4 py-3 text-white/70 hover:text-white hover:bg-white/[0.03] rounded-lg text-base font-medium transition-colors ${isRTL ? "text-right" : ""}`}
             >
-              {item}
+              {item.label}
             </Link>
           ))}
           <div className="mt-4 pt-4 border-t border-white/[0.06] flex flex-col gap-3">
@@ -113,7 +137,7 @@ export default function Header() {
               onClick={() => setMenuOpen(false)}
               className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm"
             >
-              Get Free Audit →
+              {t("freeAudit")}
             </a>
             <a
               href="tel:+966564229190"

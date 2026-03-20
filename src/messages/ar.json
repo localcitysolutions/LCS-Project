@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "services": "خدماتنا",
+    "riyadh": "الرياض",
+    "industries": "القطاعات",
+    "blog": "المدونة",
+    "about": "عنّا",
+    "freeAudit": "تدقيق مجاني ←",
+    "langToggle": "English",
+    "langPath": "/"
+  },
+  "common": {
+    "whatsappUs": "تواصل واتساب",
+    "callUs": "اتصل: 966564229190+",
+    "freeAuditBtn": "احصل على تدقيق مجاني ←",
+    "learnMore": "اعرف أكثر ←",
+    "talkToTeam": "تكلم فريقنا ←",
+    "getStartedToday": "ابدأ الحين",
+    "viewAll": "شوف الكل ←",
+    "readMore": "اقرأ أكثر ←"
+  },
+  "cta": {
+    "label": "ابدأ الحين",
+    "heading": "حاضر تنمي نشاطك في الرياض؟",
+    "subtitle": "احصل على تدقيق مجاني واكتشف كيف نقدر نزيد ظهورك، عملاءك، وإيراداتك في السوق السعودي.",
+    "whatsapp": "تواصل واتساب",
+    "call": "اتصل بنا"
+  },
+  "footer": {
+    "tagline": "وكالة التسويق الرقمي الأولى في الرياض — مصمّمة خصيصاً للسوق السعودي.",
+    "servicesTitle": "الخدمات",
+    "districtsTitle": "أحياء الرياض",
+    "companyTitle": "الشركة",
+    "allDistricts": "كل أحياء الرياض ←",
+    "copyright": "© 2025 لوكال سيتي سولوشنز. جميع الحقوق محفوظة.",
+    "phone": "966564229190+",
+    "company": {
+      "about": "عنّا",
+      "blog": "المدونة",
+      "contact": "تواصل معنا",
+      "freeAudit": "تدقيق مجاني",
+      "industries": "القطاعات"
+    },
+    "services": {
+      "digitalMarketing": "التسويق الرقمي",
+      "webDesign": "تصميم المواقع",
+      "seo": "تحسين محركات البحث",
+      "googleAds": "إعلانات قوقل",
+      "metaAds": "إعلانات ميتا",
+      "gbp": "ملف النشاط في قوقل",
+      "socialMedia": "السوشيال ميديا",
+      "ecommerce": "التجارة الإلكترونية"
+    }
+  },
+  "whatsapp": {
+    "label": "واتساب"
+  }
+}

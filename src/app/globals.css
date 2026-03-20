@@ -20,28 +20,37 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Arabic / RTL pages use Almarai */
+[dir="rtl"] body {
+  font-family: var(--font-almarai), "Almarai", sans-serif;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #080E1A; }
 ::-webkit-scrollbar-thumb { background: rgba(245, 197, 24, 0.25); border-radius: 9999px; }
 
-/* Scroll reveal animations */
-.reveal {
+/* Scroll reveal animations
+ * Elements are VISIBLE by default — correct for SSR and no-JS.
+ * The `.js-ready` class is added by ScrollReveal on mount,
+ * enabling the hidden-initial → animated-in pattern as progressive enhancement.
+ */
+.js-ready .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
               transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.reveal.visible {
+.js-ready .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
-.reveal.delay-1 { transition-delay: 0.1s; }
-.reveal.delay-2 { transition-delay: 0.2s; }
-.reveal.delay-3 { transition-delay: 0.3s; }
-.reveal.delay-4 { transition-delay: 0.4s; }
-.reveal.delay-5 { transition-delay: 0.5s; }
-.reveal.delay-6 { transition-delay: 0.6s; }
+.js-ready .reveal.delay-1 { transition-delay: 0.1s; }
+.js-ready .reveal.delay-2 { transition-delay: 0.2s; }
+.js-ready .reveal.delay-3 { transition-delay: 0.3s; }
+.js-ready .reveal.delay-4 { transition-delay: 0.4s; }
+.js-ready .reveal.delay-5 { transition-delay: 0.5s; }
+.js-ready .reveal.delay-6 { transition-delay: 0.6s; }
 
 /* Keyframe animations */
 @keyframes spin-slow {

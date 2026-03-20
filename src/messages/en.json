@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "services": "Services",
+    "riyadh": "Riyadh",
+    "industries": "Industries",
+    "blog": "Blog",
+    "about": "About",
+    "freeAudit": "Free Audit →",
+    "langToggle": "عربي",
+    "langPath": "/ar"
+  },
+  "common": {
+    "whatsappUs": "WhatsApp Us",
+    "callUs": "Call +966 564 229 190",
+    "freeAuditBtn": "Free Audit →",
+    "learnMore": "Learn More →",
+    "talkToTeam": "Talk to Our Team →",
+    "getStartedToday": "Get Started Today",
+    "viewAll": "View All →",
+    "readMore": "Read More →"
+  },
+  "cta": {
+    "label": "Get Started Today",
+    "heading": "Ready to Grow Your Business in Riyadh?",
+    "subtitle": "Get a free audit and discover exactly how we can grow your visibility, leads, and revenue in the Saudi market.",
+    "whatsapp": "WhatsApp Us",
+    "call": "Call +966 564 229 190"
+  },
+  "footer": {
+    "tagline": "Riyadh's premier digital marketing agency — built for the Saudi market.",
+    "servicesTitle": "Services",
+    "districtsTitle": "Riyadh Districts",
+    "companyTitle": "Company",
+    "allDistricts": "All Riyadh Districts →",
+    "copyright": "© 2025 Local City Solutions. All rights reserved.",
+    "phone": "+966 564 229 190",
+    "company": {
+      "about": "About",
+      "blog": "Blog",
+      "contact": "Contact",
+      "freeAudit": "Free Audit",
+      "industries": "Industries"
+    },
+    "services": {
+      "digitalMarketing": "Digital Marketing",
+      "webDesign": "Web Design",
+      "seo": "SEO",
+      "googleAds": "Google Ads",
+      "metaAds": "Meta Ads",
+      "gbp": "Google Business Profile",
+      "socialMedia": "Social Media",
+      "ecommerce": "E-Commerce"
+    }
+  },
+  "whatsapp": {
+    "label": "WhatsApp"
+  }
+}
