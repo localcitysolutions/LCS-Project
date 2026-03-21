@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Almarai } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
-import ScrollReveal from "@/components/ScrollReveal";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -43,11 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${almarai.variable}`}>
       <body className="min-h-screen bg-[#080E1A]">
-        <Header locale="en" />
-        <ScrollReveal />
         {children}
-        <Footer locale="en" />
-        <WhatsAppFloat />
       </body>
     </html>
   );

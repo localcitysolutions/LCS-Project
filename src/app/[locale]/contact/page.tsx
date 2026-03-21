@@ -5,7 +5,7 @@ interface PageProps { params: Promise<{ locale: Locale }> }
 
 const CONTENT = {
   en: {
-    meta: { title: "Contact Local City Solutions — Riyadh Digital Marketing Agency", description: "Get in touch with our Riyadh digital marketing team. WhatsApp, call, or fill out a form. We respond within 1 business hour." },
+    meta: { title: "Contact Us", description: "Get in touch with our Riyadh digital marketing team. WhatsApp, call, or fill out a form. We respond within 1 business hour." },
     hero: { label: "Contact Us", h1: "Let's Talk About Growing Your Business", sub: "WhatsApp us, call, or fill out the form and we'll respond within one business hour." },
     methods: [
       { icon: "💬", title: "WhatsApp", desc: "Fastest way to reach us. We respond immediately during business hours.", action: "Message Us", href: "https://wa.me/966564229190" },
@@ -16,7 +16,7 @@ const CONTENT = {
     hours: { title: "Business Hours", items: ["Sun–Thu: 9:00 AM – 6:00 PM", "Fri: Closed", "Sat: 10:00 AM – 4:00 PM", "WhatsApp: 24/7"] },
   },
   ar: {
-    meta: { title: "تواصل مع لوكال سيتي سولوشنز — وكالة التسويق الرقمي بالرياض", description: "تواصل مع فريقنا في الرياض. واتساب أو اتصال أو ملء نموذج. نرد خلال ساعة عمل واحدة." },
+    meta: { title: "تواصل معنا", description: "تواصل مع فريقنا في الرياض. واتساب أو اتصال أو ملء نموذج. نرد خلال ساعة عمل واحدة." },
     hero: { label: "تواصل معنا", h1: "لنتحدث عن تنمية نشاطك", sub: "راسلنا على واتساب أو اتصل بنا أو املأ النموذج وسنرد خلال ساعة عمل واحدة." },
     methods: [
       { icon: "💬", title: "واتساب", desc: "أسرع طريقة للتواصل معنا. نرد فوراً خلال ساعات العمل.", action: "راسلنا", href: "https://wa.me/966564229190" },

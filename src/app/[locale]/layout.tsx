@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { DM_Sans, Almarai } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -23,21 +22,6 @@ const almarai = Almarai({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Digital Marketing Agency in Riyadh | Local City Solutions",
-    template: "%s | Local City Solutions",
-  },
-  description:
-    "Local City Solutions — Riyadh's leading digital marketing agency. SEO, Google Ads, Meta Ads, Web Design, Google Business Profile, and Social Media Marketing built for the Saudi market.",
-  keywords:
-    "digital marketing agency riyadh, seo riyadh, google ads saudi arabia, meta ads riyadh, web design riyadh",
-  openGraph: {
-    siteName: "Local City Solutions",
-    type: "website",
-  },
-};
-
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -59,20 +43,18 @@ export default async function LocaleLayout({
   const isRTL = locale === "ar";
 
   return (
-    <html
-      lang={locale}
+    <div
       dir={isRTL ? "rtl" : "ltr"}
+      lang={locale}
       className={`${dmSans.variable} ${almarai.variable}`}
     >
-      <body className="min-h-screen bg-[#080E1A]">
-        <NextIntlClientProvider messages={messages}>
-          <Header locale={locale} />
-          <ScrollReveal />
-          {children}
-          <Footer locale={locale} />
-          <WhatsAppFloat locale={locale} />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+      <NextIntlClientProvider messages={messages}>
+        <Header locale={locale} />
+        <ScrollReveal />
+        {children}
+        <Footer locale={locale} />
+        <WhatsAppFloat locale={locale} />
+      </NextIntlClientProvider>
+    </div>
   );
 }

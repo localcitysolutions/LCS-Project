@@ -30,13 +30,13 @@ const SERVICES = {
 
 const CONTENT = {
   en: {
-    meta: { title: "Digital Marketing Services in Riyadh | Local City Solutions", description: "Full digital marketing services for Riyadh businesses: SEO, Google Ads, Meta Ads, Web Design, Google Business Profile, Social Media, and E-Commerce." },
+    meta: { title: "Digital Marketing Services in Riyadh", description: "Full digital marketing services for Riyadh businesses: SEO, Google Ads, Meta Ads, Web Design, Google Business Profile, Social Media, and E-Commerce." },
     label: "Our Services", h1: "Digital Marketing Services Tailored for the Saudi Market", sub: "From local SEO to paid ads to world-class web design — every service we offer is built around the Riyadh market, Saudi consumer behavior, and your business goals.",
     cta: { heading: "Not Sure Which Service You Need?", subtitle: "Get a free consultation and we'll recommend the exact mix of services to maximize your growth in Riyadh." },
     learnMore: "Learn More →",
   },
   ar: {
-    meta: { title: "خدمات التسويق الرقمي في الرياض | لوكال سيتي سولوشنز", description: "خدمات تسويق رقمي متكاملة لأعمال الرياض: SEO وإعلانات قوقل وإعلانات ميتا وتصميم مواقع وملف النشاط والسوشيال ميديا والتجارة الإلكترونية." },
+    meta: { title: "خدمات التسويق الرقمي في الرياض", description: "خدمات تسويق رقمي متكاملة لأعمال الرياض: SEO وإعلانات قوقل وإعلانات ميتا وتصميم مواقع وملف النشاط والسوشيال ميديا والتجارة الإلكترونية." },
     label: "خدماتنا", h1: "خدمات التسويق الرقمي المصمّمة للسوق السعودي", sub: "من SEO المحلي إلى الإعلانات المدفوعة إلى تصميم المواقع العالمي المستوى — كل خدمة نقدمها مبنية حول سوق الرياض وسلوك المستهلك السعودي وأهداف نشاطك.",
     cta: { heading: "مو متأكد أي خدمة تحتاجها؟", subtitle: "احصل على استشارة مجانية وسنوصي بالمزيج الصح من الخدمات لتحقيق أقصى نمو لك في الرياض." },
     learnMore: "اعرف أكثر ←",

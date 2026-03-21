@@ -479,9 +479,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const service = SERVICES.find((s) => s.slug === slug);
   if (!service) return {};
   const c = service[locale] || service.en;
-  const isAr = locale === "ar";
   return {
-    title: `${c.title} | Local City Solutions`,
+    title: c.title,
     description: c.heroDesc.substring(0, 155),
     alternates: {
       languages: {

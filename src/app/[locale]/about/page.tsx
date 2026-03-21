@@ -7,7 +7,7 @@ interface PageProps { params: Promise<{ locale: Locale }> }
 
 const CONTENT = {
   en: {
-    meta: { title: "About Local City Solutions — Riyadh's Digital Marketing Agency", description: "Meet the team behind Local City Solutions. Riyadh-based digital marketing experts serving Saudi businesses since 2018." },
+    meta: { title: "About Us", description: "Meet the team behind Local City Solutions. Riyadh-based digital marketing experts serving Saudi businesses since 2018." },
     hero: { label: "About Us", h1: "We Built This Agency for the Saudi Market", sub: "Local City Solutions was founded with a single mission: help Riyadh businesses grow online the right way — with local expertise, bilingual execution, and results that actually move the needle." },
     story: {
       label: "Our Story",
@@ -58,7 +58,7 @@ const CONTENT = {
     cta: { heading: "Let's Grow Your Riyadh Business", subtitle: "Ready to work with an agency that actually understands your market? Let's start with a free audit." },
   },
   ar: {
-    meta: { title: "عن لوكال سيتي سولوشنز — وكالة التسويق الرقمي في الرياض", description: "تعرف على الفريق خلف لوكال سيتي سولوشنز. متخصصون في التسويق الرقمي بالرياض يخدمون الأعمال السعودية منذ 2018." },
+    meta: { title: "من نحن", description: "تعرف على الفريق خلف لوكال سيتي سولوشنز. متخصصون في التسويق الرقمي بالرياض يخدمون الأعمال السعودية منذ 2018." },
     hero: { label: "عنّا", h1: "بنينا هذه الوكالة للسوق السعودي", sub: "تأسست لوكال سيتي سولوشنز بمهمة واحدة: مساعدة أعمال الرياض على النمو رقمياً بالطريقة الصحيحة — بخبرة محلية، وتنفيذ ثنائي اللغة، ونتائج تُحرك المؤشرات فعلاً." },
     story: {
       label: "قصتنا",

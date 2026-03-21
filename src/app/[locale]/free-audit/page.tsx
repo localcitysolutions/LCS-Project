@@ -39,8 +39,8 @@ const STEPS = {
 };
 
 const CONTENT = {
-  en: { meta: { title: "Free Digital Marketing Audit for Riyadh Businesses | Local City Solutions", description: "Get a free, comprehensive digital marketing audit for your Riyadh business. Covers SEO, Google Ads, Google Business Profile, social media, and competitors. No strings attached." }, label: "Free Audit", h1: "Get Your Free Digital Marketing Audit", sub: "No fluff. No sales pitch. Just a genuine, detailed analysis of where your Riyadh business stands online — and exactly what to do to improve it.", whatLabel: "What's Included", whatH2: "A Comprehensive Look at Your Digital Presence", howLabel: "How It Works", howH2: "Simple, Fast, and No Obligation", cta: { heading: "Claim Your Free Audit Now", subtitle: "Limited spots available. Request yours today and get a clear picture of your digital growth opportunity in Riyadh." } },
-  ar: { meta: { title: "تدقيق تسويق رقمي مجاني لأعمال الرياض | لوكال سيتي سولوشنز", description: "احصل على تدقيق تسويق رقمي شامل ومجاني لنشاطك في الرياض. يغطي SEO وإعلانات قوقل وملف النشاط والسوشيال ميديا والمنافسين. بدون أي التزامات." }, label: "تدقيق مجاني", h1: "احصل على تدقيقك التسويق الرقمي المجاني", sub: "بدون كلام فاضي، ولا عرض مبيعات. فقط تحليل حقيقي ومفصل لأين يقف نشاطك في الرياض رقمياً — وبالضبط ماذا تفعل لتحسينه.", whatLabel: "ما يتضمنه التدقيق", whatH2: "نظرة شاملة على حضورك الرقمي", howLabel: "كيف يعمل", howH2: "بسيط وسريع وبدون إلزام", cta: { heading: "اطلب تدقيقك المجاني الآن", subtitle: "أماكن محدودة. اطلب تدقيقك اليوم واحصل على صورة واضحة لفرصة نموك الرقمي في الرياض." } },
+  en: { meta: { title: "Free Digital Marketing Audit for Riyadh Businesses", description: "Get a free, comprehensive digital marketing audit for your Riyadh business. Covers SEO, Google Ads, Google Business Profile, social media, and competitors. No strings attached." }, label: "Free Audit", h1: "Get Your Free Digital Marketing Audit", sub: "No fluff. No sales pitch. Just a genuine, detailed analysis of where your Riyadh business stands online — and exactly what to do to improve it.", whatLabel: "What's Included", whatH2: "A Comprehensive Look at Your Digital Presence", howLabel: "How It Works", howH2: "Simple, Fast, and No Obligation", cta: { heading: "Claim Your Free Audit Now", subtitle: "Limited spots available. Request yours today and get a clear picture of your digital growth opportunity in Riyadh." } },
+  ar: { meta: { title: "تدقيق تسويق رقمي مجاني لأعمال الرياض", description: "احصل على تدقيق تسويق رقمي شامل ومجاني لنشاطك في الرياض. يغطي SEO وإعلانات قوقل وملف النشاط والسوشيال ميديا والمنافسين. بدون أي التزامات." }, label: "تدقيق مجاني", h1: "احصل على تدقيقك التسويق الرقمي المجاني", sub: "بدون كلام فاضي، ولا عرض مبيعات. فقط تحليل حقيقي ومفصل لأين يقف نشاطك في الرياض رقمياً — وبالضبط ماذا تفعل لتحسينه.", whatLabel: "ما يتضمنه التدقيق", whatH2: "نظرة شاملة على حضورك الرقمي", howLabel: "كيف يعمل", howH2: "بسيط وسريع وبدون إلزام", cta: { heading: "اطلب تدقيقك المجاني الآن", subtitle: "أماكن محدودة. اطلب تدقيقك اليوم واحصل على صورة واضحة لفرصة نموك الرقمي في الرياض." } },
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -101,7 +101,7 @@ export default async function FreeAuditPage({ params }: PageProps) {
             <h2 className="text-2xl md:text-3xl font-bold text-white">{c.howH2}</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 reveal delay-1">
-            {steps.map((step, i) => (
+            {steps.map((step) => (
               <div key={step.num} className="text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-xl border border-[#F5C518]/25 bg-[#F5C518]/[0.07] text-[#F5C518] font-black text-base md:text-xl mb-3 md:mb-4 mx-auto">{step.num}</div>
                 <h3 className="text-white font-bold text-sm mb-2">{step.title}</h3>

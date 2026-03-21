@@ -24,8 +24,8 @@ const POSTS = {
 };
 
 const CONTENT = {
-  en: { meta: { title: "Digital Marketing Blog for Saudi Businesses | Local City Solutions", description: "Practical guides, tips, and insights on SEO, Google Ads, social media, and digital marketing for Riyadh and Saudi businesses." }, label: "Our Blog", h1: "Digital Marketing Insights for Saudi Businesses", sub: "Practical guides, strategies, and tips from Riyadh's digital marketing specialists.", allPosts: "All Posts", readMore: "Read More →" },
-  ar: { meta: { title: "مدونة التسويق الرقمي للأعمال السعودية | لوكال سيتي سولوشنز", description: "أدلة عملية ونصائح ورؤى حول تحسين محركات البحث وإعلانات قوقل والسوشيال ميديا والتسويق الرقمي للأعمال في الرياض والسعودية." }, label: "مدونتنا", h1: "رؤى التسويق الرقمي للأعمال السعودية", sub: "أدلة واستراتيجيات ونصائح عملية من متخصصي التسويق الرقمي في الرياض.", allPosts: "كل المقالات", readMore: "اقرأ أكثر ←" },
+  en: { meta: { title: "Digital Marketing Blog for Saudi Businesses", description: "Practical guides, tips, and insights on SEO, Google Ads, social media, and digital marketing for Riyadh and Saudi businesses." }, label: "Our Blog", h1: "Digital Marketing Insights for Saudi Businesses", sub: "Practical guides, strategies, and tips from Riyadh's digital marketing specialists.", allPosts: "All Posts", readMore: "Read More →" },
+  ar: { meta: { title: "مدونة التسويق الرقمي للأعمال السعودية", description: "أدلة عملية ونصائح ورؤى حول تحسين محركات البحث وإعلانات قوقل والسوشيال ميديا والتسويق الرقمي للأعمال في الرياض والسعودية." }, label: "مدونتنا", h1: "رؤى التسويق الرقمي للأعمال السعودية", sub: "أدلة واستراتيجيات ونصائح عملية من متخصصي التسويق الرقمي في الرياض.", allPosts: "كل المقالات", readMore: "اقرأ أكثر ←" },
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

@@ -43,8 +43,8 @@ export default function Footer({ locale }: FooterProps) {
     ? "وكالة التسويق الرقمي الأولى في الرياض — مصمّمة خصيصاً للسوق السعودي."
     : "Riyadh's premier digital marketing agency — built for the Saudi market.";
   const copyright = isAr
-    ? "© 2025 لوكال سيتي سولوشنز. جميع الحقوق محفوظة."
-    : "© 2025 Local City Solutions. All rights reserved.";
+    ? "© 2026 لوكال سيتي سولوشنز. جميع الحقوق محفوظة."
+    : "© 2026 Local City Solutions. All rights reserved.";
 
   return (
     <footer className="bg-[#050B15] border-t border-white/[0.06] pt-12 md:pt-16 pb-8">
