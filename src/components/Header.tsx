@@ -2,19 +2,39 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 
 interface HeaderProps {
   locale: string;
 }
 
+const NAV = {
+  en: {
+    services: "Services",
+    riyadh: "Riyadh",
+    industries: "Industries",
+    blog: "Blog",
+    about: "About",
+    langToggle: "عربي",
+    freeAudit: "Free Audit",
+  },
+  ar: {
+    services: "خدماتنا",
+    riyadh: "الرياض",
+    industries: "القطاعات",
+    blog: "المدونة",
+    about: "من نحن",
+    langToggle: "English",
+    freeAudit: "تدقيق مجاني",
+  },
+} as const;
+
 export default function Header({ locale }: HeaderProps) {
-  const t = useTranslations("nav");
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const isRTL = locale === "ar";
+  const t = NAV[isRTL ? "ar" : "en"];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -29,17 +49,15 @@ export default function Header({ locale }: HeaderProps) {
     };
   }, [menuOpen]);
 
-  // Build nav links with locale-correct hrefs
   const prefix = isRTL ? "/ar" : "";
   const navLinks = [
-    { label: t("services"), href: `${prefix}/services` },
-    { label: t("riyadh"), href: `${prefix}/riyadh` },
-    { label: t("industries"), href: `${prefix}/industries` },
-    { label: t("blog"), href: `${prefix}/blog` },
-    { label: t("about"), href: `${prefix}/about` },
+    { label: t.services, href: `${prefix}/services` },
+    { label: t.riyadh, href: `${prefix}/riyadh` },
+    { label: t.industries, href: `${prefix}/industries` },
+    { label: t.blog, href: `${prefix}/blog` },
+    { label: t.about, href: `${prefix}/about` },
   ];
 
-  // Language toggle: strip or add /ar prefix
   const toggleHref = isRTL
     ? pathname.replace(/^\/ar/, "") || "/"
     : `/ar${pathname}`;
@@ -83,7 +101,7 @@ export default function Header({ locale }: HeaderProps) {
               href={toggleHref}
               className="px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-white/20 text-white/60 text-xs md:text-sm font-medium hover:border-[#F5C518]/40 hover:text-[#F5C518] transition-all duration-200"
             >
-              {t("langToggle")}
+              {t.langToggle}
             </Link>
             <a
               href="https://wa.me/966564229190"
@@ -91,7 +109,7 @@ export default function Header({ locale }: HeaderProps) {
               rel="noopener noreferrer"
               className="hidden md:inline-flex px-5 py-2 rounded-full bg-[#F5C518] text-[#080E1A] text-sm font-bold hover:bg-[#F5C518]/90 transition-all duration-200 shadow-lg shadow-[#F5C518]/20"
             >
-              {t("freeAudit")}
+              {t.freeAudit}
             </a>
             <button
               className="md:hidden text-white p-1 -mr-1"
@@ -137,7 +155,7 @@ export default function Header({ locale }: HeaderProps) {
               onClick={() => setMenuOpen(false)}
               className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm"
             >
-              {t("freeAudit")}
+              {t.freeAudit}
             </a>
             <a
               href="tel:+966564229190"

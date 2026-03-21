@@ -43,10 +43,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${almarai.variable}`}>
       <body className="min-h-screen bg-[#080E1A]">
-        <Header />
+        <Header locale="en" />
         <ScrollReveal />
         {children}
-        <Footer />
+        <Footer locale="en" />
         <WhatsAppFloat />
       </body>
     </html>
