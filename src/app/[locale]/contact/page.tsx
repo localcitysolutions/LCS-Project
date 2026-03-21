@@ -9,7 +9,7 @@ const CONTENT = {
     hero: { label: "Contact Us", h1: "Let's Talk About Growing Your Business", sub: "WhatsApp us, call, or fill out the form and we'll respond within one business hour." },
     methods: [
       { icon: "💬", title: "WhatsApp", desc: "Fastest way to reach us. We respond immediately during business hours.", action: "Message Us", href: "https://wa.me/966564229190" },
-      { icon: "📞", title: "Phone", desc: "Prefer a call? Reach our Riyadh team directly.", action: "Call Now", href: "tel:+966564229190" },
+      { icon: "📞", title: "Phone", desc: "Prefer a call? Reach our Riyadh team directly.", action: "+966 564 229 190", href: "tel:+966564229190" },
       { icon: "📧", title: "Email", desc: "For formal inquiries, proposals, and documentation.", action: "hello@localcitysolutions.com", href: "mailto:hello@localcitysolutions.com" },
     ],
     form: { name: "Full Name", email: "Email Address", phone: "Phone Number", service: "Service You're Interested In", message: "Tell us about your business and goals", submit: "Send Message →", placeholder: { name: "Muhammad Al-Ahmad", email: "email@company.com", phone: "+966 5X XXX XXXX", message: "I run a restaurant in Al Olaya and want to grow my Google presence..." }, services: ["SEO", "Google Ads", "Meta Ads", "Web Design", "Google Business Profile", "Social Media", "E-Commerce", "Full Digital Marketing"] },
@@ -20,7 +20,7 @@ const CONTENT = {
     hero: { label: "تواصل معنا", h1: "لنتحدث عن تنمية نشاطك", sub: "راسلنا على واتساب أو اتصل بنا أو املأ النموذج وسنرد خلال ساعة عمل واحدة." },
     methods: [
       { icon: "💬", title: "واتساب", desc: "أسرع طريقة للتواصل معنا. نرد فوراً خلال ساعات العمل.", action: "راسلنا", href: "https://wa.me/966564229190" },
-      { icon: "📞", title: "هاتف", desc: "تفضّل مكالمة؟ تواصل مع فريق الرياض مباشرة.", action: "اتصل الآن", href: "tel:+966564229190" },
+      { icon: "📞", title: "هاتف", desc: "تفضّل مكالمة؟ تواصل مع فريق الرياض مباشرة.", action: "+966 564 229 190", href: "tel:+966564229190" },
       { icon: "📧", title: "بريد إلكتروني", desc: "للاستفسارات الرسمية والعروض والوثائق.", action: "hello@localcitysolutions.com", href: "mailto:hello@localcitysolutions.com" },
     ],
     form: { name: "الاسم الكامل", email: "البريد الإلكتروني", phone: "رقم الجوال", service: "الخدمة التي تهمك", message: "أخبرنا عن نشاطك وأهدافك", submit: "أرسل الرسالة ←", placeholder: { name: "محمد الأحمد", email: "email@company.com", phone: "+966 5X XXX XXXX", message: "عندي مطعم في العليا وأبغى أزيد ظهوري على قوقل..." }, services: ["تحسين محركات البحث", "إعلانات قوقل", "إعلانات ميتا", "تصميم المواقع", "ملف النشاط في قوقل", "السوشيال ميديا", "التجارة الإلكترونية", "تسويق رقمي متكامل"] },
@@ -58,7 +58,7 @@ export default async function ContactPage({ params }: PageProps) {
                 <div className="text-3xl mb-3">{m.icon}</div>
                 <h3 className="text-white font-bold text-base mb-2">{m.title}</h3>
                 <p className="text-white/50 text-xs mb-4 leading-relaxed">{m.desc}</p>
-                <span className="inline-block text-[#F5C518] text-xs font-semibold group-hover:underline">{m.action}</span>
+                <span dir="ltr" className="inline-block text-[#F5C518] text-xs font-semibold group-hover:underline">{m.action}</span>
               </a>
             ))}
           </div>

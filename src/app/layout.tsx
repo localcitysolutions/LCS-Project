@@ -31,6 +31,25 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Local City Solutions",
+  description: "Riyadh's leading digital marketing agency — SEO, Google Ads, Meta Ads, Web Design, and Google Business Profile built for the Saudi market.",
+  url: "https://localcitysolutions.com",
+  email: "hello@localcitysolutions.com",
+  telephone: "+966564229190",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Riyadh",
+    addressCountry: "SA",
+  },
+  sameAs: [
+    "https://www.facebook.com/localcitysolutions",
+    "https://www.instagram.com/localcitysolutions",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,6 +57,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${dmSans.variable} ${almarai.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-screen bg-[#080E1A]">
         {children}
       </body>

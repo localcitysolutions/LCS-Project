@@ -72,6 +72,9 @@ export default async function FreeAuditPage({ params }: PageProps) {
             <a href="tel:+966564229190" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white font-medium text-sm hover:border-white/40 transition-all">
               {isAr ? "أو اتصل بنا" : "Or Call Us"}
             </a>
+            <a href="mailto:hello@localcitysolutions.com" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white font-medium text-sm hover:border-white/40 transition-all">
+              {isAr ? "أو راسلنا بالإيميل" : "Or Email Us"}
+            </a>
           </div>
         </div>
       </section>
