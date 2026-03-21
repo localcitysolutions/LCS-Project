@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       : "Local City Solutions serves all 20+ Riyadh districts. Hyperlocal SEO, Google Ads, and digital marketing for every neighbourhood in the capital.",
     alternates: {
       languages: {
-        en: "https://localcitysolutions.com/riyadh",
+        en: "https://localcitysolutions.com/en/riyadh",
         ar: "https://localcitysolutions.com/ar/riyadh",
       },
     },
@@ -84,7 +84,7 @@ const zoneNamesAr: Record<string, string> = {
 export default async function RiyadhPage({ params }: PageProps) {
   const { locale } = await params;
   const isAr = locale === "ar";
-  const p = isAr ? "/ar" : "";
+  const p = `/${locale}`;
 
   const copy = {
     badge: isAr ? "تغطية الرياض" : "Riyadh Coverage",

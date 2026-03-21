@@ -497,7 +497,7 @@ export default async function ServicePage({ params }: PageProps) {
   if (!service) notFound();
   const isAr = locale === "ar";
   const c = service[locale] || service.en;
-  const p = isAr ? "/ar" : "";
+  const p = `/${locale}`;
 
   return (
     <>

@@ -49,7 +49,7 @@ export default function Header({ locale }: HeaderProps) {
     };
   }, [menuOpen]);
 
-  const prefix = isRTL ? "/ar" : "";
+  const prefix = isRTL ? "/ar" : "/en";
   const navLinks = [
     { label: t.services, href: `${prefix}/services` },
     { label: t.riyadh, href: `${prefix}/riyadh` },
@@ -59,8 +59,8 @@ export default function Header({ locale }: HeaderProps) {
   ];
 
   const toggleHref = isRTL
-    ? pathname.replace(/^\/ar/, "") || "/"
-    : `/ar${pathname}`;
+    ? pathname.replace(/^\/ar/, "/en") || "/en"
+    : pathname.replace(/^\/en/, "/ar") || "/ar";
 
   return (
     <header
@@ -75,7 +75,7 @@ export default function Header({ locale }: HeaderProps) {
 
           {/* Logo */}
           <Link
-            href={isRTL ? "/ar" : "/"}
+            href={isRTL ? "/ar" : "/en"}
             onClick={() => setMenuOpen(false)}
             className="text-white font-bold text-base md:text-xl tracking-tight shrink-0"
           >

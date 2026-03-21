@@ -36,7 +36,7 @@ const COMPANY_LINKS = [
 
 export default function Footer({ locale }: FooterProps) {
   const isAr = locale === "ar";
-  const p = isAr ? "/ar" : "";
+  const p = isAr ? "/ar" : "/en";
   const L = (o: { en: string; ar: string }) => (isAr ? o.ar : o.en);
 
   const tagline = isAr
@@ -53,7 +53,7 @@ export default function Footer({ locale }: FooterProps) {
 
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href={isAr ? "/ar" : "/"} className="text-white font-bold text-lg tracking-tight">
+            <Link href={isAr ? "/ar" : "/en"} className="text-white font-bold text-lg tracking-tight">
               Local <span className="text-[#F5C518]">City</span> Solutions
             </Link>
             <p className={`text-white/40 text-xs leading-relaxed mt-3 max-w-xs ${isAr ? "text-right" : ""}`}>

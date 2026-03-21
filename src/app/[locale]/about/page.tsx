@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import CTABox from "@/components/CTABox";
 
 type Locale = "en" | "ar";
@@ -120,7 +119,6 @@ export default async function AboutPage({ params }: PageProps) {
   const { locale } = await params;
   const isAr = locale === "ar";
   const c = CONTENT[locale] || CONTENT.en;
-  const p = isAr ? "/ar" : "";
 
   return (
     <>

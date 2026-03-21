@@ -215,9 +215,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: c.meta.title,
     description: c.meta.description,
     alternates: {
-      canonical: locale === "ar" ? "https://localcitysolutions.com/ar" : "https://localcitysolutions.com",
+      canonical: `https://localcitysolutions.com/${locale}`,
       languages: {
-        en: "https://localcitysolutions.com",
+        en: "https://localcitysolutions.com/en",
         ar: "https://localcitysolutions.com/ar",
       },
     },
@@ -232,7 +232,7 @@ export default async function HomePage({ params }: PageProps) {
   const whyItems = WHY_ITEMS[locale] || WHY_ITEMS.en;
   const steps = STEPS[locale] || STEPS.en;
   const industries = INDUSTRIES[locale] || INDUSTRIES.en;
-  const p = isAr ? "/ar" : "";
+  const p = `/${locale}`;
 
   return (
     <main dir={isAr ? "rtl" : "ltr"}>

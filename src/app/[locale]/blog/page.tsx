@@ -39,7 +39,7 @@ export default async function BlogPage({ params }: PageProps) {
   const isAr = locale === "ar";
   const c = CONTENT[locale] || CONTENT.en;
   const posts = POSTS[locale] || POSTS.en;
-  const p = isAr ? "/ar" : "";
+  const p = `/${locale}`;
 
   return (
     <>

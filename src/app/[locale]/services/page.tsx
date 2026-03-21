@@ -51,10 +51,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ServicesPage({ params }: PageProps) {
   const { locale } = await params;
-  const isAr = locale === "ar";
   const c = CONTENT[locale] || CONTENT.en;
   const services = SERVICES[locale] || SERVICES.en;
-  const p = isAr ? "/ar" : "";
+  const p = `/${locale}`;
 
   return (
     <>

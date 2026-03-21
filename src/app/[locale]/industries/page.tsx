@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import CTABox from "@/components/CTABox";
 
 type Locale = "en" | "ar";
@@ -41,10 +40,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function IndustriesPage({ params }: PageProps) {
   const { locale } = await params;
-  const isAr = locale === "ar";
   const c = CONTENT[locale] || CONTENT.en;
   const industries = INDUSTRIES[locale] || INDUSTRIES.en;
-  const p = isAr ? "/ar" : "";
 
   return (
     <>
