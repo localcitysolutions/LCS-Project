@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CTABox from "@/components/CTABox";
 
 type Locale = "en" | "ar";
@@ -58,7 +59,7 @@ export default async function IndustriesPage({ params }: PageProps) {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {industries.map((ind, i) => (
-              <div key={ind.slug} className={`reveal delay-${(i % 4) + 1} bg-[#0E1A2E] border border-white/5 rounded-xl p-6 hover:border-[#F5C518]/20 transition-all group`}>
+              <Link key={ind.slug} href={`/${locale}/industries/${ind.slug}`} className={`reveal delay-${(i % 4) + 1} bg-[#0E1A2E] border border-white/5 rounded-xl p-6 hover:border-[#F5C518]/20 transition-all group`}>
                 <div className="flex items-start gap-4">
                   <div className="text-3xl shrink-0 mt-0.5">{ind.icon}</div>
                   <div>
@@ -66,7 +67,7 @@ export default async function IndustriesPage({ params }: PageProps) {
                     <p className="text-white/50 text-sm leading-relaxed">{ind.desc}</p>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

@@ -185,12 +185,167 @@ const INDUSTRIES: Industry[] = [
     ],
     relatedDistrict: { label: "KAFD District", href: "/en/riyadh/kafd" },
   },
+  {
+    slug: "retail",
+    icon: "🛍️",
+    name: "Retail & E-Commerce",
+    en: {
+      metaTitle: "Digital Marketing for Retail & E-Commerce in Riyadh | Local City Solutions",
+      metaDesc: "Digital marketing for retail stores and e-commerce businesses in Riyadh. Product SEO, Google Shopping, Salla and Zid optimization, Meta Ads, and marketplace growth strategies.",
+      tagline: "More traffic. More sales. Lower cost per acquisition.",
+      heroDesc: "Saudi e-commerce is growing at one of the fastest rates globally — but competition on Google, Instagram, and marketplaces is intensifying just as fast. We help retail stores and online shops cut through the noise, drive qualified traffic, and convert browsers into buyers at scale.",
+      features: [
+        { icon: "🔍", title: "Product & Category SEO", desc: "Rank on page one for high-commercial-intent searches — from 'buy running shoes Riyadh' to broad category terms driving thousands of monthly searches." },
+        { icon: "🛒", title: "Google Shopping Campaigns", desc: "Product listing ads that appear at the top of search results with your price, photo, and store name — capturing buyers at the exact moment of purchase intent." },
+        { icon: "🏪", title: "Salla & Zid Optimization", desc: "Full store optimization on Saudi-native platforms including product descriptions, category structure, conversion rate improvements, and SEO configuration." },
+        { icon: "📢", title: "Meta Ads for Retail", desc: "Product catalogue ads, retargeting campaigns, and lookalike audiences on Instagram and Facebook to bring back visitors who didn't buy and find new ones who will." },
+        { icon: "📦", title: "Marketplace Growth", desc: "Optimization and advertising strategies for Amazon.sa, Noon, and other Saudi marketplaces to maximize product visibility and sales velocity." },
+        { icon: "📊", title: "Conversion Rate Optimization", desc: "Data-driven improvements to product pages, checkout flow, and site speed to convert more of your existing traffic without increasing ad spend." },
+      ],
+      process: [
+        { num: "01", title: "Store Audit", desc: "Assess your current SEO, ad performance, store conversion rate, and competitor positioning across search, social, and marketplaces." },
+        { num: "02", title: "Channel Strategy", desc: "Identify your highest-ROI channels based on your product category, average order value, and target customer — then prioritize accordingly." },
+        { num: "03", title: "Launch & Optimize", desc: "SEO implementation, ad campaigns live, marketplace listings optimized — all within the first 30 days." },
+        { num: "04", title: "Scale What Works", desc: "Monthly reporting on revenue by channel, ROAS, and cost per acquisition — scaling budget toward what drives the strongest returns." },
+      ],
+      faq: [
+        { q: "Should I focus on SEO or paid ads for my online store?", a: "It depends on your timeline and budget. Google Ads and Meta Ads deliver traffic immediately but stop the moment you stop paying. SEO takes 3–6 months to build momentum but delivers compounding, low-cost traffic permanently. For most retail businesses, the right answer is both: paid ads fund immediate sales while SEO builds a long-term traffic asset. We help you allocate budget across both channels based on your specific product economics." },
+        { q: "Is Salla or a custom website better for selling in Saudi Arabia?", a: "Salla and Zid have significant advantages for Saudi-focused sellers: Arabic-first design, local payment gateway integrations (Mada, STC Pay, Tabby), and a familiar checkout experience for Saudi shoppers. Custom websites offer more flexibility but require more investment to match that functionality. For most SME retailers, we recommend starting on Salla or Zid and migrating to a custom solution when revenue justifies it." },
+        { q: "How do I compete with large retailers on Google Shopping?", a: "You don't need to out-spend large retailers — you need to out-target them. Large retailers run broad campaigns. The opportunity is in specific product searches, niche categories, and long-tail keywords where big players under-invest. We identify these gaps, build tightly structured Shopping campaigns around them, and continuously optimize your product data feed to improve quality scores and reduce cost per click." },
+      ],
+      ctaHeading: "Grow Your Retail Sales in Saudi Arabia",
+      ctaSubtitle: "Get a free e-commerce audit and discover the fastest path to more traffic, better conversion rates, and higher revenue.",
+    },
+    relatedServices: [
+      { label: "SEO Services", href: "/en/services/seo" },
+      { label: "Google Ads", href: "/en/services/google-ads" },
+      { label: "Meta Ads", href: "/en/services/meta-ads" },
+    ],
+    relatedDistrict: { label: "Al Sulaimaniyah District", href: "/en/riyadh/al-sulaimaniyah" },
+  },
+  {
+    slug: "education",
+    icon: "🎓",
+    name: "Education & Training",
+    en: {
+      metaTitle: "Digital Marketing for Education & Training in Riyadh | Local City Solutions",
+      metaDesc: "Digital marketing for schools, training centers, and educational institutions in Riyadh. Enrollment campaigns, course marketing, LinkedIn ads, and SEO for education providers.",
+      tagline: "More enrollments. Stronger reputation. A full intake every cohort.",
+      heroDesc: "Saudi Arabia's education and training sector is expanding rapidly under Vision 2030's workforce development agenda. Whether you run a private school, a professional training center, or an online course platform, digital marketing is the primary driver of enrollment growth — and the gap between institutions that have cracked it and those that haven't is widening fast.",
+      features: [
+        { icon: "🔍", title: "Education SEO", desc: "Rank on page one for searches like 'best private school Riyadh', 'PMP training Saudi Arabia', and 'IELTS course Riyadh' — capturing prospective students actively researching options." },
+        { icon: "📢", title: "Enrollment Campaigns", desc: "Targeted Google Ads and Meta Ads campaigns timed to enrollment cycles — driving applications and inquiries during the highest-intent windows of the year." },
+        { icon: "💼", title: "LinkedIn Ads for Professional Training", desc: "Reach working professionals by job title, seniority, and industry — ideal for MBA programs, leadership training, certifications, and corporate upskilling courses." },
+        { icon: "⭐", title: "Reputation & Reviews", desc: "Build a strong Google review presence for your institution. Parents, students, and corporate clients all research reviews before choosing an education provider." },
+        { icon: "📱", title: "Social Media for Education", desc: "Showcase student success stories, faculty expertise, campus life, and course outcomes — building institutional credibility across Instagram and LinkedIn." },
+        { icon: "📍", title: "Local SEO for Campuses", desc: "Google Business Profile optimization for every campus location — critical for schools and training centers capturing 'near me' search traffic." },
+      ],
+      process: [
+        { num: "01", title: "Institution Audit", desc: "Assess your current enrollment funnel, search visibility, competitor positioning, and where prospective students drop off before applying." },
+        { num: "02", title: "Enrollment Funnel Design", desc: "Map the full journey from first search to submitted application — then optimize every touchpoint to reduce friction and improve conversion." },
+        { num: "03", title: "Campaign Launch", desc: "SEO implementation, ad campaigns live, social content calendar in motion — timed to your intake schedule for maximum impact." },
+        { num: "04", title: "Intake Reporting", desc: "Post-intake analysis of inquiries, applications, and enrolled students by channel — so you invest more in what drives the best cohorts." },
+      ],
+      faq: [
+        { q: "What digital channels work best for student enrollment in Saudi Arabia?", a: "Google Search Ads capture the highest-intent prospects — those actively searching for a program like yours right now. Meta Ads (Instagram/Facebook) works well for awareness and retargeting. LinkedIn is particularly powerful for professional development, executive education, and B2B courses sold to HR departments. Most education clients see the best results running Google and Meta together, adding LinkedIn when the course is clearly professional in nature." },
+        { q: "When should I run enrollment campaigns?", a: "Timing is critical in education. The highest-intent windows are 6–8 weeks before each intake deadline. For schools, this means August–September for the academic year and November–December for mid-year intake. For training centers, campaigns should be running continuously with budget increases timed to intake deadlines. We build your campaign calendar around your specific intake schedule." },
+        { q: "How important are Google reviews for schools and training centers?", a: "Extremely important. Parents researching schools and professionals evaluating training centers both read reviews extensively before making a decision. A 4.8-star rating with 100+ reviews vs. a 4.1-star rating with 12 reviews will determine who gets the inquiry in most cases. We implement systematic review generation programs that consistently produce authentic, positive reviews from satisfied students and parents." },
+      ],
+      ctaHeading: "Fill Your Next Intake in Riyadh",
+      ctaSubtitle: "Get a free education marketing audit and discover the fastest path to more enrollments for your institution.",
+    },
+    relatedServices: [
+      { label: "SEO Services", href: "/en/services/seo" },
+      { label: "Google Ads", href: "/en/services/google-ads" },
+      { label: "Meta Ads", href: "/en/services/meta-ads" },
+    ],
+    relatedDistrict: { label: "Al Yasmin District", href: "/en/riyadh/al-yasmin" },
+  },
+  {
+    slug: "automotive",
+    icon: "🚗",
+    name: "Automotive",
+    en: {
+      metaTitle: "Digital Marketing for Automotive Businesses in Riyadh | Local City Solutions",
+      metaDesc: "Digital marketing for car dealerships, auto service centers, and automotive businesses in Riyadh. Google Ads, showroom traffic, used car marketplace optimization, and local SEO.",
+      tagline: "More showroom visits. More service bookings. More units sold.",
+      heroDesc: "Riyadh's automotive market is one of the largest in the region — and buyers do almost all their research online before setting foot in a showroom. Whether you sell new cars, pre-owned vehicles, or run a service center, your digital presence determines how many serious buyers walk through your door versus your competitor's.",
+      features: [
+        { icon: "📢", title: "Google Ads for Automotive", desc: "High-intent campaigns targeting buyers searching for specific makes, models, and price ranges — appearing at the top of results at the exact moment of purchase decision." },
+        { icon: "🔍", title: "Showroom & Dealership SEO", desc: "Rank on page one for 'Toyota dealer Riyadh', 'used cars Al Olaya', and service-specific searches that bring in ready-to-buy customers." },
+        { icon: "🚙", title: "Used Car Marketplace Optimization", desc: "Optimized listings on Syarah, Haraj, and other Saudi automotive platforms — better photos, keyword-rich descriptions, and competitive pricing insights." },
+        { icon: "📍", title: "Google Business Profile for Showrooms", desc: "Fully optimized GBP for every showroom and service center location — capturing walk-in traffic and calls from local searches." },
+        { icon: "🎬", title: "Vehicle Video Marketing", desc: "Walkaround videos, feature highlights, and test drive content that sell the car before the customer visits — reducing time-on-lot and accelerating decisions." },
+        { icon: "⚙️", title: "Service Center Marketing", desc: "Targeted campaigns for oil changes, tyre services, periodic maintenance, and repairs — filling your service bays with the right customers at consistent volume." },
+      ],
+      process: [
+        { num: "01", title: "Market Analysis", desc: "Assess your current search rankings, GBP quality, marketplace presence, and competitor digital spend in your make/model categories." },
+        { num: "02", title: "Lead Generation Setup", desc: "Configure Google Ads campaigns, optimize GBP listings, and build landing pages designed specifically for automotive buyer psychology." },
+        { num: "03", title: "Launch Campaigns", desc: "Go live across search, display, and video — with lead forms connected directly to your sales team for immediate follow-up." },
+        { num: "04", title: "Optimize Cost Per Lead", desc: "Monthly optimization to reduce cost per qualified lead, improve ad quality scores, and scale the campaigns delivering the best showroom-to-sale conversion." },
+      ],
+      faq: [
+        { q: "How do car buyers in Saudi Arabia research vehicles online?", a: "Saudi car buyers typically start with a broad Google search for makes and models, then move to YouTube for walkaround and review videos, then check Syarah or Haraj for pre-owned pricing, then visit dealership websites or Google Maps listings to find their nearest showroom. Being visible at every stage of this journey — search, video, and Maps — is what separates dealerships that dominate their market from those that rely on walk-ins alone." },
+        { q: "What's more effective for a car dealership — SEO or Google Ads?", a: "For immediate traffic and test drive bookings, Google Ads is faster. For long-term, low-cost traffic at scale, SEO is essential — particularly for model-specific and 'near me' searches. Most dealerships see the best results running Google Ads immediately while building organic rankings in parallel. When SEO kicks in at months 4–6, total cost per lead drops significantly as organic traffic supplements paid." },
+        { q: "Can digital marketing help fill my service center, not just sell cars?", a: "Absolutely. Service center marketing is one of the highest-ROI applications of local digital marketing. Customers searching 'oil change near me', 'tyre shop Riyadh', or 'car AC repair Al Malqa' are ready to book immediately. A well-optimized GBP listing combined with targeted Google Ads for service-specific keywords consistently delivers a full service bay schedule at low cost per booking." },
+      ],
+      ctaHeading: "Drive More Sales for Your Automotive Business",
+      ctaSubtitle: "Get a free automotive marketing audit and discover how to bring more serious buyers to your showroom or service center.",
+    },
+    relatedServices: [
+      { label: "Google Ads", href: "/en/services/google-ads" },
+      { label: "SEO Services", href: "/en/services/seo" },
+      { label: "Google Business Profile", href: "/en/services/google-business-profile" },
+    ],
+    relatedDistrict: { label: "Al Rawdah District", href: "/en/riyadh/al-rawdah" },
+  },
+  {
+    slug: "hotels",
+    icon: "🏨",
+    name: "Hotels & Hospitality",
+    en: {
+      metaTitle: "Digital Marketing for Hotels & Hospitality in Riyadh | Local City Solutions",
+      metaDesc: "Digital marketing for hotels and hospitality businesses in Riyadh. Google Hotel Ads, OTA optimization, direct booking growth, content marketing, and reputation management.",
+      tagline: "More direct bookings. Higher occupancy. Stronger TripAdvisor presence.",
+      heroDesc: "Riyadh's hospitality sector is booming — driven by Vision 2030 tourism targets, expanding MICE tourism, and a growing base of business travellers. Hotels that win in this environment are those that show up first on Google, convert OTA browsers into direct bookings, and maintain a reputation that outshines competitors across every review platform.",
+      features: [
+        { icon: "🏨", title: "Google Hotel Ads", desc: "Appear directly in Google's hotel search interface with real-time pricing and availability — capturing guests at the highest point of booking intent, before they go to Booking.com." },
+        { icon: "🌐", title: "OTA Optimization", desc: "Optimized listings on Booking.com, Expedia, Agoda, and Saudi-specific platforms — better photos, keyword-rich descriptions, and review management to improve ranking within each OTA algorithm." },
+        { icon: "📈", title: "Direct Booking Growth", desc: "Reduce OTA commission dependency by driving traffic directly to your booking engine — via SEO, Google Ads, and retargeting campaigns that capture and re-engage past visitors." },
+        { icon: "⭐", title: "Reputation Management", desc: "Systematic review generation on Google, TripAdvisor, and Booking.com — with professional management of all guest feedback to protect and improve your overall rating." },
+        { icon: "🔍", title: "Hotel SEO", desc: "Rank for high-value searches like 'business hotel Riyadh', '5-star hotel near KAFD', and location-specific queries from corporate and leisure travellers." },
+        { icon: "📸", title: "Visual Content & Social", desc: "Professional photography direction, Instagram content strategy, and influencer partnerships that showcase your property and attract aspirational bookings." },
+      ],
+      process: [
+        { num: "01", title: "Property Audit", desc: "Review your OTA listings, GBP quality, Google Hotel Ads setup, review profile, and direct booking conversion rate across all channels." },
+        { num: "02", title: "Revenue Strategy", desc: "Map out the optimal channel mix for your property type, location, and target guest segment — balancing OTA visibility with direct booking growth." },
+        { num: "03", title: "Execute & Launch", desc: "OTA optimization, Google Hotel Ads live, GBP enhanced, review strategy implemented — all within the first 30 days." },
+        { num: "04", title: "Monthly Optimization", desc: "Reporting on occupancy impact by channel, direct booking growth, OTA ranking movement, and review velocity — with continuous optimization." },
+      ],
+      faq: [
+        { q: "How do I reduce my dependence on Booking.com and Expedia?", a: "The key is giving guests a compelling reason to book direct: price parity (guests shouldn't find better rates on OTAs), a frictionless booking engine, and a direct booking incentive like a room upgrade, early check-in, or F&B credit. On the digital side, Google Hotel Ads is the most powerful direct-booking tool available — it puts your rate directly in Google's interface before guests click to an OTA. We configure and manage Google Hotel Ads specifically to shift booking share toward your direct channel." },
+        { q: "Does my hotel need to be active on social media?", a: "Yes — but the goal differs from other industries. For hotels, Instagram isn't primarily a booking platform; it's a credibility signal. When a potential guest Googles your hotel, they'll look at your Instagram to validate the property before booking. An active, beautiful Instagram profile with recent content increases conversion from Google search and OTA click-throughs. It also drives aspirational discovery and influencer visits that generate earned media." },
+        { q: "How important are TripAdvisor rankings for hotels in Riyadh?", a: "TripAdvisor remains significant for hotels targeting international travellers and corporate bookers — particularly those coming from Western markets where TripAdvisor is still a primary research tool. For domestic Saudi travellers and GCC visitors, Google reviews and Booking.com ratings are generally more influential. We manage your review presence across all platforms simultaneously, with priority weighting based on your target guest segments." },
+      ],
+      ctaHeading: "Increase Occupancy for Your Riyadh Property",
+      ctaSubtitle: "Get a free hospitality marketing audit and discover how to drive more direct bookings and grow your ranking across every platform.",
+    },
+    relatedServices: [
+      { label: "Google Ads", href: "/en/services/google-ads" },
+      { label: "SEO Services", href: "/en/services/seo" },
+      { label: "Social Media Marketing", href: "/en/services/social-media" },
+    ],
+    relatedDistrict: { label: "Al Murabba District", href: "/en/riyadh/al-murabba" },
+  },
 ];
 
 const SLUGS = INDUSTRIES.map((ind) => ind.slug);
 
 export async function generateStaticParams() {
-  return SLUGS.map((slug) => ({ locale: "en", slug }));
+  return SLUGS.flatMap((slug) => [
+    { locale: "en", slug },
+    { locale: "ar", slug },
+  ]);
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
