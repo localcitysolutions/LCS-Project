@@ -479,6 +479,507 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedDistricts: ["al-olaya", "al-murabba"],
     relatedPosts: ["instagram-marketing-salons-riyadh", "google-ads-vs-meta-ads"],
   },
+  {
+    id: 7,
+    slug: "what-is-seo-riyadh-businesses",
+    title: {
+      en: "What is SEO and Why Every Riyadh Business Needs It in 2025",
+      ar: "ما هو الـ SEO ولماذا يحتاجه كل عمل في الرياض؟",
+    },
+    metaDescription: {
+      en: "SEO explained for Saudi businesses — what it is, how Google ranks sites in KSA, and why Vision 2030 makes organic search more valuable than ever.",
+      ar: "شرح الـ SEO للأعمال السعودية — ما هو، كيف يصنّف قوقل المواقع في السعودية، ولماذا أصبح البحث الطبيعي ضرورة في عصر رؤية ٢٠٣٠.",
+    },
+    excerpt: {
+      en: "Over 20 million Saudis search Google every day. SEO is the discipline that puts your business in front of them — at the exact moment they're looking for what you sell. Here's everything Riyadh business owners need to know.",
+      ar: "أكثر من ٢٠ مليون سعودي يبحثون في قوقل كل يوم. الـ SEO هو الذي يضع عملك أمامهم — في اللحظة اللي يدورون فيها على ما تقدمه. هذا كل شيء يحتاج صاحب العمل في الرياض معرفته.",
+    },
+    content: {
+      en: `<h2 id="what-is-seo">What is SEO?</h2>
+<p>Search Engine Optimisation (SEO) is the practice of improving your website so it appears higher in Google's unpaid — or "organic" — search results. When someone in Riyadh types "مطعم في العليا" or "digital marketing agency Riyadh" into Google, SEO is what determines whether your business appears on page one or page ten.</p>
+<p>Unlike <a href="/en/services/google-ads-management">Google Ads</a>, which require continuous spend to stay visible, SEO builds compounding visibility that works 24 hours a day. A well-optimised page can attract customers for years after it's published — with no per-click cost.</p>
+
+<h2 id="how-google-ranks">How Google Ranks Websites in Saudi Arabia</h2>
+<p>Google uses over 200 ranking factors, but three fundamentals drive most of the results: relevance (does your page match what the user searched for?), authority (do other trustworthy sites link to yours?), and experience (does your site load fast and work well on mobile?). In Saudi Arabia, Google also weighs Arabic-language content heavily — a site with well-written Arabic content consistently outranks English-only competitors for Arabic search queries, which account for the majority of searches in the Kingdom.</p>
+<p>Saudi Arabia has one of the world's highest smartphone penetration rates, so Google's mobile-first indexing means your site is judged primarily on its mobile experience. A slow or poorly formatted mobile site will struggle to rank regardless of how good the content is.</p>
+
+<h2 id="three-pillars">The 3 Pillars of SEO</h2>
+<p>Every SEO strategy rests on three interconnected pillars:</p>
+<ul>
+<li><strong>On-Page SEO:</strong> The content and structure of your website — title tags, headings, keyword usage, page speed, and internal linking. This is entirely within your control.</li>
+<li><strong>Off-Page SEO:</strong> The trust signals that come from outside your site — backlinks from other websites, brand mentions, and your presence on directories and review platforms like Zomato and TripAdvisor.</li>
+<li><strong>Technical SEO:</strong> The infrastructure of your site — how Google crawls and indexes it, Core Web Vitals scores, schema markup, and XML sitemaps. Technical issues can silently block all ranking progress regardless of content quality.</li>
+</ul>
+
+<h2 id="why-saudi-businesses">Why Saudi Businesses Can't Afford to Skip SEO in 2025</h2>
+<p>Saudi Arabia's Vision 2030 has triggered a wave of digital transformation across every sector. Consumer behaviour has shifted dramatically: before visiting a clinic in Al Malaz, choosing a salon in Al Sulaimaniyah, or commissioning a construction company in KAFD, Saudi consumers search Google first. According to Google's own data, 80% of purchase decisions in the Kingdom involve an online search at some point. Businesses that don't appear in those searches simply don't exist for most potential customers.</p>
+<p>The competitive window is still open. Compared to markets like the UAE or UK, Saudi Arabia has relatively low SEO competition in most local service categories — particularly in Arabic-language search. Early movers who invest in <a href="/en/services/seo-services">SEO now</a> build a position that becomes exponentially harder for competitors to displace over time.</p>
+<ul>
+<li>Riyadh has over 7 million residents — the largest city in the Arab world — with most using Google daily</li>
+<li>Arabic keywords often have a lower cost-per-acquisition than the same search in English</li>
+<li>Google's Saudi SERP features (maps, reviews, business profiles) heavily favour locally-optimised businesses</li>
+<li>Saudi e-commerce platforms like Salla and Zid both depend on SEO to drive organic store traffic</li>
+</ul>
+
+<h2 id="seo-vs-paid-ads">SEO vs Paid Ads: The Real Difference</h2>
+<p>Google Ads and SEO are both valuable, but they serve different purposes. Ads buy immediate visibility — turn off the budget and visibility disappears instantly. SEO builds equity over time — rankings that persist, compound, and generate traffic without per-click costs. For most Riyadh businesses, the optimal strategy combines both: Google Ads for immediate lead flow while SEO builds long-term organic authority. Businesses that rely entirely on paid traffic are always one budget cut away from going dark.</p>
+<p>For a detailed breakdown of when to prioritise each channel, read our guide on <a href="/en/blog/google-ads-vs-meta-ads">Google Ads vs Meta Ads for Saudi businesses</a>.</p>
+
+<h2 id="getting-started">Getting Started with SEO in Riyadh</h2>
+<p>The right starting point depends on where your business is today. If you have an existing website, begin with a technical audit to identify any crawling or indexation issues blocking Google from reading your pages. Then audit your keyword targeting — are you optimised for the Arabic and English terms your customers actually search? If you're starting from scratch, build bilingual content from day one. LCS Agency's <a href="/en/services/keyword-research">keyword research service</a> maps the exact search terms your target customers in districts like <a href="/en/riyadh/olaya">Al Olaya</a> and Al Malaz use — giving you a foundation for content that ranks and converts.</p>`,
+      ar: `<h2 id="what-is-seo">ما هو الـ SEO؟</h2>
+<p>تحسين محركات البحث (SEO) هو عملية تحسين موقعك الإلكتروني عشان يطلع أعلى في نتائج قوقل المجانية. لما حد في الرياض يكتب "مطعم في العليا" أو "شركة تسويق رقمي الرياض"، الـ SEO هو اللي يحدد إذا عملك يطلع في أول الصفحة أو في الصفحة العاشرة.</p>
+<p>بخلاف <a href="/ar/services/google-ads-management">إعلانات قوقل</a> اللي تحتاج تدفع بشكل مستمر، الـ SEO يبني ظهوراً متراكماً يشتغل ٢٤ ساعة. صفحة محسّنة صح تجلب عملاء لسنين بعد ما نشرتها — بدون أي تكلفة لكل نقرة.</p>
+
+<h2 id="how-google-ranks">كيف يصنّف قوقل المواقع في السعودية</h2>
+<p>قوقل يستخدم أكثر من ٢٠٠ عامل ترتيب، لكن ثلاثة أساسيات هي اللي تحرك معظم النتائج: الصلة (هل صفحتك تجاوب على ما بحث عنه المستخدم؟)، السلطة (هل مواقع موثوقة تشير لموقعك؟)، والتجربة (هل موقعك سريع ويشتغل صح على الجوال؟). في السعودية تحديداً، قوقل يعطي وزناً كبيراً للمحتوى العربي — موقع عنده محتوى عربي مكتوب بشكل صح يتغلب باستمرار على المنافسين اللي عندهم محتوى إنجليزي فقط.</p>
+<p>السعودية من أعلى دول العالم في انتشار الجوالات، يعني الـ mobile-first indexing تعني إن قوقل يحكم على موقعك أساساً بناءً على تجربة الجوال.</p>
+
+<h2 id="three-pillars">الركائز الثلاث للـ SEO</h2>
+<p>كل استراتيجية SEO تقوم على ثلاث ركائز:</p>
+<ul>
+<li><strong>SEO داخلي:</strong> المحتوى وهيكل موقعك — العناوين، الكلمات المفتاحية، سرعة الصفحة، والروابط الداخلية.</li>
+<li><strong>SEO خارجي:</strong> إشارات الثقة من خارج موقعك — الروابط من مواقع ثانية، ذكر علامتك التجارية، وحضورك على منصات زي زوماتو وتريب أدفيزر.</li>
+<li><strong>SEO تقني:</strong> البنية التحتية لموقعك — كيف يزحف قوقل على صفحاتك، نقاط Core Web Vitals، وكود schema. المشاكل التقنية تقدر تعطّل كل تقدم بصمت.</li>
+</ul>
+
+<h2 id="why-saudi-businesses">ليش الأعمال السعودية ما تقدر تتجاهل الـ SEO في ٢٠٢٥</h2>
+<p>رؤية ٢٠٣٠ سبّبت موجة تحول رقمي في كل القطاعات. سلوك المستهلك تغيّر بشكل جذري: قبل زيارة عيادة في المعلز، أو اختيار صالون في السليمانية، أو التعامل مع شركة بناء في كافد، المستهلك السعودي يبحث في قوقل أولاً. الأعمال اللي ما تظهر في هذه البحثات ببساطة غير موجودة لغالبية العملاء المحتملين.</p>
+<p>نافذة المنافسة لسا مفتوحة. مقارنة بالإمارات أو السوق البريطاني، المنافسة في SEO في السعودية منخفضة نسبياً في معظم فئات الخدمات المحلية — خاصة في البحث بالعربي. اللي يستثمر في <a href="/ar/services/seo-services">خدمات SEO</a> الحين يبني مركزاً يصعب على المنافسين إزاحته بمرور الوقت.</p>
+<ul>
+<li>الرياض فيها أكثر من ٧ مليون نسمة — أكبر مدينة في العالم العربي — ومعظمهم يستخدمون قوقل يومياً</li>
+<li>الكلمات المفتاحية العربية غالباً تكلفة اكتساب أقل مقارنة بنفس البحث بالإنجليزي</li>
+<li>منصات التجارة الإلكترونية السعودية مثل سلة وزد تعتمد على الـ SEO لجلب زيارات عضوية للمتاجر</li>
+</ul>
+
+<h2 id="seo-vs-paid-ads">SEO مقابل الإعلانات المدفوعة: الفرق الحقيقي</h2>
+<p>إعلانات قوقل والـ SEO كلاهما له قيمة، لكنهما يخدمان أغراضاً مختلفة. الإعلانات تشتري ظهوراً فورياً — أوقف الميزانية والظهور يختفي فوراً. الـ SEO يبني رصيداً بمرور الوقت — ترتيبات تستمر وتتراكم وتولد زيارات بدون تكلفة لكل نقرة. لمعظم الأعمال في الرياض، الاستراتيجية المثلى تجمع بين الاثنين.</p>
+<p>لمقارنة تفصيلية، اقرأ دليلنا عن <a href="/ar/blog/google-ads-vs-meta-ads">إعلانات قوقل مقابل ميتا للأعمال السعودية</a>.</p>
+
+<h2 id="getting-started">كيف تبدأ مع الـ SEO في الرياض</h2>
+<p>نقطة البداية الصح تعتمد على وضع عملك الحالي. لو عندك موقع موجود، ابدأ بتدقيق تقني لتحديد أي مشاكل تمنع قوقل من قراءة صفحاتك. ثم راجع استهدافك للكلمات المفتاحية — هل موقعك محسّن للمصطلحات العربية والإنجليزية اللي يبحث عنها عملاءك فعلاً؟ <a href="/ar/services/keyword-research">خدمة بحث الكلمات المفتاحية</a> في LCS ترسم لك خريطة المصطلحات اللي يستخدمها عملاءك في أحياء مثل <a href="/ar/riyadh/olaya">العليا</a> والمعلز.</p>`,
+    },
+    toc: [
+      { id: "what-is-seo", text: { en: "What is SEO?", ar: "ما هو الـ SEO؟" }, level: 2 },
+      { id: "how-google-ranks", text: { en: "How Google Ranks Websites in KSA", ar: "كيف يصنّف قوقل المواقع" }, level: 2 },
+      { id: "three-pillars", text: { en: "The 3 Pillars of SEO", ar: "الركائز الثلاث للـ SEO" }, level: 2 },
+      { id: "why-saudi-businesses", text: { en: "Why Saudi Businesses Need SEO", ar: "ليش الأعمال السعودية تحتاجه" }, level: 2 },
+      { id: "seo-vs-paid-ads", text: { en: "SEO vs Paid Ads", ar: "SEO مقابل الإعلانات المدفوعة" }, level: 2 },
+      { id: "getting-started", text: { en: "Getting Started in Riyadh", ar: "كيف تبدأ في الرياض" }, level: 2 },
+    ],
+    category: "seo",
+    categoryLabel: { en: "SEO", ar: "تحسين محركات البحث" },
+    tags: ["SEO", "Digital Marketing", "Riyadh", "Saudi Arabia", "Vision 2030", "Google", "Organic Search"],
+    author: "Muhammad Farhan",
+    publishDate: "2025-02-05",
+    updatedDate: "2025-02-05",
+    featuredImage: "/images/blog/what-is-seo-riyadh-businesses-featured.webp",
+    readingTime: 8,
+    relatedServices: ["seo-services", "keyword-research", "google-ads-management"],
+    relatedDistricts: ["olaya", "kafd", "malaz"],
+    relatedPosts: ["google-maps-ranking-restaurants-riyadh", "on-page-seo-complete-guide", "technical-seo-audit-checklist"],
+  },
+  {
+    id: 8,
+    slug: "on-page-seo-complete-guide",
+    title: {
+      en: "On-Page SEO: The Complete Guide for Saudi Websites",
+      ar: "الـ On-Page SEO: الدليل الكامل للمواقع السعودية",
+    },
+    metaDescription: {
+      en: "Master on-page SEO for Saudi and bilingual Arabic-English websites — title tags, meta descriptions, headers, keyword placement, and image optimisation.",
+      ar: "أتقن الـ on-page SEO للمواقع السعودية ثنائية اللغة — العناوين والوصف والهيكلية واستخدام الكلمات المفتاحية وتحسين الصور.",
+    },
+    excerpt: {
+      en: "On-page SEO is everything you control on your own website — and it's the foundation every other SEO effort is built on. This guide covers every element that matters for Saudi and bilingual Arabic-English websites.",
+      ar: "الـ on-page SEO هو كل شيء تتحكم فيه على موقعك — وهو الأساس اللي كل جهود الـ SEO الثانية تبنى عليه. هذا الدليل يغطي كل عنصر مهم للمواقع السعودية ثنائية اللغة.",
+    },
+    content: {
+      en: `<h2 id="what-is-on-page">What is On-Page SEO?</h2>
+<p>On-page SEO refers to all the optimisations you make directly on your website pages to improve their ranking in Google search results. Unlike off-page SEO (backlinks from other sites) or technical SEO (server and crawl configuration), on-page SEO is entirely within your control and delivers results faster than any other SEO discipline. For Saudi businesses — where most competitors have under-optimised websites — strong on-page SEO alone can achieve page-one rankings in many local categories.</p>
+<p>For bilingual Saudi websites serving both Arabic and English speakers, on-page SEO requires separate treatment for each language. A common mistake is optimising only the English version of a site while neglecting Arabic pages — even though Arabic search queries represent the majority of search volume in Saudi Arabia. Our <a href="/en/services/seo-services">SEO services</a> always address both languages from day one.</p>
+
+<h2 id="title-tags">Title Tags: Your Most Powerful On-Page Signal</h2>
+<p>The title tag is the clickable headline that appears in Google search results and browser tabs. It is the single most important on-page ranking signal. For Saudi businesses, the ideal title tag includes: your primary keyword (in the language the page targets), your city or neighbourhood (e.g. "Riyadh" or "Al Olaya"), and your brand name — all within 60 characters.</p>
+<ul>
+<li><strong>English example:</strong> "Best Dental Clinic in Al Olaya, Riyadh | SmileCare" (53 chars)</li>
+<li><strong>Arabic example:</strong> "أفضل عيادة أسنان في العليا الرياض | سمايل كير" (47 chars)</li>
+<li>Avoid keyword stuffing — "Dental Clinic Riyadh Dentist Best Cheap" will be ignored or penalised</li>
+<li>Each page on your site must have a unique title tag — duplicate titles confuse Google and split ranking signals</li>
+<li>For Salla and Zid stores, every product category page needs its own keyword-targeted title tag</li>
+</ul>
+
+<h2 id="meta-descriptions">Meta Descriptions That Drive Clicks</h2>
+<p>Meta descriptions don't directly affect rankings, but they heavily influence click-through rate — which does affect rankings over time. A compelling meta description can double your organic clicks from the same search position. Keep them under 160 characters, include your primary keyword naturally, and end with a clear call to action ("Book a free consultation", "احجز استشارة مجانية").</p>
+<p>For Arabic meta descriptions, write naturally in Saudi Gulf dialect rather than formal Arabic — descriptions that sound like a real person talking to the reader dramatically outperform stiff formal language in Saudi search results.</p>
+
+<h2 id="header-hierarchy">Header Hierarchy: H1, H2, H3</h2>
+<p>Every page should have exactly one H1 — the main topic of the page, containing your primary keyword. H2s break the content into major sections, each targeting a secondary keyword or question. H3s further subdivide H2 sections for complex topics. For Saudi bilingual sites, maintain the hierarchy in both the Arabic and English versions of each page, and ensure Arabic headings contain Arabic keywords — not transliterations of English terms.</p>
+<p>A restaurant page in <a href="/en/riyadh/kafd">KAFD</a> might use: H1 "Fine Dining Restaurant in KAFD Riyadh", H2s covering "Menu", "Private Events", "Reservations", "Location &amp; Parking" — each a natural entry point for a specific search query.</p>
+
+<h2 id="keyword-placement">Keyword Placement Best Practices</h2>
+<p>Place your primary keyword in: the H1, the first paragraph, at least one H2, the URL slug, the title tag, and the meta description. For secondary keywords, distribute them naturally throughout the body content. The key word is "naturally" — Google's understanding of language has advanced significantly; keyword stuffing is immediately detected and penalised.</p>
+<p>For Saudi businesses, conduct separate <a href="/en/services/keyword-research">keyword research</a> for Arabic and English versions of each page. A patient searching for "عيادة أسنان الرياض" and one searching "dental clinic Riyadh" may have different intent, different competitor landscapes, and require different content approaches — treat them as separate pages.</p>
+
+<h2 id="image-optimization">Image Optimisation for Saudi Sites</h2>
+<p>Images are among the largest contributors to slow page loads — and Saudi users have high expectations for speed. Follow these rules for every image on your site:</p>
+<ul>
+<li><strong>File format:</strong> Use WebP — typically 25–35% smaller than JPEG with equivalent quality</li>
+<li><strong>File size:</strong> No image should exceed 200KB; hero images over 400KB will noticeably hurt your Core Web Vitals score</li>
+<li><strong>Alt text:</strong> Write descriptive alt text in the page language, including your location keyword — "dental clinic interior al olaya riyadh" for English, "داخل عيادة أسنان العليا الرياض" for Arabic</li>
+<li><strong>Lazy loading:</strong> Use the <code>loading="lazy"</code> attribute on all images below the fold</li>
+<li><strong>Descriptive filenames:</strong> "dental-clinic-al-olaya-riyadh.webp" outperforms "IMG_4521.jpg" for image search</li>
+</ul>
+
+<h2 id="internal-linking">Internal Linking: The Underused Multiplier</h2>
+<p>Internal links pass authority between pages on your own site and tell Google which pages are most important. A typical Saudi SME website has 10–20 pages but almost no internal linking strategy — meaning blog content generates no ranking benefit for service pages and vice versa. Build a deliberate internal linking structure: every service page should link to related blog posts; every blog post should link to relevant service pages and other related articles. This is how a 20-page site can perform like a 200-page site in Google's eyes.</p>`,
+      ar: `<h2 id="what-is-on-page">ما هو الـ On-Page SEO؟</h2>
+<p>الـ on-page SEO هو كل التحسينات اللي تعملها مباشرة على صفحات موقعك لتحسين ترتيبها في نتائج قوقل. بخلاف الـ off-page (الروابط من مواقع ثانية) أو الـ technical SEO (إعدادات السيرفر)، الـ on-page SEO كله في يدك ويعطي نتائج أسرع من أي جانب آخر في الـ SEO. للأعمال السعودية — اللي معظم منافسيها عندهم مواقع غير محسّنة — الـ on-page SEO القوي وحده يقدر يحقق ترتيبات في الصفحة الأولى في كثير من الفئات المحلية.</p>
+<p>للمواقع السعودية ثنائية اللغة، الـ on-page SEO يحتاج معالجة منفصلة لكل لغة. خطأ شائع هو تحسين النسخة الإنجليزية فقط وإهمال الصفحات العربية — رغم إن البحثات العربية تمثل غالبية حجم البحث في السعودية. <a href="/ar/services/seo-services">خدمات SEO</a> في LCS دائماً تتناول اللغتين من البداية.</p>
+
+<h2 id="title-tags">عناوين الصفحات: أقوى إشارة on-page عندك</h2>
+<p>العنوان هو الرابط الذي يظهر في نتائج قوقل وفي تاب المتصفح. هو أهم إشارة ترتيب on-page. للأعمال السعودية، العنوان المثالي يشمل: كلمتك المفتاحية الأساسية، مدينتك أو حيك (مثل "الرياض" أو "العليا")، واسم علامتك التجارية — كله في ٦٠ حرف.</p>
+<ul>
+<li><strong>مثال عربي:</strong> "أفضل عيادة أسنان في العليا الرياض | سمايل كير"</li>
+<li><strong>مثال إنجليزي:</strong> "Best Dental Clinic in Al Olaya, Riyadh | SmileCare"</li>
+<li>تجنب حشو الكلمات — قوقل يكتشفها فوراً ويعاقب عليها</li>
+<li>كل صفحة في موقعك لازم يكون لها عنوان فريد — العناوين المكررة تشتت إشارات الترتيب</li>
+<li>لمتاجر سلة وزد، كل صفحة فئة منتجات تحتاج عنوان مستهدف بكلمة مفتاحية</li>
+</ul>
+
+<h2 id="meta-descriptions">وصف الميتا اللي يجذب النقرات</h2>
+<p>وصف الميتا ما يؤثر مباشرة على الترتيب، لكنه يؤثر بشكل كبير على معدل النقر — اللي يؤثر على الترتيب بمرور الوقت. خلّه أقل من ١٦٠ حرف، اشمل كلمتك المفتاحية الأساسية بشكل طبيعي، واختمه بدعوة واضحة للتصرف مثل "احجز استشارة مجانية".</p>
+<p>للوصف العربي، اكتب بالعامية السعودية الخليجية مو الفصحى الرسمية — الوصف اللي يبدو طبيعي ومحكي يتغلب على اللغة الرسمية الجافة في نتائج البحث السعودية.</p>
+
+<h2 id="header-hierarchy">هيكلية العناوين: H1 وH2 وH3</h2>
+<p>كل صفحة لازم يكون فيها H1 واحد فقط — الموضوع الرئيسي للصفحة مع كلمتك المفتاحية الأساسية. الـ H2 تقسّم المحتوى لأقسام رئيسية، كل واحدة تستهدف كلمة مفتاحية ثانوية. الـ H3 تقسّم أقسام H2 للموضوعات المعقدة.</p>
+<p>صفحة مطعم في <a href="/ar/riyadh/kafd">كافد</a> قد تستخدم: H1 "مطعم راقٍ في كافد الرياض"، وH2 تشمل "المنيو"، "الفعاليات الخاصة"، "الحجز"، "الموقع والباركنج" — كل واحدة مدخل طبيعي لبحث محدد.</p>
+
+<h2 id="keyword-placement">أفضل ممارسات وضع الكلمات المفتاحية</h2>
+<p>ضع كلمتك المفتاحية الأساسية في: الـ H1، الفقرة الأولى، على الأقل H2 واحد، رابط URL، العنوان، ووصف الميتا. للكلمات المفتاحية الثانوية، وزّعها بشكل طبيعي في المحتوى.</p>
+<p>للأعمال السعودية، اعمل <a href="/ar/services/keyword-research">بحث كلمات مفتاحية</a> منفصل للنسخة العربية والإنجليزية لكل صفحة. مريض يبحث عن "عيادة أسنان الرياض" وآخر يبحث عن "dental clinic Riyadh" قد يكون لهم نية مختلفة وبيئة منافسة مختلفة.</p>
+
+<h2 id="image-optimization">تحسين الصور للمواقع السعودية</h2>
+<p>الصور من أكبر أسباب بطء تحميل الصفحات — والمستخدم السعودي توقعاته عالية في السرعة. اتبع هذه القواعد لكل صورة في موقعك:</p>
+<ul>
+<li><strong>تنسيق الملف:</strong> استخدم WebP — أصغر بـ٢٥-٣٥٪ من JPEG بنفس الجودة</li>
+<li><strong>حجم الملف:</strong> ما تتجاوز ٢٠٠ كيلوبايت لأي صورة</li>
+<li><strong>النص البديل:</strong> اكتب وصفاً واضحاً بلغة الصفحة مع كلمة الموقع الجغرافي</li>
+<li><strong>التحميل الكسول:</strong> استخدم <code>loading="lazy"</code> للصور تحت الطية</li>
+<li><strong>أسماء الملفات:</strong> "dental-clinic-al-olaya-riyadh.webp" أفضل من "IMG_4521.jpg"</li>
+</ul>
+
+<h2 id="internal-linking">الروابط الداخلية: المضاعِف الأقل استخداماً</h2>
+<p>الروابط الداخلية تنقل السلطة بين صفحات موقعك وتخبر قوقل أي الصفحات الأهم. موقع عادي للأعمال السعودية عنده ١٠-٢٠ صفحة لكن بدون استراتيجية ربط داخلي — يعني المحتوى في المدونة ما يفيد صفحات الخدمات والعكس. ابنِ هيكل ربط داخلي مدروس: كل صفحة خدمة تشير لمقالات ذات صلة، وكل مقال يشير لصفحات الخدمات المناسبة. هكذا موقع من ٢٠ صفحة يقدر يؤدي أداء موقع من ٢٠٠ صفحة في نظر قوقل.</p>`,
+    },
+    toc: [
+      { id: "what-is-on-page", text: { en: "What is On-Page SEO?", ar: "ما هو الـ On-Page SEO؟" }, level: 2 },
+      { id: "title-tags", text: { en: "Title Tags", ar: "عناوين الصفحات" }, level: 2 },
+      { id: "meta-descriptions", text: { en: "Meta Descriptions", ar: "وصف الميتا" }, level: 2 },
+      { id: "header-hierarchy", text: { en: "Header Hierarchy H1–H3", ar: "هيكلية العناوين" }, level: 2 },
+      { id: "keyword-placement", text: { en: "Keyword Placement", ar: "وضع الكلمات المفتاحية" }, level: 2 },
+      { id: "image-optimization", text: { en: "Image Optimisation", ar: "تحسين الصور" }, level: 2 },
+      { id: "internal-linking", text: { en: "Internal Linking", ar: "الروابط الداخلية" }, level: 2 },
+    ],
+    category: "seo",
+    categoryLabel: { en: "SEO", ar: "تحسين محركات البحث" },
+    tags: ["On-Page SEO", "Title Tags", "Meta Descriptions", "Keywords", "Saudi Arabia", "Bilingual SEO", "Content Optimisation"],
+    author: "Muhammad Farhan",
+    publishDate: "2025-02-12",
+    updatedDate: "2025-02-12",
+    featuredImage: "/images/blog/on-page-seo-complete-guide-featured.webp",
+    readingTime: 9,
+    relatedServices: ["seo-services", "content-writing", "keyword-research"],
+    relatedDistricts: ["olaya", "al-sulaimaniyah", "kafd"],
+    relatedPosts: ["what-is-seo-riyadh-businesses", "technical-seo-audit-checklist", "google-maps-ranking-restaurants-riyadh"],
+  },
+  {
+    id: 9,
+    slug: "off-page-seo-strategies-saudi",
+    title: {
+      en: "Off-Page SEO Strategies That Actually Work for Saudi Businesses",
+      ar: "استراتيجيات الـ Off-Page SEO اللي تنجح فعلاً في السعودية",
+    },
+    metaDescription: {
+      en: "Build domain authority for your Saudi website with off-page SEO — backlinks from Arabic sites, digital PR, local citations, and social signals in the KSA market.",
+      ar: "ابنِ سلطة نطاقك في السعودية عبر off-page SEO — روابط من مواقع عربية، علاقات عامة رقمية، استشهادات محلية، وإشارات اجتماعية في السوق السعودي.",
+    },
+    excerpt: {
+      en: "Ranking on Google is only partly about what's on your website. Off-page SEO — the signals Google receives from the rest of the internet — determines whether your site is seen as authoritative enough to rank at the top. Here's how to build that authority in the Saudi market.",
+      ar: "الترتيب في قوقل يعتمد جزئياً فقط على ما في موقعك. الـ off-page SEO — الإشارات اللي يستقبلها قوقل من بقية الإنترنت — هو اللي يحدد إذا كان موقعك يُعتبر موثوقاً كفاية ليتصدر. هكذا تبني هذه الثقة في السوق السعودي.",
+    },
+    content: {
+      en: `<h2 id="what-is-off-page">What is Off-Page SEO?</h2>
+<p>Off-page SEO encompasses all the ranking signals Google collects from outside your website — primarily backlinks (links from other websites pointing to yours), brand mentions, social signals, and local citations. If on-page SEO tells Google what your site is about, off-page SEO tells Google whether your site deserves to rank at the top. A site with excellent content but weak off-page authority will consistently lose to a less-well-written competitor with strong backlink profiles.</p>
+<p>In Saudi Arabia, off-page SEO has a unique landscape. The Arabic web ecosystem is smaller than the English web, which means backlinks from Saudi and Gulf-based Arabic sites carry significant weight — even links from sites with modest traffic. This actually benefits local Saudi businesses: earning three or four high-quality Arabic backlinks can move rankings more than fifty low-quality links from overseas directories.</p>
+
+<h2 id="backlinks-saudi">Building Backlinks in the Saudi Market</h2>
+<p>The most effective backlink sources for Saudi businesses include: Saudi news and media sites (Arab News, Saudi Gazette, Al Arabiya, SPA), regional business directories (Dalil Commercial, Yellow Pages Saudi, Maroof.sa — the official Saudi business registry), industry associations, chamber of commerce listings, and Saudi-based review platforms. A listing on Maroof.sa — the Saudi Ministry of Commerce's official business registry — provides both a valuable backlink and a trust signal that is unique to the Saudi market.</p>
+<ul>
+<li><strong>News coverage:</strong> Send press releases for genuine news events — opening a new location in <a href="/en/riyadh/al-nakheel">Al Nakheel</a>, a major partnership, or a notable award</li>
+<li><strong>Maroof.sa:</strong> Register your business — it's free, government-authorised, and provides a direct backlink from a .gov.sa domain</li>
+<li><strong>Industry directories:</strong> Get listed on every Saudi-specific directory relevant to your sector</li>
+<li><strong>Supplier and partner sites:</strong> Ask business partners to include a link when they mention your company</li>
+<li><strong>Salla/Zid ecosystem:</strong> If you run an e-commerce store, your platform storefront creates a citation that supports your main domain</li>
+</ul>
+
+<h2 id="digital-pr">Digital PR and Brand Mentions in KSA</h2>
+<p>Digital PR — getting your brand, products, or expertise mentioned in online publications — has replaced traditional link-building as the highest-ROI off-page strategy for Saudi businesses. A single feature in Arab News or Argaam (Saudi financial news) carries more ranking weight than hundreds of directory links. The key to earning this coverage is offering genuine value: data-driven research about the Saudi market, expert commentary on industry trends, or stories with clear Vision 2030 relevance resonate strongly with Saudi business journalists.</p>
+<p>Even unlinked brand mentions — where a publication mentions your company name without a clickable link — contribute to off-page authority through Google's understanding of entity associations. Monitor brand mentions using Google Alerts with both your English and Arabic business name, and reach out to publications to request link additions when mentions go unlinked.</p>
+
+<h2 id="guest-posting">Guest Posting on Arabic Sites</h2>
+<p>Contributing articles to established Saudi and Gulf business websites is one of the most targeted ways to build backlinks and brand authority simultaneously. Sites like Bab Rizq Jameel's business content, Arab Net, and various Saudi entrepreneur communities actively publish contributed content. Write in natural Saudi Gulf Arabic, address topics your target customers genuinely care about, and link naturally to relevant pages on your own site within the article body. A guest post on a site read by Riyadh business owners does triple duty: backlink, brand awareness, and direct referral traffic.</p>
+
+<h2 id="social-signals">Social Signals and Saudi Platform Authority</h2>
+<p>While Google hasn't confirmed that social media engagement directly affects rankings, the correlation is strong: content that gets widely shared and discussed generates secondary backlinks, increases brand searches, and sends behavioural signals that Google uses as quality indicators. In Saudi Arabia, Snapchat and Instagram are unusually dominant — Saudi Arabia consistently ranks among the top countries globally for Snapchat usage. A piece of content that goes viral on Saudi Snapchat or Instagram will generate backlinks, search volume spikes, and brand searches that all feed off-page authority.</p>
+<p>Our <a href="/en/services/social-media-management">social media management service</a> integrates content distribution with off-page SEO strategy, ensuring that content created for organic search also drives social amplification.</p>
+
+<h2 id="local-citations">Local Citations: NAP Consistency Across Saudi Platforms</h2>
+<p>A citation is any mention of your business name, address, and phone number (NAP) online — even without a link. Consistent NAP data across directories, review platforms, and social profiles is a fundamental local SEO signal. For Saudi businesses, ensure your NAP is consistent and in both Arabic and English across: Maroof.sa, Yelp Saudi, Foursquare, Zomato (for F&amp;B), TripAdvisor, Apple Maps, Google Maps, Snap Map, your social media profiles, and any industry-specific platforms. A single digit difference in your phone number between platforms can dilute your local ranking signals. For more on local citations as part of a broader strategy, see our <a href="/en/blog/local-seo-dominate-riyadh-search">complete local SEO guide for Riyadh</a>.</p>`,
+      ar: `<h2 id="what-is-off-page">ما هو الـ Off-Page SEO؟</h2>
+<p>الـ off-page SEO يشمل كل إشارات الترتيب اللي يجمعها قوقل من خارج موقعك — أساساً الروابط الخلفية (روابط من مواقع ثانية تشير لموقعك)، ذكر علامتك التجارية، الإشارات الاجتماعية، والاستشهادات المحلية. لو الـ on-page SEO يخبر قوقل عن ما يتحدث موقعك، الـ off-page يخبره إذا كان موقعك يستحق التصدر. موقع بمحتوى ممتاز لكن سلطة off-page ضعيفة سيخسر باستمرار أمام منافس عنده ملف روابط قوي.</p>
+<p>في السعودية، للـ off-page SEO مشهد فريد. النظام البيئي للويب العربي أصغر من الإنجليزي، مما يعني إن الروابط من مواقع سعودية وخليجية بالعربي تحمل وزناً كبيراً — حتى لو الموقع نفسه ما عنده ترافيك ضخم.</p>
+
+<h2 id="backlinks-saudi">بناء الروابط في السوق السعودي</h2>
+<p>أكثر مصادر الروابط فعالية للأعمال السعودية تشمل: المواقع الإخبارية والإعلامية السعودية (عرب نيوز، صحيفة سعودية غازيت، العربية، السبق)، دلائل الأعمال الإقليمية (دليل تجاري، الصفحات الصفراء السعودية، معروف.sa — السجل التجاري الرسمي)، وروابط الشركاء التجاريين. التسجيل في معروف.sa — منصة وزارة التجارة — يوفر رابطاً مباشراً من نطاق .gov.sa وهو إشارة ثقة فريدة في السوق السعودي.</p>
+<ul>
+<li><strong>التغطية الإخبارية:</strong> أرسل بيانات صحفية لأحداث حقيقية — افتتاح موقع جديد في <a href="/ar/riyadh/al-nakheel">النخيل</a>، شراكة مهمة، أو جائزة</li>
+<li><strong>معروف.sa:</strong> سجّل عملك — مجاني وحكومي ويوفر رابطاً مباشراً</li>
+<li><strong>دلائل القطاع:</strong> اشترك في كل دليل سعودي متخصص في مجالك</li>
+<li><strong>مواقع الموردين والشركاء:</strong> اطلب من شركاء الأعمال إضافة رابط عند ذكر شركتك</li>
+</ul>
+
+<h2 id="digital-pr">العلاقات العامة الرقمية في السوق السعودي</h2>
+<p>العلاقات العامة الرقمية — الحصول على ذكر لعلامتك التجارية أو خبرتك في المنشورات الإلكترونية — تجاوزت بناء الروابط التقليدي كأعلى استراتيجية off-page عائداً. ذكر واحد في عرب نيوز أو أرقام (الأخبار المالية السعودية) يحمل وزناً أكبر من مئات روابط الدلائل. مفتاح كسب هذه التغطية هو تقديم قيمة حقيقية: أبحاث مبنية على بيانات عن السوق السعودي، أو تعليقات خبراء على اتجاهات القطاع ترتبط برؤية ٢٠٣٠.</p>
+<p>حتى ذكر العلامة التجارية بدون رابط يساهم في سلطة الـ off-page. راقب ذكر علامتك بالعربي والإنجليزي عبر Google Alerts وتواصل مع المنشورات لطلب إضافة الروابط.</p>
+
+<h2 id="guest-posting">الكتابة كضيف في المواقع العربية</h2>
+<p>المساهمة بمقالات في مواقع الأعمال السعودية والخليجية المعروفة من أكثر الطرق استهدافاً لبناء الروابط والسلطة التجارية معاً. اكتب بالعامية السعودية الطبيعية، تناول مواضيع يهتم بها عملاؤك فعلاً، واربط بشكل طبيعي لصفحات ذات صلة في موقعك.</p>
+
+<h2 id="social-signals">الإشارات الاجتماعية ومنصات السعودية</h2>
+<p>في السعودية، سناب شات وإنستقرام مهيمنان بشكل غير عادي — السعودية باستمرار بين أعلى الدول في استخدام سناب شات. محتوى ينتشر على السناب أو إنستقرام السعودي يولّد روابط ثانوية، ارتفاع في البحثات العلامة، وإشارات سلوكية تغذّي سلطة الـ off-page. <a href="/ar/services/social-media-management">خدمة إدارة السوشل ميديا</a> في LCS تدمج توزيع المحتوى مع استراتيجية الـ off-page SEO.</p>
+
+<h2 id="local-citations">الاستشهادات المحلية: اتساق NAP في المنصات السعودية</h2>
+<p>الاستشهاد هو أي ذكر لاسم عملك وعنوانك ورقم هاتفك على الإنترنت — حتى بدون رابط. تأكد من اتساق بياناتك بالعربي والإنجليزي على: معروف.sa، زوماتو (للأكل)، تريب أدفايزر، خرائط أبل، قوقل ماب، وملفات السوشيال ميديا. اختلاف رقم واحد في الهاتف بين المنصات يضعف إشارات ترتيبك المحلي. للمزيد، اقرأ دليلنا الكامل عن <a href="/ar/blog/local-seo-dominate-riyadh-search">الـ SEO المحلي للسيطرة على نتائج الرياض</a>.</p>`,
+    },
+    toc: [
+      { id: "what-is-off-page", text: { en: "What is Off-Page SEO?", ar: "ما هو الـ Off-Page SEO؟" }, level: 2 },
+      { id: "backlinks-saudi", text: { en: "Building Backlinks in Saudi Arabia", ar: "بناء الروابط في السعودية" }, level: 2 },
+      { id: "digital-pr", text: { en: "Digital PR in KSA", ar: "العلاقات العامة الرقمية" }, level: 2 },
+      { id: "guest-posting", text: { en: "Guest Posting on Arabic Sites", ar: "الكتابة كضيف في المواقع العربية" }, level: 2 },
+      { id: "social-signals", text: { en: "Social Signals & Saudi Platforms", ar: "الإشارات الاجتماعية" }, level: 2 },
+      { id: "local-citations", text: { en: "Local Citations: NAP Consistency", ar: "الاستشهادات المحلية" }, level: 2 },
+    ],
+    category: "seo",
+    categoryLabel: { en: "SEO", ar: "تحسين محركات البحث" },
+    tags: ["Off-Page SEO", "Backlinks", "Digital PR", "Saudi Arabia", "Link Building", "Brand Authority", "Local Citations"],
+    author: "Muhammad Farhan",
+    publishDate: "2025-02-19",
+    updatedDate: "2025-02-19",
+    featuredImage: "/images/blog/off-page-seo-strategies-saudi-featured.webp",
+    readingTime: 8,
+    relatedServices: ["seo-services", "content-writing", "social-media-management"],
+    relatedDistricts: ["olaya", "al-rawdah", "kafd"],
+    relatedPosts: ["on-page-seo-complete-guide", "what-is-seo-riyadh-businesses", "local-seo-dominate-riyadh-search"],
+  },
+  {
+    id: 10,
+    slug: "local-seo-dominate-riyadh-search",
+    title: {
+      en: "Local SEO: How to Dominate Riyadh's Search Results",
+      ar: "الـ Local SEO: كيف تسيطر على نتائج البحث في الرياض",
+    },
+    metaDescription: {
+      en: "A complete local SEO guide for Riyadh businesses — Google Business Profile, NAP citations, review strategy, Arabic local keywords, and neighbourhood targeting.",
+      ar: "دليل شامل للـ local SEO للأعمال في الرياض — ملف النشاط التجاري، الاستشهادات، إدارة التقييمات، الكلمات المفتاحية العربية المحلية، والاستهداف على مستوى الأحياء.",
+    },
+    excerpt: {
+      en: "Riyadh is a city of distinct neighbourhoods — and customers search at the neighbourhood level. A business in Al Olaya and one in Al Rawdah are competing for entirely different search audiences even if they offer the same service. Here's how to win local search in your specific part of Riyadh.",
+      ar: "الرياض مدينة أحياء متميزة — والعملاء يبحثون على مستوى الحي. عمل في العليا وآخر في الروضة يتنافسان على جماهير بحث مختلفة كلياً حتى لو قدّما نفس الخدمة. هكذا تفوز بالبحث المحلي في حيك تحديداً.",
+    },
+    content: {
+      en: `<h2 id="why-local-seo">Why Local SEO is Different in Riyadh</h2>
+<p>Local SEO is a specialised discipline within search optimisation focused on appearing in searches that have local intent — "near me" searches, neighbourhood-specific searches, and searches where Google infers the user wants a local result. In Riyadh, local search is particularly valuable: the city's size (over 1,600 square kilometres) means that consumers strongly prefer businesses within or near their own district. A dental clinic in Al Malaz is competing for patients in Al Malaz — not city-wide. This geographic specificity is both a challenge and an opportunity.</p>
+<p>Riyadh's neighbourhood ecosystem gives local businesses a significant edge over national chains when it comes to neighbourhood-level SEO. A well-optimised local business with genuine reviews from Al Muruj residents will outrank a national chain's generic city-level presence in Al Muruj searches. Our <a href="/en/services/seo-services">SEO team</a> builds neighbourhood-first strategies rather than generic city-wide campaigns.</p>
+
+<h2 id="gbp-optimization">Google Business Profile: The Foundation of Local SEO</h2>
+<p>Your Google Business Profile (GBP) — the information panel and map pin that appears when customers search for your business or category near your location — is the single most important asset in local SEO. An incomplete or poorly-managed GBP profile will cost you customers every day. For Riyadh businesses, the most impactful GBP optimisations are:</p>
+<ul>
+<li><strong>Accurate category selection:</strong> Choose your most specific primary category (e.g. "Paediatric Dentist" not just "Dentist") and add all applicable secondary categories</li>
+<li><strong>Complete bilingual description:</strong> Write 750 characters describing your business in both Arabic and English — Google surfaces the description in search results and it directly influences relevance for bilingual queries</li>
+<li><strong>Photos — quantity and quality:</strong> Upload 30+ photos including exterior, interior, team, and product/service photos. GBP profiles with over 100 photos receive significantly more direction requests in Google Maps</li>
+<li><strong>Hours accuracy:</strong> Keep regular hours, special hours for Saudi public holidays, and Ramadan hours updated — incorrect hours are the single fastest way to destroy customer trust and generate negative reviews</li>
+<li><strong>Posts:</strong> Publish at least two GBP posts per month — offers, events, or news. Posts keep your profile "active" and signal to Google that your business is current</li>
+<li><strong>Q&amp;A:</strong> Pre-populate the Q&amp;A section with the most common questions customers ask, answered in both Arabic and English</li>
+</ul>
+<p>For a deeper dive into GBP optimisation for restaurants specifically, read our <a href="/en/blog/google-business-profile-guide">complete GBP setup guide</a>.</p>
+
+<h2 id="local-citations">Local Citations and NAP Consistency</h2>
+<p>A citation is any mention of your business name, address, and phone number (NAP) online. Consistent NAP data across all platforms is a foundational local ranking signal. Even a minor inconsistency — "King Fahd Road" vs "King Fahd St" vs "طريق الملك فهد" — dilutes your local ranking authority. For Riyadh businesses, ensure consistent NAP listings on: Maroof.sa (government business registry), Google Maps, Apple Maps, Yelp, Zomato, TripAdvisor (for F&amp;B and hospitality), Yellow Pages Saudi Arabia, Dalil Commercial, and all your social media profiles. List your address in both Arabic and English on every platform.</p>
+
+<h2 id="managing-reviews">Getting and Managing Google Reviews</h2>
+<p>Reviews are the second most important local ranking factor after proximity. More importantly, for Saudi consumers, peer reviews carry extraordinary purchase influence — a business with 200+ reviews and a 4.5+ star rating has a decisive competitive advantage over one with 10 reviews, regardless of which business is actually better. The most effective review generation system in Riyadh: send a WhatsApp Business message to every customer within 2 hours of their visit or service completion, thanking them and including a direct link to your Google review page. Commit to this for 90 days and the compounding effect is dramatic.</p>
+<p>For managing negative reviews: respond to every review within 24 hours — in the same language it was written (Arabic reviews get Arabic responses). For negative reviews, thank the reviewer for the feedback, acknowledge their experience, and offer to resolve it directly via phone or WhatsApp. Potential customers read how businesses handle criticism — a graceful response to a negative review is often more impressive than five positive reviews.</p>
+
+<h2 id="local-keywords">Local Keywords for Saudi Businesses</h2>
+<p>Local keyword research for Riyadh requires understanding how Saudi consumers actually phrase location-based searches. Common patterns include: service + district name (both Arabic and English), service + "in Riyadh", service + "near me" (this works in Arabic too — "قريب مني"), and brand name searches. Notably, many Riyadh residents search using neighbourhood names that differ from official district names — Al Olaya is often called "العليا" but also referenced as "شارع التحلية" for the Tahlia Street area. <a href="/en/services/keyword-research">Thorough keyword research</a> maps these variations for your specific location.</p>
+
+<h2 id="neighbourhood-targeting">Neighbourhood-Level Targeting in Riyadh</h2>
+<p>The most advanced local SEO strategy for Riyadh businesses is creating separate, optimised pages for each neighbourhood you serve. A cleaning company serving all of northern Riyadh should have distinct pages for <a href="/en/riyadh/al-nakheel">Al Nakheel</a>, Al Sulaimaniyah, Al Malqa, and Hittin — each with neighbourhood-specific content, local landmarks, and customer testimonials from that area. This neighbourhood page strategy allows a single business to dominate hyper-local search across multiple districts simultaneously, building a city-wide presence from the ground up.</p>`,
+      ar: `<h2 id="why-local-seo">ليش الـ Local SEO مختلف في الرياض</h2>
+<p>الـ local SEO هو تخصص داخل تحسين محركات البحث يركّز على الظهور في البحثات ذات النية المحلية — بحثات "قريبي"، بحثات خاصة بالحي، وبحثات يستشعر فيها قوقل إن المستخدم يريد نتيجة محلية. في الرياض، البحث المحلي قيّم بشكل خاص: حجم المدينة (أكثر من ١٦٠٠ كيلومتر مربع) يعني إن المستهلكين يفضّلون بشدة الأعمال في حيّهم أو بالقرب منه.</p>
+<p>نظام أحياء الرياض يعطي الأعمال المحلية أفضلية كبيرة على الشركات الوطنية في بحثات مستوى الحي. عمل محلي محسّن بتقييمات حقيقية من سكان المروج سيتغلب على فرع سلسلة وطنية في بحثات المروج. <a href="/ar/services/seo-services">فريق الـ SEO</a> في LCS يبني استراتيجيات تبدأ من الحي مو حملات مدينة عامة.</p>
+
+<h2 id="gbp-optimization">ملف النشاط التجاري على قوقل: أساس الـ Local SEO</h2>
+<p>ملف النشاط التجاري — لوحة المعلومات ودبوس الخريطة اللي يظهر لما العملاء يبحثون عن عملك — هو أهم أصل في الـ local SEO. ملف غير مكتمل أو سيئ الإدارة يكلّفك عملاء كل يوم. أهم تحسينات GBP للأعمال في الرياض:</p>
+<ul>
+<li><strong>اختيار الفئة الدقيق:</strong> اختر الفئة الأساسية الأدق وأضف كل الفئات الثانوية المنطبقة</li>
+<li><strong>وصف شامل بلغتين:</strong> اكتب ٧٥٠ حرف بالعربي والإنجليزي — قوقل يعرض الوصف في نتائج البحث</li>
+<li><strong>الصور:</strong> أضف ٣٠+ صورة بجودة عالية تشمل الخارج والداخل والفريق</li>
+<li><strong>دقة أوقات العمل:</strong> خلّها محدّثة مع الإجازات الرسمية وأوقات رمضان</li>
+<li><strong>المنشورات:</strong> انشر على الأقل مرتين شهرياً — عروض أو أخبار أو فعاليات</li>
+<li><strong>الأسئلة الشائعة:</strong> أضف مسبقاً الأسئلة الأكثر شيوعاً بالعربي والإنجليزي</li>
+</ul>
+<p>لتعمّق أكثر في تحسين GBP للمطاعم تحديداً، اقرأ <a href="/ar/blog/google-business-profile-guide">دليل إعداد GBP الكامل</a>.</p>
+
+<h2 id="local-citations">الاستشهادات المحلية واتساق NAP</h2>
+<p>الاستشهاد هو أي ذكر لاسم عملك وعنوانك ورقم هاتفك على الإنترنت. اتساق بيانات NAP في كل المنصات هو إشارة ترتيب محلية أساسية. حتى تناقض بسيط — "طريق الملك فهد" مقابل "King Fahd Road" — يضعف سلطتك المحلية. للأعمال في الرياض، تأكد من ثبات بياناتك على: معروف.sa، قوقل ماب، خرائط أبل، زوماتو، تريب أدفايزر، وكل ملفات السوشيال ميديا. أدرج عنوانك بالعربي والإنجليزي في كل منصة.</p>
+
+<h2 id="managing-reviews">الحصول على التقييمات وإدارتها</h2>
+<p>التقييمات هي ثاني أهم عامل ترتيب محلي بعد القرب الجغرافي. أنجح نظام لتوليد التقييمات في الرياض: أرسل رسالة واتساب بيزنس لكل عميل خلال ساعتين من الزيارة أو اكتمال الخدمة، شاكراً إياه وبرابط مباشر لصفحة تقييم قوقل. التزم بهذا ٩٠ يوم والأثر التراكمي ملحوظ.</p>
+<p>لإدارة التقييمات السلبية: رد على كل تقييم خلال ٢٤ ساعة — بنفس لغة التقييم. للتقييمات السلبية، أقرّ بتجربة العميل وعرض حل مباشر. المتابع يقرأ كيف تتعامل مع النقد — رد راقي على تقييم سلبي غالباً أكثر تأثيراً من خمسة تقييمات إيجابية.</p>
+
+<h2 id="local-keywords">الكلمات المفتاحية المحلية للأعمال السعودية</h2>
+<p>بحث الكلمات المفتاحية المحلية للرياض يتطلب فهم كيفية صياغة المستهلكين السعوديين لبحثاتهم الجغرافية. أنماط شائعة: خدمة + اسم الحي (عربي وإنجليزي)، خدمة + "في الرياض"، وخدمة + "قريب مني". كثير من سكان الرياض يستخدمون أسماء أحياء تختلف عن الأسماء الرسمية. <a href="/ar/services/keyword-research">بحث كلمات مفتاحية</a> شامل يرسم هذه التنويعات لموقعك تحديداً.</p>
+
+<h2 id="neighbourhood-targeting">الاستهداف على مستوى الأحياء في الرياض</h2>
+<p>أكثر استراتيجيات الـ local SEO تقدماً للأعمال في الرياض هي إنشاء صفحات منفصلة ومحسّنة لكل حي تخدمه. شركة تنظيف تخدم شمال الرياض يجب أن تمتلك صفحات مستقلة لـ <a href="/ar/riyadh/al-nakheel">النخيل</a> والسليمانية والملقا وحطين — كل واحدة بمحتوى خاص بالحي ومعالم محلية وشهادات عملاء من المنطقة. هذه الاستراتيجية تتيح لعمل واحد السيطرة على بحثات دقيقة عبر أحياء متعددة في آنٍ واحد.</p>`,
+    },
+    toc: [
+      { id: "why-local-seo", text: { en: "Why Local SEO is Different in Riyadh", ar: "ليش الـ Local SEO مختلف في الرياض" }, level: 2 },
+      { id: "gbp-optimization", text: { en: "Google Business Profile", ar: "ملف النشاط التجاري" }, level: 2 },
+      { id: "local-citations", text: { en: "Local Citations & NAP", ar: "الاستشهادات واتساق NAP" }, level: 2 },
+      { id: "managing-reviews", text: { en: "Getting & Managing Reviews", ar: "الحصول على التقييمات وإدارتها" }, level: 2 },
+      { id: "local-keywords", text: { en: "Local Keywords for Saudi Businesses", ar: "الكلمات المفتاحية المحلية" }, level: 2 },
+      { id: "neighbourhood-targeting", text: { en: "Neighbourhood-Level Targeting", ar: "الاستهداف على مستوى الأحياء" }, level: 2 },
+    ],
+    category: "seo",
+    categoryLabel: { en: "SEO", ar: "تحسين محركات البحث" },
+    tags: ["Local SEO", "Google Business Profile", "Riyadh", "Reviews", "Local Citations", "NAP", "Neighbourhood SEO"],
+    author: "Muhammad Farhan",
+    publishDate: "2025-02-26",
+    updatedDate: "2025-02-26",
+    featuredImage: "/images/blog/local-seo-dominate-riyadh-search-featured.webp",
+    readingTime: 9,
+    relatedServices: ["seo-services", "google-ads-management", "keyword-research"],
+    relatedDistricts: ["olaya", "malaz", "al-muruj"],
+    relatedPosts: ["google-maps-ranking-restaurants-riyadh", "google-business-profile-guide", "off-page-seo-strategies-saudi"],
+  },
+  {
+    id: 11,
+    slug: "technical-seo-audit-checklist",
+    title: {
+      en: "Technical SEO Audit Checklist for Saudi Websites",
+      ar: "قائمة تدقيق الـ Technical SEO للمواقع السعودية",
+    },
+    metaDescription: {
+      en: "A complete technical SEO audit checklist for Saudi and Arabic websites — Core Web Vitals, mobile performance, crawlability, schema markup, and sitemap configuration.",
+      ar: "قائمة تدقيق technical SEO شاملة للمواقع السعودية والعربية — Core Web Vitals، أداء الجوال، الزحف والفهرسة، schema markup، وإعداد الخريطة.",
+    },
+    excerpt: {
+      en: "Technical SEO is the infrastructure layer that lets all other SEO work pay off. Without it, even the best content and strongest backlinks can't reach page one. This checklist covers everything Saudi website owners need to audit and fix.",
+      ar: "الـ technical SEO هو طبقة البنية التحتية اللي تجعل كل جهود SEO الأخرى تؤتي ثمارها. بدونه، حتى أفضل محتوى وأقوى روابط ما تقدر تصل للصفحة الأولى. هذه القائمة تغطي كل ما يحتاج مالكو المواقع السعودية تدقيقه وإصلاحه.",
+    },
+    content: {
+      en: `<h2 id="why-technical-seo">Why Technical SEO is Non-Negotiable</h2>
+<p>Technical SEO refers to the backend optimisations that determine whether Google can efficiently discover, crawl, understand, and index your website. It is the foundation that every other SEO investment — content, backlinks, GBP optimisation — is built on. A site with crawling errors, slow load times, or broken mobile rendering is effectively invisible to Google regardless of how strong its content is.</p>
+<p>For Saudi websites, technical SEO has some unique considerations: bilingual Arabic-English sites require careful hreflang implementation, RTL (right-to-left) CSS must not interfere with Googlebot's rendering, and the mobile-first nature of Saudi internet usage means mobile Core Web Vitals scores are especially critical. Our <a href="/en/services/seo-services">SEO team</a> runs full technical audits as the first step of every new engagement.</p>
+
+<h2 id="site-speed">Site Speed and Core Web Vitals</h2>
+<p>Core Web Vitals — Google's official page experience metrics — are a confirmed ranking factor. The three metrics are: Largest Contentful Paint (LCP, measures loading speed), Cumulative Layout Shift (CLS, measures visual stability), and Interaction to Next Paint (INP, measures interactivity). Google's thresholds: LCP should be under 2.5 seconds, CLS under 0.1, INP under 200ms. Failing these thresholds doesn't mean you're penalised — it means you're not receiving the ranking boost that passing sites receive, which in practice means you're at a competitive disadvantage.</p>
+<ul>
+<li><strong>Image compression:</strong> Convert all images to WebP, compress to under 200KB, and use responsive srcset attributes for different screen sizes</li>
+<li><strong>Server response time:</strong> Your Time to First Byte (TTFB) should be under 600ms. If your Saudi site is hosted on servers in Europe or the US, consider a CDN with Middle East PoPs (CloudFlare, AWS CloudFront) or a Saudi/UAE-based hosting provider</li>
+<li><strong>Render-blocking resources:</strong> Defer non-critical JavaScript and load CSS asynchronously wherever possible</li>
+<li><strong>Font loading:</strong> For Arabic sites using custom fonts (Almarai, Cairo, Noto Sans Arabic), preload critical font files and use <code>font-display: swap</code> to prevent invisible text during load</li>
+<li><strong>Caching:</strong> Implement browser caching for static assets — images, CSS, JS files that don't change frequently</li>
+</ul>
+
+<h2 id="mobile-first">Mobile-First Indexing for Saudi Sites</h2>
+<p>Google now uses the mobile version of your site as the primary version for indexing and ranking — this is called mobile-first indexing. Given that Saudi Arabia has one of the world's highest mobile internet usage rates (over 95% of internet sessions are from mobile devices), this alignment between Google's approach and Saudi user behaviour makes mobile performance the single highest-impact area of technical SEO for Saudi businesses.</p>
+<p>Key mobile checklist items: verify responsive design works correctly at 375px (iPhone SE), 390px (iPhone 14), and 412px (common Android) widths; ensure tap targets (buttons, links) are at least 48x48px; confirm there is no horizontal overflow; check that font sizes are legible at mobile scale (minimum 16px for body text); and test bilingual layout specifically — Arabic RTL layouts can break in unexpected ways on mobile that desktop testing doesn't catch.</p>
+
+<h2 id="crawlability">Crawlability and Indexation</h2>
+<p>Before Google can rank your pages, it needs to be able to find and read them. Common crawlability issues that affect Saudi sites:</p>
+<ul>
+<li><strong>Robots.txt blocking:</strong> Check your robots.txt file (yourdomain.com/robots.txt) for accidentally blocked directories. A common mistake is blocking /ar/ or /en/ subdirectories on bilingual sites</li>
+<li><strong>Noindex tags:</strong> Search Google for <code>site:yourdomain.com</code> and compare the count to your actual page count. Large discrepancies suggest pages are accidentally marked noindex</li>
+<li><strong>Duplicate content:</strong> Bilingual sites often create duplicate content issues when both language versions are accessible at the same URL or when pagination creates near-duplicate pages. Implement canonical tags correctly</li>
+<li><strong>Broken links (404s):</strong> Use Screaming Frog or Google Search Console to identify internal broken links — each 404 wastes crawl budget and creates a poor user experience</li>
+<li><strong>Redirect chains:</strong> Multiple redirects in sequence (301 → 301 → 200) bleed ranking authority. Redirect directly to the final destination URL</li>
+</ul>
+
+<h2 id="schema-markup">Schema Markup for Saudi Businesses</h2>
+<p>Schema markup is structured data code added to your pages that explicitly tells Google what type of content they contain. For Saudi businesses, the most valuable schema types are: <strong>LocalBusiness</strong> (name, address, phone, hours in both Arabic and English), <strong>Article</strong> (for blog posts — author, publish date, language), <strong>Product</strong> and <strong>Offer</strong> (for e-commerce on Salla or Zid), <strong>FAQPage</strong> (for FAQ sections — often triggers rich result expansion in SERPs), and <strong>BreadcrumbList</strong> (improves how your URL hierarchy appears in search results).</p>
+<p>For bilingual Saudi sites, implement separate schema for Arabic and English pages with the appropriate <code>inLanguage</code> property. Arabic LocalBusiness schema should include the Arabic business name and address — Google uses this for Arabic search result display. For a guide to implementing this alongside your content strategy, see our <a href="/en/blog/on-page-seo-complete-guide">on-page SEO guide</a>.</p>
+
+<h2 id="sitemap-robots">XML Sitemap and Robots.txt Configuration</h2>
+<p>An XML sitemap is a file that lists all the important pages on your site, helping Google discover and prioritise them for crawling. For Saudi bilingual sites, your sitemap must include both Arabic and English page URLs, with correct <code>hreflang</code> annotations pointing each page to its language equivalent. Submit your sitemap via Google Search Console — and resubmit whenever you make significant structural changes to your site.</p>
+<p>For robots.txt, the safest configuration for most Saudi sites is to allow all crawling by default and only restrict genuinely non-public areas (admin panels, staging environments, internal search result pages). Test any robots.txt changes with Google Search Console's robots.txt tester before deploying — a single accidental blocking rule can delist your entire site from Google within days. Combined with a strong <a href="/en/blog/what-is-seo-riyadh-businesses">SEO foundation</a>, these technical elements give your Saudi website the infrastructure to rank sustainably.</p>`,
+      ar: `<h2 id="why-technical-seo">ليش الـ Technical SEO ضروري</h2>
+<p>الـ technical SEO هو التحسينات الخلفية اللي تحدد ما إذا كان قوقل يقدر يكتشف موقعك ويزحف عليه ويفهمه ويفهرسه بكفاءة. هو الأساس اللي كل استثمار آخر في الـ SEO — محتوى، روابط، تحسين GBP — يبنى عليه. موقع عنده أخطاء زحف أو تحميل بطيء أو عرض جوال معطوب عملياً غير مرئي لقوقل بغض النظر عن جودة محتواه.</p>
+<p>للمواقع السعودية، الـ technical SEO عنده اعتبارات خاصة: المواقع ثنائية اللغة تحتاج تطبيق hreflang صحيح، وأكواد RTL ما يجب أن تتعارض مع قدرة Googlebot على العرض. <a href="/ar/services/seo-services">فريق الـ SEO</a> في LCS يجري تدقيقات تقنية كاملة كأول خطوة في كل مشروع جديد.</p>
+
+<h2 id="site-speed">سرعة الموقع وCore Web Vitals</h2>
+<p>Core Web Vitals — مقاييس تجربة الصفحة الرسمية من قوقل — عامل تصنيف مؤكد. المقاييس الثلاثة هي: LCP (قياس سرعة التحميل، يجب أن يكون تحت ٢.٥ ثانية)، CLS (قياس الاستقرار البصري، تحت ٠.١)، وINP (قياس التفاعلية، تحت ٢٠٠ مللي ثانية).</p>
+<ul>
+<li><strong>ضغط الصور:</strong> حوّل كل الصور إلى WebP واضغطها لتحت ٢٠٠ كيلوبايت</li>
+<li><strong>وقت استجابة السيرفر:</strong> TTFB يجب أن يكون تحت ٦٠٠ مللي ثانية. لو موقعك على سيرفرات في أوروبا، فكّر في CDN بنقاط تواجد في الشرق الأوسط</li>
+<li><strong>الموارد المعطّلة للعرض:</strong> أخّر JavaScript غير الضروري وحمّل CSS بشكل غير متزامن</li>
+<li><strong>تحميل الخطوط:</strong> للمواقع العربية التي تستخدم خطوط مخصصة (Almarai, Cairo)، استخدم <code>font-display: swap</code> لمنع نص غير مرئي أثناء التحميل</li>
+</ul>
+
+<h2 id="mobile-first">Mobile-First Indexing للمواقع السعودية</h2>
+<p>قوقل الآن يستخدم النسخة الجوالة من موقعك كنسخة أساسية للفهرسة والترتيب. نظراً لأن السعودية من أعلى دول العالم في استخدام الإنترنت عبر الجوال (أكثر من ٩٥٪ من جلسات الإنترنت)، هذا يجعل أداء الجوال أعلى تأثير في الـ technical SEO للأعمال السعودية.</p>
+<p>بنود قائمة الجوال: تحقق أن التصميم المتجاوب يعمل صح على أبعاد مختلفة؛ تأكد أن أهداف اللمس (أزرار، روابط) لا تقل عن ٤٨×٤٨ بكسل؛ واختبر التخطيطات ثنائية اللغة تحديداً — تخطيطات RTL العربية قد تنكسر بطرق غير متوقعة على الجوال لا تظهر في اختبار سطح المكتب.</p>
+
+<h2 id="crawlability">الزحف والفهرسة</h2>
+<p>قبل أن يقدر قوقل يصنّف صفحاتك، يحتاج يجدها ويقرأها. مشاكل الزحف الشائعة في المواقع السعودية:</p>
+<ul>
+<li><strong>حظر robots.txt:</strong> تحقق من ملف robots.txt بحثاً عن دلائل محجوبة بالخطأ. خطأ شائع هو حجب /ar/ أو /en/ في المواقع ثنائية اللغة</li>
+<li><strong>وسوم noindex:</strong> ابحث في قوقل عن <code>site:yourdomain.com</code> وقارن العدد بعدد صفحاتك الفعلي</li>
+<li><strong>المحتوى المكرر:</strong> المواقع ثنائية اللغة تخلق أحياناً مشاكل محتوى مكرر. طبّق وسوم canonical بشكل صحيح</li>
+<li><strong>الروابط المكسورة:</strong> كل 404 يهدر ميزانية الزحف ويخلق تجربة مستخدم سيئة</li>
+</ul>
+
+<h2 id="schema-markup">Schema Markup للأعمال السعودية</h2>
+<p>الـ schema markup هو كود بيانات منظمة يُضاف لصفحاتك يخبر قوقل بشكل صريح عن نوع محتواها. لأكثر فائدة للأعمال السعودية: <strong>LocalBusiness</strong> (الاسم والعنوان والهاتف وأوقات العمل بالعربي والإنجليزي)، <strong>Article</strong> (لمقالات المدونة)، <strong>FAQPage</strong> (لأقسام الأسئلة الشائعة — تولّد توسيعات نتائج ثرية)، و<strong>BreadcrumbList</strong>.</p>
+<p>للمواقع السعودية ثنائية اللغة، طبّق schema منفصل للصفحات العربية والإنجليزية مع خاصية <code>inLanguage</code> المناسبة. لدليل حول دمج هذا مع استراتيجية المحتوى، راجع <a href="/ar/blog/on-page-seo-complete-guide">دليل الـ on-page SEO</a>.</p>
+
+<h2 id="sitemap-robots">XML Sitemap وإعداد Robots.txt</h2>
+<p>خريطة XML هي ملف يسرد كل الصفحات المهمة في موقعك، ويساعد قوقل على اكتشافها وترتيب أولوية زحفه. للمواقع السعودية ثنائية اللغة، يجب أن تشمل خريطتك روابط الصفحات العربية والإنجليزية مع hreflang annotations. أرسل الخريطة عبر Google Search Console وأعد إرسالها عند أي تغييرات هيكلية كبيرة.</p>
+<p>لأكواد robots.txt، الإعداد الأأمن هو السماح بكل الزحف افتراضياً وتقييد المناطق غير العامة فقط. اختبر أي تغييرات على robots.txt في Google Search Console قبل النشر — قاعدة حظر خاطئة واحدة قد تحذف موقعك كاملاً من قوقل خلال أيام. مجتمعاً مع <a href="/ar/blog/what-is-seo-riyadh-businesses">أساس الـ SEO</a> القوي، هذه العناصر التقنية تمنح موقعك البنية التحتية للترتيب بشكل مستدام.</p>`,
+    },
+    toc: [
+      { id: "why-technical-seo", text: { en: "Why Technical SEO Matters", ar: "ليش الـ Technical SEO ضروري" }, level: 2 },
+      { id: "site-speed", text: { en: "Site Speed & Core Web Vitals", ar: "السرعة وCore Web Vitals" }, level: 2 },
+      { id: "mobile-first", text: { en: "Mobile-First Indexing", ar: "Mobile-First للمواقع السعودية" }, level: 2 },
+      { id: "crawlability", text: { en: "Crawlability & Indexation", ar: "الزحف والفهرسة" }, level: 2 },
+      { id: "schema-markup", text: { en: "Schema Markup for Saudi Sites", ar: "Schema Markup للأعمال السعودية" }, level: 2 },
+      { id: "sitemap-robots", text: { en: "Sitemap & Robots.txt", ar: "الخريطة وRobots.txt" }, level: 2 },
+    ],
+    category: "seo",
+    categoryLabel: { en: "SEO", ar: "تحسين محركات البحث" },
+    tags: ["Technical SEO", "Core Web Vitals", "Mobile SEO", "Schema Markup", "Site Speed", "Crawlability", "Saudi Arabia"],
+    author: "Muhammad Farhan",
+    publishDate: "2025-03-05",
+    updatedDate: "2025-03-05",
+    featuredImage: "/images/blog/technical-seo-audit-checklist-featured.webp",
+    readingTime: 10,
+    relatedServices: ["seo-services", "web-design", "keyword-research"],
+    relatedDistricts: ["kafd", "olaya", "hittin"],
+    relatedPosts: ["on-page-seo-complete-guide", "what-is-seo-riyadh-businesses", "off-page-seo-strategies-saudi"],
+  },
 ];
 
 export const CATEGORIES = [
