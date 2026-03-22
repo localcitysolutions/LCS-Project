@@ -365,7 +365,7 @@ export default async function HomePage({ params }: PageProps) {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {industries.map((ind, i) => (
-              <Link key={ind.slug} href={`${p}/industries`} className={`reveal delay-${(i % 4) + 1} group flex flex-row md:flex-col items-center gap-3 p-4 md:p-7 rounded-xl bg-[#0E1A2E] border border-white/[0.06] hover:border-[#F5C518]/30 hover:-translate-y-1 transition-all duration-300`}>
+              <Link key={ind.slug} href={`${p}/industries/${ind.slug}`} className={`reveal delay-${(i % 4) + 1} group flex flex-row md:flex-col items-center gap-3 p-4 md:p-7 rounded-xl bg-[#0E1A2E] border border-white/[0.06] hover:border-[#F5C518]/30 hover:-translate-y-1 transition-all duration-300`}>
                 <span className="text-2xl md:text-4xl leading-none transition-transform duration-300 group-hover:scale-110 shrink-0 block">{ind.icon}</span>
                 <span className="text-white/65 font-medium text-xs md:text-sm group-hover:text-white transition-colors">{ind.name}</span>
               </Link>
