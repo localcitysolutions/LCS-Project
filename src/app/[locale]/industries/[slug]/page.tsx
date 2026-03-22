@@ -9,6 +9,7 @@ interface PageProps { params: Promise<{ locale: Locale; slug: string }> }
 interface IndustryContent {
   metaTitle: string;
   metaDesc: string;
+  heroTitle?: string;
   tagline: string;
   heroDesc: string;
   features: { icon: string; title: string; desc: string }[];
@@ -27,9 +28,13 @@ interface Industry {
   slug: string;
   icon: string;
   name: string;
+  nameAr?: string;
   en: IndustryContent;
+  ar?: IndustryContent;
   relatedServices: RelatedLink[];
   relatedDistrict: RelatedLink;
+  relatedServicesAr?: RelatedLink[];
+  relatedDistrictAr?: RelatedLink;
 }
 
 const INDUSTRIES: Industry[] = [
@@ -37,6 +42,7 @@ const INDUSTRIES: Industry[] = [
     slug: "restaurants",
     icon: "🍽️",
     name: "Restaurants & Cafes",
+    nameAr: "المطاعم والكافيهات",
     en: {
       metaTitle: "Digital Marketing for Restaurants in Riyadh | Local City Solutions",
       metaDesc: "Specialized digital marketing for restaurants and cafes in Riyadh. Google Maps ranking, Instagram growth, delivery app integration, menu SEO, and Ramadan campaigns. Get found and get busy.",
@@ -70,11 +76,46 @@ const INDUSTRIES: Industry[] = [
       { label: "Meta Ads", href: "/en/services/meta-ads" },
     ],
     relatedDistrict: { label: "Al Olaya District", href: "/en/riyadh/al-olaya" },
+    relatedServicesAr: [
+      { label: "خدمات SEO", href: "/ar/services/seo" },
+      { label: "ملف النشاط التجاري", href: "/ar/services/google-business-profile" },
+      { label: "إعلانات ميتا", href: "/ar/services/meta-ads" },
+    ],
+    relatedDistrictAr: { label: "حي العليا", href: "/ar/riyadh/al-olaya" },
+    ar: {
+      heroTitle: "تسويق رقمي للمطاعم والكافيهات في الرياض",
+      metaTitle: "تسويق رقمي للمطاعم والكافيهات في الرياض | لوكال سيتي سولوشنز",
+      metaDesc: "نساعد المطاعم والكافيهات في الرياض يجيبون عملاء أكثر من قوقل ماب وسوشل ميديا.",
+      tagline: "تصدّر قوقل ماب. امتلأت طاولاتك. زادت طلبات التوصيل.",
+      heroDesc: "قوقل ماب هو المكان اللي يدور فيه أهل الرياض على المطاعم والكافيهات — ٧٠٪ يبحثون قبل ما يقرروا وين يأكلون. نساعدك تتصدر نتائج البحث المحلي، تبني متابعين على السوشل ميديا، وتزيد طلبات التوصيل على هنقرستيشن وجاهز.",
+      features: [
+        { icon: "📍", title: "تحسين ملف النشاط التجاري", desc: "تتصدر الثلاثة الأوائل في قوقل ماب لكل بحث عن مطعم قريب منك أو أفضل كافيه في العليا وكل البحثات ذات النية العالية في منطقتك." },
+        { icon: "📸", title: "إنستقرام والتسويق البصري", desc: "تصوير أكل احترافي، استراتيجية ريلز، ومحتوى يخلي الناس تشتهي أكلك قبل ما يدخلون الباب." },
+        { icon: "🛵", title: "تطبيقات التوصيل", desc: "نحسّن قوائمك على هنقرستيشن وجاهز — تصوير المنيو، وصف بكلمات صح، وإدارة التقييمات على المنصتين." },
+        { icon: "🔍", title: "SEO المنيو وتحسين الموقع", desc: "صفحات منيو منظمة وكود schema وكلمات مفتاحية تخلي مطعمك يطلع لما حد يبحث عن طبق معين زي 'واغيو برغر الرياض'." },
+        { icon: "⭐", title: "إدارة التقييمات", desc: "خطط منهجية تجيب تقييمات ٥ نجوم على قوقل وزوماتو باستمرار — مع ردود احترافية على كل تقييم إيجابي أو سلبي." },
+        { icon: "🌙", title: "حملات المواسم", desc: "عروض إفطار رمضان، عروض العيد، اليوم الوطني — حملات مدروسة بالتوقيت الصح تملأ مطعمك في كل موسم." },
+      ],
+      process: [
+        { num: "٠١", title: "تحليل وضعك الحالي", desc: "نراجع ترتيبك في قوقل ماب، ظهورك على تطبيقات التوصيل، أداء السوشل ميديا، وموقعك مقارنة بالمنافسين." },
+        { num: "٠٢", title: "نبني استراتيجيتك", desc: "خطة مخصصة تعالج أكبر ثغراتك — سواء في ترتيب الخريطة أو نمو السوشل أو طلبات التوصيل أو الثلاثة مع بعض." },
+        { num: "٠٣", title: "ننفذ ونطلق", desc: "تحسين ملف النشاط، إنتاج محتوى، تطوير قوائم التوصيل، وإطلاق الحملات — كل شيء يتنفذ بشكل منتظم." },
+        { num: "٠٤", title: "نتابع ونحسّن", desc: "تقارير شهرية عن الزيارات، تغيرات الترتيب في الخريطة، نمو طلبات التوصيل، والوصول على السوشل." },
+      ],
+      faq: [
+        { q: "قد إيش قوقل ماب مهم للمطاعم في الرياض؟", a: "بشكل جوهري. قوقل ماب هو القناة الأولى للاكتشاف للمطاعم — أكثر من إنستقرام أو التوصيات الشخصية للعملاء الجدد. لما حد يبحث عن 'مطعم قريب مني' أو 'أحسن شاورما في الملقا'، قوقل يعرض ثلاثة نتائج في الخريطة فوق كل شيء. ما تكون فيها يعني ما تنشاف لعملاء كثيرين جاهزين للصرف." },
+        { q: "أركز على قوقل ولا إنستقرام لمطعمي؟", a: "الاثنين، لكن لكل واحد دوره. قوقل ماب يجيب عملاء يدورون على مكان ياكلون فيه الحين — نية شراء عالية. إنستقرام يبني الوعي بالعلامة، يعرض أكلك بصرياً، ويبني مجتمع متكرر. أنجح المطاعم في الرياض تستثمر في الاثنين — قوقل للاكتشاف، إنستقرام للولاء." },
+        { q: "كيف أزيد طلباتي على هنقرستيشن وجاهز؟", a: "خوارزميات التوصيل تفضل القوائم اللي عندها تقييمات عالية وصور جودة وأوصاف منيو بكلمات صح ونسبة اكتمال طلبات ممتازة. نحسّن محتوى قائمتك، ندير ملف التقييمات على المنصتين، ونشغّل حملات توصيل مستهدفة تزيد ظهورك لمستخدمي التطبيق في منطقة توصيلك." },
+      ],
+      ctaHeading: "امتلأت طاولاتك وزادت طلبات التوصيل",
+      ctaSubtitle: "احصل على تدقيق تسويقي مجاني لمطعمك وشوف كيف تتفوق على منافسيك في الرياض.",
+    },
   },
   {
     slug: "clinics",
     icon: "🏥",
     name: "Clinics & Healthcare",
+    nameAr: "العيادات والرعاية الصحية",
     en: {
       metaTitle: "Digital Marketing for Clinics & Healthcare in Riyadh | Local City Solutions",
       metaDesc: "Specialized digital marketing for clinics and healthcare providers in Riyadh. Medical SEO, doctor profiles, patient reviews, Google Ads for healthcare, and CBAHI-compliant content.",
@@ -108,11 +149,46 @@ const INDUSTRIES: Industry[] = [
       { label: "Google Business Profile", href: "/en/services/google-business-profile" },
     ],
     relatedDistrict: { label: "Al Malqa District", href: "/en/riyadh/al-malqa" },
+    relatedServicesAr: [
+      { label: "خدمات SEO", href: "/ar/services/seo" },
+      { label: "إعلانات قوقل", href: "/ar/services/google-ads" },
+      { label: "ملف النشاط التجاري", href: "/ar/services/google-business-profile" },
+    ],
+    relatedDistrictAr: { label: "حي الملقا", href: "/ar/riyadh/al-malqa" },
+    ar: {
+      heroTitle: "تسويق رقمي للعيادات والرعاية الصحية في الرياض",
+      metaTitle: "تسويق رقمي للعيادات والرعاية الصحية في الرياض | لوكال سيتي سولوشنز",
+      metaDesc: "نساعد العيادات والمراكز الصحية في الرياض توصل للمرضى عبر قوقل والسوشل ميديا.",
+      tagline: "مرضى أكثر. سمعة أقوى. مواعيد محجوزة على طول.",
+      heroDesc: "المرضى في الرياض يبحثون في قوقل قبل ما يحجزون أي موعد. سواء كانوا يدورون على طبيب أسنان في الملقا أو طبيب جلدية في العليا، التواجد الرقمي هو اللي يحدد من يأخذ المكالمة. نساعد العيادات ومقدمي الرعاية الصحية يجذبون المرضى المناسبين ويبنون سمعة إلكترونية قوية.",
+      features: [
+        { icon: "🔍", title: "SEO طبي متخصص", desc: "تتصدر الصفحة الأولى لبحثات عالية القيمة زي 'طبيب أسنان الملقا' و'جلدية الرياض' وكل بحث خاص بإجراء يجيب مريض مستعد للحجز." },
+        { icon: "👨‍⚕️", title: "ملفات الأطباء والمتخصصين", desc: "ملفات محسّنة للأطباء تبني الثقة وتعرض المؤهلات وتسهل على المريض اختيار عيادتك على المنافس." },
+        { icon: "⭐", title: "إدارة تقييمات المرضى", desc: "ابنِ حضور ٥ نجوم ثابت على قوقل ودكتورنا. التقييمات هي العامل الأول اللي يختار على أساسه المريض عيادته." },
+        { icon: "📅", title: "نظام حجز المواعيد", desc: "حجز إلكتروني سلس عبر موقعك وواتساب بيزنس وخاصية 'احجز مباشرة' في قوقل — تقلل عدم الحضور وكثرة المكالمات." },
+        { icon: "📢", title: "إعلانات قوقل للرعاية الصحية", desc: "حملات مستهدفة بدقة لإجراءات وتخصصات محددة، تظهر في أعلى النتائج لما المريض يبحث نشيطاً عن رعاية." },
+        { icon: "📍", title: "ملف النشاط التجاري للعيادات", desc: "ملف قوقل محسّن بالكامل يعرض تخصصاتك وأطباءك وأوقات العمل والتأمين المقبول وتدفق مستمر من تقييمات المرضى." },
+      ],
+      process: [
+        { num: "٠١", title: "تدقيق العيادة", desc: "مراجعة شاملة لترتيبك في البحث، جودة ملف النشاط، ملف التقييمات، سرعة الموقع، وموقعك بين المنافسين في تخصصك." },
+        { num: "٠٢", title: "رسم رحلة المريض", desc: "نحدد كيف يبحث المرضى في منطقتك عن تخصصك وأين يقررون الحجز — ثم نحسّن كل نقطة تماس." },
+        { num: "٠٣", title: "إطلاق الحملات", desc: "تحسين SEO، إطلاق إعلانات قوقل، تطوير ملف النشاط، واستراتيجية توليد التقييمات — كل شيء ينفذ خلال أول ٣٠ يوم." },
+        { num: "٠٤", title: "تقارير شهرية", desc: "تقارير واضحة عن استفسارات المرضى الجدد، ترتيب الكلمات المفتاحية، نمو التقييمات، وأداء الإعلانات." },
+      ],
+      faq: [
+        { q: "هل الإعلانات الطبية منظمة في السعودية؟", a: "نعم. الإعلانات الصحية في السعودية لازم تلتزم بلوائح وزارة الصحة وإرشادات سباهي — وتشمل قيوداً على صور قبل وبعد وضمانات النتائج وادعاءات العلاجات. كل محتوانا الصحي يُكتب بوعي تام بمتطلبات الامتثال. ما نشغّل أي حملة تعرّض اعتماد سباهي أو وقوفك مع وزارة الصحة للخطر." },
+        { q: "أي التخصصات تستفيد أكثر من التسويق الرقمي في الرياض؟", a: "طب الأسنان والجلدية وطب العيون والطب العام يشهدون أقوى عائد من التسويق الرقمي. الإجراءات التجميلية والعلاج الطبيعي وطب الأطفال تؤدي كمان أداءً ممتازاً. التخصصات الدقيقة تعتمد أكثر على إحالات الطبيب العام، لكن تستفيد دايماً من ملف نشاط قوي وملفات أطباء محسّنة." },
+        { q: "كيف أشجع المرضى يكتبون تقييمات على قوقل؟", a: "الأسلوب الأفضل رسالة واتساب بسيطة وتلقائية بعد الزيارة مع رابط مباشر لتقييم قوقل — تُرسل خلال ساعتين من الموعد والتجربة لا تزال طازجة. نعدّ هذا النظام لكل عيادة نشتغل معها. العيادات اللي تطبقه تشهد عادةً من ٣ إلى ٥ أضعاف تقييمات شهرية خلال أول ٦٠ يوم." },
+      ],
+      ctaHeading: "زِد قاعدة مرضاك في الرياض",
+      ctaSubtitle: "احصل على تدقيق تسويقي مجاني لعيادتك واكتشف بالضبط كيف تجذب مرضى أكثر في تخصصك ومنطقتك.",
+    },
   },
   {
     slug: "salons",
     icon: "💇",
     name: "Salons & Beauty",
+    nameAr: "الصالونات ومراكز التجميل",
     en: {
       metaTitle: "Digital Marketing for Salons & Beauty in Riyadh | Local City Solutions",
       metaDesc: "Digital marketing for salons and beauty centers in Riyadh. Instagram visual marketing, Maps ranking, booking integration, Eid and wedding campaigns — built for Saudi beauty businesses.",
@@ -146,11 +222,46 @@ const INDUSTRIES: Industry[] = [
       { label: "Social Media Marketing", href: "/en/services/social-media" },
     ],
     relatedDistrict: { label: "Hittin District", href: "/en/riyadh/hittin" },
+    relatedServicesAr: [
+      { label: "إعلانات ميتا", href: "/ar/services/meta-ads" },
+      { label: "ملف النشاط التجاري", href: "/ar/services/google-business-profile" },
+      { label: "تسويق السوشل ميديا", href: "/ar/services/social-media" },
+    ],
+    relatedDistrictAr: { label: "حي حطين", href: "/ar/riyadh/hittin" },
+    ar: {
+      heroTitle: "تسويق رقمي للصالونات ومراكز التجميل في الرياض",
+      metaTitle: "تسويق رقمي للصالونات ومراكز التجميل في الرياض | لوكال سيتي سولوشنز",
+      metaDesc: "نساعد الصالونات ومراكز التجميل في الرياض تجيب حجوزات أكثر من قوقل وإنستقرام.",
+      tagline: "حجوزات أكثر. متابعين أكثر على إنستقرام. تقويم ممتلئ.",
+      heroDesc: "سوق التجميل في السعودية في نمو مستمر — والمنافسة على قوقل ماب وإنستقرام ما كانت يوم أشد من الحين. الصالونات اللي تكسب تجمع بين ظهور قوي في الخريطة وحضور بصري مميز على السوشل وحجز مواعيد سلس. هذا بالضبط اللي نبنيه للصالونات ومراكز التجميل في الرياض.",
+      features: [
+        { icon: "📸", title: "إنستقرام والتسويق البصري", desc: "معارض قبل وبعد، تحولات ريلز، ومحتوى يوقف التمرير ويحوّل المتابعين لحجوزات." },
+        { icon: "📍", title: "الترتيب في قوقل ماب", desc: "تسيطر على البحثات المحلية زي 'صالون قريب مني' و'صالون نساء في حطين' و'أفضل صالون في الرياض' — حيث تأتي غالبية الحجوزات الجديدة." },
+        { icon: "📅", title: "نظام الحجز الإلكتروني", desc: "حجز مواعيد سلس عبر فريشا أو بوكسي أو واتساب بيزنس — مباشرة من ملفك على إنستقرام وقوقل وموقعك." },
+        { icon: "⭐", title: "توليد التقييمات", desc: "تقييمات ٥ نجوم ثابتة على قوقل وتريتويل، مع ردود احترافية تُظهر لعملاء جدد مدى اهتمامك بكل تجربة." },
+        { icon: "🌙", title: "حملات المواسم", desc: "باقات تجميل للعيد، حملات موسم الأعراس، عروض رمضان، وإطلالات اليوم الوطني — مصممة ومنفذة في التوقيت المثالي." },
+        { icon: "🤳", title: "التسويق عبر المؤثرين", desc: "تعاون مع مؤثرين تجميل في الرياض لمحتوى قبل وبعد أصيل يصل لعشرات الآلاف من عملاءك المثاليين." },
+      ],
+      process: [
+        { num: "٠١", title: "تدقيق الصالون", desc: "نقيّم ترتيبك في الخريطة، أداء إنستقرام، نظام الحجز، ملف التقييمات، وموقعك بين المنافسين في حيّك." },
+        { num: "٠٢", title: "استراتيجية الهوية البصرية", desc: "نحدد جماليّات المحتوى ومحاور النشر وصوت العلامة — الأساس اللي يخلي صالونك يُعرف فوراً على السوشل." },
+        { num: "٠٣", title: "ننفذ ونكبر", desc: "إنتاج محتوى، جدول نشر، تحسين ملف النشاط، إعداد الحجز، وحملات تقييمات — كل شيء يتكفل به فريقنا." },
+        { num: "٠٤", title: "نوسّع ونراجع", desc: "تقارير شهرية عن الحجوزات الجديدة القادمة من الرقمي، نمو المتابعين، تحرك ترتيب الخريطة، وأداء الحملات." },
+      ],
+      faq: [
+        { q: "الأهم للصالونات في الرياض: إنستقرام ولا قوقل ماب؟", a: "الاثنين ضروريين ولكل واحد دوره. قوقل ماب يجيب بحثات عالية النية — حد يدور على صالون قريبه الحين. إنستقرام يبني رغبة العلامة والمجتمع — حد يتابعك، يشوف تحولات حلوة مرات، ويحجز لما يكون مستعد. الصالونات اللي تقويمها ممتلئ باستمرار في الرياض تستثمر جدياً في القناتين مع بعض." },
+        { q: "كيف أجيب تقييمات ٥ نجوم أكثر على قوقل لصالوني؟", a: "السر في التوقيت. أرسل رسالة واتساب مع رابط تقييمك على قوقل خلال ١ إلى ٢ ساعة بعد موعد العميل — وهو لا يزال متحمساً. اذكر اسمه وأرفق صورة إطلالته النهائية إن أمكن. الصالونات اللي تطبق هذا النهج تشهد زيادة في التقييمات من ٤ إلى ٦ أضعاف خلال ٩٠ يوماً." },
+        { q: "أي منصات الحجز الأنسب للصالونات في الرياض؟", a: "فريشا هو الأشهر عالمياً ويشتغل زين للصالونات اللي تخدم عملاء دوليين. بالنسبة للعملاء السعوديين بشكل رئيسي، واتساب بيزنس مع رسالة حجز واضحة غالباً يحوّل أفضل لأنه القناة اللي هم أكثر ارتياحاً معها. نعدّ ونحسّن أي نظام يناسب شريحة عملاءك." },
+      ],
+      ctaHeading: "امتلأ تقويمك في الرياض",
+      ctaSubtitle: "احصل على تدقيق تسويقي مجاني لصالونك واكتشف بالضبط كيف تنمّي حجوزاتك ومتابعيك في منطقتك.",
+    },
   },
   {
     slug: "real-estate",
     icon: "🏠",
     name: "Real Estate",
+    nameAr: "شركات العقارات",
     en: {
       metaTitle: "Digital Marketing for Real Estate in Riyadh | Local City Solutions",
       metaDesc: "Digital marketing for real estate companies in Riyadh. Property listing SEO, Google Ads for developers, virtual tours, Aqar.fm optimization, and lead generation under Vision 2030.",
@@ -184,6 +295,40 @@ const INDUSTRIES: Industry[] = [
       { label: "Web Design", href: "/en/services/web-design" },
     ],
     relatedDistrict: { label: "KAFD District", href: "/en/riyadh/kafd" },
+    relatedServicesAr: [
+      { label: "إعلانات قوقل", href: "/ar/services/google-ads" },
+      { label: "خدمات SEO", href: "/ar/services/seo" },
+      { label: "تصميم مواقع", href: "/ar/services/web-design" },
+    ],
+    relatedDistrictAr: { label: "حي كافد", href: "/ar/riyadh/kafd" },
+    ar: {
+      heroTitle: "تسويق رقمي لشركات العقارات في الرياض",
+      metaTitle: "تسويق رقمي للعقارات في الرياض | لوكال سيتي سولوشنز",
+      metaDesc: "نساعد شركات العقارات والمطورين في الرياض يجيبون عملاء من قوقل وإعلانات رقمية.",
+      tagline: "عملاء أكثر. قوائم أكثر. صفقات أكثر في سوق الرياض المتنامي.",
+      heroDesc: "سوق العقارات في الرياض ينمو بمعدلات تاريخية في ظل رؤية ٢٠٣٠ — مشاريع جديدة، طلب متصاعد، ومشترٍ أكثر وعياً من أي وقت مضى. نساعد شركات العقارات والمطورين والوسطاء يلتقطون المشترين والمستثمرين في كل مرحلة من رحلة البحث، من أول بحث على قوقل وحتى توقيع العقد.",
+      features: [
+        { icon: "🔍", title: "SEO قوائم العقارات", desc: "نحسّن صفحات المشاريع والقوائم العقارية لتتصدر بحثات عالية النية زي 'شقق للبيع في كافد' و'فلل في النرجس' و'مشاريع على الخارطة الرياض'." },
+        { icon: "📢", title: "إعلانات قوقل للعقارات", desc: "حملات توليد عملاء دقيقة تستهدف مشترين ومستثمرين جادين يبحثون عن عقارات في أحياء الرياض وشرائح الأسعار المحددة." },
+        { icon: "🎬", title: "جولات افتراضية وتسويق فيديو", desc: "جولات ٣٦٠°، لقطات درون، وفيديوهات عرض مشاريع تبيع أسلوب الحياة قبل أن يزور المشتري بنفسه." },
+        { icon: "🏢", title: "إطلاق مشاريع المطورين", desc: "حملات رقمية كاملة لإطلاق مشاريع جديدة — من بناء الوعي وتوليد الاهتمام وحتى التقاط العملاء المؤهلين وتسليمهم لفريق المبيعات." },
+        { icon: "🔑", title: "تحسين عقار.fm والمنصات العقارية", desc: "قوائم محسّنة على عقار.fm وبيوت وغيرها من المنصات السعودية لتعظيم الظهور وحجم العملاء من زيارات المنصات." },
+        { icon: "📍", title: "ملف النشاط لمكاتب العقارات", desc: "تحسين ملف قوقل للنشاط التجاري لكل مكتب ومعرض لالتقاط المكالمات والزيارات من البحثات المحلية." },
+      ],
+      process: [
+        { num: "٠١", title: "تحليل السوق", desc: "نقيّم المشهد التنافسي لأنواع عقاراتك وأحياءها وشرائح أسعارها — ونحدد القنوات الرقمية الأعلى عائداً لمخزونك." },
+        { num: "٠٢", title: "إعداد منظومة العملاء", desc: "نبني صفحات هبوط، نجهّز حملات إعلانات قوقل، وننشئ مسارات التقاط عملاء مصممة خصيصاً لمشتري العقارات." },
+        { num: "٠٣", title: "نطلق ونؤهّل", desc: "نطلق على كل القنوات مع معايير تأهيل العملاء مبنية بداخلها — حتى يتحدث فريق مبيعاتك مع مشترين ومستثمرين جادين فقط." },
+        { num: "٠٤", title: "نحسّن تكلفة العميل", desc: "تحسين مستمر للحملات لخفض تكلفة العميل المؤهل وزيادة حجم العملاء الجاهزين للبيع." },
+      ],
+      faq: [
+        { q: "أي القنوات الرقمية الأفضل لتوليد عملاء العقارات في الرياض؟", a: "إعلانات قوقل هي القناة الأعلى نية — مشترون يبحثون نشيطاً عن عقار الآن. إعلانات ميتا تشتغل ممتاز لمشاريع على الخارطة والفاخرة حيث تبيع أسلوب حياة وطموح. للإسكان التجاري، قوائم عقار.fm القوية مع ملف النشاط لمكتبك تجلب باستمرار عملاء محليين عالي الجودة. أفضل النتائج تأتي من تشغيل الثلاثة في آن واحد." },
+        { q: "كيف أسوّق مشروعاً عقارياً جديداً في الرياض؟", a: "إطلاق ناجح يحتاج نهجاً متدرجاً: ٦ إلى ٨ أسابيع قبل الإطلاق لبناء الوعي والاهتمام (محتوى إنستقرام، إعلانات تشويقية، صفحة هبوط)، ثم دفعة أسبوع الإطلاق (إعلانات قوقل وميتا، إيميل وواتساب للعملاء الملتقطين)، ثم حملات مستدامة بعد الإطلاق لإبقاء خط الأنابيب ممتلئاً. ندير هذه الدورة كاملة لعملاء المطورين." },
+        { q: "عقار.fm أفضل ولا إعلانات قوقل لعملاء العقارات في السعودية؟", a: "كل واحد يخدم مستوى نية مختلفاً. عقار.fm يجذب مشترين في عمق رحلة البحث العقاري — نية عالية وقرب من القرار. إعلانات قوقل تلتقط مشترين في مرحلة أبكر وتتيح استهدافاً أدق جداً بالحي ونوع العقار وشريحة الميزانية. إعلانات ميتا تشتغل أفضل لبناء الوعي والتقاط الاهتمام المبكر. للحصول على أقصى حجم عملاء، استخدم الثلاثة ودع البيانات تخبرك أي قناة تعطيك أفضل تكلفة عميل مؤهل لنوع عقارك." },
+      ],
+      ctaHeading: "التقط عملاء عقارات أكثر في الرياض",
+      ctaSubtitle: "احصل على تدقيق تسويقي مجاني واكتشف أسرع طريق لمشترين أكثر لعقاراتك في الرياض.",
+    },
   },
   {
     slug: "retail",
@@ -349,15 +494,18 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const industry = INDUSTRIES.find((ind) => ind.slug === slug);
   if (!industry) return {};
+  const isAr = locale === "ar";
+  const content = isAr && industry.ar ? industry.ar : industry.en;
   return {
-    title: industry.en.metaTitle,
-    description: industry.en.metaDesc,
+    title: content.metaTitle,
+    description: content.metaDesc,
     alternates: {
       languages: {
         en: `https://localcitysolutions.com/en/industries/${slug}`,
+        ar: `https://localcitysolutions.com/ar/industries/${slug}`,
       },
     },
   };
@@ -367,31 +515,67 @@ export default async function IndustryPage({ params }: PageProps) {
   const { locale, slug } = await params;
   const industry = INDUSTRIES.find((ind) => ind.slug === slug);
   if (!industry) notFound();
-  const c = industry.en;
+  const isAr = locale === "ar";
+  const c = isAr && industry.ar ? industry.ar : industry.en;
   const p = `/${locale}`;
 
+  const services = isAr && industry.relatedServicesAr ? industry.relatedServicesAr : industry.relatedServices;
+  const district = isAr && industry.relatedDistrictAr ? industry.relatedDistrictAr : industry.relatedDistrict;
+
+  const ui = isAr ? {
+    badge: "خبرة قطاعية",
+    h1: c.heroTitle ?? `تسويق رقمي للـ${industry.nameAr ?? industry.name} في الرياض`,
+    ctaBtn: "احصل على تدقيق مجاني",
+    talkBtn: "تكلم مع فريقنا",
+    whatWeOffer: "خدماتنا",
+    servicesH2: `خدماتنا التسويقية لـ${industry.nameAr ?? industry.name}`,
+    processLabel: "طريقة الشغل",
+    processH2: "كيف نشتغل معك",
+    faqLabel: "أسئلة شائعة",
+    faqH2: "أسئلة تهمك",
+    relatedServicesLabel: "خدمات ذات صلة",
+    districtLabel: "الحي الرئيسي",
+    allIndustriesLabel: "جميع القطاعات",
+    allIndustriesLink: "شوف كل القطاعات ←",
+  } : {
+    badge: "Industry Expertise",
+    h1: c.heroTitle ?? `Digital Marketing for ${industry.name} in Riyadh`,
+    ctaBtn: "Get Free Audit →",
+    talkBtn: "Talk to Our Team →",
+    whatWeOffer: "What We Offer",
+    servicesH2: `Our ${industry.name} Marketing Services`,
+    processLabel: "Our Process",
+    processH2: "How We Work",
+    faqLabel: "FAQ",
+    faqH2: "Common Questions",
+    relatedServicesLabel: "Related Services",
+    districtLabel: "Key District",
+    allIndustriesLabel: "All Industries",
+    allIndustriesLink: "View All Industries →",
+  };
+
   return (
-    <>
+    <div dir={isAr ? "rtl" : "ltr"}>
       {/* Hero */}
       <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.08) 0%, transparent 70%)" }} />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <div className="inline-flex items-center gap-2 bg-[#F5C518]/10 border border-[#F5C518]/20 rounded-full px-4 py-1.5 mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[#F5C518] animate-pulse" />
-            <span className="text-[#F5C518] text-xs font-semibold uppercase tracking-widest">Industry Expertise</span>
+            <span className="text-[#F5C518] text-xs font-semibold uppercase tracking-widest">{ui.badge}</span>
           </div>
           <div className="text-5xl mb-4">{industry.icon}</div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
-            Digital Marketing for {industry.name} in Riyadh
+            {ui.h1}
           </h1>
           <p className="text-[#F5C518] font-semibold text-base md:text-lg mb-4">{c.tagline}</p>
           <p className="text-white/60 text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed">{c.heroDesc}</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a href="https://wa.me/966564229190" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#e6b800] transition-all shadow-xl shadow-[#F5C518]/20">
-              Get Free Audit →
+              {ui.ctaBtn}
             </a>
             <Link href={`${p}/contact`} className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-white/20 text-white text-sm font-medium hover:border-white/40 transition-all">
-              Talk to Our Team →
+              {ui.talkBtn}
             </Link>
           </div>
         </div>
@@ -401,8 +585,8 @@ export default async function IndustryPage({ params }: PageProps) {
       <section className="bg-[#0C1424] py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 reveal">
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">What We Offer</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Our {industry.name} Marketing Services</h2>
+            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.whatWeOffer}</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">{ui.servicesH2}</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal delay-1">
             {c.features.map((f, i) => (
@@ -420,8 +604,8 @@ export default async function IndustryPage({ params }: PageProps) {
       <section className="bg-[#080E1A] py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 reveal">
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">Our Process</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">How We Work</h2>
+            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.processLabel}</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">{ui.processH2}</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 reveal delay-1">
             {c.process.map((step, i) => (
@@ -439,8 +623,8 @@ export default async function IndustryPage({ params }: PageProps) {
       <section className="bg-[#0C1424] py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 reveal">
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">FAQ</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Common Questions</h2>
+            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.faqLabel}</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">{ui.faqH2}</h2>
           </div>
           <div className="space-y-4 reveal delay-1">
             {c.faq.map((item, i) => (
@@ -463,9 +647,9 @@ export default async function IndustryPage({ params }: PageProps) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="flex flex-wrap gap-8">
             <div>
-              <p className="text-white/30 text-xs uppercase tracking-widest mb-3">Related Services</p>
+              <p className="text-white/30 text-xs uppercase tracking-widest mb-3">{ui.relatedServicesLabel}</p>
               <div className="flex flex-wrap gap-2">
-                {industry.relatedServices.map((link) => (
+                {services.map((link) => (
                   <Link key={link.href} href={link.href} className="px-3 py-1.5 rounded-full border border-white/10 text-white/40 text-xs hover:text-white/70 hover:border-white/20 transition-all">
                     {link.label}
                   </Link>
@@ -473,22 +657,22 @@ export default async function IndustryPage({ params }: PageProps) {
               </div>
             </div>
             <div>
-              <p className="text-white/30 text-xs uppercase tracking-widest mb-3">Key District</p>
-              <Link href={industry.relatedDistrict.href} className="px-3 py-1.5 rounded-full border border-white/10 text-white/40 text-xs hover:text-white/70 hover:border-white/20 transition-all">
-                {industry.relatedDistrict.label}
+              <p className="text-white/30 text-xs uppercase tracking-widest mb-3">{ui.districtLabel}</p>
+              <Link href={district.href} className="px-3 py-1.5 rounded-full border border-white/10 text-white/40 text-xs hover:text-white/70 hover:border-white/20 transition-all">
+                {district.label}
               </Link>
             </div>
             <div>
-              <p className="text-white/30 text-xs uppercase tracking-widest mb-3">All Industries</p>
+              <p className="text-white/30 text-xs uppercase tracking-widest mb-3">{ui.allIndustriesLabel}</p>
               <Link href={`${p}/industries`} className="px-3 py-1.5 rounded-full border border-white/10 text-white/40 text-xs hover:text-white/70 hover:border-white/20 transition-all">
-                View All Industries →
+                {ui.allIndustriesLink}
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <CTABox heading={c.ctaHeading} subtitle={c.ctaSubtitle} locale="en" bg="dark" />
-    </>
+      <CTABox heading={c.ctaHeading} subtitle={c.ctaSubtitle} locale={locale} bg="dark" />
+    </div>
   );
 }
