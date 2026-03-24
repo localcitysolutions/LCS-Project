@@ -278,7 +278,7 @@ export default function Footer({ locale }: FooterProps) {
           <div className="flex items-center gap-4">
             {[
               { label: isAr ? "سياسة الخصوصية" : "Privacy Policy", href: `${p}/privacy-policy` },
-              { label: isAr ? "الشروط والأحكام" : "Terms of Service", href: "#" },
+              { label: isAr ? "الشروط والأحكام" : "Terms of Service", href: `${p}/terms` },
             ].map((l) => (
               <a key={l.label} href={l.href} className="text-white/25 hover:text-white/50 text-xs transition-colors">
                 {l.label}
