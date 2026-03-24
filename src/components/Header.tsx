@@ -63,6 +63,11 @@ export default function Header({ locale }: HeaderProps) {
     ? pathname.replace(/^\/ar/, "/en") || "/en"
     : pathname.replace(/^\/en/, "/ar") || "/ar";
 
+  const targetLang = isRTL ? "en" : "ar";
+  function setLangCookie() {
+    document.cookie = `preferred-lang=${targetLang}; max-age=31536000; path=/; samesite=lax`;
+  }
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -100,6 +105,7 @@ export default function Header({ locale }: HeaderProps) {
           <div className="flex items-center gap-2 md:gap-3">
             <Link
               href={toggleHref}
+              onClick={setLangCookie}
               className="px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-white/20 text-white/60 text-xs md:text-sm font-medium hover:border-[#F5C518]/40 hover:text-[#F5C518] transition-all duration-200"
             >
               {t.langToggle}
