@@ -249,7 +249,10 @@ export default function FreeAuditPage() {
         body: JSON.stringify({ url: websiteUrl, siteData, businessType }),
       });
 
-      if (!auditRes.ok) throw new Error("Audit failed");
+      if (!auditRes.ok) {
+        const errBody = await auditRes.json().catch(() => ({}));
+        throw new Error(errBody?.error || `Audit API returned ${auditRes.status}`);
+      }
 
       const result: AuditResult = await auditRes.json();
       setAuditResult(result);
@@ -259,8 +262,9 @@ export default function FreeAuditPage() {
       setTimeout(() => {
         reportRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 100);
-    } catch {
-      setError(t.errorSub);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Unknown error";
+      setError(`${t.errorSub} (${msg})`);
     } finally {
       clearInterval(msgInterval);
       setIsAnalyzing(false);

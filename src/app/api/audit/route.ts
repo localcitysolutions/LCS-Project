@@ -18,7 +18,7 @@ export async function POST(request: Request) {
       : "Could not fetch site data";
 
     const message = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-sonnet-4-6",
       max_tokens: 2000,
       system:
         "You are a senior digital marketing consultant at Local City Solutions, a leading digital marketing agency in Riyadh, Saudi Arabia. You analyze websites and provide professional audit reports. Respond ONLY with valid JSON. No markdown, no backticks, no explanation before or after the JSON.",
