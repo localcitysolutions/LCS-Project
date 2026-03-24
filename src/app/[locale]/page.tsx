@@ -195,18 +195,6 @@ const DISTRICTS = [
   { en: "Al Sahafah", ar: "الصحافة", slug: "al-sahafah" },
   { en: "Al Worood", ar: "الورود", slug: "al-worood" },
   { en: "Al Sulaimaniyah", ar: "السليمانية", slug: "al-sulaimaniyah" },
-  { en: "Al Rawdah", ar: "الروضة", slug: "al-rawdah" },
-  { en: "Al Murabba", ar: "المربع", slug: "al-murabba" },
-  { en: "Al Shifa", ar: "الشفا", slug: "al-shifa" },
-  { en: "Al Naseem", ar: "النسيم", slug: "al-naseem" },
-  { en: "Al Aziziyah", ar: "العزيزية", slug: "al-aziziyah" },
-  { en: "Ishbiliyah", ar: "إشبيلية", slug: "ishbiliyah" },
-  { en: "Al Narjis", ar: "النرجس", slug: "al-narjis" },
-  { en: "Tuwaiq", ar: "طويق", slug: "tuwaiq" },
-  { en: "Diriyah", ar: "الدرعية", slug: "diriyah" },
-  { en: "KAFD", ar: "مركز الملك عبدالله المالي", slug: "kafd" },
-  { en: "Al Arid", ar: "العارض", slug: "al-arid" },
-  { en: "King Fahd District", ar: "حي الملك فهد", slug: "king-fahd-district" },
 ];
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -239,21 +227,21 @@ export default async function HomePage({ params }: PageProps) {
     <main dir={isAr ? "rtl" : "ltr"}>
       {/* HERO */}
       <section className="relative overflow-hidden bg-[#080E1A] pt-16 md:pt-20">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-          <div className="w-[500px] h-[500px] md:w-[680px] md:h-[680px] rounded-full border border-[#F5C518]/[0.07]" style={{ animation: "spin-slow 28s linear infinite" }} />
-          <div className="absolute w-[360px] h-[360px] md:w-[480px] md:h-[480px] rounded-full border border-[#F5C518]/[0.05]" style={{ animation: "spin-slow-reverse 20s linear infinite" }} />
-          <div className="absolute w-[200px] h-[200px] md:w-[290px] md:h-[290px] rounded-full border border-[#F5C518]/[0.06]" style={{ animation: "spin-slow 14s linear infinite" }} />
-          <div className="absolute w-[180px] h-[180px] md:w-[260px] md:h-[260px] rounded-full" style={{ background: "radial-gradient(circle, rgba(245,197,24,0.11) 0%, transparent 70%)", animation: "pulse-glow 5s ease-in-out infinite" }} />
+        <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none select-none overflow-hidden">
+          <div className="w-[680px] h-[680px] rounded-full border border-[#F5C518]/[0.07]" style={{ animation: "spin-slow 28s linear infinite" }} />
+          <div className="absolute w-[480px] h-[480px] rounded-full border border-[#F5C518]/[0.05]" style={{ animation: "spin-slow-reverse 20s linear infinite" }} />
+          <div className="absolute w-[290px] h-[290px] rounded-full border border-[#F5C518]/[0.06]" style={{ animation: "spin-slow 14s linear infinite" }} />
+          <div className="absolute w-[260px] h-[260px] rounded-full" style={{ background: "radial-gradient(circle, rgba(245,197,24,0.11) 0%, transparent 70%)", animation: "pulse-glow 5s ease-in-out infinite" }} />
         </div>
         <div className="absolute inset-0 pointer-events-none opacity-30" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center py-8 md:py-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#F5C518]/25 bg-[#F5C518]/[0.08] text-[#F5C518] text-xs md:text-sm font-semibold mb-6 md:mb-8" style={{ animation: "fade-in-up 0.6s ease both" }}>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#F5C518]/25 bg-[#F5C518]/[0.08] text-[#F5C518] text-xs md:text-sm font-semibold mb-6 md:mb-8">
             <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#F5C518] shrink-0 badge-dot" />
             {c.hero.badge}
           </div>
 
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold text-white leading-[1.1] tracking-tight mb-4 md:mb-6" style={{ animation: "fade-in-up 0.7s 0.08s ease both" }}>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold text-white leading-[1.1] tracking-tight mb-4 md:mb-6">
             {c.hero.h1a}
             <br />
             <span className="text-[#F5C518]" style={{ textDecoration: "underline", textDecorationColor: "rgba(245,197,24,0.35)", textUnderlineOffset: "6px", textDecorationThickness: "2px" }}>
@@ -261,11 +249,11 @@ export default async function HomePage({ params }: PageProps) {
             </span>
           </h1>
 
-          <p className="text-sm md:text-lg lg:text-xl text-white/55 max-w-2xl mx-auto mb-7 md:mb-10 leading-relaxed" style={{ animation: "fade-in-up 0.7s 0.16s ease both" }}>
+          <p className="text-sm md:text-lg lg:text-xl text-white/55 max-w-2xl mx-auto mb-7 md:mb-10 leading-relaxed">
             {c.hero.sub}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 md:mb-14" style={{ animation: "fade-in-up 0.7s 0.24s ease both" }}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 md:mb-14">
             <TrackableLink href="https://wa.me/966564229190" track="whatsapp" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm md:text-base hover:bg-[#F5C518]/90 transition-all shadow-2xl shadow-[#F5C518]/25 hover:-translate-y-0.5">
               {c.hero.cta1}
             </TrackableLink>
@@ -274,7 +262,7 @@ export default async function HomePage({ params }: PageProps) {
             </TrackableLink>
           </div>
 
-          <div className="flex flex-row items-center justify-center gap-6 sm:gap-12 md:gap-14" style={{ animation: "fade-in-up 0.7s 0.32s ease both" }}>
+          <div className="flex flex-row items-center justify-center gap-6 sm:gap-12 md:gap-14">
             {c.hero.stats.map((stat, i) => (
               <div key={i} className="text-center">
                 <div className="text-xl md:text-3xl font-extrabold text-[#F5C518] leading-none mb-1">{stat.value}</div>

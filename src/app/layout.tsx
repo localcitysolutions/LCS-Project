@@ -6,15 +6,18 @@ import "./globals.css";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
   variable: "--font-dm-sans",
   display: "swap",
+  preload: true,
 });
 
 const almarai = Almarai({
   subsets: ["arabic"],
-  weight: ["300", "400", "700", "800"],
+  weight: ["400", "700"],
   variable: "--font-almarai",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {

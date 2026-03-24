@@ -1,4 +1,3 @@
-import { DM_Sans, Almarai } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -8,19 +7,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ScrollReveal from "@/components/ScrollReveal";
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-  display: "swap",
-});
-
-const almarai = Almarai({
-  subsets: ["arabic"],
-  weight: ["300", "400", "700", "800"],
-  variable: "--font-almarai",
-  display: "swap",
-});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -46,7 +32,6 @@ export default async function LocaleLayout({
     <div
       dir={isRTL ? "rtl" : "ltr"}
       lang={locale}
-      className={`${dmSans.variable} ${almarai.variable}`}
     >
       <NextIntlClientProvider messages={messages}>
         <Header locale={locale} />
