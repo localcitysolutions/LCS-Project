@@ -27,13 +27,6 @@ const CONTENT = {
         { icon: "📈", title: "Long-Term Thinking", desc: "We build sustainable digital presence, not quick-win tactics that disappear next month. Our clients stay with us because we make them genuinely stronger over time." },
       ],
     },
-    team: {
-      label: "The Team",
-      h2: "Who You Work With",
-      members: [
-        { name: "Muhammad Farhan", title: "Founder & CEO", bio: "Digital marketing veteran with 10+ years in the Saudi market. Built campaigns for brands across hospitality, healthcare, retail, and professional services in Riyadh." },
-      ],
-    },
     vs: {
       label: "The LCS Difference",
       h2: "LCS vs. Generic Agencies",
@@ -76,13 +69,6 @@ const CONTENT = {
         { icon: "🤝", title: "الشفافية دائماً", desc: "ستعرف دائماً أين يذهب ميزانيتك وما الذي ينجح وما الذي نفعله حيال ما لا ينجح. لا صناديق سوداء عندنا." },
         { icon: "🏡", title: "الخبرة المحلية", desc: "نعيش ونعمل في الرياض. نفهم المواسم والثقافة والمنصات وأنماط الشراء لدى المستهلك السعودي أفضل من أي وكالة عن بُعد." },
         { icon: "📈", title: "التفكير البعيد المدى", desc: "نبني حضوراً رقمياً مستداماً لا تكتيكات انتصارات سريعة تختفي الشهر القادم. عملاؤنا يبقون معنا لأننا نجعلهم أقوى فعلياً مع مرور الوقت." },
-      ],
-    },
-    team: {
-      label: "الفريق",
-      h2: "من تعمل معه",
-      members: [
-        { name: "محمد فرحان", title: "المؤسس والرئيس التنفيذي", bio: "خبير تسويق رقمي بأكثر من ١٠ سنوات في السوق السعودي. بنى حملات لعلامات تجارية في قطاعات الضيافة والرعاية الصحية والتجزئة والخدمات المهنية في الرياض." },
       ],
     },
     vs: {
@@ -156,28 +142,6 @@ export default async function AboutPage({ params }: PageProps) {
                 <div className="text-3xl mb-3">{v.icon}</div>
                 <h3 className="text-white font-bold text-base mb-2">{v.title}</h3>
                 <p className="text-white/50 text-sm leading-relaxed">{v.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="bg-[#0C1424] py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10 reveal">
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{c.team.label}</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">{c.team.h2}</h2>
-          </div>
-          <div className="flex flex-col items-center reveal delay-1">
-            {c.team.members.map((m) => (
-              <div key={m.name} className="bg-[#0E1A2E] border border-white/5 rounded-2xl p-8 max-w-sm w-full text-center hover:border-[#F5C518]/20 transition-all">
-                <div className="w-20 h-20 rounded-full bg-[#F5C518]/10 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">👤</span>
-                </div>
-                <h3 className="text-white font-bold text-lg mb-1">{m.name}</h3>
-                <p className="text-[#F5C518] text-xs font-semibold uppercase tracking-widest mb-3">{m.title}</p>
-                <p className="text-white/50 text-sm leading-relaxed">{m.bio}</p>
               </div>
             ))}
           </div>

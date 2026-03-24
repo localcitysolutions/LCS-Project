@@ -68,8 +68,8 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const ui = isAr
     ? {
-        author: "محمد فرحان",
-        authorRole: "متخصص تسويق رقمي — لوكال سيتي سولوشنز",
+        author: "فريق لوكال سيتي سولوشنز",
+        authorRole: "رؤى تسويقية رقمية من وكالة التسويق الرقمي المتخصصة في الرياض.",
         toc: "محتويات المقال",
         relatedServices: "خدمات ذات صلة",
         relatedDistricts: "أحياء في الرياض",
@@ -84,8 +84,8 @@ export default async function BlogPostPage({ params }: PageProps) {
         ctaSubtitle: "احصل على تدقيق مجاني وخطة تسويقية مخصصة لقطاعك.",
       }
     : {
-        author: "Muhammad Farhan",
-        authorRole: "Digital Marketing Specialist — LCS Agency",
+        author: "Local City Solutions Team",
+        authorRole: "Digital marketing insights from Riyadh's specialist digital marketing agency.",
         toc: "Table of Contents",
         relatedServices: "Related Services",
         relatedDistricts: "Riyadh Districts",
