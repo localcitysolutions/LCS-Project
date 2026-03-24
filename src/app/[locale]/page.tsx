@@ -70,7 +70,7 @@ const CONTENT = {
       h1b: "تسيطر على الإنترنت",
       sub: "خدمات تحسين محركات البحث، إعلانات قوقل، إعلانات ميتا، تصميم مواقع، وملف النشاط التجاري — مصمّمة خصيصاً للسوق السعودي. ظهور أقوى. عملاء أكثر. إيرادات أعلى.",
       cta1: "احصل على تدقيق مجاني ←",
-      cta2: "اتصل: 966 56 422 9190+",
+      cta2: "اتصل:",
       stats: [
         { value: "+٦", label: "سنوات خبرة" },
         { value: "+١٥٠", label: "مشروع" },
@@ -269,7 +269,7 @@ export default async function HomePage({ params }: PageProps) {
               {c.hero.cta1}
             </a>
             <a href="tel:+966564229190" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full border border-white/20 text-white font-medium text-sm md:text-base hover:border-white/40 hover:bg-white/[0.03] transition-all">
-              {c.hero.cta2}
+              {isAr ? <>{c.hero.cta2} <span dir="ltr">+966 56 422 9190</span></> : c.hero.cta2}
             </a>
           </div>
 
