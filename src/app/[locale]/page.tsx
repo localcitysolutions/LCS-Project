@@ -237,7 +237,7 @@ export default async function HomePage({ params }: PageProps) {
   return (
     <main dir={isAr ? "rtl" : "ltr"}>
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#080E1A] pt-14 md:pt-20">
+      <section className="relative overflow-hidden bg-[#080E1A] pt-16 md:pt-20">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
           <div className="w-[500px] h-[500px] md:w-[680px] md:h-[680px] rounded-full border border-[#F5C518]/[0.07]" style={{ animation: "spin-slow 28s linear infinite" }} />
           <div className="absolute w-[360px] h-[360px] md:w-[480px] md:h-[480px] rounded-full border border-[#F5C518]/[0.05]" style={{ animation: "spin-slow-reverse 20s linear infinite" }} />
@@ -246,7 +246,7 @@ export default async function HomePage({ params }: PageProps) {
         </div>
         <div className="absolute inset-0 pointer-events-none opacity-30" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center py-12 md:py-16">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center py-8 md:py-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#F5C518]/25 bg-[#F5C518]/[0.08] text-[#F5C518] text-xs md:text-sm font-semibold mb-6 md:mb-8" style={{ animation: "fade-in-up 0.6s ease both" }}>
             <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#F5C518] shrink-0 badge-dot" />
             {c.hero.badge}
@@ -286,7 +286,7 @@ export default async function HomePage({ params }: PageProps) {
       </section>
 
       {/* SERVICES */}
-      <section className="py-12 md:py-24 lg:py-32 bg-[#080E1A]" id="services">
+      <section className="py-12 md:py-20 bg-[#080E1A]" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-14 reveal">
             <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.services.label}</span>
@@ -316,7 +316,7 @@ export default async function HomePage({ params }: PageProps) {
       </section>
 
       {/* WHY LCS */}
-      <section className="py-12 md:py-24 lg:py-32 bg-[#0C1424]">
+      <section className="py-12 md:py-20 bg-[#0C1424]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-14 reveal">
             <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.why.label}</span>
@@ -336,7 +336,7 @@ export default async function HomePage({ params }: PageProps) {
       </section>
 
       {/* HOW WE WORK */}
-      <section className="py-12 md:py-24 lg:py-32 bg-[#080E1A]">
+      <section className="py-12 md:py-20 bg-[#080E1A]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-14 reveal">
             <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.howWeWork.label}</span>
@@ -356,7 +356,7 @@ export default async function HomePage({ params }: PageProps) {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="py-12 md:py-24 lg:py-32 bg-[#0C1424]">
+      <section className="py-12 md:py-20 bg-[#0C1424]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-14 reveal">
             <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.industries.label}</span>
@@ -378,7 +378,7 @@ export default async function HomePage({ params }: PageProps) {
       </section>
 
       {/* RIYADH DISTRICTS */}
-      <section className="py-12 md:py-24 lg:py-32 bg-[#080E1A]">
+      <section className="py-12 md:py-20 bg-[#080E1A]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="reveal mb-8 md:mb-12">
             <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.districts.label}</span>

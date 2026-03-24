@@ -24,7 +24,7 @@ export default function CTABox({
   const callLabel = isAr ? "اتصل بنا" : "Call +966 56 422 9190";
 
   return (
-    <section className={`py-12 md:py-24 ${bg === "dark" ? "bg-[#080E1A]" : "bg-[#0C1424]"}`}>
+    <section className={`py-12 md:py-20 ${bg === "dark" ? "bg-[#080E1A]" : "bg-[#0C1424]"}`}>
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="relative rounded-2xl overflow-hidden border border-[#F5C518]/15 p-6 md:p-12 text-center reveal">
           <div className="absolute inset-0 bg-gradient-to-br from-[#0E1A2E] via-[#0E1A2E] to-[#080E1A]" />
