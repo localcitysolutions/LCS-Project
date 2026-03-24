@@ -175,7 +175,7 @@ export default function Footer({ locale }: FooterProps) {
           {/* ── Riyadh Districts ──────────────── col-span-2 on mobile, col-span-3 on md, col-span-1 on lg */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
 
-            {/* Mobile: collapsible <details> — hidden on md+ */}
+            {/* Mobile only: collapsible */}
             <details className="group md:hidden">
               <summary className={`flex items-center justify-between cursor-pointer list-none select-none ${isAr ? "flex-row-reverse" : ""}`}>
                 <h3 className="text-white font-bold text-sm">
@@ -183,71 +183,33 @@ export default function Footer({ locale }: FooterProps) {
                 </h3>
                 <svg
                   className="w-4 h-4 text-white/40 transition-transform duration-200 group-open:rotate-180 shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
               </summary>
-
-              {/* Mobile: top 4 districts only */}
               <ul className={`mt-3 grid grid-cols-2 gap-x-4 gap-y-2 ${isAr ? "text-right" : ""}`}>
                 {DISTRICTS.slice(0, 4).map((d) => (
                   <li key={d.slug}>
-                    <Link
-                      href={`${p}/riyadh/${d.slug}`}
-                      className="text-white/40 hover:text-white text-xs transition-colors block"
-                    >
+                    <Link href={`${p}/riyadh/${d.slug}`} className="text-white/40 hover:text-white text-xs transition-colors block">
                       {L(d.name)}
                     </Link>
                   </li>
                 ))}
                 <li className="col-span-2">
-                  <Link
-                    href={`${p}/riyadh`}
-                    className={`text-[#F5C518]/60 hover:text-[#F5C518] text-xs transition-colors block mt-1 ${isAr ? "text-right" : ""}`}
-                  >
+                  <Link href={`${p}/riyadh`} className={`text-[#F5C518]/60 hover:text-[#F5C518] text-xs transition-colors block mt-1 ${isAr ? "text-right" : ""}`}>
                     {isAr ? "كل الأحياء ←" : "All Districts →"}
                   </Link>
                 </li>
               </ul>
             </details>
 
-            {/* md tablet: horizontal list across full width — hidden on mobile and lg */}
-            <div className="hidden md:block lg:hidden">
+            {/* md+: always visible — 4-col on tablet, 1-col on desktop */}
+            <div className="hidden md:block">
               <h3 className={`text-white font-bold text-sm mb-3 ${isAr ? "text-right" : ""}`}>
                 {isAr ? "أحياء الرياض" : "Riyadh Districts"}
               </h3>
-              <ul className={`grid grid-cols-4 gap-x-4 gap-y-2 ${isAr ? "text-right" : ""}`}>
-                {DISTRICTS.map((d) => (
-                  <li key={d.slug}>
-                    <Link
-                      href={`${p}/riyadh/${d.slug}`}
-                      className="text-white/40 hover:text-white text-xs transition-colors block"
-                    >
-                      {L(d.name)}
-                    </Link>
-                  </li>
-                ))}
-                <li>
-                  <Link
-                    href={`${p}/riyadh`}
-                    className="text-[#F5C518]/60 hover:text-[#F5C518] text-xs transition-colors block"
-                  >
-                    {isAr ? "كل الأحياء ←" : "All Districts →"}
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Desktop: single column list — hidden on mobile and md */}
-            <div className="hidden lg:block">
-              <h3 className={`text-white font-bold text-sm mb-3 ${isAr ? "text-right" : ""}`}>
-                {isAr ? "أحياء الرياض" : "Riyadh Districts"}
-              </h3>
-              <ul className="space-y-2">
+              <ul className={`grid grid-cols-4 lg:grid-cols-1 gap-x-4 gap-y-2 ${isAr ? "text-right" : ""}`}>
                 {DISTRICTS.map((d) => (
                   <li key={d.slug}>
                     <Link
