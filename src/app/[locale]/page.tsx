@@ -299,11 +299,8 @@ export default async function HomePage({ params }: PageProps) {
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5C518] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 <span className="absolute top-3 right-4 text-5xl md:text-7xl font-black text-white/[0.025] select-none pointer-events-none leading-none">{String(i + 1).padStart(2, "0")}</span>
                 <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold text-[#F5C518] bg-[#F5C518]/10 mb-4">{c.services.badge}</span>
-                <div className="flex items-center gap-3 mb-2 md:block">
-                  <div className="text-xl md:text-3xl leading-none md:mb-4">{service.icon}</div>
-                  <h3 className="text-white font-bold text-sm md:hidden leading-tight">{service.title}</h3>
-                </div>
-                <h3 className="hidden md:block text-white font-bold text-base md:text-lg mb-2">{service.title}</h3>
+                <div className="text-xl md:text-3xl leading-none mb-3 md:mb-4">{service.icon}</div>
+                <h3 className="text-white font-bold text-sm md:text-lg mb-2 leading-tight">{service.title}</h3>
                 <p className="text-white/50 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">{service.desc}</p>
                 <Link href={`${p}/services/${service.slug}`} className="inline-flex items-center gap-1 text-[#F5C518] text-xs md:text-sm font-semibold group-hover:gap-2 transition-all">{c.services.learnMore}</Link>
               </article>
