@@ -212,7 +212,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const c = CONTENT[locale] || CONTENT.en;
   return {
-    title: c.meta.title,
+    title: { absolute: c.meta.title },
     description: c.meta.description,
     alternates: {
       canonical: `https://localcitysolutions.com/${locale}`,

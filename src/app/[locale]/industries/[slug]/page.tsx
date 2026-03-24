@@ -640,7 +640,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const isAr = locale === "ar";
   const content = isAr && industry.ar ? industry.ar : industry.en;
   return {
-    title: content.metaTitle,
+    title: { absolute: content.metaTitle },
     description: content.metaDesc,
     alternates: {
       languages: {

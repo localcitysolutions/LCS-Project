@@ -9,9 +9,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const isAr = locale === "ar";
   return {
-    title: isAr
-      ? "التسويق الرقمي في أحياء الرياض | لوكال سيتي سولوشنز"
-      : "Digital Marketing Across All Riyadh Districts | Local City Solutions",
+    title: {
+      absolute: isAr
+        ? "التسويق الرقمي في أحياء الرياض | لوكال سيتي سولوشنز"
+        : "Digital Marketing Across All Riyadh Districts | Local City Solutions",
+    },
     description: isAr
       ? "لوكال سيتي سولوشنز تخدم جميع أحياء الرياض الـ٢٠+. SEO محلي، إعلانات قوقل، وتسويق رقمي متخصص لكل حي في العاصمة."
       : "Local City Solutions serves all 20+ Riyadh districts. Hyperlocal SEO, Google Ads, and digital marketing for every neighbourhood in the capital.",
