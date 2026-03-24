@@ -127,7 +127,7 @@ export default function ContactPage() {
       const result = await response.json();
       if (result.success) {
         setSubmitStatus("success");
-        e.currentTarget.reset();
+        formRef.current?.reset();
         setReplyToEmail("");
       } else {
         setSubmitStatus("error");
