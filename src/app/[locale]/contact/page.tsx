@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { useParams } from "next/navigation";
+import { trackFormSubmit, trackWhatsAppClick, trackPhoneClick } from "@/lib/analytics";
 
 type Locale = "en" | "ar";
 
@@ -129,6 +130,7 @@ export default function ContactPage() {
         setSubmitStatus("success");
         formRef.current?.reset();
         setReplyToEmail("");
+        trackFormSubmit((formData.get("service") as string) || "not specified");
       } else {
         setSubmitStatus("error");
       }
@@ -162,6 +164,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
             {c.methods.map((m) => (
               <a key={m.title} href={m.href} target={m.href.startsWith("http") ? "_blank" : undefined} rel={m.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                onClick={() => { if (m.href.includes("wa.me")) trackWhatsAppClick(); else if (m.href.includes("tel:")) trackPhoneClick(); }}
                 className="bg-[#0E1A2E] border border-white/5 rounded-xl p-6 text-center hover:border-[#F5C518]/20 transition-all group">
                 <div className="text-3xl mb-3">{m.icon}</div>
                 <h3 className="text-white font-bold text-base mb-2">{m.title}</h3>

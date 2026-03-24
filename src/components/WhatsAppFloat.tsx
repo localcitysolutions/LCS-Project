@@ -1,3 +1,7 @@
+"use client";
+
+import { trackWhatsAppClick } from "@/lib/analytics";
+
 interface WhatsAppFloatProps {
   locale?: string;
 }
@@ -10,6 +14,7 @@ export default function WhatsAppFloat({ locale = "en" }: WhatsAppFloatProps) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
+      onClick={() => trackWhatsAppClick()}
       className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center shadow-2xl shadow-[#25D366]/40 hover:scale-110 hover:shadow-[#25D366]/60 transition-all duration-300"
     >
       <svg className="w-7 h-7" fill="white" viewBox="0 0 24 24" aria-hidden="true">

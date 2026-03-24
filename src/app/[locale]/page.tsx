@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CTABox from "@/components/CTABox";
+import TrackableLink from "@/components/TrackableLink";
 
 type Locale = "en" | "ar";
 
@@ -265,12 +266,12 @@ export default async function HomePage({ params }: PageProps) {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 md:mb-14" style={{ animation: "fade-in-up 0.7s 0.24s ease both" }}>
-            <a href="https://wa.me/966564229190" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm md:text-base hover:bg-[#F5C518]/90 transition-all shadow-2xl shadow-[#F5C518]/25 hover:-translate-y-0.5">
+            <TrackableLink href="https://wa.me/966564229190" track="whatsapp" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm md:text-base hover:bg-[#F5C518]/90 transition-all shadow-2xl shadow-[#F5C518]/25 hover:-translate-y-0.5">
               {c.hero.cta1}
-            </a>
-            <a href="tel:+966564229190" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full border border-white/20 text-white font-medium text-sm md:text-base hover:border-white/40 hover:bg-white/[0.03] transition-all">
+            </TrackableLink>
+            <TrackableLink href="tel:+966564229190" track="phone" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full border border-white/20 text-white font-medium text-sm md:text-base hover:border-white/40 hover:bg-white/[0.03] transition-all">
               {isAr ? <>{c.hero.cta2} <span dir="ltr">+966 56 422 9190</span></> : c.hero.cta2}
-            </a>
+            </TrackableLink>
           </div>
 
           <div className="flex flex-row items-center justify-center gap-6 sm:gap-12 md:gap-14" style={{ animation: "fade-in-up 0.7s 0.32s ease both" }}>

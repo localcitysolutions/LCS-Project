@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS, getRelatedPosts } from "@/data/blog-posts";
 import CTABox from "@/components/CTABox";
+import TrackableLink from "@/components/TrackableLink";
 
 type Locale = "en" | "ar";
 interface PageProps {
@@ -305,14 +306,15 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <p className="text-white/50 text-xs mb-4">
                     {isAr ? "تكلم مع فريقنا على واتساب." : "Chat with our team on WhatsApp."}
                   </p>
-                  <a
+                  <TrackableLink
                     href="https://wa.me/966564229190"
+                    track="whatsapp"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block w-full py-2 bg-[#F5C518] text-[#080E1A] font-bold text-xs rounded-lg hover:bg-[#F5C518]/90 transition-all"
                   >
                     {isAr ? "واتساب" : "WhatsApp Us"}
-                  </a>
+                  </TrackableLink>
                 </div>
 
               </div>

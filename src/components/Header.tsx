@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { trackWhatsAppClick, trackPhoneClick, trackFreeAuditClick } from "@/lib/analytics";
 
 interface HeaderProps {
   locale: string;
@@ -107,6 +108,7 @@ export default function Header({ locale }: HeaderProps) {
               href="https://wa.me/966564229190"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => { trackFreeAuditClick(); trackWhatsAppClick(); }}
               className="hidden md:inline-flex px-5 py-2 rounded-full bg-[#F5C518] text-[#080E1A] text-sm font-bold hover:bg-[#F5C518]/90 transition-all duration-200 shadow-lg shadow-[#F5C518]/20"
             >
               {t.freeAudit}
@@ -152,13 +154,14 @@ export default function Header({ locale }: HeaderProps) {
               href="https://wa.me/966564229190"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setMenuOpen(false)}
+              onClick={() => { setMenuOpen(false); trackFreeAuditClick(); trackWhatsAppClick(); }}
               className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm"
             >
               {t.freeAudit}
             </a>
             <a
               href="tel:+966564229190"
+              onClick={() => trackPhoneClick()}
               className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/20 text-white font-medium text-sm"
             >
               +966 56 422 9190

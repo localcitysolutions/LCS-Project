@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Almarai } from "next/font/google";
+import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -64,7 +66,17 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-[#080E1A]">
+        <GoogleTagManager gtmId="GTM-KRFZ7HW2" />
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KRFZ7HW2"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         {children}
+        <GoogleAnalytics gaId="G-H873GX8YSC" />
       </body>
     </html>
   );

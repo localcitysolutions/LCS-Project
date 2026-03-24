@@ -1,3 +1,7 @@
+"use client";
+
+import { trackWhatsAppClick, trackPhoneClick } from "@/lib/analytics";
+
 interface CTABoxProps {
   heading?: string;
   subtitle?: string;
@@ -50,6 +54,7 @@ export default function CTABox({
                 href="https://wa.me/966564229190"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackWhatsAppClick()}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-[#25D366] text-white font-bold text-sm hover:bg-[#1fb858] transition-all shadow-xl shadow-[#25D366]/25 hover:-translate-y-0.5"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -59,6 +64,7 @@ export default function CTABox({
               </a>
               <a
                 href="tel:+966564229190"
+                onClick={() => trackPhoneClick()}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full border border-white/20 text-white font-medium text-sm hover:border-white/40 hover:bg-white/[0.03] transition-all"
               >
                 {callLabel}
