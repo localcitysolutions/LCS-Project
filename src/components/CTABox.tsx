@@ -21,7 +21,7 @@ export default function CTABox({
     : "Get a free audit and discover exactly how we can grow your visibility, leads, and revenue in the Saudi market.";
   const label = isAr ? "ابدأ الحين" : "Get Started Today";
   const waLabel = isAr ? "تواصل واتساب" : "WhatsApp Us";
-  const callLabel = isAr ? "اتصل بنا" : "Call +966 564 229 190";
+  const callLabel = isAr ? "اتصل بنا" : "Call +966 56 422 9190";
 
   return (
     <section className={`py-12 md:py-24 ${bg === "dark" ? "bg-[#080E1A]" : "bg-[#0C1424]"}`}>

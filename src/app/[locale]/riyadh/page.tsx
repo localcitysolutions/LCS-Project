@@ -94,7 +94,7 @@ export default async function RiyadhPage({ params }: PageProps) {
       ? "تسويق رقمي محلي لكل حي ومنطقة في العاصمة السعودية. من الملقا شمالاً إلى طويق غرباً — نعرف شوارع عملائك كما تعرفها."
       : "Hyperlocal digital marketing for every neighbourhood, district, and zone in the Saudi capital. From Al Malqa in the north to Tuwaiq in the west — we know your customers' streets as well as you do.",
     ctaWa: isAr ? "احصل على تدقيق مجاني ←" : "Get Free Audit →",
-    ctaCall: "+966 564 229 190",
+    ctaCall: "+966 56 422 9190",
     intro1: isAr
       ? "الرياض ليست كتلة واحدة. العاصمة تمتد على أكثر من ١٥٠٠ كم² وتضم عشرات الأحياء المميزة، كل منها بشخصيته الديموغرافية وسلوكه الاستهلاكي الخاص. عيادة في النرجس تخدم شريحة مختلفة تماماً عن عيادة في الشفا. مطعم في KAFD يواجه منافسة مختلفة عن مطعم في العزيزية."
       : "Riyadh is not a monolith. The capital spans over 1,500 km² and encompasses dozens of distinct districts, each with its own character, demographics, and consumer behaviour. A clinic in Al Narjis serves a different patient profile than one in Al Shifa. A restaurant in KAFD competes differently from one in Al Aziziyah.",

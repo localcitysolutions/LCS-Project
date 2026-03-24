@@ -21,7 +21,7 @@ const CONTENT = {
       h1b: "Dominate Online",
       sub: "SEO, Google Ads, Meta Ads, web design, and Google Business Profile services built specifically for the Saudi market. More visibility. More leads. More revenue.",
       cta1: "Get Free Audit →",
-      cta2: "Call +966 564 229 190",
+      cta2: "Call +966 56 422 9190",
       stats: [
         { value: "6+", label: "Years Exp." },
         { value: "150+", label: "Projects" },
@@ -70,7 +70,7 @@ const CONTENT = {
       h1b: "تسيطر على الإنترنت",
       sub: "خدمات تحسين محركات البحث، إعلانات قوقل، إعلانات ميتا، تصميم مواقع، وملف النشاط التجاري — مصمّمة خصيصاً للسوق السعودي. ظهور أقوى. عملاء أكثر. إيرادات أعلى.",
       cta1: "احصل على تدقيق مجاني ←",
-      cta2: "اتصل: 966564229190+",
+      cta2: "اتصل: 966 56 422 9190+",
       stats: [
         { value: "+٦", label: "سنوات خبرة" },
         { value: "+١٥٠", label: "مشروع" },

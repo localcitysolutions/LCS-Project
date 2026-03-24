@@ -161,7 +161,7 @@ export default function Header({ locale }: HeaderProps) {
               href="tel:+966564229190"
               className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/20 text-white font-medium text-sm"
             >
-              +966 564 229 190
+              +966 56 422 9190
             </a>
           </div>
         </div>
