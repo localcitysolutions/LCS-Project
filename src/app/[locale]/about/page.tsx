@@ -6,14 +6,14 @@ interface PageProps { params: Promise<{ locale: Locale }> }
 
 const CONTENT = {
   en: {
-    meta: { title: "About Us", description: "Meet the team behind Local City Solutions. Riyadh-based digital marketing experts serving Saudi businesses since 2018." },
+    meta: { title: "About Us", description: "Meet the team behind Local City Solutions. Riyadh-based digital marketing experts serving Saudi businesses since 2021." },
     hero: { label: "About Us", h1: "We Built This Agency for the Saudi Market", sub: "Local City Solutions was founded with a single mission: help Riyadh businesses grow online the right way — with local expertise, bilingual execution, and results that actually move the needle." },
     story: {
       label: "Our Story",
       h2: "From Riyadh, For Riyadh",
       paras: [
         "Local City Solutions was born from a frustration with the status quo. Riyadh businesses were being served by generic international agencies with zero understanding of Saudi consumer behavior, Arabic search intent, or the cultural nuances that make the difference between a campaign that converts and one that falls flat.",
-        "We started in 2018 as a small team of Saudi market specialists — digital marketers who had grown up in the Kingdom, understood the local landscape, and could execute flawlessly in both Arabic and English. Our first clients were small restaurants and clinics in Al Olaya who needed real results, not polished presentations.",
+        "We started in 2021 as a small team of Saudi market specialists — digital marketers who had grown up in the Kingdom, understood the local landscape, and could execute flawlessly in both Arabic and English. Our first clients were small restaurants and clinics in Al Olaya who needed real results, not polished presentations.",
         "Today, we serve 150+ Riyadh businesses across every major sector — from luxury hospitality to e-commerce startups to professional services firms. Our team has grown, our capabilities have expanded, and our commitment to the Saudi market has only deepened.",
       ],
     },
@@ -23,7 +23,7 @@ const CONTENT = {
       items: [
         { icon: "🎯", title: "Results Over Reports", desc: "We measure success by your growth, not the thickness of our monthly report. Every strategy is built backward from the outcome you need." },
         { icon: "🤝", title: "Transparency Always", desc: "You will always know exactly where your budget is going, what is working, and what we are doing about what isn't. No black boxes." },
-        { icon: "🏡", title: "Local Expertise", desc: "We live and work in Riyadh. We understand the seasons, the culture, the platforms, and the purchasing patterns of the Saudi consumer better than any remote agency can." },
+        { icon: "🏡", title: "Local Expertise", desc: "We are dedicated exclusively to the Riyadh market. We understand the seasons, the culture, the platforms, and the purchasing patterns of the Saudi consumer better than any remote agency can." },
         { icon: "📈", title: "Long-Term Thinking", desc: "We build sustainable digital presence, not quick-win tactics that disappear next month. Our clients stay with us because we make them genuinely stronger over time." },
       ],
     },
@@ -50,14 +50,14 @@ const CONTENT = {
     cta: { heading: "Let's Grow Your Riyadh Business", subtitle: "Ready to work with an agency that actually understands your market? Let's start with a free audit." },
   },
   ar: {
-    meta: { title: "من نحن", description: "تعرف على الفريق خلف لوكال سيتي سولوشنز. متخصصون في التسويق الرقمي بالرياض يخدمون الأعمال السعودية منذ 2018." },
+    meta: { title: "من نحن", description: "تعرف على الفريق خلف لوكال سيتي سولوشنز. متخصصون في التسويق الرقمي بالرياض يخدمون الأعمال السعودية منذ 2021." },
     hero: { label: "عنّا", h1: "بنينا هذه الوكالة للسوق السعودي", sub: "تأسست لوكال سيتي سولوشنز بمهمة واحدة: مساعدة أعمال الرياض على النمو رقمياً بالطريقة الصحيحة — بخبرة محلية، وتنفيذ ثنائي اللغة، ونتائج تُحرك المؤشرات فعلاً." },
     story: {
       label: "قصتنا",
       h2: "من الرياض، للرياض",
       paras: [
         "وُلدت لوكال سيتي سولوشنز من الإحباط من الوضع القائم. أعمال الرياض كانت تُخدَّم من وكالات دولية عامة لا تفهم شيئاً عن سلوك المستهلك السعودي أو نية البحث بالعربية أو الفروق الثقافية الدقيقة التي تصنع الفرق بين حملة تحوّل وأخرى لا تؤتي ثمارها.",
-        "بدأنا عام ٢٠١٨ كفريق صغير من متخصصي السوق السعودي — مسوقون رقميون نشأوا في المملكة، يفهمون المشهد المحلي، ويستطيعون التنفيذ بإتقان بالعربية والإنجليزية. كان أول عملائنا مطاعم وعيادات صغيرة في العليا تحتاج إلى نتائج حقيقية لا عروض تقديمية مصقولة.",
+        "بدأنا عام ٢٠٢١ كفريق صغير من متخصصي السوق السعودي — مسوقون رقميون نشأوا في المملكة، يفهمون المشهد المحلي، ويستطيعون التنفيذ بإتقان بالعربية والإنجليزية. كان أول عملائنا مطاعم وعيادات صغيرة في العليا تحتاج إلى نتائج حقيقية لا عروض تقديمية مصقولة.",
         "اليوم، نخدم أكثر من ١٥٠ نشاطاً تجارياً في الرياض عبر كل القطاعات الرئيسية — من الضيافة الفاخرة إلى شركات التجارة الإلكترونية الناشئة إلى شركات الخدمات المهنية. نما فريقنا واتسعت قدراتنا وتعمّق التزامنا بالسوق السعودي.",
       ],
     },
@@ -67,7 +67,7 @@ const CONTENT = {
       items: [
         { icon: "🎯", title: "النتائج فوق التقارير", desc: "نقيس النجاح بنموّك لا بسُمك تقريرنا الشهري. كل استراتيجية مبنية من الخلف انطلاقاً من النتيجة التي تحتاجها." },
         { icon: "🤝", title: "الشفافية دائماً", desc: "ستعرف دائماً أين يذهب ميزانيتك وما الذي ينجح وما الذي نفعله حيال ما لا ينجح. لا صناديق سوداء عندنا." },
-        { icon: "🏡", title: "الخبرة المحلية", desc: "نعيش ونعمل في الرياض. نفهم المواسم والثقافة والمنصات وأنماط الشراء لدى المستهلك السعودي أفضل من أي وكالة عن بُعد." },
+        { icon: "🏡", title: "الخبرة المحلية", desc: "نحن مكرّسون حصرياً لسوق الرياض. نفهم المواسم والثقافة والمنصات وأنماط الشراء لدى المستهلك السعودي أفضل من أي وكالة عن بُعد." },
         { icon: "📈", title: "التفكير البعيد المدى", desc: "نبني حضوراً رقمياً مستداماً لا تكتيكات انتصارات سريعة تختفي الشهر القادم. عملاؤنا يبقون معنا لأننا نجعلهم أقوى فعلياً مع مرور الوقت." },
       ],
     },
