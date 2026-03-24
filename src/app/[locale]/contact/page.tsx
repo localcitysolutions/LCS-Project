@@ -223,7 +223,6 @@ export default function ContactPage() {
                     <input type="hidden" name="access_key" value="f3331300-e0d7-4572-9c9d-69ce21d88b26" />
                     <input type="hidden" name="subject" value="New Lead — LCS Contact Form" />
                     <input type="hidden" name="from_name" value="LCS Website" />
-                    <input type="hidden" name="cc" value="farhanjavedksa@gmail.com" />
                     <input type="hidden" name="replyto" value={replyToEmail} />
                     <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
 
