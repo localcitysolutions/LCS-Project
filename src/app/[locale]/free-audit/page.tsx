@@ -5,21 +5,58 @@ import { useParams } from "next/navigation";
 import { trackEvent } from "@/lib/analytics";
 
 type Locale = "en" | "ar";
-type AuditStatus = "good" | "warning" | "critical";
+type FindingStatus = "pass" | "warning" | "fail";
+type CategoryStatus = "good" | "warning" | "critical";
 
-interface AuditCategory {
+interface Finding {
+  check: string;
+  status: FindingStatus;
+  detail: string;
+  impact?: "high" | "medium" | "low";
+}
+
+interface Category {
   name: string;
+  nameAr: string;
+  icon: string;
   score: number;
-  status: AuditStatus;
-  findings: string[];
-  recommendations: string[];
+  status: CategoryStatus;
+  findings: Finding[];
+}
+
+interface TopPriority {
+  category: string;
+  detail: string;
+  impact: string;
+}
+
+interface CoreWebVitals {
+  lcp: string; lcpMs: number;
+  fcp: string; fcpMs: number;
+  cls: string; clsValue: number;
+  tbt: string; tbtMs: number;
+  si: string;
+  performanceScore: number;
+  accessibilityScore: number;
+  bestPracticesScore: number;
+  seoScore: number;
+  desktopScore: number | null;
 }
 
 interface AuditResult {
   overallScore: number;
-  categories: AuditCategory[];
-  topPriorities: string[];
+  url: string;
+  statusCode: number;
+  loadTimeMs: number;
+  categories: Category[];
+  topPriorities: TopPriority[];
   summary: string;
+  coreWebVitals: CoreWebVitals | null;
+  technologies: string[];
+  totalChecks: number;
+  passed: number;
+  warnings: number;
+  failed: number;
 }
 
 const BUSINESS_TYPES = {
@@ -28,82 +65,102 @@ const BUSINESS_TYPES = {
 };
 
 const LOADING_MESSAGES = {
-  en: ["Analyzing website structure...", "Checking SEO elements...", "Evaluating mobile experience...", "Assessing content quality...", "Reviewing local SEO signals...", "Generating report..."],
-  ar: ["تحليل هيكل الموقع...", "فحص عناصر SEO...", "تقييم تجربة الجوال...", "تقييم جودة المحتوى...", "مراجعة إشارات SEO المحلي...", "إنشاء التقرير..."],
+  en: [
+    "Fetching website data...",
+    "Running Google PageSpeed analysis...",
+    "Checking SEO elements...",
+    "Analysing mobile friendliness...",
+    "Scanning for broken links...",
+    "Checking security headers...",
+    "Evaluating local SEO signals...",
+    "Compiling your report...",
+  ],
+  ar: [
+    "جاري جلب بيانات الموقع...",
+    "تشغيل تحليل Google PageSpeed...",
+    "فحص عناصر SEO...",
+    "تحليل التوافق مع الجوال...",
+    "فحص الروابط المعطلة...",
+    "فحص رؤوس الأمان...",
+    "تقييم إشارات SEO المحلي...",
+    "إعداد تقريرك...",
+  ],
 };
 
 const UI = {
   en: {
-    badge: "AI-Powered",
+    badge: "50+ Checks · Real PageSpeed Data · Zero Paid APIs",
     h1: "Free Website & Marketing Audit",
-    sub: "Get an instant AI-powered analysis of your website's SEO, performance, mobile-friendliness, and digital marketing readiness — completely free.",
+    sub: "Get a comprehensive AI-powered analysis of your website — SEO, performance, mobile, security, local SEO, and more. Instant results, completely free.",
     form: {
       url: "Website URL", urlPlaceholder: "https://yourwebsite.com",
       name: "Full Name", namePlaceholder: "Your full name",
       email: "Email Address", emailPlaceholder: "you@company.com",
       phone: "Phone Number (optional)", phonePlaceholder: "+966 5X XXX XXXX",
-      businessType: "Business Type",
-      businessTypePlaceholder: "Select your business type",
-      submit: "Run Free Audit →",
-      submitting: "Analyzing...",
+      businessType: "Business Type", businessTypePlaceholder: "Select your business type",
+      submit: "Run Free Audit →", submitting: "Analysing…",
     },
+    statsBar: { checks: "Checks", passed: "Passed", warnings: "Warnings", failed: "Critical" },
     overallLabel: "Overall Website Health Score",
-    priorities: "Your Top 3 Priorities",
+    cwvTitle: "Core Web Vitals (Mobile)",
+    cwvLcp: "LCP", cwvFcp: "FCP", cwvCls: "CLS", cwvTbt: "TBT",
+    cwvPS: "Performance", cwvA11y: "Accessibility", cwvBP: "Best Practices", cwvSEO: "SEO Score",
+    cwvDesktop: "Desktop Score",
+    techTitle: "Detected Technologies",
+    priorities: "Top Priorities",
     summaryLabel: "Executive Summary",
+    findings: "Findings",
+    statusGood: "Good ✓", statusWarning: "Warning ⚠", statusCritical: "Critical ✗",
+    impactHigh: "High Impact", impactMedium: "Medium", impactLow: "Low",
     ctaHeading: "Want us to fix these issues?",
     ctaSub: "Our team can implement all recommendations and grow your online presence.",
-    ctaWa: "WhatsApp Us →",
-    ctaCall: "Call +966 56 422 9190",
+    ctaWa: "WhatsApp Us →", ctaCall: "Call +966 56 422 9190",
     pdfBtn: "Download PDF Report",
     tryAgain: "Try Again",
     errorLabel: "Analysis failed",
     errorSub: "Something went wrong during analysis. Please try again or contact us via WhatsApp.",
-    findings: "Findings",
-    recommendations: "Recommendations",
-    statusGood: "Good ✓",
-    statusWarning: "Warning ⚠",
-    statusCritical: "Critical ✗",
     printTitle: "Website Audit Report",
-    printDate: "Report Date",
-    printUrl: "Audited Website",
+    printDate: "Report Date", printUrl: "Audited Website",
     printFooter: "Report generated by Local City Solutions | localcitysolutions.com | +966 56 422 9190 | hello@localcitysolutions.com",
   },
   ar: {
-    badge: "بالذكاء الاصطناعي",
-    h1: "تدقيق مجاني لموقعك الإلكتروني",
-    sub: "احصل على تحليل فوري بالذكاء الاصطناعي لموقعك — SEO، الأداء، التوافق مع الجوال، وجاهزية التسويق الرقمي — مجاناً بالكامل.",
+    badge: "أكثر من 50 فحص · بيانات PageSpeed حقيقية · بدون APIs مدفوعة",
+    h1: "تدقيق مجاني شامل لموقعك الإلكتروني",
+    sub: "احصل على تحليل شامل بالذكاء الاصطناعي — SEO، الأداء، الجوال، الأمان، SEO المحلي والمزيد. نتائج فورية، مجاناً بالكامل.",
     form: {
       url: "رابط الموقع", urlPlaceholder: "https://موقعك.com",
       name: "الاسم الكامل", namePlaceholder: "اسمك الكامل",
       email: "البريد الإلكتروني", emailPlaceholder: "you@company.com",
       phone: "رقم الجوال (اختياري)", phonePlaceholder: "+966 5X XXX XXXX",
-      businessType: "نوع النشاط التجاري",
-      businessTypePlaceholder: "اختر نوع نشاطك",
-      submit: "ابدأ التدقيق المجاني ←",
-      submitting: "جاري التحليل...",
+      businessType: "نوع النشاط التجاري", businessTypePlaceholder: "اختر نوع نشاطك",
+      submit: "ابدأ التدقيق المجاني ←", submitting: "جاري التحليل…",
     },
+    statsBar: { checks: "فحص", passed: "نجح", warnings: "تحذيرات", failed: "حرج" },
     overallLabel: "النتيجة الإجمالية لصحة الموقع",
-    priorities: "أولوياتك الثلاث الأهم",
-    summaryLabel: "الملخص",
+    cwvTitle: "Core Web Vitals (جوال)",
+    cwvLcp: "LCP", cwvFcp: "FCP", cwvCls: "CLS", cwvTbt: "TBT",
+    cwvPS: "الأداء", cwvA11y: "إمكانية الوصول", cwvBP: "أفضل الممارسات", cwvSEO: "نتيجة SEO",
+    cwvDesktop: "نتيجة سطح المكتب",
+    techTitle: "التقنيات المكتشفة",
+    priorities: "أهم الأولويات",
+    summaryLabel: "الملخص التنفيذي",
+    findings: "النتائج",
+    statusGood: "جيد ✓", statusWarning: "تحذير ⚠", statusCritical: "حرج ✗",
+    impactHigh: "تأثير عالٍ", impactMedium: "متوسط", impactLow: "منخفض",
     ctaHeading: "تبي نصلح هذي المشاكل؟",
     ctaSub: "فريقنا يقدر ينفذ كل التوصيات وينمي تواجدك الرقمي.",
-    ctaWa: "واتساب ←",
-    ctaCall: "اتصل +966 56 422 9190",
+    ctaWa: "واتساب ←", ctaCall: "اتصل +966 56 422 9190",
     pdfBtn: "تحميل التقرير PDF",
     tryAgain: "حاول مرة أخرى",
     errorLabel: "فشل التحليل",
     errorSub: "حدث خطأ أثناء التحليل. يرجى المحاولة مرة أخرى أو تواصل معنا عبر واتساب.",
-    findings: "النتائج",
-    recommendations: "التوصيات",
-    statusGood: "جيد ✓",
-    statusWarning: "تحذير ⚠",
-    statusCritical: "حرج ✗",
     printTitle: "تقرير تدقيق الموقع الإلكتروني",
-    printDate: "تاريخ التقرير",
-    printUrl: "الموقع المُدقق",
+    printDate: "تاريخ التقرير", printUrl: "الموقع المُدقق",
     printFooter: "تقرير من لوكال سيتي سولوشنز | localcitysolutions.com | +966 56 422 9190 | hello@localcitysolutions.com",
   },
 };
+
+// ─── Score Ring ───────────────────────────────────────────────────────────────
 
 function ScoreRing({ score, size = 120, stroke = 8 }: { score: number; size?: number; stroke?: number }) {
   const [displayed, setDisplayed] = useState(0);
@@ -113,52 +170,9 @@ function ScoreRing({ score, size = 120, stroke = 8 }: { score: number; size?: nu
 
   useEffect(() => {
     let start: number | null = null;
-    const duration = 1000;
-    const step = (timestamp: number) => {
-      if (!start) start = timestamp;
-      const progress = Math.min((timestamp - start) / duration, 1);
-      setDisplayed(Math.round(progress * score));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [score]);
-
-  const offset = circ - (displayed / 100) * circ;
-
-  return (
-    <svg width={size} height={size} className="rotate-[-90deg]">
-      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth={stroke} />
-      <circle
-        cx={size / 2} cy={size / 2} r={r} fill="none"
-        stroke={color} strokeWidth={stroke}
-        strokeDasharray={circ} strokeDashoffset={offset}
-        strokeLinecap="round"
-        style={{ transition: "stroke-dashoffset 0.05s linear" }}
-      />
-      <text
-        x={size / 2} y={size / 2 + 1}
-        textAnchor="middle" dominantBaseline="middle"
-        fill={color} fontSize={size * 0.22} fontWeight="800"
-        style={{ transform: "rotate(90deg)", transformOrigin: `${size / 2}px ${size / 2}px` }}
-      >
-        {displayed}
-      </text>
-    </svg>
-  );
-}
-
-function SmallScoreRing({ score }: { score: number }) {
-  const [displayed, setDisplayed] = useState(0);
-  const size = 48; const stroke = 5;
-  const r = (size - stroke) / 2;
-  const circ = 2 * Math.PI * r;
-  const color = score >= 80 ? "#22c55e" : score >= 50 ? "#F5C518" : "#ef4444";
-
-  useEffect(() => {
-    let start: number | null = null;
     const step = (ts: number) => {
       if (!start) start = ts;
-      const p = Math.min((ts - start) / 800, 1);
+      const p = Math.min((ts - start) / 1000, 1);
       setDisplayed(Math.round(p * score));
       if (p < 1) requestAnimationFrame(step);
     };
@@ -166,23 +180,54 @@ function SmallScoreRing({ score }: { score: number }) {
   }, [score]);
 
   const offset = circ - (displayed / 100) * circ;
-
   return (
-    <svg width={size} height={size} className="rotate-[-90deg] shrink-0">
+    <svg width={size} height={size} className="rotate-[-90deg]">
       <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth={stroke} />
       <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth={stroke}
         strokeDasharray={circ} strokeDashoffset={offset} strokeLinecap="round"
-        style={{ transition: "stroke-dashoffset 0.05s linear" }}
-      />
+        style={{ transition: "stroke-dashoffset 0.04s linear" }} />
       <text x={size / 2} y={size / 2 + 1} textAnchor="middle" dominantBaseline="middle"
-        fill={color} fontSize={11} fontWeight="700"
-        style={{ transform: "rotate(90deg)", transformOrigin: `${size / 2}px ${size / 2}px` }}
-      >
+        fill={color} fontSize={size * 0.22} fontWeight="800"
+        style={{ transform: "rotate(90deg)", transformOrigin: `${size / 2}px ${size / 2}px` }}>
         {displayed}
       </text>
     </svg>
   );
 }
+
+function MiniRing({ score, size = 44 }: { score: number; size?: number }) {
+  const [d, setD] = useState(0);
+  const stroke = 4;
+  const r = (size - stroke) / 2;
+  const circ = 2 * Math.PI * r;
+  const color = score >= 80 ? "#22c55e" : score >= 50 ? "#F5C518" : "#ef4444";
+  useEffect(() => {
+    let s: number | null = null;
+    const step = (ts: number) => {
+      if (!s) s = ts;
+      const p = Math.min((ts - s) / 800, 1);
+      setD(Math.round(p * score));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [score]);
+  const offset = circ - (d / 100) * circ;
+  return (
+    <svg width={size} height={size} className="rotate-[-90deg] shrink-0">
+      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth={stroke} />
+      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth={stroke}
+        strokeDasharray={circ} strokeDashoffset={offset} strokeLinecap="round"
+        style={{ transition: "stroke-dashoffset 0.04s linear" }} />
+      <text x={size / 2} y={size / 2 + 0.5} textAnchor="middle" dominantBaseline="middle"
+        fill={color} fontSize={10} fontWeight="700"
+        style={{ transform: "rotate(90deg)", transformOrigin: `${size / 2}px ${size / 2}px` }}>
+        {d}
+      </text>
+    </svg>
+  );
+}
+
+// ─── Page Component ───────────────────────────────────────────────────────────
 
 export default function FreeAuditPage() {
   const params = useParams();
@@ -196,15 +241,21 @@ export default function FreeAuditPage() {
   const [error, setError] = useState("");
   const [loadingMessage, setLoadingMessage] = useState("");
   const [auditedUrl, setAuditedUrl] = useState("");
+  const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({});
 
   const reportRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+
+  function toggleCard(name: string) {
+    setExpandedCards((p) => ({ ...p, [name]: !p[name] }));
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsAnalyzing(true);
     setError("");
     setAuditResult(null);
+    setExpandedCards({});
 
     const formData = new FormData(e.currentTarget);
     const websiteUrl = formData.get("url") as string;
@@ -223,45 +274,35 @@ export default function FreeAuditPage() {
     w3.append("Business Type", businessType);
     fetch("https://api.web3forms.com/submit", { method: "POST", body: w3 });
 
-    // Track start
     trackEvent("audit_started", { url: websiteUrl, business_type: businessType });
 
-    // Rotate loading messages
     const msgs = LOADING_MESSAGES[locale] || LOADING_MESSAGES.en;
     let msgIdx = 0;
     setLoadingMessage(msgs[0]);
     const msgInterval = setInterval(() => {
       msgIdx = (msgIdx + 1) % msgs.length;
       setLoadingMessage(msgs[msgIdx]);
-    }, 2500);
+    }, 3000);
 
     try {
-      const siteRes = await fetch("/api/fetch-site", {
+      const auditRes = await fetch("/api/audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url: websiteUrl }),
       });
-      const siteData = siteRes.ok ? await siteRes.json() : null;
-
-      const auditRes = await fetch("/api/audit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: websiteUrl, siteData, businessType }),
-      });
 
       if (!auditRes.ok) {
         const errBody = await auditRes.json().catch(() => ({}));
-        throw new Error(errBody?.error || `Audit API returned ${auditRes.status}`);
+        throw new Error(errBody?.error || `API returned ${auditRes.status}`);
       }
 
       const result: AuditResult = await auditRes.json();
       setAuditResult(result);
       trackEvent("audit_completed", { url: websiteUrl, score: result.overallScore });
 
-      // Scroll to report
       setTimeout(() => {
         reportRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 100);
+      }, 150);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Unknown error";
       setError(`${t.errorSub} (${msg})`);
@@ -277,13 +318,24 @@ export default function FreeAuditPage() {
     window.print();
   }
 
-  const statusColor = (s: AuditStatus) =>
-    s === "good" ? "text-green-400 bg-green-400/10 border-green-400/20"
-    : s === "warning" ? "text-[#F5C518] bg-[#F5C518]/10 border-[#F5C518]/20"
-    : "text-red-400 bg-red-400/10 border-red-400/20";
+  const catStatusStyle = (s: CategoryStatus) =>
+    s === "good"
+      ? "text-green-400 bg-green-400/10 border-green-400/20"
+      : s === "warning"
+      ? "text-[#F5C518] bg-[#F5C518]/10 border-[#F5C518]/20"
+      : "text-red-400 bg-red-400/10 border-red-400/20";
 
-  const statusLabel = (s: AuditStatus) =>
+  const catStatusLabel = (s: CategoryStatus) =>
     s === "good" ? t.statusGood : s === "warning" ? t.statusWarning : t.statusCritical;
+
+  const findingDot = (s: FindingStatus) =>
+    s === "pass" ? "bg-green-400" : s === "warning" ? "bg-[#F5C518]" : "bg-red-400";
+
+  const cwvColor = (ms: number, thresholds: [number, number]) =>
+    ms < thresholds[0] ? "text-green-400" : ms < thresholds[1] ? "text-[#F5C518]" : "text-red-400";
+
+  const psColor = (s: number) =>
+    s >= 90 ? "text-green-400" : s >= 50 ? "text-[#F5C518]" : "text-red-400";
 
   const today = new Date().toLocaleDateString(isAr ? "ar-SA" : "en-GB", {
     year: "numeric", month: "long", day: "numeric",
@@ -303,70 +355,73 @@ export default function FreeAuditPage() {
             background: white !important;
             color: #1a1a1a !important;
             padding: 40px !important;
-            font-size: 12px !important;
+            font-size: 11px !important;
             line-height: 1.6 !important;
             z-index: 99999 !important;
           }
+        }
+        @keyframes progress-pulse {
+          0%   { width: 5%;  opacity: 0.8; }
+          50%  { width: 88%; opacity: 1; }
+          100% { width: 5%;  opacity: 0.8; }
         }
       `}</style>
 
       {/* Hidden print report */}
       {auditResult && (
         <div id="print-report" style={{ display: "none" }}>
-          <div style={{ borderBottom: "3px solid #F5C518", paddingBottom: "16px", marginBottom: "24px" }}>
-            <div style={{ fontSize: "22px", fontWeight: "900", color: "#0A1628" }}>Local City Solutions</div>
-            <div style={{ fontSize: "16px", fontWeight: "700", marginTop: "4px" }}>{t.printTitle}</div>
+          <div style={{ borderBottom: "3px solid #F5C518", paddingBottom: 14, marginBottom: 20 }}>
+            <div style={{ fontSize: 22, fontWeight: 900, color: "#0A1628" }}>Local City Solutions</div>
+            <div style={{ fontSize: 16, fontWeight: 700, marginTop: 4 }}>{t.printTitle}</div>
           </div>
-          <div style={{ marginBottom: "16px", fontSize: "13px", color: "#555" }}>
+          <div style={{ marginBottom: 14, fontSize: 12, color: "#555" }}>
             <div><strong>{t.printDate}:</strong> {today}</div>
             <div><strong>{t.printUrl}:</strong> {auditedUrl}</div>
             <div><strong>{t.overallLabel}:</strong> {auditResult.overallScore}/100</div>
+            <div><strong>Checks:</strong> {auditResult.passed} passed · {auditResult.warnings} warnings · {auditResult.failed} critical (of {auditResult.totalChecks})</div>
           </div>
-          <div style={{ marginBottom: "24px" }}>
-            <h2 style={{ fontSize: "15px", fontWeight: "700", borderLeft: "3px solid #F5C518", paddingLeft: "8px", marginBottom: "12px" }}>{t.summaryLabel}</h2>
+          {auditResult.technologies.length > 0 && (
+            <div style={{ marginBottom: 14 }}>
+              <strong>Technologies:</strong> {auditResult.technologies.join(", ")}
+            </div>
+          )}
+          <div style={{ marginBottom: 20 }}>
+            <h2 style={{ fontSize: 14, fontWeight: 700, borderLeft: "3px solid #F5C518", paddingLeft: 8, marginBottom: 8 }}>{t.summaryLabel}</h2>
             <p>{auditResult.summary}</p>
           </div>
-          <div style={{ marginBottom: "24px" }}>
-            <h2 style={{ fontSize: "15px", fontWeight: "700", borderLeft: "3px solid #F5C518", paddingLeft: "8px", marginBottom: "12px" }}>{t.priorities}</h2>
+          <div style={{ marginBottom: 20 }}>
+            <h2 style={{ fontSize: 14, fontWeight: 700, borderLeft: "3px solid #F5C518", paddingLeft: 8, marginBottom: 8 }}>{t.priorities}</h2>
             {auditResult.topPriorities.map((p, i) => (
-              <div key={i} style={{ marginBottom: "6px" }}><strong>{i + 1}.</strong> {p}</div>
+              <div key={i} style={{ marginBottom: 5 }}><strong>{i + 1}. [{p.category}]</strong> {p.detail}</div>
             ))}
           </div>
           {auditResult.categories.map((cat) => (
-            <div key={cat.name} style={{ marginBottom: "20px", pageBreakInside: "avoid" }}>
-              <h2 style={{ fontSize: "14px", fontWeight: "700", borderLeft: "3px solid #F5C518", paddingLeft: "8px", marginBottom: "8px" }}>
-                {cat.name} — {cat.score}/100 ({cat.status.toUpperCase()})
+            <div key={cat.name} style={{ marginBottom: 18, pageBreakInside: "avoid" }}>
+              <h2 style={{ fontSize: 13, fontWeight: 700, borderLeft: "3px solid #F5C518", paddingLeft: 8, marginBottom: 6 }}>
+                {cat.icon} {cat.name} — {cat.score}/100 ({cat.status.toUpperCase()})
               </h2>
-              <div style={{ marginLeft: "8px" }}>
-                <strong>{t.findings}:</strong>
-                <ul style={{ margin: "4px 0 8px 16px" }}>
-                  {cat.findings.map((f, i) => <li key={i}>{f}</li>)}
-                </ul>
-                <strong>{t.recommendations}:</strong>
-                <ul style={{ margin: "4px 0 0 16px" }}>
-                  {cat.recommendations.map((r, i) => <li key={i}>{r}</li>)}
-                </ul>
-              </div>
+              <ul style={{ margin: "0 0 0 16px" }}>
+                {cat.findings.map((f, i) => (
+                  <li key={i} style={{ marginBottom: 3 }}>
+                    [{f.status.toUpperCase()}] {f.check}: {f.detail}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
-          <div style={{ borderTop: "1px solid #ddd", marginTop: "32px", paddingTop: "12px", fontSize: "11px", color: "#888" }}>
+          <div style={{ borderTop: "1px solid #ddd", marginTop: 28, paddingTop: 10, fontSize: 10, color: "#888" }}>
             {t.printFooter}
           </div>
         </div>
       )}
 
       {/* HERO */}
-      <section
-        className="relative bg-[#080E1A] pt-28 md:pt-36 pb-16 overflow-hidden"
-        dir={isAr ? "rtl" : "ltr"}
-      >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.07) 0%, transparent 70%)" }}
-        />
+      <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-12 overflow-hidden" dir={isAr ? "rtl" : "ltr"}>
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.07) 0%, transparent 70%)" }} />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#F5C518]/25 bg-[#F5C518]/[0.08] text-[#F5C518] text-xs font-bold uppercase tracking-[0.15em] mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F5C518] animate-pulse" />
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#F5C518]/25 bg-[#F5C518]/[0.08] text-[#F5C518] text-[11px] font-bold uppercase tracking-[0.12em] mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#F5C518] animate-pulse shrink-0" />
             {t.badge}
           </span>
           <h1 className="text-3xl md:text-5xl font-black text-white mb-4 leading-tight">{t.h1}</h1>
@@ -375,73 +430,60 @@ export default function FreeAuditPage() {
       </section>
 
       {/* FORM */}
-      <section
-        className="bg-[#080E1A] pb-16 md:pb-20"
-        dir={isAr ? "rtl" : "ltr"}
-      >
+      <section className="bg-[#080E1A] pb-16 md:pb-20" dir={isAr ? "rtl" : "ltr"}>
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
           <form
             ref={formRef}
             onSubmit={handleSubmit}
             className={`bg-[#0E1A2E] border border-white/[0.07] rounded-2xl p-6 md:p-8 space-y-5 transition-opacity ${isAnalyzing ? "opacity-60 pointer-events-none" : ""}`}
           >
-            {/* Website URL */}
             <div>
-              <label className="block text-white/70 text-sm font-medium mb-1.5">{t.form.url} <span className="text-[#F5C518]">*</span></label>
-              <input
-                type="url" name="url" required
-                placeholder={t.form.urlPlaceholder}
-                className="w-full bg-[#080E1A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#F5C518]/50 transition-colors"
-              />
+              <label className="block text-white/70 text-sm font-medium mb-1.5">
+                {t.form.url} <span className="text-[#F5C518]">*</span>
+              </label>
+              <input type="url" name="url" required placeholder={t.form.urlPlaceholder}
+                className="w-full bg-[#080E1A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#F5C518]/50 transition-colors" />
             </div>
-            {/* Name + Email row */}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-white/70 text-sm font-medium mb-1.5">{t.form.name} <span className="text-[#F5C518]">*</span></label>
-                <input
-                  type="text" name="name" required
-                  placeholder={t.form.namePlaceholder}
-                  className="w-full bg-[#080E1A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#F5C518]/50 transition-colors"
-                />
+                <label className="block text-white/70 text-sm font-medium mb-1.5">
+                  {t.form.name} <span className="text-[#F5C518]">*</span>
+                </label>
+                <input type="text" name="name" required placeholder={t.form.namePlaceholder}
+                  className="w-full bg-[#080E1A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#F5C518]/50 transition-colors" />
               </div>
               <div>
-                <label className="block text-white/70 text-sm font-medium mb-1.5">{t.form.email} <span className="text-[#F5C518]">*</span></label>
-                <input
-                  type="email" name="email" required
-                  placeholder={t.form.emailPlaceholder}
-                  className="w-full bg-[#080E1A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#F5C518]/50 transition-colors"
-                />
+                <label className="block text-white/70 text-sm font-medium mb-1.5">
+                  {t.form.email} <span className="text-[#F5C518]">*</span>
+                </label>
+                <input type="email" name="email" required placeholder={t.form.emailPlaceholder}
+                  className="w-full bg-[#080E1A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#F5C518]/50 transition-colors" />
               </div>
             </div>
-            {/* Phone + Business type row */}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-white/70 text-sm font-medium mb-1.5">{t.form.phone}</label>
-                <input
-                  type="tel" name="phone"
-                  placeholder={t.form.phonePlaceholder}
-                  className="w-full bg-[#080E1A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#F5C518]/50 transition-colors"
-                />
+                <input type="tel" name="phone" placeholder={t.form.phonePlaceholder}
+                  className="w-full bg-[#080E1A] border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/25 text-sm focus:outline-none focus:border-[#F5C518]/50 transition-colors" />
               </div>
               <div>
-                <label className="block text-white/70 text-sm font-medium mb-1.5">{t.form.businessType} <span className="text-[#F5C518]">*</span></label>
-                <select
-                  name="businessType" required
-                  className="w-full bg-[#080E1A] border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#F5C518]/50 transition-colors appearance-none"
-                >
-                  <option value="" disabled selected>{t.form.businessTypePlaceholder}</option>
+                <label className="block text-white/70 text-sm font-medium mb-1.5">
+                  {t.form.businessType} <span className="text-[#F5C518]">*</span>
+                </label>
+                <select name="businessType" required
+                  className="w-full bg-[#080E1A] border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#F5C518]/50 transition-colors appearance-none">
+                  <option value="" disabled>{t.form.businessTypePlaceholder}</option>
                   {bTypes.map((bt) => <option key={bt} value={bt}>{bt}</option>)}
                 </select>
               </div>
             </div>
-            {/* Web3Forms hidden fields */}
+
             <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
 
-            <button
-              type="submit"
-              disabled={isAnalyzing}
-              className="w-full py-4 rounded-xl bg-[#F5C518] text-[#080E1A] font-bold text-base hover:bg-[#F5C518]/90 transition-all shadow-xl shadow-[#F5C518]/20 disabled:opacity-60 flex items-center justify-center gap-2"
-            >
+            <button type="submit" disabled={isAnalyzing}
+              className="w-full py-4 rounded-xl bg-[#F5C518] text-[#080E1A] font-bold text-base hover:bg-[#F5C518]/90 transition-all shadow-xl shadow-[#F5C518]/20 disabled:opacity-60 flex items-center justify-center gap-2">
               {isAnalyzing ? (
                 <>
                   <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
@@ -454,36 +496,29 @@ export default function FreeAuditPage() {
             </button>
           </form>
 
-          {/* Loading state */}
+          {/* Loading bar */}
           {isAnalyzing && (
             <div className="mt-6 text-center">
               <div className="w-full h-1.5 bg-white/[0.06] rounded-full overflow-hidden mb-4">
-                <div
-                  className="h-full bg-[#F5C518] rounded-full"
-                  style={{ animation: "progress-pulse 2.5s ease-in-out infinite", width: "60%" }}
-                />
+                <div className="h-full bg-[#F5C518] rounded-full"
+                  style={{ animation: "progress-pulse 3s ease-in-out infinite" }} />
               </div>
               <p className="text-white/50 text-sm">{loadingMessage}</p>
             </div>
           )}
 
-          {/* Error state */}
+          {/* Error */}
           {error && !isAnalyzing && (
             <div className={`mt-6 p-4 rounded-xl border border-red-400/20 bg-red-400/[0.05] ${isAr ? "text-right" : ""}`}>
               <p className="text-red-400 font-semibold text-sm mb-1">{t.errorLabel}</p>
               <p className="text-white/60 text-sm mb-3">{error}</p>
               <div className="flex gap-3 flex-wrap">
-                <button
-                  onClick={() => { setError(""); setAuditResult(null); }}
-                  className="text-sm px-4 py-2 rounded-lg border border-white/15 text-white/70 hover:border-white/30 transition-colors"
-                >
+                <button onClick={() => { setError(""); setAuditResult(null); }}
+                  className="text-sm px-4 py-2 rounded-lg border border-white/15 text-white/70 hover:border-white/30 transition-colors">
                   {t.tryAgain}
                 </button>
-                <a
-                  href="https://wa.me/966564229190"
-                  target="_blank" rel="noopener noreferrer"
-                  className="text-sm px-4 py-2 rounded-lg bg-[#25D366]/10 border border-[#25D366]/20 text-[#25D366] hover:bg-[#25D366]/20 transition-colors"
-                >
+                <a href="https://wa.me/966564229190" target="_blank" rel="noopener noreferrer"
+                  className="text-sm px-4 py-2 rounded-lg bg-[#25D366]/10 border border-[#25D366]/20 text-[#25D366] hover:bg-[#25D366]/20 transition-colors">
                   WhatsApp
                 </a>
               </div>
@@ -494,61 +529,151 @@ export default function FreeAuditPage() {
 
       {/* AUDIT REPORT */}
       {auditResult && (
-        <section
-          ref={reportRef}
-          className="bg-[#0C1424] py-12 md:py-16"
-          dir={isAr ? "rtl" : "ltr"}
-        >
+        <section ref={reportRef} className="bg-[#0C1424] py-12 md:py-16" dir={isAr ? "rtl" : "ltr"}>
           <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
 
             {/* Overall Score */}
             <div className="flex flex-col items-center text-center">
-              <ScoreRing score={auditResult.overallScore} size={140} stroke={10} />
-              <p className="text-white/55 text-sm mt-3">{t.overallLabel}</p>
+              <ScoreRing score={auditResult.overallScore} size={150} stroke={11} />
+              <p className="text-white/55 text-sm mt-3 mb-1">{t.overallLabel}</p>
+              <p className="text-white/30 text-xs" dir="ltr">{auditedUrl}</p>
             </div>
 
-            {/* Category Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {auditResult.categories.map((cat) => (
-                <div
-                  key={cat.name}
-                  className="bg-[#0E1A2E] border border-white/[0.07] rounded-xl p-5 hover:border-[#F5C518]/20 hover:-translate-y-0.5 transition-all"
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <SmallScoreRing score={cat.score} />
-                    <span className={`text-xs font-bold px-2.5 py-1 rounded-full border ${statusColor(cat.status)}`}>
-                      {statusLabel(cat.status)}
-                    </span>
-                  </div>
-                  <h3 className="text-white font-bold text-sm mb-3">{cat.name}</h3>
-
-                  <details open>
-                    <summary className="text-[#F5C518] text-xs font-semibold cursor-pointer mb-2 select-none">{t.findings}</summary>
-                    <ul className="space-y-1.5 mb-3">
-                      {cat.findings.map((f, i) => (
-                        <li key={i} className="text-white/55 text-xs leading-relaxed flex gap-2">
-                          <span className="text-white/20 shrink-0 mt-0.5">•</span>{f}
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
-
-                  <details open>
-                    <summary className="text-[#F5C518] text-xs font-semibold cursor-pointer mb-2 select-none">{t.recommendations}</summary>
-                    <ul className="space-y-1.5">
-                      {cat.recommendations.map((r, i) => (
-                        <li key={i} className="text-white/55 text-xs leading-relaxed flex gap-2">
-                          <span className="text-[#F5C518]/50 shrink-0 mt-0.5">→</span>{r}
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
+            {/* Stats bar */}
+            <div className="grid grid-cols-4 gap-3">
+              {[
+                { label: t.statsBar.checks, val: auditResult.totalChecks, color: "text-white" },
+                { label: t.statsBar.passed, val: auditResult.passed, color: "text-green-400" },
+                { label: t.statsBar.warnings, val: auditResult.warnings, color: "text-[#F5C518]" },
+                { label: t.statsBar.failed, val: auditResult.failed, color: "text-red-400" },
+              ].map(({ label, val, color }) => (
+                <div key={label} className="bg-[#0E1A2E] border border-white/[0.07] rounded-xl p-3 md:p-4 text-center">
+                  <div className={`text-xl md:text-3xl font-black ${color}`}>{val}</div>
+                  <div className="text-white/40 text-[10px] md:text-xs mt-1">{label}</div>
                 </div>
               ))}
             </div>
 
+            {/* Core Web Vitals */}
+            {auditResult.coreWebVitals && (
+              <div className="bg-[#0E1A2E] border border-white/[0.07] rounded-2xl p-5 md:p-6">
+                <h2 className="text-white font-bold text-base md:text-lg mb-5">{t.cwvTitle}</h2>
+
+                {/* CWV metrics row */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+                  {[
+                    { key: t.cwvLcp, val: auditResult.coreWebVitals.lcp, color: cwvColor(auditResult.coreWebVitals.lcpMs, [2500, 4000]) },
+                    { key: t.cwvFcp, val: auditResult.coreWebVitals.fcp, color: cwvColor(auditResult.coreWebVitals.fcpMs, [1800, 3000]) },
+                    { key: t.cwvCls, val: auditResult.coreWebVitals.cls, color: cwvColor(auditResult.coreWebVitals.clsValue * 1000, [100, 250]) },
+                    { key: t.cwvTbt, val: auditResult.coreWebVitals.tbt, color: cwvColor(auditResult.coreWebVitals.tbtMs, [200, 600]) },
+                  ].map(({ key, val, color }) => (
+                    <div key={key} className="bg-[#080E1A] rounded-xl p-3 text-center">
+                      <div className={`text-lg md:text-2xl font-black ${color}`} dir="ltr">{val}</div>
+                      <div className="text-white/40 text-[10px] mt-1">{key}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Lighthouse scores */}
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+                  {[
+                    { key: t.cwvPS, val: auditResult.coreWebVitals.performanceScore },
+                    { key: t.cwvA11y, val: auditResult.coreWebVitals.accessibilityScore },
+                    { key: t.cwvBP, val: auditResult.coreWebVitals.bestPracticesScore },
+                    { key: t.cwvSEO, val: auditResult.coreWebVitals.seoScore },
+                    ...(auditResult.coreWebVitals.desktopScore !== null
+                      ? [{ key: t.cwvDesktop, val: auditResult.coreWebVitals.desktopScore }]
+                      : []),
+                  ].map(({ key, val }) => (
+                    <div key={key} className="bg-[#080E1A] rounded-xl p-3 text-center">
+                      <div className={`text-xl font-black ${psColor(val)}`}>{val}</div>
+                      <div className="text-white/40 text-[10px] mt-1">{key}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Technologies */}
+            {auditResult.technologies.length > 0 && (
+              <div>
+                <h2 className="text-white font-bold text-sm mb-3">{t.techTitle}</h2>
+                <div className="flex flex-wrap gap-2">
+                  {auditResult.technologies.map((tech) => (
+                    <span key={tech} className="px-3 py-1 rounded-full bg-[#0E1A2E] border border-white/10 text-white/60 text-xs">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Category Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {auditResult.categories.map((cat) => {
+                const isExpanded = expandedCards[cat.name] !== false; // default open
+                const passes = cat.findings.filter((f) => f.status === "pass").length;
+                const fails = cat.findings.filter((f) => f.status === "fail").length;
+                const warns = cat.findings.filter((f) => f.status === "warning").length;
+                return (
+                  <div key={cat.name}
+                    className="bg-[#0E1A2E] border border-white/[0.07] rounded-xl overflow-hidden hover:border-[#F5C518]/20 transition-all">
+                    {/* Card header */}
+                    <button
+                      onClick={() => toggleCard(cat.name)}
+                      className="w-full flex items-center justify-between p-4 md:p-5 text-left"
+                    >
+                      <div className="flex items-center gap-3">
+                        <MiniRing score={cat.score} />
+                        <div>
+                          <div className="text-white font-bold text-sm">
+                            <span className="mr-1.5">{cat.icon}</span>
+                            {isAr ? cat.nameAr : cat.name}
+                          </div>
+                          <div className="flex gap-2 mt-0.5">
+                            <span className="text-green-400 text-[10px]">{passes}✓</span>
+                            <span className="text-[#F5C518] text-[10px]">{warns}⚠</span>
+                            <span className="text-red-400 text-[10px]">{fails}✗</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${catStatusStyle(cat.status)}`}>
+                          {catStatusLabel(cat.status)}
+                        </span>
+                        <svg className={`w-4 h-4 text-white/30 transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                          fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </button>
+
+                    {/* Findings list */}
+                    {isExpanded && (
+                      <div className="px-4 md:px-5 pb-4 space-y-2 border-t border-white/[0.05] pt-3">
+                        {cat.findings.map((f, i) => (
+                          <div key={i} className="flex items-start gap-2.5">
+                            <span className={`w-1.5 h-1.5 rounded-full shrink-0 mt-1.5 ${findingDot(f.status)}`} />
+                            <div className="flex-1 min-w-0">
+                              <span className="text-white/45 text-[11px] font-semibold mr-1.5">{f.check}:</span>
+                              <span className="text-white/60 text-[11px] leading-relaxed">{f.detail}</span>
+                              {f.impact === "high" && (
+                                <span className="ml-1.5 text-[9px] px-1.5 py-0.5 rounded bg-red-400/10 text-red-400 font-bold">
+                                  {t.impactHigh}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
             {/* Top Priorities */}
-            <div className={`border-l-[3px] border-l-[#F5C518]/60 ${isAr ? "border-l-0 border-r-[3px] border-r-[#F5C518]/60 pl-0 pr-5" : "pl-5"} bg-[#0E1A2E] rounded-r-xl py-5 pr-5`}>
+            <div className={`bg-[#0E1A2E] rounded-xl py-5 px-5 ${isAr ? "border-r-[3px] border-r-[#F5C518]/60 rounded-l-xl" : "border-l-[3px] border-l-[#F5C518]/60 rounded-r-xl"}`}>
               <h2 className="text-white font-bold text-lg mb-4">{t.priorities}</h2>
               <ol className="space-y-3">
                 {auditResult.topPriorities.map((p, i) => (
@@ -556,24 +681,25 @@ export default function FreeAuditPage() {
                     <span className="w-6 h-6 rounded-full bg-[#F5C518]/10 border border-[#F5C518]/25 text-[#F5C518] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
                       {i + 1}
                     </span>
-                    <span className="text-white/75 text-sm leading-relaxed">{p}</span>
+                    <div>
+                      <span className="text-[#F5C518]/70 text-[10px] font-semibold uppercase tracking-wide">{p.category} · </span>
+                      <span className="text-white/75 text-sm leading-relaxed">{p.detail}</span>
+                    </div>
                   </li>
                 ))}
               </ol>
             </div>
 
             {/* Summary */}
-            <div className="bg-[#0E1A2E] border border-white/[0.07] rounded-xl p-6">
+            <div className="bg-[#0E1A2E] border border-white/[0.07] rounded-xl p-5 md:p-6">
               <h2 className="text-white font-bold text-lg mb-3">{t.summaryLabel}</h2>
               <p className="text-white/60 text-sm leading-relaxed">{auditResult.summary}</p>
             </div>
 
             {/* PDF Button */}
             <div className={`flex ${isAr ? "justify-end" : "justify-start"}`}>
-              <button
-                onClick={handlePrint}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/15 text-white/70 text-sm font-medium hover:border-white/30 hover:text-white transition-colors"
-              >
+              <button onClick={handlePrint}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/15 text-white/70 text-sm font-medium hover:border-[#F5C518]/40 hover:text-white transition-colors">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
                 </svg>
@@ -586,36 +712,22 @@ export default function FreeAuditPage() {
               <h2 className="text-white font-black text-xl md:text-2xl mb-2">{t.ctaHeading}</h2>
               <p className="text-white/55 text-sm mb-6 max-w-lg mx-auto">{t.ctaSub}</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <a
-                  href="https://wa.me/966564229190"
-                  target="_blank" rel="noopener noreferrer"
+                <a href="https://wa.me/966564229190" target="_blank" rel="noopener noreferrer"
                   onClick={() => trackEvent("audit_cta_click", { type: "whatsapp" })}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all shadow-xl shadow-[#F5C518]/20"
-                >
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all shadow-xl shadow-[#F5C518]/20">
                   {t.ctaWa}
                 </a>
-                <a
-                  href="tel:+966564229190"
+                <a href="tel:+966564229190"
                   onClick={() => trackEvent("audit_cta_click", { type: "call" })}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white font-medium text-sm hover:border-white/40 transition-all"
-                >
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white font-medium text-sm hover:border-white/40 transition-all">
                   <span dir="ltr">{t.ctaCall}</span>
                 </a>
               </div>
             </div>
+
           </div>
         </section>
       )}
-
-      {/* progress-pulse keyframe */}
-      <style>{`
-        @keyframes progress-pulse {
-          0% { width: 5%; opacity: 0.8; }
-          50% { width: 85%; opacity: 1; }
-          100% { width: 5%; opacity: 0.8; }
-        }
-      `}</style>
     </>
   );
 }
-
