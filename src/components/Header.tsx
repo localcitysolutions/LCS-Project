@@ -110,15 +110,13 @@ export default function Header({ locale }: HeaderProps) {
             >
               {t.langToggle}
             </Link>
-            <a
-              href="https://wa.me/966564229190"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => { trackFreeAuditClick(); trackWhatsAppClick(); }}
+            <Link
+              href={`/${locale}/free-audit`}
+              onClick={() => trackFreeAuditClick()}
               className="hidden md:inline-flex px-5 py-2 rounded-full bg-[#F5C518] text-[#080E1A] text-sm font-bold hover:bg-[#F5C518]/90 transition-all duration-200 shadow-lg shadow-[#F5C518]/20"
             >
               {t.freeAudit}
-            </a>
+            </Link>
             <button
               className="md:hidden text-white p-1 -mr-1"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -156,15 +154,13 @@ export default function Header({ locale }: HeaderProps) {
             </Link>
           ))}
           <div className="mt-4 pt-4 border-t border-white/[0.06] flex flex-col gap-3">
-            <a
-              href="https://wa.me/966564229190"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => { setMenuOpen(false); trackFreeAuditClick(); trackWhatsAppClick(); }}
+            <Link
+              href={`/${locale}/free-audit`}
+              onClick={() => { setMenuOpen(false); trackFreeAuditClick(); }}
               className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm"
             >
               {t.freeAudit}
-            </a>
+            </Link>
             <a
               href="tel:+966564229190"
               onClick={() => trackPhoneClick()}

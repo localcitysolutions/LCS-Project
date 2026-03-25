@@ -254,7 +254,7 @@ export default async function HomePage({ params }: PageProps) {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 md:mb-14">
-            <TrackableLink href="https://wa.me/966564229190" track="whatsapp" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm md:text-base hover:bg-[#F5C518]/90 transition-all shadow-2xl shadow-[#F5C518]/25 hover:-translate-y-0.5">
+            <TrackableLink href={`${p}/free-audit`} track="free-audit" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm md:text-base hover:bg-[#F5C518]/90 transition-all shadow-2xl shadow-[#F5C518]/25 hover:-translate-y-0.5">
               {c.hero.cta1}
             </TrackableLink>
             <TrackableLink href="tel:+966564229190" track="phone" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full border border-white/20 text-white font-medium text-sm md:text-base hover:border-white/40 hover:bg-white/[0.03] transition-all">

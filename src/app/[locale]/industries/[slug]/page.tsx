@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import CTABox from "@/components/CTABox";
+import TrackableLink from "@/components/TrackableLink";
 
 type Locale = "en" | "ar";
 interface PageProps { params: Promise<{ locale: Locale; slug: string }> }
@@ -711,9 +712,9 @@ export default async function IndustryPage({ params }: PageProps) {
           <p className="text-[#F5C518] font-semibold text-base md:text-lg mb-4">{c.tagline}</p>
           <p className="text-white/60 text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed">{c.heroDesc}</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a href="https://wa.me/966564229190" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#e6b800] transition-all shadow-xl shadow-[#F5C518]/20">
+            <TrackableLink href={`${p}/free-audit`} track="free-audit" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#e6b800] transition-all shadow-xl shadow-[#F5C518]/20">
               {ui.ctaBtn}
-            </a>
+            </TrackableLink>
             <Link href={`${p}/contact`} className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-white/20 text-white text-sm font-medium hover:border-white/40 transition-all">
               {ui.talkBtn}
             </Link>

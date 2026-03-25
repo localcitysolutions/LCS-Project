@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CTABox from "@/components/CTABox";
+import TrackableLink from "@/components/TrackableLink";
 
 type Locale = "en" | "ar";
 interface PageProps { params: Promise<{ locale: Locale }> }
@@ -196,14 +197,13 @@ export default async function RiyadhPage({ params }: PageProps) {
               {copy.hero}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 reveal delay-3">
-              <a
-                href="https://wa.me/966564229190"
-                target="_blank"
-                rel="noopener noreferrer"
+              <TrackableLink
+                href={`${p}/free-audit`}
+                track="free-audit"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all shadow-lg shadow-[#F5C518]/20"
               >
                 {copy.ctaWa}
-              </a>
+              </TrackableLink>
               <a
                 href="tel:+966564229190"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white text-sm font-medium hover:border-white/40 transition-all"
