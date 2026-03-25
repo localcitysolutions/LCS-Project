@@ -312,10 +312,164 @@ export default function FreeAuditPage() {
     }
   }
 
-  function handlePrint() {
+  function handleDownloadPDF() {
     if (!auditResult) return;
-    trackEvent("audit_pdf_download", { url: auditedUrl, score: auditResult.overallScore });
-    window.print();
+
+    trackEvent("audit_pdf_download", { url: auditResult.url, score: auditResult.overallScore });
+
+    const getStatusIcon = (status: string) =>
+      status === "pass" ? "✅" : status === "warning" ? "⚠️" : "❌";
+
+    const getScoreColor = (score: number) =>
+      score >= 80 ? "#22C55E" : score >= 50 ? "#F5C518" : "#EF4444";
+
+    const categoriesHTML = auditResult.categories
+      .map(
+        (cat) => `
+      <div style="margin-bottom:24px;border:1px solid #e5e7eb;border-radius:8px;padding:16px;break-inside:avoid;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <h3 style="margin:0;font-size:16px;color:#1a1a1a;">${cat.icon} ${cat.name}</h3>
+          <span style="font-size:20px;font-weight:bold;color:${getScoreColor(cat.score)};">${cat.score}/100</span>
+        </div>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;">
+          <tbody>
+            ${cat.findings
+              .map(
+                (f) => `
+              <tr style="border-bottom:1px solid #f3f4f6;">
+                <td style="padding:6px 8px;width:24px;">${getStatusIcon(f.status)}</td>
+                <td style="padding:6px 8px;font-weight:600;color:#374151;width:160px;">${f.check}</td>
+                <td style="padding:6px 8px;color:#6b7280;">${f.detail}</td>
+              </tr>`
+              )
+              .join("")}
+          </tbody>
+        </table>
+      </div>`
+      )
+      .join("");
+
+    const prioritiesHTML = auditResult.topPriorities
+      .map(
+        (p, i) => `
+      <div style="padding:8px 12px;margin-bottom:8px;background:#FFF7E6;border-left:3px solid #F5C518;border-radius:4px;">
+        <strong>${i + 1}.</strong> <strong>${p.category}:</strong> ${p.detail}
+      </div>`
+      )
+      .join("");
+
+    const cwvHTML = auditResult.coreWebVitals
+      ? `
+      <div style="margin-bottom:24px;padding:16px;border:2px solid #F5C518;border-radius:8px;background:#FFFBEB;">
+        <h3 style="margin:0 0 12px 0;color:#1a1a1a;">Core Web Vitals (Google PageSpeed)</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <tr>
+            <td style="padding:6px 12px;"><strong>LCP:</strong> ${auditResult.coreWebVitals.lcp}</td>
+            <td style="padding:6px 12px;"><strong>FCP:</strong> ${auditResult.coreWebVitals.fcp}</td>
+            <td style="padding:6px 12px;"><strong>CLS:</strong> ${auditResult.coreWebVitals.cls}</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 12px;"><strong>TBT:</strong> ${auditResult.coreWebVitals.tbt}</td>
+            <td style="padding:6px 12px;"><strong>Speed Index:</strong> ${auditResult.coreWebVitals.si}</td>
+            <td style="padding:6px 12px;"><strong>Performance:</strong> ${auditResult.coreWebVitals.performanceScore}/100</td>
+          </tr>
+        </table>
+      </div>`
+      : "";
+
+    const techHTML =
+      auditResult.technologies?.length > 0
+        ? `
+      <div style="margin-bottom:24px;">
+        <h3 style="color:#1a1a1a;margin-bottom:8px;">Technologies Detected</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          ${auditResult.technologies
+            .map(
+              (tech) =>
+                `<span style="background:#f3f4f6;padding:4px 10px;border-radius:12px;font-size:12px;color:#374151;">${tech}</span>`
+            )
+            .join("")}
+        </div>
+      </div>`
+        : "";
+
+    const currentDate = new Date().toLocaleDateString("en-US", {
+      year: "numeric", month: "long", day: "numeric",
+    });
+
+    const fullHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Website Audit Report — ${auditResult.url}</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Segoe UI',Arial,sans-serif; color:#1a1a1a; padding:40px; line-height:1.6; font-size:13px; }
+    .header { display:flex; justify-content:space-between; align-items:center; border-bottom:3px solid #F5C518; padding-bottom:16px; margin-bottom:24px; }
+    .logo { font-size:22px; font-weight:bold; color:#0A1628; }
+    .logo span { color:#F5C518; }
+    .header-right { text-align:right; font-size:11px; color:#6b7280; }
+    .report-title { text-align:center; margin-bottom:24px; }
+    .report-title h1 { font-size:24px; color:#0A1628; margin-bottom:4px; }
+    .report-title .url { font-size:14px; color:#F5C518; }
+    .report-title .date { font-size:12px; color:#9ca3af; margin-top:4px; }
+    .score-section { text-align:center; margin-bottom:30px; padding:24px; background:#f9fafb; border-radius:12px; }
+    .overall-score { font-size:64px; font-weight:bold; }
+    .score-label { font-size:14px; color:#6b7280; margin-top:4px; }
+    .stats-bar { display:flex; justify-content:center; gap:24px; margin-bottom:24px; font-size:13px; }
+    .stat { text-align:center; }
+    .stat-value { font-weight:bold; font-size:18px; }
+    .stat-label { color:#6b7280; font-size:11px; }
+    .section-title { font-size:18px; color:#0A1628; margin:24px 0 12px 0; padding-bottom:6px; border-bottom:2px solid #F5C518; }
+    .footer { margin-top:40px; padding-top:16px; border-top:2px solid #F5C518; text-align:center; font-size:11px; color:#6b7280; }
+    .footer strong { color:#0A1628; }
+    @media print { body { padding:20px; } div { break-inside:avoid; } }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">Local City <span>Solutions</span></div>
+    <div class="header-right">Website Audit Report<br>Generated: ${currentDate}</div>
+  </div>
+  <div class="report-title">
+    <h1>Website Audit Report</h1>
+    <div class="url">${auditResult.url}</div>
+    <div class="date">${currentDate} · 50+ Professional Checks · 8 Categories</div>
+  </div>
+  <div class="score-section">
+    <div class="overall-score" style="color:${getScoreColor(auditResult.overallScore)};">${auditResult.overallScore}/100</div>
+    <div class="score-label">Overall Website Health Score</div>
+  </div>
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-value">${auditResult.totalChecks}</div><div class="stat-label">Checks Run</div></div>
+    <div class="stat"><div class="stat-value" style="color:#22C55E;">${auditResult.passed}</div><div class="stat-label">Passed</div></div>
+    <div class="stat"><div class="stat-value" style="color:#F5C518;">${auditResult.warnings}</div><div class="stat-label">Warnings</div></div>
+    <div class="stat"><div class="stat-value" style="color:#EF4444;">${auditResult.failed}</div><div class="stat-label">Failed</div></div>
+    <div class="stat"><div class="stat-value">${auditResult.loadTimeMs}ms</div><div class="stat-label">Load Time</div></div>
+  </div>
+  ${cwvHTML}
+  <h2 class="section-title">Detailed Analysis</h2>
+  ${categoriesHTML}
+  ${techHTML}
+  <h2 class="section-title">Top Priorities</h2>
+  ${prioritiesHTML}
+  <h2 class="section-title">Executive Summary</h2>
+  <p style="padding:12px;background:#f9fafb;border-radius:8px;color:#374151;font-size:13px;">${auditResult.summary}</p>
+  <div class="footer">
+    <p><strong>Report generated by Local City Solutions</strong></p>
+    <p>localcitysolutions.com · +966 56 422 9190 · hello@localcitysolutions.com</p>
+    <p style="margin-top:8px;color:#F5C518;">Want us to fix these issues? Contact us for a detailed implementation plan.</p>
+  </div>
+</body>
+</html>`;
+
+    const printWindow = window.open("", "_blank", "width=900,height=700");
+    if (printWindow) {
+      printWindow.document.write(fullHTML);
+      printWindow.document.close();
+      printWindow.onload = () => { setTimeout(() => printWindow.print(), 500); };
+      setTimeout(() => printWindow.print(), 1500);
+    }
   }
 
   const catStatusStyle = (s: CategoryStatus) =>
@@ -337,83 +491,15 @@ export default function FreeAuditPage() {
   const psColor = (s: number) =>
     s >= 90 ? "text-green-400" : s >= 50 ? "text-[#F5C518]" : "text-red-400";
 
-  const today = new Date().toLocaleDateString(isAr ? "ar-SA" : "en-GB", {
-    year: "numeric", month: "long", day: "numeric",
-  });
-
   return (
     <>
-      {/* Print stylesheet */}
       <style>{`
-        @media print {
-          body * { visibility: hidden !important; }
-          #print-report, #print-report * { visibility: visible !important; }
-          #print-report {
-            position: fixed !important;
-            left: 0 !important; top: 0 !important;
-            width: 100% !important;
-            background: white !important;
-            color: #1a1a1a !important;
-            padding: 40px !important;
-            font-size: 11px !important;
-            line-height: 1.6 !important;
-            z-index: 99999 !important;
-          }
-        }
         @keyframes progress-pulse {
           0%   { width: 5%;  opacity: 0.8; }
           50%  { width: 88%; opacity: 1; }
           100% { width: 5%;  opacity: 0.8; }
         }
       `}</style>
-
-      {/* Hidden print report */}
-      {auditResult && (
-        <div id="print-report" style={{ display: "none" }}>
-          <div style={{ borderBottom: "3px solid #F5C518", paddingBottom: 14, marginBottom: 20 }}>
-            <div style={{ fontSize: 22, fontWeight: 900, color: "#0A1628" }}>Local City Solutions</div>
-            <div style={{ fontSize: 16, fontWeight: 700, marginTop: 4 }}>{t.printTitle}</div>
-          </div>
-          <div style={{ marginBottom: 14, fontSize: 12, color: "#555" }}>
-            <div><strong>{t.printDate}:</strong> {today}</div>
-            <div><strong>{t.printUrl}:</strong> {auditedUrl}</div>
-            <div><strong>{t.overallLabel}:</strong> {auditResult.overallScore}/100</div>
-            <div><strong>Checks:</strong> {auditResult.passed} passed · {auditResult.warnings} warnings · {auditResult.failed} critical (of {auditResult.totalChecks})</div>
-          </div>
-          {auditResult.technologies.length > 0 && (
-            <div style={{ marginBottom: 14 }}>
-              <strong>Technologies:</strong> {auditResult.technologies.join(", ")}
-            </div>
-          )}
-          <div style={{ marginBottom: 20 }}>
-            <h2 style={{ fontSize: 14, fontWeight: 700, borderLeft: "3px solid #F5C518", paddingLeft: 8, marginBottom: 8 }}>{t.summaryLabel}</h2>
-            <p>{auditResult.summary}</p>
-          </div>
-          <div style={{ marginBottom: 20 }}>
-            <h2 style={{ fontSize: 14, fontWeight: 700, borderLeft: "3px solid #F5C518", paddingLeft: 8, marginBottom: 8 }}>{t.priorities}</h2>
-            {auditResult.topPriorities.map((p, i) => (
-              <div key={i} style={{ marginBottom: 5 }}><strong>{i + 1}. [{p.category}]</strong> {p.detail}</div>
-            ))}
-          </div>
-          {auditResult.categories.map((cat) => (
-            <div key={cat.name} style={{ marginBottom: 18, pageBreakInside: "avoid" }}>
-              <h2 style={{ fontSize: 13, fontWeight: 700, borderLeft: "3px solid #F5C518", paddingLeft: 8, marginBottom: 6 }}>
-                {cat.icon} {cat.name} — {cat.score}/100 ({cat.status.toUpperCase()})
-              </h2>
-              <ul style={{ margin: "0 0 0 16px" }}>
-                {cat.findings.map((f, i) => (
-                  <li key={i} style={{ marginBottom: 3 }}>
-                    [{f.status.toUpperCase()}] {f.check}: {f.detail}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-          <div style={{ borderTop: "1px solid #ddd", marginTop: 28, paddingTop: 10, fontSize: 10, color: "#888" }}>
-            {t.printFooter}
-          </div>
-        </div>
-      )}
 
       {/* HERO */}
       <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-12 overflow-hidden" dir={isAr ? "rtl" : "ltr"}>
@@ -698,7 +784,7 @@ export default function FreeAuditPage() {
 
             {/* PDF Button */}
             <div className={`flex ${isAr ? "justify-end" : "justify-start"}`}>
-              <button onClick={handlePrint}
+              <button onClick={handleDownloadPDF}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/15 text-white/70 text-sm font-medium hover:border-[#F5C518]/40 hover:text-white transition-colors">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
