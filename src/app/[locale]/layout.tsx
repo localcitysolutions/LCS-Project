@@ -7,6 +7,21 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ScrollReveal from "@/components/ScrollReveal";
+import { DM_Sans, Almarai } from "next/font/google";
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  display: "swap",
+  preload: true,
+});
+
+const almarai = Almarai({
+  subsets: ["arabic"],
+  weight: ["400", "700"],
+  display: "swap",
+  preload: true,
+});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -28,10 +43,13 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   const isRTL = locale === "ar";
 
+  const fontClass = isRTL ? almarai.className : dmSans.className;
+
   return (
     <div
       dir={isRTL ? "rtl" : "ltr"}
       lang={locale}
+      className={fontClass}
     >
       <NextIntlClientProvider messages={messages}>
         <Header locale={locale} />

@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-dm-sans);
-  --font-arabic: var(--font-almarai);
   --color-gold: #F5C518;
   --color-bg-primary: #080E1A;
   --color-bg-secondary: #0C1424;
@@ -16,13 +14,7 @@ html {
 body {
   background-color: #080E1A;
   color: #ffffff;
-  font-family: var(--font-dm-sans), "DM Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
-}
-
-/* Arabic / RTL pages use Almarai */
-[dir="rtl"] body {
-  font-family: var(--font-almarai), "Almarai", sans-serif;
 }
 
 /* Custom scrollbar */

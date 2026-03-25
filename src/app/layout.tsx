@@ -1,24 +1,7 @@
 import type { Metadata } from "next";
-import { DM_Sans, Almarai } from "next/font/google";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-dm-sans",
-  display: "swap",
-  preload: true,
-});
-
-const almarai = Almarai({
-  subsets: ["arabic"],
-  weight: ["400", "700"],
-  variable: "--font-almarai",
-  display: "swap",
-  preload: false,
-});
 
 export const metadata: Metadata = {
   title: {
