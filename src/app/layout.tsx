@@ -44,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${almarai.variable}`}>
+    <html lang="en">
       <head>
         <script
           type="application/ld+json"
