@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { trackEvent } from "@/lib/analytics";
+import AuditPageSEO from "./AuditPageSEO";
 
 type Locale = "en" | "ar";
 type FindingStatus = "pass" | "warning" | "fail";
@@ -502,7 +503,7 @@ export default function FreeAuditPage() {
       `}</style>
 
       {/* HERO */}
-      <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-12 overflow-hidden" dir={isAr ? "rtl" : "ltr"}>
+      <section id="audit-hero" className="relative bg-[#080E1A] pt-28 md:pt-36 pb-12 overflow-hidden" dir={isAr ? "rtl" : "ltr"}>
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.07) 0%, transparent 70%)" }} />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
@@ -814,6 +815,9 @@ export default function FreeAuditPage() {
           </div>
         </section>
       )}
+
+      {/* SEO CONTENT — always visible, pushes below report when results load */}
+      <AuditPageSEO locale={locale} />
     </>
   );
 }
