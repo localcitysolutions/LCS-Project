@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npm run:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(ls \"/Users/mac/VS Code Studio/LCS Project/src/app/\"sitemap* \"/Users/mac/VS Code Studio/LCS Project/src/app/\"robots* \"/Users/mac/VS Code Studio/LCS Project/public/\"robots* \"/Users/mac/VS Code Studio/LCS Project/public/\"sitemap*)"
     ]
   }
 }
