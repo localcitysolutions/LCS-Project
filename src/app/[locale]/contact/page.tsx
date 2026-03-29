@@ -343,6 +343,36 @@ export default function ContactPage() {
                   {isAr ? "ابدأ المحادثة" : "Start Chat"}
                 </a>
               </div>
+
+              {/* Social links */}
+              <div className="bg-[#0E1A2E] border border-white/5 rounded-xl p-6">
+                <h3 className={`text-white font-bold text-sm mb-4 ${isAr ? "text-right" : ""}`}>
+                  {isAr ? "تابعنا" : "Find Us Online"}
+                </h3>
+                <div className="space-y-3">
+                  {[
+                    { label: "X (Twitter)", href: "https://x.com/LocalCitySoluti", d: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z", fill: true },
+                    { label: "Instagram", href: "https://www.instagram.com/localcitysolutions/", d: "M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01M6.5 19.5h11a3 3 0 003-3v-11a3 3 0 00-3-3h-11a3 3 0 00-3 3v11a3 3 0 003 3z", fill: false },
+                    { label: "Facebook", href: "https://www.facebook.com/localcitysolutions", d: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z", fill: false },
+                  ].map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={s.label}
+                      className={`flex items-center gap-3 text-white/50 hover:text-[#F5C518] text-xs transition-colors ${isAr ? "flex-row-reverse" : ""}`}
+                    >
+                      <span className="w-7 h-7 rounded-full bg-white/[0.05] flex items-center justify-center shrink-0">
+                        <svg className="w-3.5 h-3.5" fill={s.fill ? "currentColor" : "none"} stroke={s.fill ? undefined : "currentColor"} strokeWidth={s.fill ? undefined : 2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                          <path d={s.d} />
+                        </svg>
+                      </span>
+                      {s.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
