@@ -38,7 +38,7 @@ export default async function PrivacyPolicyPage({ params }: PageProps) {
             </h1>
             <div className="inline-flex items-center gap-2 mt-2">
               <span className="bg-[#F5C518]/10 border border-[#F5C518]/20 text-[#F5C518] text-xs font-semibold px-3 py-1.5 rounded-full">
-                آخر تحديث: 24 مارس 2026
+                آخر تحديث: ٢٤ مارس ٢٠٢٦
               </span>
             </div>
             <p className="text-white/50 text-sm mt-4">
@@ -140,7 +140,7 @@ export default async function PrivacyPolicyPage({ params }: PageProps) {
                   6. الاحتفاظ بالبيانات
                 </h2>
                 <p className="text-white/60 text-sm leading-relaxed">
-                  نحتفظ ببياناتك الشخصية طوال فترة علاقتنا التجارية وبعدها لمدة لا تتجاوز 3 سنوات، وذلك لأغراض الامتثال القانوني وحل النزاعات. بيانات الاتصال للعملاء المحتملين الذين لم يتحولوا إلى عملاء فعليين تُحذف خلال 12 شهراً.
+                  نحتفظ ببياناتك الشخصية طوال فترة علاقتنا التجارية وبعدها لمدة لا تتجاوز ٣ سنوات، وذلك لأغراض الامتثال القانوني وحل النزاعات. بيانات الاتصال للعملاء المحتملين الذين لم يتحولوا إلى عملاء فعليين تُحذف خلال ١٢ شهراً.
                 </p>
               </div>
 
@@ -178,7 +178,7 @@ export default async function PrivacyPolicyPage({ params }: PageProps) {
                   9. خصوصية الأطفال
                 </h2>
                 <p className="text-white/60 text-sm leading-relaxed">
-                  خدماتنا موجهة للشركات والمهنيين، ولا نجمع عمداً بيانات شخصية من أفراد دون سن 18 عاماً. إن اكتشفنا أننا جمعنا بيانات لشخص قاصر، نحذفها فوراً.
+                  خدماتنا موجهة للشركات والمهنيين، ولا نجمع عمداً بيانات شخصية من أفراد دون سن ١٨ عاماً. إن اكتشفنا أننا جمعنا بيانات لشخص قاصر، نحذفها فوراً.
                 </p>
               </div>
 

@@ -206,6 +206,7 @@ export default async function RiyadhPage({ params }: PageProps) {
               </TrackableLink>
               <a
                 href="tel:+966564229190"
+                dir="ltr"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white text-sm font-medium hover:border-white/40 transition-all"
               >
                 {copy.ctaCall}

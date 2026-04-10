@@ -50,7 +50,7 @@ const CONTENT = {
     cta: { heading: "Let's Grow Your Riyadh Business", subtitle: "Ready to work with an agency that actually understands your market? Let's start with a free audit." },
   },
   ar: {
-    meta: { title: "من نحن", description: "تعرف على الفريق خلف لوكال سيتي سولوشنز. متخصصون في التسويق الرقمي بالرياض يخدمون الأعمال السعودية منذ 2021." },
+    meta: { title: "من نحن", description: "تعرف على الفريق خلف لوكال سيتي سولوشنز. متخصصون في التسويق الرقمي بالرياض يخدمون الأعمال السعودية منذ ٢٠٢١." },
     hero: { label: "عنّا", h1: "بنينا هذه الوكالة للسوق السعودي", sub: "تأسست لوكال سيتي سولوشنز بمهمة واحدة: مساعدة أعمال الرياض على النمو رقمياً بالطريقة الصحيحة — بخبرة محلية، وتنفيذ ثنائي اللغة، ونتائج تُحرك المؤشرات فعلاً." },
     story: {
       label: "قصتنا",
