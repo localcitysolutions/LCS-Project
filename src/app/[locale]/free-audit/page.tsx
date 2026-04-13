@@ -432,14 +432,18 @@ export default function FreeAuditPage() {
     setExpandedCards({});
     setAuditedUrl(finalUrl);
 
-    // Fire-and-forget URL tracking
+    // Fire-and-forget lead notification email
     const w3 = new FormData();
     w3.append("access_key", "f3331300-e0d7-4572-9c9d-69ce21d88b26");
-    w3.append("subject", "New Free Audit Lead — LCS");
+    w3.append("subject", `🔍 Free Audit Requested — ${finalUrl}`);
     w3.append("from_name", "LCS Audit Tool");
-    w3.append("name", "Website Audit User");
-    w3.append("email", "audit@tool.lcs");
-    w3.append("Website URL", finalUrl);
+    w3.append("name", "LCS Audit Tool");
+    w3.append("email", "hello@localcitysolutions.com");
+    w3.append("replyto", "hello@localcitysolutions.com");
+    w3.append("Website Requested", finalUrl);
+    w3.append("Language", locale === "ar" ? "Arabic (عربي)" : "English");
+    w3.append("Time", new Date().toLocaleString("en-SA", { timeZone: "Asia/Riyadh", dateStyle: "full", timeStyle: "short" }));
+    w3.append("message", `A visitor just requested a free SEO audit.\n\nWebsite: ${finalUrl}\nLanguage: ${locale === "ar" ? "Arabic" : "English"}\nTime: ${new Date().toLocaleString("en-SA", { timeZone: "Asia/Riyadh" })}\n\nFollow up via WhatsApp or call to offer services.`);
     fetch("https://api.web3forms.com/submit", { method: "POST", body: w3 });
 
     trackEvent("audit_started", { url: finalUrl });
@@ -448,7 +452,7 @@ export default function FreeAuditPage() {
       const auditRes = await fetch("/api/audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: finalUrl }),
+        body: JSON.stringify({ url: finalUrl, locale }),
       });
 
       if (!auditRes.ok) {
@@ -486,10 +490,13 @@ export default function FreeAuditPage() {
     const getScoreColor = (score: number) =>
       score >= 80 ? "#22C55E" : score >= 50 ? "#F5C518" : "#EF4444";
 
+    const dir = isAr ? "rtl" : "ltr";
+    const arFont = isAr ? "'Segoe UI','Tahoma','Arial',sans-serif" : "'Segoe UI',Arial,sans-serif";
+
     const categoriesHTML = auditResult.categories.map((cat) => `
       <div style="margin-bottom:24px;border:1px solid #e5e7eb;border-radius:8px;padding:16px;break-inside:avoid;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-          <h3 style="margin:0;font-size:16px;color:#1a1a1a;">${cat.icon} ${cat.name}</h3>
+          <h3 style="margin:0;font-size:16px;color:#1a1a1a;">${cat.icon} ${isAr ? cat.nameAr : cat.name}</h3>
           <span style="font-size:20px;font-weight:bold;color:${getScoreColor(cat.score)};">${cat.score}/100</span>
         </div>
         <table style="width:100%;border-collapse:collapse;font-size:12px;">
@@ -497,7 +504,7 @@ export default function FreeAuditPage() {
             ${cat.findings.map((f) => `
               <tr style="border-bottom:1px solid #f3f4f6;">
                 <td style="padding:6px 8px;width:24px;">${getStatusIcon(f.status)}</td>
-                <td style="padding:6px 8px;font-weight:600;color:#374151;width:160px;">${f.check}</td>
+                <td style="padding:6px 8px;font-weight:600;color:#374151;width:${isAr ? "180px" : "160px"};">${f.check}</td>
                 <td style="padding:6px 8px;color:#6b7280;">${f.detail}</td>
               </tr>`).join("")}
           </tbody>
@@ -505,7 +512,7 @@ export default function FreeAuditPage() {
       </div>`).join("");
 
     const prioritiesHTML = auditResult.topPriorities.map((p, i) => `
-      <div style="padding:8px 12px;margin-bottom:8px;background:#FFF7E6;border-left:3px solid #F5C518;border-radius:4px;">
+      <div style="padding:8px 12px;margin-bottom:8px;background:#FFF7E6;${isAr ? "border-right:3px solid #F5C518" : "border-left:3px solid #F5C518"};border-radius:4px;">
         <strong>${i + 1}.</strong> <strong>${p.category}:</strong> ${p.detail}
       </div>`).join("");
 
@@ -520,14 +527,14 @@ export default function FreeAuditPage() {
           </tr>
           <tr>
             <td style="padding:6px 12px;"><strong>TBT:</strong> ${auditResult.coreWebVitals.tbt}</td>
-            <td style="padding:6px 12px;"><strong>Performance:</strong> ${auditResult.coreWebVitals.performanceScore}/100</td>
+            <td style="padding:6px 12px;"><strong>${isAr ? "الأداء" : "Performance"}:</strong> ${auditResult.coreWebVitals.performanceScore}/100</td>
           </tr>
         </table>
       </div>` : "";
 
     const techHTML = auditResult.technologies?.length > 0 ? `
       <div style="margin-bottom:24px;">
-        <h3 style="color:#1a1a1a;margin-bottom:8px;">Technologies Detected</h3>
+        <h3 style="color:#1a1a1a;margin-bottom:8px;">${isAr ? "التقنيات المكتشفة" : "Technologies Detected"}</h3>
         <div style="display:flex;flex-wrap:wrap;gap:6px;">
           ${auditResult.technologies.map((tech) =>
             `<span style="background:#f3f4f6;padding:4px 10px;border-radius:12px;font-size:12px;color:#374151;">${tech}</span>`
@@ -535,24 +542,20 @@ export default function FreeAuditPage() {
         </div>
       </div>` : "";
 
-    const currentDate = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+    const currentDate = new Date().toLocaleDateString(isAr ? "ar-SA" : "en-US", { year: "numeric", month: "long", day: "numeric" });
 
     const fullHTML = `<!DOCTYPE html>
-<html lang="en">
+<html lang="${isAr ? "ar" : "en"}" dir="${dir}">
 <head>
   <meta charset="UTF-8">
-  <title>Website Audit Report — ${auditResult.url}</title>
+  <title>${isAr ? "تقرير تدقيق الموقع" : "Website Audit Report"} — ${auditResult.url}</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Segoe UI',Arial,sans-serif; color:#1a1a1a; padding:40px; line-height:1.6; font-size:13px; }
+    body { font-family:${arFont}; color:#1a1a1a; padding:40px; line-height:1.8; font-size:13px; direction:${dir}; }
     .header { display:flex; justify-content:space-between; align-items:center; border-bottom:3px solid #F5C518; padding-bottom:16px; margin-bottom:24px; }
     .logo { font-size:22px; font-weight:bold; color:#0A1628; }
     .logo span { color:#F5C518; }
-    .header-right { text-align:right; font-size:11px; color:#6b7280; }
-    .report-title { text-align:center; margin-bottom:24px; }
-    .report-title h1 { font-size:24px; color:#0A1628; margin-bottom:4px; }
-    .report-title .url { font-size:14px; color:#F5C518; }
-    .report-title .date { font-size:12px; color:#9ca3af; margin-top:4px; }
+    .header-right { text-align:${isAr ? "left" : "right"}; font-size:11px; color:#6b7280; }
     .score-section { text-align:center; margin-bottom:30px; padding:24px; background:#f9fafb; border-radius:12px; }
     .overall-score { font-size:64px; font-weight:bold; }
     .stats { display:flex; justify-content:center; gap:32px; margin-top:12px; }
@@ -570,7 +573,7 @@ export default function FreeAuditPage() {
     <div class="header-right">
       <div>${t.printTitle}</div>
       <div>${t.printDate}: ${currentDate}</div>
-      <div>${t.printUrl}: ${auditResult.url}</div>
+      <div>${t.printUrl}: <span dir="ltr">${auditResult.url}</span></div>
     </div>
   </div>
   <div class="score-section">
@@ -593,7 +596,7 @@ export default function FreeAuditPage() {
   <div class="section-title">${t.findings}</div>
   ${categoriesHTML}
   <div class="footer">
-    <p><strong>Report generated by Local City Solutions</strong></p>
+    <p><strong>${isAr ? "تقرير من لوكال سيتي سولوشنز" : "Report generated by Local City Solutions"}</strong></p>
     <p>localcitysolutions.com · +966 56 422 9190 · hello@localcitysolutions.com</p>
   </div>
 </body>

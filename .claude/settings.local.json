@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npm run:*)",
       "Bash(npm install:*)",
-      "Bash(ls \"/Users/mac/VS Code Studio/LCS Project/src/app/\"sitemap* \"/Users/mac/VS Code Studio/LCS Project/src/app/\"robots* \"/Users/mac/VS Code Studio/LCS Project/public/\"robots* \"/Users/mac/VS Code Studio/LCS Project/public/\"sitemap*)"
+      "Bash(ls \"/Users/mac/VS Code Studio/LCS Project/src/app/\"sitemap* \"/Users/mac/VS Code Studio/LCS Project/src/app/\"robots* \"/Users/mac/VS Code Studio/LCS Project/public/\"robots* \"/Users/mac/VS Code Studio/LCS Project/public/\"sitemap*)",
+      "Bash(npx tsc:*)",
+      "Bash(echo \"EXIT:$?\")"
     ]
   }
 }
