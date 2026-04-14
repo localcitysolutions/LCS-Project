@@ -8,21 +8,29 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isAr = locale === "ar";
+  const title = isAr
+    ? "أداة تدقيق المواقع المجانية — ٥٠+ فحص SEO وتسويق | لوكال سيتي سولوشنز"
+    : "Free Website Audit Tool — 50+ SEO & Marketing Checks | Local City Solutions";
+  const description = isAr
+    ? "شغّل تدقيق مجاني فوري لموقعك مع ٥٠+ فحص احترافي. بيانات PageSpeed حقيقية من قوقل، تحليل SEO، فحص روابط معطلة، تدقيق أمان، فحص جوال وتقرير PDF. مصمم لأعمال السعودية."
+    : "Run a free instant website audit with 50+ professional checks. Real Google PageSpeed data, SEO analysis, broken link scan, security audit, mobile check & PDF report. Built for Saudi businesses.";
   return {
-    title: {
-      absolute: isAr
-        ? "أداة تدقيق المواقع المجانية — ٥٠+ فحص SEO وتسويق | لوكال سيتي سولوشنز"
-        : "Free Website Audit Tool — 50+ SEO & Marketing Checks | Local City Solutions",
-    },
-    description: isAr
-      ? "شغّل تدقيق مجاني فوري لموقعك مع ٥٠+ فحص احترافي. بيانات PageSpeed حقيقية من قوقل، تحليل SEO، فحص روابط معطلة، تدقيق أمان، فحص جوال وتقرير PDF. مصمم لأعمال السعودية."
-      : "Run a free instant website audit with 50+ professional checks. Real Google PageSpeed data, SEO analysis, broken link scan, security audit, mobile check & PDF report. Built for Saudi businesses.",
+    title: { absolute: title },
+    description,
     alternates: {
       canonical: `https://localcitysolutions.com/${locale}/free-audit`,
       languages: {
         en: "https://localcitysolutions.com/en/free-audit",
         ar: "https://localcitysolutions.com/ar/free-audit",
+        "x-default": "https://localcitysolutions.com/en/free-audit",
       },
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://localcitysolutions.com/${locale}/free-audit`,
+      locale: isAr ? "ar_SA" : "en_US",
+      images: [{ url: "https://localcitysolutions.com/og-image.jpg", width: 1200, height: 630, alt: title }],
     },
   };
 }

@@ -46,7 +46,26 @@ const CONTENT = {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const c = CONTENT[locale] || CONTENT.en;
-  return { title: c.meta.title, description: c.meta.description };
+  const isAr = locale === "ar";
+  return {
+    title: c.meta.title,
+    description: c.meta.description,
+    alternates: {
+      canonical: `https://localcitysolutions.com/${locale}/services`,
+      languages: {
+        en: "https://localcitysolutions.com/en/services",
+        ar: "https://localcitysolutions.com/ar/services",
+        "x-default": "https://localcitysolutions.com/en/services",
+      },
+    },
+    openGraph: {
+      title: c.meta.title,
+      description: c.meta.description,
+      url: `https://localcitysolutions.com/${locale}/services`,
+      locale: isAr ? "ar_SA" : "en_US",
+      images: [{ url: "https://localcitysolutions.com/og-image.jpg", width: 1200, height: 630, alt: c.meta.title }],
+    },
+  };
 }
 
 export default async function ServicesPage({ params }: PageProps) {

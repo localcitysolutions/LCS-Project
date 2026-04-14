@@ -1398,21 +1398,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!d) return {};
   const isAr = locale === "ar";
   const base = "https://localcitysolutions.com";
+  const title = isAr
+    ? `تسويق رقمي في حي ${d.nameAr}، الرياض | لوكال سيتي سولوشنز`
+    : `${d.name} Digital Marketing Agency | Local City Solutions Riyadh`;
+  const description = isAr
+    ? `خدمات تسويق رقمي متخصصة لأعمال حي ${d.nameAr} بالرياض. SEO، إعلانات قوقل، تصميم مواقع، وملف نشاط تجاري. تواصل معنا الحين.`
+    : `Local City Solutions provides SEO, Google Ads, and digital marketing in ${d.name} (${d.nameAr}), ${d.zone}. Hyperlocal campaigns built for the Riyadh market.`;
   return {
-    title: {
-      absolute: isAr
-        ? `تسويق رقمي في حي ${d.nameAr}، الرياض | لوكال سيتي سولوشنز`
-        : `${d.name} Digital Marketing Agency | Local City Solutions Riyadh`,
-    },
-    description: isAr
-      ? `خدمات تسويق رقمي متخصصة لأعمال حي ${d.nameAr} بالرياض. SEO، إعلانات قوقل، تصميم مواقع، وملف نشاط تجاري. تواصل معنا الحين.`
-      : `Local City Solutions provides SEO, Google Ads, and digital marketing in ${d.name} (${d.nameAr}), ${d.zone}. Hyperlocal campaigns built for the Riyadh market.`,
+    title: { absolute: title },
+    description,
     alternates: {
       canonical: `${base}/${locale}/riyadh/${slug}`,
       languages: {
         en: `${base}/en/riyadh/${slug}`,
         ar: `${base}/ar/riyadh/${slug}`,
+        "x-default": `${base}/en/riyadh/${slug}`,
       },
+    },
+    openGraph: {
+      title,
+      description,
+      url: `${base}/${locale}/riyadh/${slug}`,
+      locale: isAr ? "ar_SA" : "en_US",
+      images: [{ url: `${base}/og-image.jpg`, width: 1200, height: 630, alt: title }],
     },
   };
 }

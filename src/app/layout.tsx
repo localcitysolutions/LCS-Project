@@ -16,6 +16,23 @@ export const metadata: Metadata = {
     siteName: "Local City Solutions",
     locale: "en_US",
     type: "website",
+    title: "Digital Marketing Agency in Riyadh | Local City Solutions",
+    description: "Local City Solutions — Riyadh's leading digital marketing agency. SEO, Google Ads, Meta Ads, Web Design, Google Business Profile, and Social Media Marketing built for the Saudi market.",
+    url: "https://localcitysolutions.com",
+    images: [
+      {
+        url: "https://localcitysolutions.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Local City Solutions — Digital Marketing Agency in Riyadh",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Digital Marketing Agency in Riyadh | Local City Solutions",
+    description: "Local City Solutions — Riyadh's leading digital marketing agency. SEO, Google Ads, Meta Ads, Web Design & more for the Saudi market.",
+    images: ["https://localcitysolutions.com/og-image.jpg"],
   },
 };
 

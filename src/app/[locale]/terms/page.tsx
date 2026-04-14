@@ -8,15 +8,31 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  if (locale === "ar") {
-    return {
-      title: { absolute: "الشروط والأحكام | لوكال سيتي سولوشنز" },
-      description: "الشروط والأحكام لوكالة لوكال سيتي سولوشنز للتسويق الرقمي — شروط الخدمة والدفع والملكية الفكرية ومسؤوليات العميل.",
-    };
-  }
+  const isAr = locale === "ar";
+  const title = isAr
+    ? "الشروط والأحكام | لوكال سيتي سولوشنز"
+    : "Terms of Service | Local City Solutions";
+  const description = isAr
+    ? "الشروط والأحكام لوكالة لوكال سيتي سولوشنز للتسويق الرقمي — شروط الخدمة والدفع والملكية الفكرية ومسؤوليات العميل."
+    : "Terms of Service for Local City Solutions digital marketing agency — service terms, payment, intellectual property, and client responsibilities.";
   return {
-    title: { absolute: "Terms of Service | Local City Solutions" },
-    description: "Terms of Service for Local City Solutions digital marketing agency — service terms, payment, intellectual property, and client responsibilities.",
+    title: { absolute: title },
+    description,
+    alternates: {
+      canonical: `https://localcitysolutions.com/${locale}/terms`,
+      languages: {
+        en: "https://localcitysolutions.com/en/terms",
+        ar: "https://localcitysolutions.com/ar/terms",
+        "x-default": "https://localcitysolutions.com/en/terms",
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://localcitysolutions.com/${locale}/terms`,
+      locale: isAr ? "ar_SA" : "en_US",
+      images: [{ url: "https://localcitysolutions.com/og-image.jpg", width: 1200, height: 630, alt: title }],
+    },
   };
 }
 

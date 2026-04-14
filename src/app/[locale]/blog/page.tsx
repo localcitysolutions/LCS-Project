@@ -12,7 +12,7 @@ const CONTENT = {
   en: {
     meta: {
       title: "Digital Marketing Blog — LCS Agency Riyadh",
-      description: "Practical guides on SEO, Google Ads, social media, and digital marketing for Riyadh and Saudi businesses.",
+      description: "Practical guides on SEO, Google Ads, Meta Ads, social media, and digital marketing for Riyadh businesses and Saudi entrepreneurs. Tips, strategies, and growth insights.",
     },
     label: "Our Blog",
     h1: "Digital Marketing Insights for Saudi Businesses",
@@ -29,7 +29,7 @@ const CONTENT = {
   ar: {
     meta: {
       title: "مدونة التسويق الرقمي للأعمال السعودية",
-      description: "أدلة عملية حول تحسين محركات البحث وإعلانات قوقل والسوشيال ميديا والتسويق الرقمي للأعمال في الرياض والسعودية.",
+      description: "أدلة عملية حول تحسين محركات البحث وإعلانات قوقل وإعلانات ميتا والسوشيال ميديا والتسويق الرقمي لأعمال الرياض ورواد الأعمال السعوديين. نصائح واستراتيجيات ورؤى للنمو.",
     },
     label: "مدونتنا",
     h1: "رؤى التسويق الرقمي للأعمال السعودية",
@@ -50,7 +50,26 @@ const PER_PAGE = 9;
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const c = CONTENT[locale] || CONTENT.en;
-  return { title: c.meta.title, description: c.meta.description };
+  const isAr = locale === "ar";
+  return {
+    title: c.meta.title,
+    description: c.meta.description,
+    alternates: {
+      canonical: `https://localcitysolutions.com/${locale}/blog`,
+      languages: {
+        en: "https://localcitysolutions.com/en/blog",
+        ar: "https://localcitysolutions.com/ar/blog",
+        "x-default": "https://localcitysolutions.com/en/blog",
+      },
+    },
+    openGraph: {
+      title: c.meta.title,
+      description: c.meta.description,
+      url: `https://localcitysolutions.com/${locale}/blog`,
+      locale: isAr ? "ar_SA" : "en_US",
+      images: [{ url: "https://localcitysolutions.com/og-image.jpg", width: 1200, height: 630, alt: c.meta.title }],
+    },
+  };
 }
 
 export default async function BlogPage({ params, searchParams }: PageProps) {

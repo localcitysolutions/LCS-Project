@@ -480,14 +480,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const service = SERVICES.find((s) => s.slug === slug);
   if (!service) return {};
   const c = service[locale] || service.en;
+  const isAr = locale === "ar";
+  const title = c.title;
+  const description = c.heroDesc.substring(0, 155);
   return {
-    title: c.title,
-    description: c.heroDesc.substring(0, 155),
+    title,
+    description,
     alternates: {
+      canonical: `https://localcitysolutions.com/${locale}/services/${slug}`,
       languages: {
-        en: `https://localcitysolutions.com/services/${slug}`,
+        en: `https://localcitysolutions.com/en/services/${slug}`,
         ar: `https://localcitysolutions.com/ar/services/${slug}`,
+        "x-default": `https://localcitysolutions.com/en/services/${slug}`,
       },
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://localcitysolutions.com/${locale}/services/${slug}`,
+      locale: isAr ? "ar_SA" : "en_US",
+      images: [{ url: "https://localcitysolutions.com/og-image.jpg", width: 1200, height: 630, alt: title }],
     },
   };
 }

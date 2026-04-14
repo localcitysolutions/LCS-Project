@@ -6,7 +6,7 @@ interface PageProps { params: Promise<{ locale: Locale }> }
 
 const CONTENT = {
   en: {
-    meta: { title: "About Us", description: "Meet the team behind Local City Solutions. Riyadh-based digital marketing experts serving Saudi businesses since 2021." },
+    meta: { title: "About Local City Solutions — Riyadh Digital Marketing Agency", description: "Meet the team behind Local City Solutions. Riyadh-based digital marketing experts serving 150+ Saudi businesses since 2021. Local expertise, bilingual execution, real results." },
     hero: { label: "About Us", h1: "We Built This Agency for the Saudi Market", sub: "Local City Solutions was founded with a single mission: help Riyadh businesses grow online the right way — with local expertise, bilingual execution, and results that actually move the needle." },
     story: {
       label: "Our Story",
@@ -50,7 +50,7 @@ const CONTENT = {
     cta: { heading: "Let's Grow Your Riyadh Business", subtitle: "Ready to work with an agency that actually understands your market? Let's start with a free audit." },
   },
   ar: {
-    meta: { title: "من نحن", description: "تعرف على الفريق خلف لوكال سيتي سولوشنز. متخصصون في التسويق الرقمي بالرياض يخدمون الأعمال السعودية منذ ٢٠٢١." },
+    meta: { title: "عن لوكال سيتي سولوشنز — وكالة تسويق رقمي في الرياض", description: "تعرف على فريق لوكال سيتي سولوشنز. متخصصون في التسويق الرقمي بالرياض يخدمون أكثر من ١٥٠ نشاطاً تجارياً سعودياً منذ ٢٠٢١. خبرة محلية وتنفيذ ثنائي اللغة ونتائج حقيقية." },
     hero: { label: "عنّا", h1: "بنينا هذه الوكالة للسوق السعودي", sub: "تأسست لوكال سيتي سولوشنز بمهمة واحدة: مساعدة أعمال الرياض على النمو رقمياً بالطريقة الصحيحة — بخبرة محلية، وتنفيذ ثنائي اللغة، ونتائج تُحرك المؤشرات فعلاً." },
     story: {
       label: "قصتنا",
@@ -98,7 +98,26 @@ const CONTENT = {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const c = CONTENT[locale] || CONTENT.en;
-  return { title: c.meta.title, description: c.meta.description };
+  const isAr = locale === "ar";
+  return {
+    title: c.meta.title,
+    description: c.meta.description,
+    alternates: {
+      canonical: `https://localcitysolutions.com/${locale}/about`,
+      languages: {
+        en: "https://localcitysolutions.com/en/about",
+        ar: "https://localcitysolutions.com/ar/about",
+        "x-default": "https://localcitysolutions.com/en/about",
+      },
+    },
+    openGraph: {
+      title: c.meta.title,
+      description: c.meta.description,
+      url: `https://localcitysolutions.com/${locale}/about`,
+      locale: isAr ? "ar_SA" : "en_US",
+      images: [{ url: "https://localcitysolutions.com/og-image.jpg", width: 1200, height: 630, alt: c.meta.title }],
+    },
+  };
 }
 
 export default async function AboutPage({ params }: PageProps) {

@@ -640,14 +640,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!industry) return {};
   const isAr = locale === "ar";
   const content = isAr && industry.ar ? industry.ar : industry.en;
+  const title = content.metaTitle;
+  const description = content.metaDesc;
   return {
-    title: { absolute: content.metaTitle },
-    description: content.metaDesc,
+    title: { absolute: title },
+    description,
     alternates: {
+      canonical: `https://localcitysolutions.com/${locale}/industries/${slug}`,
       languages: {
         en: `https://localcitysolutions.com/en/industries/${slug}`,
         ar: `https://localcitysolutions.com/ar/industries/${slug}`,
+        "x-default": `https://localcitysolutions.com/en/industries/${slug}`,
       },
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://localcitysolutions.com/${locale}/industries/${slug}`,
+      locale: isAr ? "ar_SA" : "en_US",
+      images: [{ url: "https://localcitysolutions.com/og-image.jpg", width: 1200, height: 630, alt: title }],
     },
   };
 }

@@ -8,15 +8,31 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  if (locale === "ar") {
-    return {
-      title: { absolute: "سياسة الخصوصية | لوكال سيتي سولوشنز" },
-      description: "سياسة الخصوصية الخاصة بلوكال سيتي سولوشنز — كيف نجمع معلوماتك ونستخدمها ونحميها.",
-    };
-  }
+  const isAr = locale === "ar";
+  const title = isAr
+    ? "سياسة الخصوصية | لوكال سيتي سولوشنز"
+    : "Privacy Policy | Local City Solutions";
+  const description = isAr
+    ? "سياسة الخصوصية الخاصة بلوكال سيتي سولوشنز — كيف نجمع معلوماتك ونستخدمها ونحميها."
+    : "Privacy Policy for Local City Solutions — how we collect, use, and protect your information.";
   return {
-    title: { absolute: "Privacy Policy | Local City Solutions" },
-    description: "Privacy Policy for Local City Solutions — how we collect, use, and protect your information.",
+    title: { absolute: title },
+    description,
+    alternates: {
+      canonical: `https://localcitysolutions.com/${locale}/privacy-policy`,
+      languages: {
+        en: "https://localcitysolutions.com/en/privacy-policy",
+        ar: "https://localcitysolutions.com/ar/privacy-policy",
+        "x-default": "https://localcitysolutions.com/en/privacy-policy",
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: `https://localcitysolutions.com/${locale}/privacy-policy`,
+      locale: isAr ? "ar_SA" : "en_US",
+      images: [{ url: "https://localcitysolutions.com/og-image.jpg", width: 1200, height: 630, alt: title }],
+    },
   };
 }
 

@@ -24,15 +24,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const isAr = locale === "ar";
   const title = isAr ? post.title.ar : post.title.en;
   const description = isAr ? post.metaDescription.ar : post.metaDescription.en;
-  const otherLocale = isAr ? "en" : "ar";
+  const canonicalUrl = `https://localcitysolutions.com/${locale}/blog/${slug}`;
   return {
     title,
     description,
     alternates: {
+      canonical: canonicalUrl,
       languages: {
-        [locale]: `/${locale}/blog/${slug}`,
-        [otherLocale]: `/${otherLocale}/blog/${slug}`,
+        en: `https://localcitysolutions.com/en/blog/${slug}`,
+        ar: `https://localcitysolutions.com/ar/blog/${slug}`,
+        "x-default": `https://localcitysolutions.com/en/blog/${slug}`,
       },
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      type: "article",
+      locale: isAr ? "ar_SA" : "en_US",
+      images: [{ url: "https://localcitysolutions.com/og-image.jpg", width: 1200, height: 630, alt: title }],
     },
   };
 }
@@ -107,7 +117,35 @@ export default async function BlogPostPage({ params }: PageProps) {
   const twitterShare = `https://x.com/intent/tweet?text=${shareTitle}&url=${encodeURIComponent(shareUrl)}`;
   const linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description: isAr ? post.metaDescription.ar : post.metaDescription.en,
+    url: shareUrl,
+    datePublished: post.publishDate,
+    dateModified: post.publishDate,
+    author: {
+      "@type": "Organization",
+      name: "Local City Solutions",
+      url: "https://localcitysolutions.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Local City Solutions",
+      url: "https://localcitysolutions.com",
+      logo: { "@type": "ImageObject", url: "https://localcitysolutions.com/logo.png" },
+    },
+    inLanguage: isAr ? "ar" : "en",
+    image: "https://localcitysolutions.com/og-image.jpg",
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
     <div dir={isAr ? "rtl" : "ltr"}>
       {/* Hero */}
       <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-12 overflow-hidden">
@@ -365,5 +403,6 @@ export default async function BlogPostPage({ params }: PageProps) {
       {/* CTA */}
       <CTABox heading={ui.ctaHeading} subtitle={ui.ctaSubtitle} locale={locale} bg="dark" />
     </div>
+    </>
   );
 }

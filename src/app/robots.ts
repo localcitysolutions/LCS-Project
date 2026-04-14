@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/", "/_next/"],
       },
-      // Block aggressive scrapers and SEO crawlers that ignore budgets
+      // Block aggressive scrapers that ignore crawl budgets
       { userAgent: "PetalBot", disallow: "/" },
       { userAgent: "ByteSpider", disallow: "/" },
       { userAgent: "YisouSpider", disallow: "/" },
@@ -16,10 +16,9 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "Baiduspider", disallow: "/" },
       { userAgent: "MJ12bot", disallow: "/" },
       { userAgent: "DotBot", disallow: "/" },
-      { userAgent: "SemrushBot", disallow: "/" },
-      { userAgent: "AhrefsBot", disallow: "/" },
       { userAgent: "MegaIndex", disallow: "/" },
       { userAgent: "DataForSeoBot", disallow: "/" },
+      // Note: SemrushBot and AhrefsBot are allowed — needed for SEO monitoring and competitive analysis
     ],
     sitemap: "https://localcitysolutions.com/sitemap.xml",
   };
