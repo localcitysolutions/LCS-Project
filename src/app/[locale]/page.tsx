@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import CTABox from "@/components/CTABox";
 import TrackableLink from "@/components/TrackableLink";
@@ -198,16 +197,6 @@ const DISTRICTS = [
   { en: "Al Sulaimaniyah", ar: "السليمانية", slug: "al-sulaimaniyah" },
 ];
 
-const SERVICE_IMAGES: Record<string, string> = {
-  "digital-marketing": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80",
-  "web-design": "https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&q=80",
-  "seo": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=400&q=80",
-  "google-ads": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=400&q=80",
-  "meta-ads": "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=400&q=80",
-  "google-business-profile": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&q=80",
-  "social-media": "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=400&q=80",
-  "ecommerce": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80",
-};
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
@@ -256,64 +245,40 @@ export default async function HomePage({ params }: PageProps) {
         </div>
         <div className="absolute inset-0 pointer-events-none opacity-30" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center py-8 md:py-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#F5C518]/25 bg-[#F5C518]/[0.08] text-[#F5C518] text-xs md:text-sm font-semibold mb-6 md:mb-8">
+            <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#F5C518] shrink-0 badge-dot" />
+            {c.hero.badge}
+          </div>
 
-            {/* Text column */}
-            <div className={isAr ? "text-center lg:text-right" : "text-center lg:text-left"}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#F5C518]/25 bg-[#F5C518]/[0.08] text-[#F5C518] text-xs md:text-sm font-semibold mb-6 md:mb-8">
-                <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#F5C518] shrink-0 badge-dot" />
-                {c.hero.badge}
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold text-white leading-[1.1] tracking-tight mb-4 md:mb-6">
+            {c.hero.h1a}
+            <br />
+            <span className="text-[#F5C518]" style={{ textDecoration: "underline", textDecorationColor: "rgba(245,197,24,0.35)", textUnderlineOffset: "6px", textDecorationThickness: "2px" }}>
+              {c.hero.h1b}
+            </span>
+          </h1>
+
+          <p className="text-sm md:text-lg lg:text-xl text-white/55 max-w-2xl mx-auto mb-7 md:mb-10 leading-relaxed">
+            {c.hero.sub}
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 md:mb-14">
+            <TrackableLink href={`${p}/free-audit`} track="free-audit" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm md:text-base hover:bg-[#F5C518]/90 transition-all shadow-2xl shadow-[#F5C518]/25 hover:-translate-y-0.5">
+              {c.hero.cta1}
+            </TrackableLink>
+            <TrackableLink href="tel:+966564229190" track="phone" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full border border-white/20 text-white font-medium text-sm md:text-base hover:border-white/40 hover:bg-white/[0.03] transition-all">
+              {isAr ? <>{c.hero.cta2} <span dir="ltr">+966 56 422 9190</span></> : c.hero.cta2}
+            </TrackableLink>
+          </div>
+
+          <div className="flex flex-row items-center justify-center gap-6 sm:gap-12 md:gap-14">
+            {c.hero.stats.map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className="text-xl md:text-3xl font-extrabold text-[#F5C518] leading-none mb-1">{stat.value}</div>
+                <div className="text-[10px] md:text-sm text-white/40 font-medium tracking-wide">{stat.label}</div>
               </div>
-
-              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold text-white leading-[1.1] tracking-tight mb-4 md:mb-6">
-                {c.hero.h1a}
-                <br />
-                <span className="text-[#F5C518]" style={{ textDecoration: "underline", textDecorationColor: "rgba(245,197,24,0.35)", textUnderlineOffset: "6px", textDecorationThickness: "2px" }}>
-                  {c.hero.h1b}
-                </span>
-              </h1>
-
-              <p className="text-sm md:text-lg lg:text-xl text-white/55 max-w-2xl mx-auto lg:mx-0 mb-7 md:mb-10 leading-relaxed">
-                {c.hero.sub}
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 mb-10 md:mb-14">
-                <TrackableLink href={`${p}/free-audit`} track="free-audit" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm md:text-base hover:bg-[#F5C518]/90 transition-all shadow-2xl shadow-[#F5C518]/25 hover:-translate-y-0.5">
-                  {c.hero.cta1}
-                </TrackableLink>
-                <TrackableLink href="tel:+966564229190" track="phone" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full border border-white/20 text-white font-medium text-sm md:text-base hover:border-white/40 hover:bg-white/[0.03] transition-all">
-                  {isAr ? <>{c.hero.cta2} <span dir="ltr">+966 56 422 9190</span></> : c.hero.cta2}
-                </TrackableLink>
-              </div>
-
-              <div className="flex flex-row items-center justify-center lg:justify-start gap-6 sm:gap-12 md:gap-14">
-                {c.hero.stats.map((stat, i) => (
-                  <div key={i} className="text-center">
-                    <div className="text-xl md:text-3xl font-extrabold text-[#F5C518] leading-none mb-1">{stat.value}</div>
-                    <div className="text-[10px] md:text-sm text-white/40 font-medium tracking-wide">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Image column — desktop only */}
-            <div className="hidden lg:block">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/40">
-                <Image
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
-                  alt={isAr ? "لوحة تحليلات التسويق الرقمي" : "Digital marketing analytics dashboard"}
-                  width={600}
-                  height={420}
-                  priority
-                  sizes="45vw"
-                  className="w-full h-[420px] object-cover opacity-90"
-                />
-                <div className={`absolute inset-0 ${isAr ? "bg-gradient-to-r" : "bg-gradient-to-l"} from-[#080E1A]/50 to-transparent`} />
-                <div className="absolute inset-0 rounded-2xl border border-[#F5C518]/10" />
-              </div>
-            </div>
-
+            ))}
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#080E1A] to-transparent pointer-events-none" />
@@ -329,28 +294,14 @@ export default async function HomePage({ params }: PageProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
             {services.map((service, i) => (
-              <article key={service.slug} className={`reveal delay-${(i % 4) + 1} group relative bg-[#0E1A2E] border border-white/[0.06] rounded-xl hover:-translate-y-1 hover:border-[#F5C518]/25 transition-all duration-300 overflow-hidden flex flex-col`}>
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5C518] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
-                {/* Card image */}
-                <div className="relative h-36 overflow-hidden">
-                  <Image
-                    src={SERVICE_IMAGES[service.slug]}
-                    alt={service.title}
-                    fill
-                    loading="lazy"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-[#0E1A2E]/55" />
-                </div>
-                {/* Card content */}
-                <div className="p-5 md:p-6 flex flex-col flex-1">
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold text-[#F5C518] bg-[#F5C518]/10 mb-3">{c.services.badge}</span>
-                  <div className="text-xl md:text-2xl leading-none mb-2 md:mb-3">{service.icon}</div>
-                  <h3 className="text-white font-bold text-sm md:text-base mb-2 leading-tight">{service.title}</h3>
-                  <p className="text-white/50 text-xs leading-relaxed mb-4 flex-1">{service.desc}</p>
-                  <Link href={`${p}/services/${service.slug}`} className="inline-flex items-center gap-1 text-[#F5C518] text-xs font-semibold group-hover:gap-2 transition-all mt-auto">{c.services.learnMore}</Link>
-                </div>
+              <article key={service.slug} className={`reveal delay-${(i % 4) + 1} group relative bg-[#0E1A2E] border border-white/[0.06] rounded-xl p-5 md:p-7 hover:-translate-y-1 hover:border-[#F5C518]/25 transition-all duration-300 overflow-hidden`}>
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5C518] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <span className="absolute top-3 right-4 text-5xl md:text-7xl font-black text-white/[0.025] select-none pointer-events-none leading-none">{String(i + 1).padStart(2, "0")}</span>
+                <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold text-[#F5C518] bg-[#F5C518]/10 mb-4">{c.services.badge}</span>
+                <div className="text-xl md:text-3xl leading-none mb-3 md:mb-4">{service.icon}</div>
+                <h3 className="text-white font-bold text-sm md:text-lg mb-2 leading-tight">{service.title}</h3>
+                <p className="text-white/50 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">{service.desc}</p>
+                <Link href={`${p}/services/${service.slug}`} className="inline-flex items-center gap-1 text-[#F5C518] text-xs md:text-sm font-semibold group-hover:gap-2 transition-all">{c.services.learnMore}</Link>
               </article>
             ))}
           </div>
@@ -381,19 +332,8 @@ export default async function HomePage({ params }: PageProps) {
       </section>
 
       {/* HOW WE WORK */}
-      <section className="relative py-12 md:py-20 overflow-hidden">
-        {/* Background image with heavy overlay */}
-        <Image
-          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=60"
-          alt=""
-          fill
-          loading="lazy"
-          sizes="100vw"
-          className="object-cover"
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#080E1A]/95 via-[#080E1A]/90 to-[#080E1A]/95" />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-20 bg-[#080E1A]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-14 reveal">
             <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.howWeWork.label}</span>
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white">{c.howWeWork.heading}</h2>
