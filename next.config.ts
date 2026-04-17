@@ -29,7 +29,7 @@ const securityHeaders = [
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https://images.unsplash.com https://www.google-analytics.com https://www.googletagmanager.com https://localcitysolutions.com",
       "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://api.web3forms.com https://pagespeedonline.googleapis.com",
-      "frame-src 'self' https://www.google.com https://www.googletagmanager.com",
+      "frame-src 'self' https://www.google.com https://maps.google.com https://www.googletagmanager.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self' https://api.web3forms.com",

@@ -73,13 +73,17 @@ const orgSchema = {
   email: "hello@localcitysolutions.com",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Riyadh",
+    streetAddress: "Prince Saad bin Abdulrahman Al-Awwal Road",
+    addressLocality: "As Saadah, Riyadh",
+    postalCode: "14257",
     addressCountry: "SA",
   },
   sameAs: [
     "https://x.com/LocalCitySoluti",
     "https://www.instagram.com/localcitysolutions/",
     "https://www.facebook.com/localcitysolutions",
+    "https://www.linkedin.com/company/local-city-solutions/",
+    "https://www.youtube.com/@LocalCitySolutions",
   ],
   areaServed: { "@type": "City", name: "Riyadh" },
   serviceType: [
@@ -104,7 +108,9 @@ const localBizSchema = {
   telephone: "+966564229190",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Riyadh",
+    streetAddress: "Prince Saad bin Abdulrahman Al-Awwal Road",
+    addressLocality: "As Saadah, Riyadh",
+    postalCode: "14257",
     addressRegion: "Riyadh Province",
     addressCountry: "SA",
   },
@@ -112,6 +118,8 @@ const localBizSchema = {
     "https://x.com/LocalCitySoluti",
     "https://www.instagram.com/localcitysolutions/",
     "https://www.facebook.com/localcitysolutions",
+    "https://www.linkedin.com/company/local-city-solutions/",
+    "https://www.youtube.com/@LocalCitySolutions",
   ],
   aggregateRating: {
     "@type": "AggregateRating",
