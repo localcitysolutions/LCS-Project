@@ -17,7 +17,8 @@ const GONE_PATHS = new Set([
 ]);
 
 export default function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
+  // Normalise trailing slash so "/path/" and "/path" both match GONE_PATHS
+  const pathname = request.nextUrl.pathname.replace(/\/$/, "") || "/";
 
   if (GONE_PATHS.has(pathname)) {
     return new NextResponse(null, { status: 410 });
