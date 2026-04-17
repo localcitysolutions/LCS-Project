@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import CTABox from "@/components/CTABox";
 import TrackableLink from "@/components/TrackableLink";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 type Locale = "en" | "ar";
 interface PageProps { params: Promise<{ locale: Locale; slug: string }> }
@@ -708,8 +709,15 @@ export default async function IndustryPage({ params }: PageProps) {
 
   return (
     <div dir={isAr ? "rtl" : "ltr"}>
+      <Breadcrumbs
+        items={[
+          { label: isAr ? "الرئيسية" : "Home", href: `/${locale}` },
+          { label: isAr ? "القطاعات" : "Industries", href: `/${locale}/industries` },
+          { label: isAr ? (industry.nameAr ?? industry.name) : industry.name },
+        ]}
+      />
       {/* Hero */}
-      <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
+      <section className="relative bg-[#080E1A] pt-6 md:pt-10 pb-16 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.08) 0%, transparent 70%)" }} />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <div className="inline-flex items-center gap-2 bg-[#F5C518]/10 border border-[#F5C518]/20 rounded-full px-4 py-1.5 mb-6">

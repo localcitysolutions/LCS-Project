@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BLOG_POSTS, CATEGORIES } from "@/data/blog-posts";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 type Locale = "en" | "ar";
 interface PageProps {
@@ -113,8 +114,14 @@ export default async function BlogPage({ params, searchParams }: PageProps) {
 
   return (
     <div dir={isAr ? "rtl" : "ltr"}>
+      <Breadcrumbs
+        items={[
+          { label: isAr ? "الرئيسية" : "Home", href: `/${locale}` },
+          { label: isAr ? "المدونة" : "Blog" },
+        ]}
+      />
       {/* Hero */}
-      <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-16 md:pb-20 overflow-hidden">
+      <section className="relative bg-[#080E1A] pt-6 md:pt-10 pb-16 md:pb-20 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.07) 0%, transparent 70%)" }}
