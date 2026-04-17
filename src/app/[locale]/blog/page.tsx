@@ -13,7 +13,7 @@ const CONTENT = {
   en: {
     meta: {
       title: "Digital Marketing Blog — LCS Agency Riyadh",
-      description: "Practical guides on SEO, Google Ads, Meta Ads, social media, and digital marketing for Riyadh businesses and Saudi entrepreneurs. Tips, strategies, and growth insights.",
+      description: "Practical SEO, Google Ads, Meta Ads, and social media guides for Riyadh businesses. Strategies and growth tips from LCS digital marketing specialists.",
     },
     label: "Our Blog",
     h1: "Digital Marketing Insights for Saudi Businesses",
@@ -30,7 +30,7 @@ const CONTENT = {
   ar: {
     meta: {
       title: "مدونة التسويق الرقمي للأعمال السعودية",
-      description: "أدلة عملية حول تحسين محركات البحث وإعلانات قوقل وإعلانات ميتا والسوشيال ميديا والتسويق الرقمي لأعمال الرياض ورواد الأعمال السعوديين. نصائح واستراتيجيات ورؤى للنمو.",
+      description: "أدلة عملية في SEO وإعلانات قوقل وميتا والسوشيال ميديا لأعمال الرياض. نصائح واستراتيجيات من متخصصي لوكال سيتي سولوشنز.",
     },
     label: "مدونتنا",
     h1: "رؤى التسويق الرقمي للأعمال السعودية",
