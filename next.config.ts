@@ -24,11 +24,11 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://connect.facebook.net",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://connect.facebook.net https://www.clarity.ms",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https://images.unsplash.com https://www.google-analytics.com https://www.googletagmanager.com https://localcitysolutions.com",
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://api.web3forms.com https://pagespeedonline.googleapis.com",
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://api.web3forms.com https://pagespeedonline.googleapis.com https://www.clarity.ms",
       "frame-src 'self' https://www.google.com https://maps.google.com https://www.googletagmanager.com",
       "object-src 'none'",
       "base-uri 'self'",
