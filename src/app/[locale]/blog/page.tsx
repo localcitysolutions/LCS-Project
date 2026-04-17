@@ -52,8 +52,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const c = CONTENT[locale] || CONTENT.en;
   const isAr = locale === "ar";
+  const pageTitle = isAr
+    ? "مدونة التسويق الرقمي | لوكال سيتي سولوشنز"
+    : "Digital Marketing Blog | Local City Solutions";
   return {
-    title: c.meta.title,
+    title: { absolute: pageTitle },
     description: c.meta.description,
     alternates: {
       canonical: `https://localcitysolutions.com/${locale}/blog`,

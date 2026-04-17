@@ -9,13 +9,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const isAr = locale === "ar";
   const title = isAr
-    ? "تواصل معنا — وكالة تسويق رقمي في الرياض | لوكال سيتي سولوشنز"
-    : "Contact Us — Digital Marketing Agency Riyadh | Local City Solutions";
+    ? "تواصل معنا | لوكال سيتي سولوشنز"
+    : "Contact Us | Local City Solutions";
+  const ogTitle = isAr
+    ? "تواصل مع لوكال سيتي سولوشنز — وكالة التسويق الرقمي في الرياض"
+    : "Contact Local City Solutions — Digital Marketing Agency Riyadh";
   const description = isAr
-    ? "تواصل مع فريقنا في الرياض عبر واتساب أو اتصال أو نموذج. نرد خلال ساعة عمل. خدمات تسويق رقمي متخصصة للأعمال السعودية."
-    : "Get in touch with our Riyadh digital marketing team. WhatsApp, call, or fill out a form. We respond within 1 business hour. Specialists in SEO, Google Ads & more.";
+    ? "تواصل معنا في لوكال سيتي سولوشنز. مكتبنا في السعادة، الرياض ١٤٢٥٧. واتساب أو اتصال أو نموذج. استشارة مجانية."
+    : "Get in touch with Local City Solutions — your Riyadh digital marketing agency. Office in As Saadah, Riyadh 14257. Free consultation.";
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: {
       canonical: `https://localcitysolutions.com/${locale}/contact`,
@@ -26,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title,
+      title: ogTitle,
       description,
       url: `https://localcitysolutions.com/${locale}/contact`,
       locale: isAr ? "ar_SA" : "en_US",
