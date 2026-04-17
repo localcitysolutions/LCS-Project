@@ -3,6 +3,11 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import CTABox from "@/components/CTABox";
 import TrackableLink from "@/components/TrackableLink";
+import { buildDistrictLocalBusinessSchema, buildFAQSchema, DISTRICT_GEO } from "@/lib/seo/districts";
+import type { DistrictSlug } from "@/lib/seo/districts";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import LocalLinks from "@/components/LocalLinks";
+import { industryNameToSlug, INDUSTRY_CATALOG, BLOG_CATALOG, DISTRICT_BLOG_SLUGS } from "@/lib/link-maps";
 
 type Locale = "en" | "ar";
 interface PageProps { params: Promise<{ locale: Locale; slug: string }> }
@@ -52,9 +57,12 @@ const DISTRICTS: District[] = [
     heroDesc:
       "Al Olaya is the beating heart of Riyadh's commercial life — home to Fortune 500 offices, luxury towers, and the Kingdom's top retail brands. We help businesses here compete at the highest level.",
     about: [
-      "Al Olaya (العليا) stands as Riyadh's most prestigious business address. Olaya Street runs north-to-south as a spine of commerce lined with five-star hotels, corporate headquarters, and flagship retail. Every major bank, consulting firm, and luxury brand maintains a presence here — meaning competition for local visibility is fierce.",
-      "The district attracts a high-income demographic including Saudi executives, expatriate professionals, and international business travelers. Google searches in Al Olaya skew heavily toward premium services: luxury hospitality, corporate catering, high-end clinics, and business services. Ranking here requires precision keyword targeting and a strong brand trust signal.",
-      "Local City Solutions has worked extensively in Al Olaya, running Google Ads and SEO campaigns for professional services firms, medical clinics, and upscale restaurants. We understand what it takes to cut through the noise in the Kingdom's most competitive postal code.",
+      "Al Olaya (العليا) stands as Riyadh's most prestigious business address. Olaya Street runs north-to-south as a spine of commerce lined with five-star hotels, corporate headquarters, and flagship retail. Every major bank, consulting firm, and luxury brand maintains a presence here — meaning competition for local visibility is fierce. The district is anchored by landmarks such as Kingdom Centre and Al Faisaliah Tower, which draw millions of visitors each year and create a dense commercial ecosystem unlike anywhere else in Saudi Arabia.",
+      "Understanding Al Olaya means understanding its geography of wealth. The district splits into three functional zones: the southern stretch around Tahlia Street hosts luxury restaurants, international cafés, and boutique beauty destinations; the central Olaya–King Fahd Road corridor is the domain of banking, consulting, and Fortune 500 branch offices; the northern fringe edges into Al Sulaimaniyah and serves embassies, private clinics, and premium residential towers. Each zone demands a different search strategy — a fine-dining restaurant on Tahlia needs Instagram and Google Maps muscle, while a corporate law firm on King Fahd Road needs LinkedIn and branded search authority.",
+      "The competition for digital visibility in Al Olaya is as intense as the competition for physical space. Cost-per-click on Google Ads for keywords like 'medical clinic Riyadh' or 'luxury restaurant Al Olaya' can reach 3–5× the rates seen in suburban districts. Organic SEO timelines are longer because established players have accumulated years of backlinks, reviews, and domain authority. Businesses entering this market without a clear keyword strategy and strong website performance will burn through budget before seeing meaningful returns.",
+      "Local City Solutions has spent 5 years running campaigns specifically within Al Olaya. Our team knows that timing matters here — lunch delivery searches peak between 11:30 and 12:30, medical searches spike on Sunday mornings after the weekend, and luxury retail queries double during Eid and National Day. We build campaign schedules around these patterns rather than running always-on campaigns at flat budgets. Our Al Olaya clients consistently see lower cost-per-lead than market benchmarks because we target intent at its peak, not just presence throughout the day.",
+      "The service mix that works best in Al Olaya reflects the district's dual identity as both a corporate hub and a consumer destination. For B2B businesses — consulting firms, law offices, event companies — LinkedIn Ads combined with branded Google Search campaigns delivers the highest quality leads. For consumer-facing businesses — clinics, restaurants, salons — a combination of Google Maps optimisation, Instagram content, and targeted Google Display Ads covering the Al Olaya geofence outperforms any single channel alone. Our team structures each client's channel mix based on their customer journey, not a one-size-fits-all package.",
+      "Three industry categories deserve special attention for businesses in Al Olaya. Medical and aesthetic clinics face the toughest digital environment: patients research extensively, compare reviews obsessively, and expect clinical credibility signals before converting. Real estate agencies compete for a small pool of ultra-high-value keywords and need exceptional landing pages and tracking to measure lead quality. Corporate hospitality and catering businesses benefit disproportionately from Google Business Profile because procurement managers search by location before researching further. Each of these verticals requires a different approach — and our team has built and tested playbooks for all three within this specific district.",
     ],
     industries: [
       { name: "Corporate Services", icon: "🏢" },
@@ -82,6 +90,8 @@ const DISTRICTS: District[] = [
       { q: "How competitive is digital marketing in Al Olaya compared to other Riyadh districts?", a: "Al Olaya is the most competitive district in Riyadh. CPCs for Google Ads can run 3–5× higher than in suburban districts. Success requires tight audience targeting, strong Quality Scores, and SEO authority built over months — not quick fixes." },
       { q: "What industries see the best ROI from digital marketing in Al Olaya?", a: "Medical clinics, legal firms, corporate catering, luxury retail, and real estate consistently see the strongest returns. These sectors have high average transaction values that justify premium ad spend." },
       { q: "Can a small business compete in Al Olaya digitally?", a: "Yes — by owning a very specific niche. A boutique physiotherapy clinic or specialty café can dominate a narrow search category even against larger competitors. Hyperlocal SEO and a strong Google Business Profile are your best tools." },
+      { q: "How long does it take to rank on Google Maps in Al Olaya?", a: "For a new or unoptimised Google Business Profile in Al Olaya, expect 3–6 months of consistent work before achieving 3-pack visibility for your primary keywords. Existing profiles with reviews and correct information can see movement in 4–8 weeks. The key variables are review velocity, profile completeness, and the strength of your category competition." },
+      { q: "Is Google Ads or SEO more cost-effective for an Al Olaya business starting from scratch?", a: "Google Ads gives you immediate visibility and is the better short-term bet while your SEO authority builds. However, in Al Olaya where CPCs are high, the long-term cost of organic rankings is almost always lower per lead. Our recommendation: run Google Ads from day one to drive enquiries, and invest in SEO simultaneously so you can gradually reduce ad dependency over 12–18 months." },
     ],
     ctaHeading: "Win in Al Olaya's Competitive Market",
     ctaSubtitle: "We know Al Olaya inside out. Get a free audit and a tailored strategy to grow your visibility in Riyadh's prime business district.",
@@ -1399,11 +1409,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const isAr = locale === "ar";
   const base = "https://localcitysolutions.com";
   const title = isAr
-    ? `تسويق رقمي في حي ${d.nameAr}، الرياض | لوكال سيتي سولوشنز`
-    : `${d.name} Digital Marketing Agency | Local City Solutions Riyadh`;
+    ? `وكالة تسويق رقمي في ${d.nameAr}، الرياض | لوكال سيتي`
+    : `Digital Marketing Agency in ${d.name}, Riyadh`;
   const description = isAr
     ? `خدمات تسويق رقمي متخصصة لأعمال حي ${d.nameAr} بالرياض. SEO، إعلانات قوقل، تصميم مواقع، وملف نشاط تجاري. تواصل معنا الحين.`
-    : `Local City Solutions provides SEO, Google Ads, and digital marketing in ${d.name} (${d.nameAr}), ${d.zone}. Hyperlocal campaigns built for the Riyadh market.`;
+    : `Digital marketing agency serving ${d.name}, Riyadh. SEO, Google Ads, Meta Ads & web design tailored for ${d.zone} businesses.`;
   return {
     title: { absolute: title },
     description,
@@ -1480,10 +1490,58 @@ export default async function DistrictPage({ params }: PageProps) {
         ],
   };
 
+  const districtSchema = DISTRICT_GEO[d.slug as DistrictSlug]
+    ? buildDistrictLocalBusinessSchema(d.slug as DistrictSlug, locale)
+    : null;
+
+  // Build industry links from district's industries array
+  const industryLinks = d.industries
+    .map((ind) => {
+      const slug = industryNameToSlug(ind.name);
+      if (!slug || !INDUSTRY_CATALOG[slug]) return null;
+      const meta = INDUSTRY_CATALOG[slug];
+      return {
+        labelEn: `${meta.nameEn} Marketing in Riyadh`,
+        labelAr: `تسويق ${meta.nameAr} في الرياض`,
+        href: `/${locale}/industries/${slug}`,
+      };
+    })
+    .filter((x): x is NonNullable<typeof x> => x !== null);
+
+  // Blog links relevant to any local business
+  const blogLinks = DISTRICT_BLOG_SLUGS.map((slug) => ({
+    labelEn: BLOG_CATALOG[slug]?.en ?? slug,
+    labelAr: BLOG_CATALOG[slug]?.ar ?? slug,
+    href: `/${locale}/blog/${slug}`,
+  }));
+
+  const localeFaq = d.faq.map((item, i) => ({
+    q: ar?.faq[i]?.q ?? item.q,
+    a: ar?.faq[i]?.a ?? item.a,
+  }));
+  const faqSchema = buildFAQSchema(localeFaq);
+
   return (
     <>
+      {districtSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(districtSchema) }}
+        />
+      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <Breadcrumbs
+        items={[
+          { label: isAr ? "الرئيسية" : "Home", href: `/${locale}` },
+          { label: isAr ? "أحياء الرياض" : "Riyadh Districts", href: `/${locale}/riyadh` },
+          { label: isAr ? d.nameAr : d.name },
+        ]}
+      />
       {/* Hero */}
-      <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
+      <section className="relative bg-[#080E1A] pt-6 md:pt-10 pb-16 md:pb-24 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.08) 0%, transparent 70%)" }}
@@ -1494,7 +1552,7 @@ export default async function DistrictPage({ params }: PageProps) {
             <span className="text-[#F5C518] text-xs font-semibold uppercase tracking-widest">{ui.zone}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
-            {isAr ? `تسويق رقمي في حي ${d.nameAr}، الرياض` : d.tagline}
+            {isAr ? `تسويق رقمي في حي ${d.nameAr}، الرياض` : `Digital Marketing Agency in ${d.name}, Riyadh`}
           </h1>
           <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
             {ar?.heroDesc ?? d.heroDesc}
@@ -1634,23 +1692,30 @@ export default async function DistrictPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Internal Links */}
-      <section className="bg-[#080E1A] py-12 border-t border-white/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 reveal">
-          <p className="text-white/30 text-xs uppercase tracking-widest mb-4">{ui.exploreLabel}</p>
-          <div className="flex flex-wrap gap-2">
-            {ui.serviceLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-3 py-1.5 rounded-full border border-white/10 text-white/40 text-xs hover:text-white/70 hover:border-white/20 transition-all"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <LocalLinks
+        locale={locale}
+        groups={[
+          {
+            labelEn: "Our Services",
+            labelAr: "خدماتنا",
+            links: ui.serviceLinks.map((l) => ({
+              labelEn: l.label,
+              labelAr: l.label,
+              href: l.href,
+            })),
+          },
+          {
+            labelEn: "Industries We Serve in Riyadh",
+            labelAr: "القطاعات التي نخدمها في الرياض",
+            links: industryLinks,
+          },
+          {
+            labelEn: "From Our Blog",
+            labelAr: "من مدونتنا",
+            links: blogLinks,
+          },
+        ]}
+      />
 
       {/* CTA */}
       <CTABox heading={ar?.ctaHeading ?? d.ctaHeading} subtitle={ar?.ctaSubtitle ?? d.ctaSubtitle} locale={locale} bg="dark" />

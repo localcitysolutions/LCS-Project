@@ -3,6 +3,12 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import CTABox from "@/components/CTABox";
 import TrackableLink from "@/components/TrackableLink";
+import { buildServiceSchema } from "@/lib/seo/services";
+import type { ServiceSlug } from "@/lib/seo/services";
+import { buildFAQSchema } from "@/lib/seo/districts";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import LocalLinks from "@/components/LocalLinks";
+import { SERVICE_BLOG_MAP, SERVICE_INDUSTRY_MAP, BLOG_CATALOG, INDUSTRY_CATALOG, TOP_CROSS_DISTRICTS } from "@/lib/link-maps";
 
 type Locale = "en" | "ar";
 interface PageProps { params: Promise<{ locale: Locale; slug: string }> }
@@ -512,10 +518,44 @@ export default async function ServicePage({ params }: PageProps) {
   const c = service[locale] || service.en;
   const p = `/${locale}`;
 
+  const serviceSchema = buildServiceSchema(slug as ServiceSlug, locale);
+  const faqSchema = buildFAQSchema(c.faq);
+
+  const blogLinks = (SERVICE_BLOG_MAP[slug] ?? []).map((bSlug) => ({
+    labelEn: BLOG_CATALOG[bSlug]?.en ?? bSlug,
+    labelAr: BLOG_CATALOG[bSlug]?.ar ?? bSlug,
+    href: `/${locale}/blog/${bSlug}`,
+  }));
+  const industryLinks = (SERVICE_INDUSTRY_MAP[slug] ?? []).map((iSlug) => ({
+    labelEn: `${INDUSTRY_CATALOG[iSlug]?.nameEn ?? iSlug} Marketing`,
+    labelAr: `تسويق ${INDUSTRY_CATALOG[iSlug]?.nameAr ?? iSlug}`,
+    href: `/${locale}/industries/${iSlug}`,
+  }));
+  const districtLinks = TOP_CROSS_DISTRICTS.map((d) => ({
+    labelEn: d.nameEn,
+    labelAr: d.nameAr,
+    href: `/${locale}/riyadh/${d.slug}`,
+  }));
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <Breadcrumbs
+        items={[
+          { label: isAr ? "الرئيسية" : "Home", href: `/${locale}` },
+          { label: isAr ? "خدماتنا" : "Services", href: `/${locale}/services` },
+          { label: c.title },
+        ]}
+      />
       {/* Hero */}
-      <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
+      <section className="relative bg-[#080E1A] pt-6 md:pt-10 pb-16 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.08) 0%, transparent 70%)" }} />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
           <div className="inline-flex items-center gap-2 bg-[#F5C518]/10 border border-[#F5C518]/20 rounded-full px-4 py-1.5 mb-6">
@@ -613,6 +653,26 @@ export default async function ServicePage({ params }: PageProps) {
         </div>
       </section>
 
+      <LocalLinks
+        locale={locale}
+        groups={[
+          {
+            labelEn: "Riyadh Districts We Serve",
+            labelAr: "أحياء الرياض التي نخدمها",
+            links: districtLinks,
+          },
+          {
+            labelEn: "Industries We Specialise In",
+            labelAr: "القطاعات التي نتخصص فيها",
+            links: industryLinks,
+          },
+          {
+            labelEn: "From Our Blog",
+            labelAr: "من مدونتنا",
+            links: blogLinks,
+          },
+        ]}
+      />
       <CTABox heading={c.ctaHeading} subtitle={c.ctaSubtitle} locale={locale} bg="dark" />
     </>
   );

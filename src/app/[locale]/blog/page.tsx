@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BLOG_POSTS, CATEGORIES } from "@/data/blog-posts";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 type Locale = "en" | "ar";
 interface PageProps {
@@ -12,7 +13,7 @@ const CONTENT = {
   en: {
     meta: {
       title: "Digital Marketing Blog — LCS Agency Riyadh",
-      description: "Practical guides on SEO, Google Ads, Meta Ads, social media, and digital marketing for Riyadh businesses and Saudi entrepreneurs. Tips, strategies, and growth insights.",
+      description: "Practical SEO, Google Ads, Meta Ads, and social media guides for Riyadh businesses. Strategies and growth tips from LCS digital marketing specialists.",
     },
     label: "Our Blog",
     h1: "Digital Marketing Insights for Saudi Businesses",
@@ -29,7 +30,7 @@ const CONTENT = {
   ar: {
     meta: {
       title: "مدونة التسويق الرقمي للأعمال السعودية",
-      description: "أدلة عملية حول تحسين محركات البحث وإعلانات قوقل وإعلانات ميتا والسوشيال ميديا والتسويق الرقمي لأعمال الرياض ورواد الأعمال السعوديين. نصائح واستراتيجيات ورؤى للنمو.",
+      description: "أدلة عملية في SEO وإعلانات قوقل وميتا والسوشيال ميديا لأعمال الرياض. نصائح واستراتيجيات من متخصصي لوكال سيتي سولوشنز.",
     },
     label: "مدونتنا",
     h1: "رؤى التسويق الرقمي للأعمال السعودية",
@@ -113,8 +114,14 @@ export default async function BlogPage({ params, searchParams }: PageProps) {
 
   return (
     <div dir={isAr ? "rtl" : "ltr"}>
+      <Breadcrumbs
+        items={[
+          { label: isAr ? "الرئيسية" : "Home", href: `/${locale}` },
+          { label: isAr ? "المدونة" : "Blog" },
+        ]}
+      />
       {/* Hero */}
-      <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-16 md:pb-20 overflow-hidden">
+      <section className="relative bg-[#080E1A] pt-6 md:pt-10 pb-16 md:pb-20 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.07) 0%, transparent 70%)" }}
