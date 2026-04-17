@@ -6,6 +6,8 @@ import TrackableLink from "@/components/TrackableLink";
 import { buildDistrictLocalBusinessSchema, buildFAQSchema, DISTRICT_GEO } from "@/lib/seo/districts";
 import type { DistrictSlug } from "@/lib/seo/districts";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import LocalLinks from "@/components/LocalLinks";
+import { industryNameToSlug, INDUSTRY_CATALOG, BLOG_CATALOG, DISTRICT_BLOG_SLUGS } from "@/lib/link-maps";
 
 type Locale = "en" | "ar";
 interface PageProps { params: Promise<{ locale: Locale; slug: string }> }
@@ -1487,6 +1489,27 @@ export default async function DistrictPage({ params }: PageProps) {
     ? buildDistrictLocalBusinessSchema(d.slug as DistrictSlug, locale)
     : null;
 
+  // Build industry links from district's industries array
+  const industryLinks = d.industries
+    .map((ind) => {
+      const slug = industryNameToSlug(ind.name);
+      if (!slug || !INDUSTRY_CATALOG[slug]) return null;
+      const meta = INDUSTRY_CATALOG[slug];
+      return {
+        labelEn: `${meta.nameEn} Marketing in Riyadh`,
+        labelAr: `تسويق ${meta.nameAr} في الرياض`,
+        href: `/${locale}/industries/${slug}`,
+      };
+    })
+    .filter((x): x is NonNullable<typeof x> => x !== null);
+
+  // Blog links relevant to any local business
+  const blogLinks = DISTRICT_BLOG_SLUGS.map((slug) => ({
+    labelEn: BLOG_CATALOG[slug]?.en ?? slug,
+    labelAr: BLOG_CATALOG[slug]?.ar ?? slug,
+    href: `/${locale}/blog/${slug}`,
+  }));
+
   const localeFaq = d.faq.map((item, i) => ({
     q: ar?.faq[i]?.q ?? item.q,
     a: ar?.faq[i]?.a ?? item.a,
@@ -1664,23 +1687,30 @@ export default async function DistrictPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Internal Links */}
-      <section className="bg-[#080E1A] py-12 border-t border-white/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 reveal">
-          <p className="text-white/30 text-xs uppercase tracking-widest mb-4">{ui.exploreLabel}</p>
-          <div className="flex flex-wrap gap-2">
-            {ui.serviceLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-3 py-1.5 rounded-full border border-white/10 text-white/40 text-xs hover:text-white/70 hover:border-white/20 transition-all"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <LocalLinks
+        locale={locale}
+        groups={[
+          {
+            labelEn: "Our Services",
+            labelAr: "خدماتنا",
+            links: ui.serviceLinks.map((l) => ({
+              labelEn: l.label,
+              labelAr: l.label,
+              href: l.href,
+            })),
+          },
+          {
+            labelEn: "Industries We Serve in Riyadh",
+            labelAr: "القطاعات التي نخدمها في الرياض",
+            links: industryLinks,
+          },
+          {
+            labelEn: "From Our Blog",
+            labelAr: "من مدونتنا",
+            links: blogLinks,
+          },
+        ]}
+      />
 
       {/* CTA */}
       <CTABox heading={ar?.ctaHeading ?? d.ctaHeading} subtitle={ar?.ctaSubtitle ?? d.ctaSubtitle} locale={locale} bg="dark" />

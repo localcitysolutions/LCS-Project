@@ -7,6 +7,8 @@ import { buildServiceSchema } from "@/lib/seo/services";
 import type { ServiceSlug } from "@/lib/seo/services";
 import { buildFAQSchema } from "@/lib/seo/districts";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import LocalLinks from "@/components/LocalLinks";
+import { SERVICE_BLOG_MAP, SERVICE_INDUSTRY_MAP, BLOG_CATALOG, INDUSTRY_CATALOG, TOP_CROSS_DISTRICTS } from "@/lib/link-maps";
 
 type Locale = "en" | "ar";
 interface PageProps { params: Promise<{ locale: Locale; slug: string }> }
@@ -519,6 +521,22 @@ export default async function ServicePage({ params }: PageProps) {
   const serviceSchema = buildServiceSchema(slug as ServiceSlug, locale);
   const faqSchema = buildFAQSchema(c.faq);
 
+  const blogLinks = (SERVICE_BLOG_MAP[slug] ?? []).map((bSlug) => ({
+    labelEn: BLOG_CATALOG[bSlug]?.en ?? bSlug,
+    labelAr: BLOG_CATALOG[bSlug]?.ar ?? bSlug,
+    href: `/${locale}/blog/${bSlug}`,
+  }));
+  const industryLinks = (SERVICE_INDUSTRY_MAP[slug] ?? []).map((iSlug) => ({
+    labelEn: `${INDUSTRY_CATALOG[iSlug]?.nameEn ?? iSlug} Marketing`,
+    labelAr: `تسويق ${INDUSTRY_CATALOG[iSlug]?.nameAr ?? iSlug}`,
+    href: `/${locale}/industries/${iSlug}`,
+  }));
+  const districtLinks = TOP_CROSS_DISTRICTS.map((d) => ({
+    labelEn: d.nameEn,
+    labelAr: d.nameAr,
+    href: `/${locale}/riyadh/${d.slug}`,
+  }));
+
   return (
     <>
       <script
@@ -635,6 +653,26 @@ export default async function ServicePage({ params }: PageProps) {
         </div>
       </section>
 
+      <LocalLinks
+        locale={locale}
+        groups={[
+          {
+            labelEn: "Riyadh Districts We Serve",
+            labelAr: "أحياء الرياض التي نخدمها",
+            links: districtLinks,
+          },
+          {
+            labelEn: "Industries We Specialise In",
+            labelAr: "القطاعات التي نتخصص فيها",
+            links: industryLinks,
+          },
+          {
+            labelEn: "From Our Blog",
+            labelAr: "من مدونتنا",
+            links: blogLinks,
+          },
+        ]}
+      />
       <CTABox heading={c.ctaHeading} subtitle={c.ctaSubtitle} locale={locale} bg="dark" />
     </>
   );
