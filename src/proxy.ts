@@ -5,8 +5,20 @@ import type { NextRequest } from "next/server";
 
 const intlMiddleware = createMiddleware(routing);
 
+// Off-niche legacy paths — return 410 Gone so Google removes them from index
+const GONE_PATHS = new Set([
+  "/web-hosting-riyadh",
+  "/graphic-design-riyadh",
+  "/logo-design-riyadh",
+  "/video-production-riyadh",
+]);
+
 export default function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+
+  if (GONE_PATHS.has(pathname)) {
+    return new NextResponse(null, { status: 410 });
+  }
   const userAgent = request.headers.get("user-agent") || "";
 
   // Only apply language detection on the bare root path "/"
