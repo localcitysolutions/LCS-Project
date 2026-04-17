@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import CTABox from "@/components/CTABox";
 import TrackableLink from "@/components/TrackableLink";
+import { buildServiceSchema } from "@/lib/seo/services";
+import type { ServiceSlug } from "@/lib/seo/services";
 
 type Locale = "en" | "ar";
 interface PageProps { params: Promise<{ locale: Locale; slug: string }> }
@@ -512,8 +514,14 @@ export default async function ServicePage({ params }: PageProps) {
   const c = service[locale] || service.en;
   const p = `/${locale}`;
 
+  const serviceSchema = buildServiceSchema(slug as ServiceSlug, locale);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* Hero */}
       <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.08) 0%, transparent 70%)" }} />
