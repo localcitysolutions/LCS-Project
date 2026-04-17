@@ -46,6 +46,26 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      // 301 redirects for old WordPress URL patterns (missing locale prefix)
+      {
+        source: "/services/digital-marketing",
+        destination: "/en/services/digital-marketing",
+        permanent: true,
+      },
+      {
+        source: "/riyadh-seo-services",
+        destination: "/en/services/seo",
+        permanent: true,
+      },
+      {
+        source: "/contact-us",
+        destination: "/en/contact",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
