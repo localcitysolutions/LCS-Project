@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { useParams } from "next/navigation";
 import { trackFormSubmit, trackWhatsAppClick, trackPhoneClick } from "@/lib/analytics";
 import { GoogleMapsEmbed } from "@/components/GoogleMapsEmbed";
+import { SocialContactGrid } from "@/components/SocialContactGrid";
 
 type Locale = "en" | "ar";
 
@@ -423,6 +424,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <SocialContactGrid locale={locale} />
     </div>
   );
 }
