@@ -65,6 +65,17 @@ const nextConfig: NextConfig = {
         destination: "/en/blog/instagram-marketing-cost-saudi-arabia",
         permanent: true,
       },
+      // Legacy WordPress contact URL
+      {
+        source: "/contact-2",
+        destination: "/en/contact",
+        permanent: true,
+      },
+      {
+        source: "/contact-2/",
+        destination: "/en/contact",
+        permanent: true,
+      },
     ];
   },
 };
