@@ -6,7 +6,10 @@ import type { NextRequest } from "next/server";
 const intlMiddleware = createMiddleware(routing);
 
 // Off-niche legacy paths — return 410 Gone so Google removes them from index
+// These must be checked BEFORE intlMiddleware runs, otherwise next-intl
+// prefixes them with /en/ and the app returns 404 instead of 410.
 const GONE_PATHS = new Set([
+  "/how-to-get-freelance-visa-saudi-arabia",
   "/web-hosting-riyadh",
   "/graphic-design-riyadh",
   "/logo-design-riyadh",

@@ -48,20 +48,21 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // 301 redirects for old WordPress URL patterns (missing locale prefix)
+      // 301s: old WordPress blog slugs → new Next.js blog posts
+      // Runs at the edge before locale middleware — safe for non-prefixed legacy paths
       {
-        source: "/services/digital-marketing",
-        destination: "/en/services/digital-marketing",
+        source: "/facebook-marketing-cost-in-saudi-arabia-2025",
+        destination: "/en/blog/facebook-marketing-cost-saudi-arabia-2026",
         permanent: true,
       },
       {
-        source: "/riyadh-seo-services",
-        destination: "/en/services/seo",
+        source: "/social-media-marketing-cost-in-saudi-arabia",
+        destination: "/en/blog/social-media-marketing-cost-saudi-arabia",
         permanent: true,
       },
       {
-        source: "/contact-us",
-        destination: "/en/contact",
+        source: "/instagram-marketing-cost-in-saudi-arabia",
+        destination: "/en/blog/instagram-marketing-cost-saudi-arabia",
         permanent: true,
       },
     ];
