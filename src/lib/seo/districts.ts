@@ -59,7 +59,9 @@ export function buildDistrictLocalBusinessSchema(
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Riyadh",
+      streetAddress: "Prince Saad bin Abdulrahman Al-Awwal Road",
+      addressLocality: "As Saadah, Riyadh",
+      postalCode: "14257",
       addressRegion: "Riyadh Province",
       addressCountry: "SA",
     },

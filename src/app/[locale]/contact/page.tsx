@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { useParams } from "next/navigation";
 import { trackFormSubmit, trackWhatsAppClick, trackPhoneClick } from "@/lib/analytics";
+import { GoogleMapsEmbed } from "@/components/GoogleMapsEmbed";
 
 type Locale = "en" | "ar";
 
@@ -172,6 +173,51 @@ export default function ContactPage() {
                 <span dir="ltr" className="inline-block text-[#F5C518] text-xs font-semibold group-hover:underline">{m.action}</span>
               </a>
             ))}
+          </div>
+
+          {/* Map section */}
+          <div className="mb-14">
+            <h2 className={`text-white font-bold text-xl mb-6 ${isAr ? "text-right" : ""}`}>
+              {isAr ? "زورونا في مكتب الرياض" : "Visit Our Riyadh Office"}
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+              <div className="lg:col-span-2">
+                <GoogleMapsEmbed heightClass="h-72" className="border border-white/5" />
+              </div>
+              <div className="bg-[#0E1A2E] border border-white/5 rounded-xl p-6">
+                {isAr ? (
+                  <address className="not-italic text-sm leading-relaxed text-white/60 text-right" dir="rtl">
+                    لوكال سيتي سوليوشنز<br />
+                    السعادة، طريق الأمير سعد بن عبدالرحمن الأول<br />
+                    الرياض ١٤٢٥٧، المملكة العربية السعودية<br /><br />
+                    الهاتف:{" "}
+                    <a href="tel:+966564229190" className="text-[#F5C518] hover:underline" dir="ltr">
+                      +966 56 422 9190
+                    </a>
+                    <br />
+                    البريد:{" "}
+                    <a href="mailto:hello@localcitysolutions.com" className="text-[#F5C518] hover:underline" dir="ltr">
+                      hello@localcitysolutions.com
+                    </a>
+                  </address>
+                ) : (
+                  <address className="not-italic text-sm leading-relaxed text-white/60">
+                    Local City Solutions<br />
+                    As Saadah, Prince Saad bin Abdulrahman Al-Awwal Road<br />
+                    Riyadh 14257, Saudi Arabia<br /><br />
+                    Phone:{" "}
+                    <a href="tel:+966564229190" className="text-[#F5C518] hover:underline">
+                      +966 56 422 9190
+                    </a>
+                    <br />
+                    Email:{" "}
+                    <a href="mailto:hello@localcitysolutions.com" className="text-[#F5C518] hover:underline">
+                      hello@localcitysolutions.com
+                    </a>
+                  </address>
+                )}
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

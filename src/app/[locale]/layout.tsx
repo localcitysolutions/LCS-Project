@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ScrollReveal from "@/components/ScrollReveal";
 import { DM_Sans, Almarai } from "next/font/google";
+import Script from "next/script";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -73,13 +74,17 @@ const orgSchema = {
   email: "hello@localcitysolutions.com",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Riyadh",
+    streetAddress: "Prince Saad bin Abdulrahman Al-Awwal Road",
+    addressLocality: "As Saadah, Riyadh",
+    postalCode: "14257",
     addressCountry: "SA",
   },
   sameAs: [
     "https://x.com/LocalCitySoluti",
     "https://www.instagram.com/localcitysolutions/",
     "https://www.facebook.com/localcitysolutions",
+    "https://www.linkedin.com/company/local-city-solutions/",
+    "https://www.youtube.com/@LocalCitySolutions",
   ],
   areaServed: { "@type": "City", name: "Riyadh" },
   serviceType: [
@@ -104,7 +109,9 @@ const localBizSchema = {
   telephone: "+966564229190",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Riyadh",
+    streetAddress: "Prince Saad bin Abdulrahman Al-Awwal Road",
+    addressLocality: "As Saadah, Riyadh",
+    postalCode: "14257",
     addressRegion: "Riyadh Province",
     addressCountry: "SA",
   },
@@ -112,6 +119,8 @@ const localBizSchema = {
     "https://x.com/LocalCitySoluti",
     "https://www.instagram.com/localcitysolutions/",
     "https://www.facebook.com/localcitysolutions",
+    "https://www.linkedin.com/company/local-city-solutions/",
+    "https://www.youtube.com/@LocalCitySolutions",
   ],
   aggregateRating: {
     "@type": "AggregateRating",
@@ -165,6 +174,21 @@ export default async function LocaleLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            id="ms-clarity"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "wd11qpmyd9");
+              `,
+            }}
+          />
+        )}
         <NextIntlClientProvider messages={messages}>
           <Header locale={locale} />
           <ScrollReveal />
