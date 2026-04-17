@@ -30,6 +30,18 @@ export const DISTRICT_GEO: Record<
   "al-arid":            { lat: 24.8725, lng: 46.7181, nameAr: "العارض",          nameEn: "Al Arid" },
 };
 
+export function buildFAQSchema(faqs: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map(({ q, a }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+  };
+}
+
 export function buildDistrictLocalBusinessSchema(
   slug: DistrictSlug,
   locale: "en" | "ar"
