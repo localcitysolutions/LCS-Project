@@ -1409,8 +1409,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const isAr = locale === "ar";
   const base = "https://localcitysolutions.com";
   const title = isAr
-    ? `تسويق رقمي في حي ${d.nameAr}، الرياض | لوكال سيتي`
-    : `${d.name} Digital Marketing Agency | LCS Riyadh`;
+    ? `وكالة تسويق رقمي في ${d.nameAr}، الرياض | لوكال سيتي`
+    : `Digital Marketing Agency in ${d.name}, Riyadh`;
   const description = isAr
     ? `خدمات تسويق رقمي متخصصة لأعمال حي ${d.nameAr} بالرياض. SEO، إعلانات قوقل، تصميم مواقع، وملف نشاط تجاري. تواصل معنا الحين.`
     : `Digital marketing agency serving ${d.name}, Riyadh. SEO, Google Ads, Meta Ads & web design tailored for ${d.zone} businesses.`;
