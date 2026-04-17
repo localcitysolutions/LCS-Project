@@ -15,15 +15,38 @@ const FOOTER_SERVICES = [
   { label: { en: "E-Commerce", ar: "التجارة الإلكترونية" }, slug: "ecommerce" },
 ];
 
-const DISTRICTS = [
-  { name: { en: "Al Olaya", ar: "العليا" }, slug: "al-olaya" },
-  { name: { en: "Al Malqa", ar: "الملقا" }, slug: "al-malqa" },
-  { name: { en: "Al Nakheel", ar: "النخيل" }, slug: "al-nakheel" },
-  { name: { en: "Al Sulaimaniyah", ar: "السليمانية" }, slug: "al-sulaimaniyah" },
-  { name: { en: "Hittin", ar: "حطين" }, slug: "hittin" },
-  { name: { en: "Al Yasmin", ar: "الياسمين" }, slug: "al-yasmin" },
-  { name: { en: "KAFD", ar: "مركز الملك عبدالله المالي" }, slug: "kafd" },
-  { name: { en: "Diriyah", ar: "الدرعية" }, slug: "diriyah" },
+const FOOTER_INDUSTRIES = [
+  { label: { en: "Restaurant Marketing", ar: "تسويق المطاعم" }, slug: "restaurants" },
+  { label: { en: "Clinic Marketing", ar: "تسويق العيادات" }, slug: "clinics" },
+  { label: { en: "Salon Marketing", ar: "تسويق الصالونات" }, slug: "salons" },
+  { label: { en: "Real Estate Marketing", ar: "تسويق العقارات" }, slug: "real-estate" },
+  { label: { en: "Retail & E-Commerce", ar: "التجزئة والتجارة الإلكترونية" }, slug: "retail" },
+  { label: { en: "Education Marketing", ar: "تسويق التعليم" }, slug: "education" },
+  { label: { en: "Automotive Marketing", ar: "تسويق السيارات" }, slug: "automotive" },
+  { label: { en: "Hotel Marketing", ar: "تسويق الفنادق" }, slug: "hotels" },
+];
+
+const ALL_DISTRICTS = [
+  { name: { en: "Digital Marketing in Al Olaya", ar: "تسويق رقمي في العليا" }, slug: "al-olaya" },
+  { name: { en: "Digital Marketing in Al Sulaimaniyah", ar: "تسويق رقمي في السليمانية" }, slug: "al-sulaimaniyah" },
+  { name: { en: "Digital Marketing in Al Rawdah", ar: "تسويق رقمي في الروضة" }, slug: "al-rawdah" },
+  { name: { en: "Digital Marketing in Al Murabba", ar: "تسويق رقمي في المربع" }, slug: "al-murabba" },
+  { name: { en: "Digital Marketing in KAFD", ar: "تسويق رقمي في كافد" }, slug: "kafd" },
+  { name: { en: "Digital Marketing in King Fahd District", ar: "تسويق رقمي في حي الملك فهد" }, slug: "king-fahd-district" },
+  { name: { en: "Digital Marketing in Al Malqa", ar: "تسويق رقمي في الملقا" }, slug: "al-malqa" },
+  { name: { en: "Digital Marketing in Al Nakheel", ar: "تسويق رقمي في النخيل" }, slug: "al-nakheel" },
+  { name: { en: "Digital Marketing in Al Yasmin", ar: "تسويق رقمي في الياسمين" }, slug: "al-yasmin" },
+  { name: { en: "Digital Marketing in Hittin", ar: "تسويق رقمي في حطين" }, slug: "hittin" },
+  { name: { en: "Digital Marketing in Al Sahafah", ar: "تسويق رقمي في الصحافة" }, slug: "al-sahafah" },
+  { name: { en: "Digital Marketing in Al Worood", ar: "تسويق رقمي في الورود" }, slug: "al-worood" },
+  { name: { en: "Digital Marketing in Al Shifa", ar: "تسويق رقمي في الشفا" }, slug: "al-shifa" },
+  { name: { en: "Digital Marketing in Al Naseem", ar: "تسويق رقمي في النسيم" }, slug: "al-naseem" },
+  { name: { en: "Digital Marketing in Al Aziziyah", ar: "تسويق رقمي في العزيزية" }, slug: "al-aziziyah" },
+  { name: { en: "Digital Marketing in Ishbiliyah", ar: "تسويق رقمي في إشبيلية" }, slug: "ishbiliyah" },
+  { name: { en: "Digital Marketing in Al Narjis", ar: "تسويق رقمي في النرجس" }, slug: "al-narjis" },
+  { name: { en: "Digital Marketing in Tuwaiq", ar: "تسويق رقمي في طويق" }, slug: "tuwaiq" },
+  { name: { en: "Digital Marketing in Diriyah", ar: "تسويق رقمي في الدرعية" }, slug: "diriyah" },
+  { name: { en: "Digital Marketing in Al Arid", ar: "تسويق رقمي في العارض" }, slug: "al-arid" },
 ];
 
 const COMPANY_LINKS = [
@@ -53,15 +76,10 @@ export default function Footer({ locale }: FooterProps) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/*
-          Grid layout:
-          mobile  (base): 2-col  — Brand full-width, Services+Company side-by-side, Districts full-width
-          tablet  (md):   3-col  — Brand | Services | Company, Districts full-width below
-          desktop (lg):   4-col  — Brand | Services | Company | Districts
-        */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8 mb-8 md:mb-14">
+        {/* Top grid: Brand | Services | Industries | Company */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 mb-8 md:mb-10">
 
-          {/* ── Brand ─────────────────────────── col-span-2 on mobile → 1 col on md+ */}
+          {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href={isAr ? "/ar" : "/en"} className="text-white font-bold text-lg tracking-tight">
               Local <span className="text-[#F5C518]">City</span> Solutions
@@ -148,7 +166,7 @@ export default function Footer({ locale }: FooterProps) {
             </div>
           </div>
 
-          {/* ── Services ──────────────────────── col-span-1 at all sizes */}
+          {/* Services */}
           <div>
             <h3 className={`text-white font-bold text-sm mb-3 ${isAr ? "text-right" : ""}`}>
               {isAr ? "الخدمات" : "Services"}
@@ -167,7 +185,26 @@ export default function Footer({ locale }: FooterProps) {
             </ul>
           </div>
 
-          {/* ── Company ───────────────────────── col-span-1 at all sizes */}
+          {/* Industries */}
+          <div>
+            <h3 className={`text-white font-bold text-sm mb-3 ${isAr ? "text-right" : ""}`}>
+              {isAr ? "القطاعات" : "Industries"}
+            </h3>
+            <ul className="space-y-2">
+              {FOOTER_INDUSTRIES.map((ind) => (
+                <li key={ind.slug}>
+                  <Link
+                    href={`${p}/industries/${ind.slug}`}
+                    className={`text-white/40 hover:text-white text-xs transition-colors block ${isAr ? "text-right" : ""}`}
+                  >
+                    {L(ind.label)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
           <div>
             <h3 className={`text-white font-bold text-sm mb-3 ${isAr ? "text-right" : ""}`}>
               {isAr ? "الشركة" : "Company"}
@@ -185,70 +222,36 @@ export default function Footer({ locale }: FooterProps) {
               ))}
             </ul>
           </div>
-
-          {/* ── Riyadh Districts ──────────────── col-span-2 on mobile, col-span-3 on md, col-span-1 on lg */}
-          <div className="col-span-2 md:col-span-3 lg:col-span-1">
-
-            {/* Mobile only: collapsible */}
-            <details className="group md:hidden">
-              <summary className={`flex items-center justify-between cursor-pointer list-none select-none ${isAr ? "flex-row-reverse" : ""}`}>
-                <h3 className="text-white font-bold text-sm">
-                  {isAr ? "أحياء الرياض" : "Riyadh Districts"}
-                </h3>
-                <svg
-                  className="w-4 h-4 text-white/40 transition-transform duration-200 group-open:rotate-180 shrink-0"
-                  fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </summary>
-              <ul className={`mt-3 grid grid-cols-2 gap-x-4 gap-y-2 ${isAr ? "text-right" : ""}`}>
-                {DISTRICTS.slice(0, 4).map((d) => (
-                  <li key={d.slug}>
-                    <Link href={`${p}/riyadh/${d.slug}`} className="text-white/40 hover:text-white text-xs transition-colors block">
-                      {L(d.name)}
-                    </Link>
-                  </li>
-                ))}
-                <li className="col-span-2">
-                  <Link href={`${p}/riyadh`} className={`text-[#F5C518]/60 hover:text-[#F5C518] text-xs transition-colors block mt-1 ${isAr ? "text-right" : ""}`}>
-                    {isAr ? "كل الأحياء ←" : "All Districts →"}
-                  </Link>
-                </li>
-              </ul>
-            </details>
-
-            {/* md+: always visible — 4-col on tablet, 1-col on desktop */}
-            <div className="hidden md:block">
-              <h3 className={`text-white font-bold text-sm mb-3 ${isAr ? "text-right" : ""}`}>
-                {isAr ? "أحياء الرياض" : "Riyadh Districts"}
-              </h3>
-              <ul className={`grid grid-cols-4 lg:grid-cols-1 gap-x-4 gap-y-2 ${isAr ? "text-right" : ""}`}>
-                {DISTRICTS.map((d) => (
-                  <li key={d.slug}>
-                    <Link
-                      href={`${p}/riyadh/${d.slug}`}
-                      className={`text-white/40 hover:text-white text-xs transition-colors block ${isAr ? "text-right" : ""}`}
-                    >
-                      {L(d.name)}
-                    </Link>
-                  </li>
-                ))}
-                <li>
-                  <Link
-                    href={`${p}/riyadh`}
-                    className={`text-[#F5C518]/60 hover:text-[#F5C518] text-xs transition-colors block ${isAr ? "text-right" : ""}`}
-                  >
-                    {isAr ? "كل الأحياء ←" : "All Districts →"}
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-          </div>
         </div>
 
-        {/* ── Bottom bar ──────────────────────────────────────────────────── */}
+        {/* Riyadh Districts cluster — full width, 2-col on mobile, 4-col on md, 5-col on lg */}
+        <div className="border-t border-white/[0.06] pt-8 mb-8">
+          <h3 className={`text-white font-bold text-sm mb-4 ${isAr ? "text-right" : ""}`}>
+            {isAr ? "أحياء الرياض" : "Riyadh Districts"}
+          </h3>
+          <ul className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-2 ${isAr ? "text-right" : ""}`}>
+            {ALL_DISTRICTS.map((d) => (
+              <li key={d.slug}>
+                <Link
+                  href={`${p}/riyadh/${d.slug}`}
+                  className="text-white/40 hover:text-white text-xs transition-colors block"
+                >
+                  {L(d.name)}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                href={`${p}/riyadh`}
+                className="text-[#F5C518]/60 hover:text-[#F5C518] text-xs transition-colors block"
+              >
+                {isAr ? "كل الأحياء ←" : "All Districts →"}
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Bottom bar */}
         <div className={`border-t border-white/[0.06] pt-5 flex flex-col sm:flex-row items-center gap-3 ${isAr ? "sm:flex-row-reverse" : "sm:justify-between"}`}>
           <p className="text-white/25 text-xs">{copyright}</p>
           <div className="flex items-center gap-4">

@@ -24,7 +24,7 @@ const CONTENT = {
       cta1: "Get Free Audit →",
       cta2: "Call +966 56 422 9190",
       stats: [
-        { value: "6+", label: "Years Exp." },
+        { value: "5+", label: "Years Exp." },
         { value: "150+", label: "Projects" },
         { value: "EN/AR", label: "Bilingual" },
       ],
@@ -73,7 +73,7 @@ const CONTENT = {
       cta1: "احصل على تدقيق مجاني ←",
       cta2: "اتصل:",
       stats: [
-        { value: "+٦", label: "سنوات خبرة" },
+        { value: "+٥", label: "سنوات خبرة" },
         { value: "+١٥٠", label: "مشروع" },
         { value: "ع/إن", label: "ثنائي اللغة" },
       ],
@@ -137,13 +137,13 @@ const WHY_ITEMS = {
   en: [
     { icon: "🇸🇦", title: "Saudi Market Experts", desc: "Deep understanding of local consumer behavior, trends, and Saudi business culture." },
     { icon: "🌐", title: "AR/EN Fully Bilingual", desc: "All campaigns, content, and communication delivered fluently in Arabic and English." },
-    { icon: "⏱️", title: "6+ Years Experience", desc: "Proven track record with 150+ Riyadh businesses across every major sector." },
+    { icon: "⏱️", title: "5+ Years Experience", desc: "Proven track record with 150+ Riyadh businesses across every major sector." },
     { icon: "📊", title: "Data-Driven Results", desc: "Every decision backed by analytics, conversion tracking, and clear monthly KPIs." },
   ],
   ar: [
     { icon: "🇸🇦", title: "خبراء السوق السعودي", desc: "فهم عميق لسلوك المستهلك المحلي والتوجهات وثقافة الأعمال السعودية." },
     { icon: "🌐", title: "ثنائي اللغة: عربي وإنجليزي", desc: "كل الحملات والمحتوى والتواصل يُقدَّم بطلاقة بالعربية والإنجليزية." },
-    { icon: "⏱️", title: "+٦ سنوات خبرة", desc: "سجل حافل مع أكثر من ١٥٠ نشاط تجاري في الرياض عبر كل القطاعات الرئيسية." },
+    { icon: "⏱️", title: "+٥ سنوات خبرة", desc: "سجل حافل مع أكثر من ١٥٠ نشاط تجاري في الرياض عبر كل القطاعات الرئيسية." },
     { icon: "📊", title: "نتائج مبنية على البيانات", desc: "كل قرار مدعوم بالتحليلات وتتبع التحويلات ومؤشرات أداء واضحة شهرياً." },
   ],
 };
