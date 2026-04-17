@@ -1547,7 +1547,7 @@ export default async function DistrictPage({ params }: PageProps) {
             <span className="text-[#F5C518] text-xs font-semibold uppercase tracking-widest">{ui.zone}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
-            {isAr ? `تسويق رقمي في حي ${d.nameAr}، الرياض` : d.tagline}
+            {isAr ? `تسويق رقمي في حي ${d.nameAr}، الرياض` : `Digital Marketing Agency in ${d.name}, Riyadh`}
           </h1>
           <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
             {ar?.heroDesc ?? d.heroDesc}
