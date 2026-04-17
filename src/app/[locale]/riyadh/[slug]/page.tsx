@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import CTABox from "@/components/CTABox";
 import TrackableLink from "@/components/TrackableLink";
+import { buildDistrictLocalBusinessSchema, DISTRICT_GEO } from "@/lib/seo/districts";
+import type { DistrictSlug } from "@/lib/seo/districts";
 
 type Locale = "en" | "ar";
 interface PageProps { params: Promise<{ locale: Locale; slug: string }> }
@@ -1480,8 +1482,18 @@ export default async function DistrictPage({ params }: PageProps) {
         ],
   };
 
+  const districtSchema = DISTRICT_GEO[d.slug as DistrictSlug]
+    ? buildDistrictLocalBusinessSchema(d.slug as DistrictSlug, locale)
+    : null;
+
   return (
     <>
+      {districtSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(districtSchema) }}
+        />
+      )}
       {/* Hero */}
       <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
         <div
