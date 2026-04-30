@@ -65,6 +65,21 @@ const nextConfig: NextConfig = {
         destination: "/en/blog/instagram-marketing-cost-saudi-arabia",
         permanent: true,
       },
+      // 301s: legacy WordPress service + blog URLs (high-priority phase 1)
+      { source: "/best-seo-company", destination: "/en/services/seo", statusCode: 301 },
+      { source: "/best-seo-company/", destination: "/en/services/seo", statusCode: 301 },
+      { source: "/google-ads", destination: "/en/services/google-ads", statusCode: 301 },
+      { source: "/google-ads/", destination: "/en/services/google-ads", statusCode: 301 },
+      { source: "/google-my-business", destination: "/en/services/google-business-profile", statusCode: 301 },
+      { source: "/google-my-business/", destination: "/en/services/google-business-profile", statusCode: 301 },
+      { source: "/website-development", destination: "/en/services/web-design", statusCode: 301 },
+      { source: "/website-development/", destination: "/en/services/web-design", statusCode: 301 },
+      { source: "/social-media-marketing", destination: "/en/services/social-media", statusCode: 301 },
+      { source: "/social-media-marketing/", destination: "/en/services/social-media", statusCode: 301 },
+      { source: "/local-business-listing-agency-riyadh", destination: "/en/services/google-business-profile", statusCode: 301 },
+      { source: "/local-business-listing-agency-riyadh/", destination: "/en/services/google-business-profile", statusCode: 301 },
+      { source: "/blog-2", destination: "/en/blog", statusCode: 301 },
+      { source: "/blog-2/", destination: "/en/blog", statusCode: 301 },
     ];
   },
 };

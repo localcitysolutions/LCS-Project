@@ -14,6 +14,10 @@ const GONE_PATHS = new Set([
   "/graphic-design-riyadh",
   "/logo-design-riyadh",
   "/video-production-riyadh",
+  "/business-setup-saudi-arabia-guide",
+  "/business-setup-partner-saudi-arabia",
+  "/business-license-registration-saudi-arabia",
+  "/business-structures-saudi-arabia-expats-investors",
 ]);
 
 export default function middleware(request: NextRequest) {
