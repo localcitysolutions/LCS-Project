@@ -91,6 +91,9 @@ const nextConfig: NextConfig = {
       { source: "/affordable-digital-marketing-services-saudi-arabia/", destination: "/en/services", statusCode: 301 },
       { source: "/blog-2/page/3", destination: "/en/blog", statusCode: 301 },
       { source: "/blog-2/page/3/", destination: "/en/blog", statusCode: 301 },
+      // 301s: blog republish phase 3a
+      { source: "/programmatic-seo-guide", destination: "/en/blog/programmatic-seo-guide", statusCode: 301 },
+      { source: "/programmatic-seo-guide/", destination: "/en/blog/programmatic-seo-guide", statusCode: 301 },
     ];
   },
 };

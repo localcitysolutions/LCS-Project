@@ -1088,6 +1088,194 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedDistricts: ["al-olaya", "al-sulaimaniyah"],
     relatedPosts: ["instagram-marketing-salons-riyadh", "google-ads-vs-meta-ads", "facebook-marketing-cost-saudi-arabia-2026"],
   },
+  {
+    id: 15,
+    slug: "programmatic-seo-guide",
+    title: {
+      en: "Programmatic SEO Guide for Saudi Businesses (2026): Scale Rankings with Data + Templates",
+      ar: "دليل SEO البرمجي للأعمال السعودية (2026): كيف تضاعف ترتيبك بالبيانات والقوالب",
+    },
+    metaDescription: {
+      en: "A practical 2026 guide to programmatic SEO for Riyadh businesses. Learn the formula, see a worked example, and avoid the 4 mistakes that get sites penalized.",
+      ar: "دليل عملي 2026 للـ SEO البرمجي للأعمال في الرياض. تعلم الصيغة الخماسية، شوف مثال تطبيقي، وتجنب الأخطاء الأربعة التي تعرض المواقع للعقوبة.",
+    },
+    excerpt: {
+      en: "If you want to capture every \u201Cnear me\u201D search across Riyadh without writing a thousand pages by hand, programmatic SEO is the answer \u2014 when done right.",
+      ar: "إذا كنت تريد التقاط كل بحث 'بالقرب مني' في الرياض دون كتابة آلاف الصفحات يدوياً، فالـ SEO البرمجي هو الحل — إذا طُبّق بشكل صحيح.",
+    },
+    content: {
+      en: `<p>If you run a business in Saudi Arabia and want to capture every "near me" search across Riyadh, Jeddah, and Dammam without writing a thousand pages by hand, programmatic SEO is the answer. Done well, it can take a handful of strong topic ideas and turn them into hundreds of ranking landing pages within months. Done poorly, it produces thin content that Google ignores or penalizes.</p>
+<p>This guide is the difference between the two — written for Saudi businesses navigating a market where local intent signals matter as much as keyword volume.</p>
+
+<h2 id="what-it-is">What programmatic SEO actually is</h2>
+<p>Programmatic SEO is the practice of building many landing pages from a single template, populated with data. Each page targets a specific long-tail query that's too small to justify a hand-written article on its own, but valuable in aggregate.</p>
+<p>The classic example is Zillow's "homes for sale in [city]" pages — one template, populated with data for thousands of cities. Each page captures the exact local intent of someone searching that exact query.</p>
+<p>For a Saudi business, the equivalent might be:</p>
+<ul>
+<li>"Best dentist in [Riyadh neighborhood]"</li>
+<li>"[Service] for restaurants in [Saudi city]"</li>
+<li>"[Industry] companies hiring in [city]"</li>
+<li>"How much does [service] cost in [city]"</li>
+</ul>
+<p>Programmatic SEO is <strong>not</strong> about generating low-quality AI text in bulk. Google's helpful content updates have been brutal to that approach. The pages that work are the ones where each individual page genuinely answers the query better than any alternative.</p>
+
+<h2 id="when-it-works">When programmatic SEO works in Saudi Arabia (and when it backfires)</h2>
+<p>It works when three things are true:</p>
+<ol>
+<li><strong>There's clear local search intent at scale.</strong> Riyadh has 60+ named neighborhoods. A real-estate agency, a clinic chain, or a marketing agency can credibly serve customers in each one — and people search neighborhood-by-neighborhood.</li>
+<li><strong>You have a real data source for differentiation.</strong> Each page needs unique content. Pulling in different neighborhood landmarks, transit info, demographic snippets, or service availability is what separates a useful page from a spammy one.</li>
+<li><strong>You can ship internal linking.</strong> Programmatic pages thrive when they link to each other in a clean hub-and-spoke pattern. Ten orphaned pages won't rank; ten pages cross-linked through a hub will.</li>
+</ol>
+<p>It backfires when:</p>
+<ul>
+<li>The pages are near-duplicates with only a city name changed</li>
+<li>The query you're targeting has no real search demand (just because you can build a page doesn't mean anyone wants it)</li>
+<li>You build 500 pages and link to none of them from your main navigation</li>
+<li>You ignore Arabic search volume — many Saudi searchers use Arabic queries that English-only programmatic pages will miss</li>
+</ul>
+
+<h2 id="five-part-formula">The 5-part formula</h2>
+<p>Every programmatic SEO project follows the same structure. Skipping any one of these is where most Saudi businesses go wrong.</p>
+<p><strong>1. Keyword pattern.</strong> Find a query template with real volume. Tools like <a href="https://ahrefs.com/">Ahrefs</a> or <a href="https://www.semrush.com/">Semrush</a> let you check search volume for <code>"[service] in [city]"</code> patterns. In KSA, also check Arabic equivalents — search behavior in Riyadh is bilingual.</p>
+<p><strong>2. Page template.</strong> A single page layout that handles every variation. It needs hero copy, 3–4 modular sections, FAQs, internal links, and a CTA. Your developer builds this once.</p>
+<p><strong>3. Data source.</strong> A spreadsheet or database with one row per page. For "marketing agency in [neighborhood]," that means one row per Riyadh neighborhood with columns for landmarks, top business types in the area, a 100-word neighborhood summary, and contact info.</p>
+<p><strong>4. Internal linking.</strong> Each programmatic page links upward to its parent hub (e.g. <code>/en/riyadh</code>), sideways to 3–5 related pages, and the hub links down to all of them. This is what makes Google crawl and index the set instead of treating them as orphans.</p>
+<p><strong>5. Indexing strategy.</strong> Submit them to Google Search Console in batches. Don't ship 500 pages at once — Google can interpret that as spam. Ship 20–30 a week, watch indexation rates, then expand.</p>
+
+<h2 id="worked-example">A worked example: marketing agency × Riyadh neighborhoods</h2>
+<p>Let's say you're a digital marketing agency in Riyadh — like <a href="/en/services">Local City Solutions</a>. You already have one strong service hub at <a href="/en/services/seo">/en/services/seo</a>. You can extend that into 60 neighborhood pages following this pattern:</p>
+<pre><code>/en/riyadh/al-olaya
+/en/riyadh/al-malqa
+/en/riyadh/al-narjis
+... (one per neighborhood)</code></pre>
+<p>Each page has:</p>
+<ul>
+<li>A unique 400-word neighborhood description (top business types, landmarks, density)</li>
+<li>A localized hook ("If your business is in Al-Olaya, you're competing with 200+ retailers within 2 km — your Google Business Profile and local SEO matter more here than almost anywhere else in KSA")</li>
+<li>A reference to the most relevant service for that neighborhood's business mix</li>
+<li>An embedded Google Map of the neighborhood</li>
+<li>Internal links to 3 other neighborhoods + the <a href="/en/riyadh">Riyadh hub page</a></li>
+</ul>
+<p>If executed well, you'll start ranking for <code>"marketing agency [neighborhood]"</code> queries within 60–90 days. The compounding effect over a year is significant — neighborhood pages tend to attract long-tail traffic that converts at higher rates than generic city-level queries.</p>
+
+<h2 id="four-mistakes">The 4 mistakes that get Saudi sites penalized</h2>
+<p>After auditing dozens of programmatic SEO attempts in the Saudi market, four patterns predict failure:</p>
+<p><strong>Thin content.</strong> Pages with under 200 words of unique copy. Google's helpful content classifier flags these. Aim for 400+ words of genuinely useful, location-specific content per page.</p>
+<p><strong>No Arabic version.</strong> Roughly half of Saudi search happens in Arabic. If you're building English-only programmatic pages, you're forfeiting half the market. Build bilingual <code>/en/</code> and <code>/ar/</code> paths from day one with proper hreflang tags.</p>
+<p><strong>Ignoring <a href="/en/services/google-business-profile">Google Business Profile</a>.</strong> Programmatic SEO and local SEO are complementary. Pages rank better when the business has a verified GBP with reviews, photos, and consistent NAP info — Google cross-references these signals.</p>
+<p><strong>No internal linking.</strong> This is the single biggest reason programmatic projects fail in Saudi Arabia. If your 100 neighborhood pages aren't linked from a hub, and don't link to each other, Google won't crawl them and won't rank them.</p>
+
+<h2 id="tools">Tools you'll need</h2>
+<ul>
+<li><strong>Keyword research:</strong> Ahrefs, Semrush, or Google Keyword Planner (with Saudi Arabia geo filter)</li>
+<li><strong>Data source:</strong> Google Sheets or Airtable for the per-page data</li>
+<li><strong>Page generation:</strong> Next.js dynamic routes, WordPress with ACF, or a static site generator</li>
+<li><strong>Indexing:</strong> Google Search Console (URL Inspection + Sitemaps)</li>
+<li><strong>Tracking:</strong> Google Analytics 4 with traffic segmented by URL pattern</li>
+</ul>
+
+<h2 id="diy-or-agency">Should you do programmatic SEO yourself?</h2>
+<p>Honestly? It depends on your team. If you have a developer who can build the template and a content strategist who can produce genuinely useful per-page data, you can ship the first 30 pages in 2–3 weeks.</p>
+<p>If you don't, the typical failure mode is shipping the first 10 pages, getting bored, and ending up with an orphaned half-built section that does nothing for your rankings. Either commit to the full 5-part formula or partner with an agency that has done it before in the Saudi market.</p>
+<p>If you'd like a programmatic SEO audit of your current site or a roadmap built specifically for Riyadh, <a href="/en/free-audit">book a free strategy call</a> — we'll show you exactly what your patterns and data sources should be.</p>
+<p><em>This guide was written by the team at Local City Solutions, a Riyadh-based digital marketing agency that has built programmatic SEO systems for clinics, real-estate firms, and retailers across Saudi Arabia. For more on local SEO, read our <a href="/en/blog/local-link-building-strategy">local link building strategy guide</a>.</em></p>`,
+      ar: `<p>إذا كنت تدير عملاً في السعودية وتريد التقاط كل بحث "بالقرب مني" في الرياض وجدة والدمام دون كتابة آلاف الصفحات يدوياً، فالـ SEO البرمجي هو الحل. عند تطبيقه بشكل صحيح، يمكنه تحويل عدد محدود من الأفكار الجوهرية إلى مئات صفحات الهبوط التي تتصدر النتائج خلال أشهر. أما عند التطبيق الخاطئ، فينتج محتوى رفيعاً تتجاهله قوقل أو تعاقب عليه.</p>
+<p>هذا الدليل هو الفرق بين الاثنين — مكتوب للأعمال السعودية التي تعمل في سوق تكون فيه إشارات النية المحلية بنفس أهمية حجم الكلمات المفتاحية.</p>
+
+<h2 id="what-it-is">ما هو SEO البرمجي فعلاً؟</h2>
+<p>الـ SEO البرمجي هو ممارسة بناء صفحات هبوط كثيرة من قالب واحد مملوء بالبيانات. كل صفحة تستهدف استعلاماً محدداً طويل الذيل صغير جداً لتبرير كتابة مقال يدوي منفرد، لكنه قيّم بشكل إجمالي.</p>
+<p>المثال الكلاسيكي هو صفحات Zillow "منازل للبيع في [مدينة]" — قالب واحد مملوء ببيانات آلاف المدن. كل صفحة تلتقط النية المحلية الدقيقة لشخص يبحث بذلك الاستعلام تحديداً.</p>
+<p>للأعمال السعودية، يمكن أن يكون المكافئ:</p>
+<ul>
+<li>"أفضل طبيب أسنان في [حي بالرياض]"</li>
+<li>"[خدمة] للمطاعم في [مدينة سعودية]"</li>
+<li>"شركات [قطاع] توظف في [مدينة]"</li>
+<li>"كم تكلفة [خدمة] في [مدينة]"</li>
+</ul>
+<p>الـ SEO البرمجي <strong>ليس</strong> عن توليد نصوص ذكاء اصطناعي منخفضة الجودة بالجملة. تحديثات المحتوى المفيد من قوقل كانت قاسية على هذا النهج. الصفحات التي تنجح هي التي يجيب كل منها على الاستعلام بشكل أفضل من أي بديل.</p>
+
+<h2 id="when-it-works">متى ينجح SEO البرمجي في السعودية (ومتى يفشل)؟</h2>
+<p>ينجح عندما تتحقق ثلاثة شروط:</p>
+<ol>
+<li><strong>وجود نية بحثية محلية واضحة على نطاق واسع.</strong> الرياض لديها أكثر من 60 حياً. وكالة عقارية، سلسلة عيادات، أو وكالة تسويق يمكنها تقديم خدمات لعملاء في كل حي — والناس يبحثون حياً بحي.</li>
+<li><strong>امتلاك مصدر بيانات حقيقي للتمييز.</strong> كل صفحة تحتاج محتوى فريداً. استخدام معالم الأحياء والنقل والبيانات الديموغرافية هو ما يفصل الصفحة المفيدة عن الصفحة المزعجة.</li>
+<li><strong>القدرة على بناء الروابط الداخلية.</strong> صفحات البرمجة تزدهر عند ربطها ببعضها بنمط المحور والشعاع. عشر صفحات معزولة لن تتصدر؛ عشر صفحات مترابطة عبر محور ستفعل.</li>
+</ol>
+<p>يفشل عندما:</p>
+<ul>
+<li>الصفحات تكاد تكون نسخاً مكررة مع تغيير اسم المدينة فقط</li>
+<li>الاستعلام المستهدف ليس عليه طلب بحثي حقيقي</li>
+<li>تبني 500 صفحة ولا ترتبط بأي منها من التنقل الرئيسي</li>
+<li>تتجاهل حجم البحث العربي — كثير من السعوديين يستخدمون استعلامات عربية تفوتها الصفحات الإنجليزية</li>
+</ul>
+
+<h2 id="five-part-formula">الصيغة الخماسية</h2>
+<p>كل مشروع SEO برمجي يتبع نفس البنية. تخطي أي عنصر هو مكمن خطأ معظم الأعمال السعودية.</p>
+<p><strong>1. نمط الكلمات المفتاحية.</strong> ابحث عن قالب استعلام بحجم بحثي حقيقي. أدوات مثل Ahrefs أو Semrush تتيح التحقق من حجم البحث لأنماط <code>"[خدمة] في [مدينة]"</code>. في السعودية، تحقق أيضاً من المكافئات العربية — سلوك البحث في الرياض ثنائي اللغة.</p>
+<p><strong>2. قالب الصفحة.</strong> تصميم صفحة واحد يتعامل مع كل التنويعات. يحتاج نسخة بطولية و3-4 أقسام معيارية وأسئلة شائعة وروابط داخلية وزر CTA. يبنيه مطورك مرة واحدة.</p>
+<p><strong>3. مصدر البيانات.</strong> جدول بيانات أو قاعدة بيانات بصف واحد لكل صفحة. لـ "وكالة تسويق في [حي]"، يعني صفاً لكل حي رياضي مع أعمدة للمعالم وأنواع الأعمال الرئيسية وملخص 100 كلمة.</p>
+<p><strong>4. الروابط الداخلية.</strong> كل صفحة برمجية ترتبط للأعلى بمحورها الأم، وبشكل جانبي بـ3-5 صفحات ذات صلة، والمحور يرتبط للأسفل بجميعها. هذا ما يجعل قوقل يزحف ويفهرس المجموعة.</p>
+<p><strong>5. استراتيجية الفهرسة.</strong> أرسلها لـ Google Search Console على دفعات. لا تطلق 500 صفحة دفعة واحدة — قوقل قد يعتبرها سبام. أطلق 20-30 أسبوعياً، راقب معدلات الفهرسة، ثم وسّع.</p>
+
+<h2 id="worked-example">مثال تطبيقي: وكالة تسويق × أحياء الرياض</h2>
+<p>لنقل أنك تدير وكالة تسويق رقمي في الرياض — مثل <a href="/en/services">لوكال سيتي سولوشنز</a>. لديك محور خدمة قوي في <a href="/en/services/seo">/en/services/seo</a>. يمكنك توسيعه إلى 60 صفحة حي بهذا النمط:</p>
+<pre><code>/en/riyadh/al-olaya
+/en/riyadh/al-malqa
+/en/riyadh/al-narjis
+... (صفحة لكل حي)</code></pre>
+<p>كل صفحة تحتوي:</p>
+<ul>
+<li>وصف فريد للحي بـ400 كلمة (أنواع الأعمال الرئيسية، المعالم، الكثافة)</li>
+<li>خطاف محلي ("إذا كان عملك في العليا، فأنت تنافس أكثر من 200 متجر ضمن نطاق 2 كم — ملف نشاطك التجاري وSEO المحلي أهم هنا من أي مكان آخر في المملكة")</li>
+<li>إشارة للخدمة الأنسب لتركيبة أعمال ذلك الحي</li>
+<li>خريطة قوقل مضمّنة للحي</li>
+<li>روابط داخلية لـ3 أحياء أخرى + <a href="/en/riyadh">صفحة محور الرياض</a></li>
+</ul>
+<p>عند التنفيذ الجيد، ستبدأ بالتصدر لاستعلامات <code>"وكالة تسويق [حي]"</code> خلال 60-90 يوماً. التأثير التراكمي خلال عام كبير — صفحات الأحياء تجذب حركة مرور طويلة الذيل تتحول بمعدلات أعلى من استعلامات المدينة العامة.</p>
+
+<h2 id="four-mistakes">الأخطاء الأربعة التي تعرض المواقع السعودية للعقوبة</h2>
+<p>بعد تدقيق عشرات محاولات SEO البرمجي في السوق السعودية، أربعة أنماط تتنبأ بالفشل:</p>
+<p><strong>المحتوى الرفيع.</strong> صفحات بأقل من 200 كلمة فريدة. مصنف المحتوى المفيد من قوقل يُعلّم هذه الصفحات. استهدف 400+ كلمة من المحتوى المفيد حقاً لكل صفحة.</p>
+<p><strong>عدم وجود نسخة عربية.</strong> نحو نصف البحث السعودي يتم بالعربية. إذا كنت تبني صفحات إنجليزية فقط، فأنت تتخلى عن نصف السوق. ابنِ مسارات ثنائية اللغة <code>/en/</code> و<code>/ar/</code> منذ اليوم الأول مع وسوم hreflang صحيحة.</p>
+<p><strong>تجاهل <a href="/en/services/google-business-profile">ملف النشاط التجاري</a>.</strong> SEO البرمجي والـ SEO المحلي متكاملان. الصفحات تتصدر بشكل أفضل عندما يمتلك العمل ملف GBP موثق بتقييمات وصور ومعلومات NAP متسقة — قوقل يتقاطع هذه الإشارات.</p>
+<p><strong>غياب الروابط الداخلية.</strong> هذا هو السبب الأكبر لفشل مشاريع البرمجة في السعودية. إذا لم تكن صفحاتك الـ100 مرتبطة بمحور، ولا ترتبط ببعضها، لن يزحف قوقل إليها ولن يصنفها.</p>
+
+<h2 id="tools">الأدوات التي ستحتاجها</h2>
+<ul>
+<li><strong>بحث الكلمات المفتاحية:</strong> Ahrefs أو Semrush أو Google Keyword Planner (مع فلتر السعودية)</li>
+<li><strong>مصدر البيانات:</strong> Google Sheets أو Airtable للبيانات لكل صفحة</li>
+<li><strong>توليد الصفحات:</strong> مسارات Next.js الديناميكية أو WordPress مع ACF أو Static Site Generator</li>
+<li><strong>الفهرسة:</strong> Google Search Console (فحص URL + الخرائط)</li>
+<li><strong>التتبع:</strong> Google Analytics 4 مع تقسيم حركة المرور حسب نمط الـ URL</li>
+</ul>
+
+<h2 id="diy-or-agency">هل تطبق SEO البرمجي بنفسك؟</h2>
+<p>بصراحة؟ يعتمد على فريقك. إذا كان لديك مطور يبني القالب واستراتيجي محتوى ينتج بيانات مفيدة لكل صفحة، يمكنك إطلاق أول 30 صفحة في 2-3 أسابيع.</p>
+<p>إذا لم يكن كذلك، نمط الفشل النموذجي هو إطلاق أول 10 صفحات، والتعب، والانتهاء بقسم نصف مبني لا يفعل شيئاً لترتيبك. إما الالتزام بالصيغة الخماسية الكاملة أو الشراكة مع وكالة فعلت ذلك من قبل في السوق السعودية.</p>
+<p>إذا أردت تدقيق SEO برمجي لموقعك الحالي أو خارطة طريق مبنية خصيصاً للرياض، <a href="/en/free-audit">احجز استشارة مجانية</a> — سنريك بالضبط ما يجب أن تكون عليه أنماطك ومصادر بياناتك.</p>
+<p><em>كتب هذا الدليل فريق لوكال سيتي سولوشنز، وكالة التسويق الرقمي في الرياض التي بنت أنظمة SEO برمجية للعيادات والشركات العقارية وتجار التجزئة في السعودية. لمزيد حول SEO المحلي، اقرأ <a href="/en/blog/local-link-building-strategy">دليل استراتيجية بناء الروابط المحلية</a>.</em></p>`,
+    },
+    toc: [
+      { id: "what-it-is", text: { en: "What programmatic SEO is", ar: "ما هو SEO البرمجي" }, level: 2 },
+      { id: "when-it-works", text: { en: "When it works (and when it backfires)", ar: "متى ينجح ومتى يفشل" }, level: 2 },
+      { id: "five-part-formula", text: { en: "The 5-part formula", ar: "الصيغة الخماسية" }, level: 2 },
+      { id: "worked-example", text: { en: "Worked example: agency × neighborhoods", ar: "مثال تطبيقي: وكالة × أحياء" }, level: 2 },
+      { id: "four-mistakes", text: { en: "4 mistakes that get sites penalized", ar: "الأخطاء الأربعة" }, level: 2 },
+      { id: "tools", text: { en: "Tools you'll need", ar: "الأدوات التي ستحتاجها" }, level: 2 },
+      { id: "diy-or-agency", text: { en: "DIY or agency?", ar: "بنفسك أم بوكالة؟" }, level: 2 },
+    ],
+    category: "seo",
+    categoryLabel: { en: "SEO", ar: "تحسين محركات البحث" },
+    tags: ["Programmatic SEO", "SEO", "Saudi Arabia", "Riyadh", "Local SEO", "Landing Pages"],
+    author: "Local City Solutions Team",
+    publishDate: "2026-04-30",
+    updatedDate: "2026-04-30",
+    featuredImage: "/images/blog/programmatic-seo-guide.jpg",
+    readingTime: 9,
+    relatedServices: ["seo", "google-business-profile"],
+    relatedDistricts: ["al-olaya", "al-malqa"],
+    relatedPosts: ["local-seo-dominate-riyadh-search", "technical-seo-audit-checklist", "google-business-profile-guide"],
+  },
 ];
 
 export const CATEGORIES = [
