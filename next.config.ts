@@ -80,6 +80,17 @@ const nextConfig: NextConfig = {
       { source: "/local-business-listing-agency-riyadh/", destination: "/en/services/google-business-profile", statusCode: 301 },
       { source: "/blog-2", destination: "/en/blog", statusCode: 301 },
       { source: "/blog-2/", destination: "/en/blog", statusCode: 301 },
+      // 301s: legacy WordPress service + blog URLs (phase 2 — medium/low priority)
+      { source: "/social-media-marketing-services", destination: "/en/services/social-media", statusCode: 301 },
+      { source: "/social-media-marketing-services/", destination: "/en/services/social-media", statusCode: 301 },
+      { source: "/search-engine-optimization-services-2", destination: "/en/services/seo", statusCode: 301 },
+      { source: "/search-engine-optimization-services-2/", destination: "/en/services/seo", statusCode: 301 },
+      { source: "/seo-experts-saudi-arabia-local-city-solutions", destination: "/en/services/seo", statusCode: 301 },
+      { source: "/seo-experts-saudi-arabia-local-city-solutions/", destination: "/en/services/seo", statusCode: 301 },
+      { source: "/affordable-digital-marketing-services-saudi-arabia", destination: "/en/services", statusCode: 301 },
+      { source: "/affordable-digital-marketing-services-saudi-arabia/", destination: "/en/services", statusCode: 301 },
+      { source: "/blog-2/page/3", destination: "/en/blog", statusCode: 301 },
+      { source: "/blog-2/page/3/", destination: "/en/blog", statusCode: 301 },
     ];
   },
 };
