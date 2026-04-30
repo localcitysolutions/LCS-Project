@@ -100,6 +100,9 @@ const nextConfig: NextConfig = {
       // 301s: blog republish phase 3c (slug year refresh: 2025 → 2026)
       { source: "/google-ads-mistakes-2025", destination: "/en/blog/google-ads-mistakes-2026", statusCode: 301 },
       { source: "/google-ads-mistakes-2025/", destination: "/en/blog/google-ads-mistakes-2026", statusCode: 301 },
+      // 301s: blog republish phase 3d (slug rescoped: small-business-2025 → saudi-arabia evergreen)
+      { source: "/google-ads-cost-small-business-2025", destination: "/en/blog/google-ads-cost-saudi-arabia", statusCode: 301 },
+      { source: "/google-ads-cost-small-business-2025/", destination: "/en/blog/google-ads-cost-saudi-arabia", statusCode: 301 },
     ];
   },
 };

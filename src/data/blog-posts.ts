@@ -1583,6 +1583,200 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedDistricts: [],
     relatedPosts: ["google-ads-vs-meta-ads", "local-link-building-strategy", "programmatic-seo-guide"],
   },
+  {
+    id: 18,
+    slug: "google-ads-cost-saudi-arabia",
+    title: {
+      en: "Google Ads Cost in Saudi Arabia (2026): Real CPC Ranges, Industry Benchmarks, and Budget Math",
+      ar: "تكلفة إعلانات قوقل في السعودية (2026): نطاقات CPC الحقيقية، معايير الصناعة، وحسابات الميزانية",
+    },
+    metaDescription: {
+      en: "Real Google Ads CPC ranges by industry in Saudi Arabia for 2026. From SAR 2 in real estate to SAR 80+ in legal — plus the budget math that actually works.",
+      ar: "نطاقات CPC الحقيقية لإعلانات قوقل حسب القطاع في السعودية لعام 2026. من 2 ريال في العقارات إلى أكثر من 80 ريال في القانوني — بالإضافة إلى حسابات الميزانية التي تنجح فعلاً.",
+    },
+    excerpt: {
+      en: "For most Saudi SMBs in 2026, a meaningful Google Ads test runs SAR 6,000–25,000/month. Here are the real CPC ranges by industry and the budget math that actually works.",
+      ar: "لمعظم الأعمال السعودية الصغيرة والمتوسطة في 2026، اختبار إعلانات قوقل الحقيقي يكلف 6,000–25,000 ريال شهرياً. هنا نطاقات CPC الحقيقية حسب القطاع وحسابات الميزانية التي تنجح.",
+    },
+    content: {
+      en: `<p>"How much does Google Ads cost in Saudi Arabia?" is one of the most-asked questions Riyadh business owners send us — and one of the most poorly answered online. Most articles dodge it with "it depends" and a generic CPC range that includes the US market, where keyword prices are 3–5× higher than KSA in most verticals.</p>
+<p>This is the honest answer, with real numbers, real ranges, and a budget framework you can apply this week.</p>
+
+<h2 id="short-answer">The short answer</h2>
+<p>For most Saudi small and mid-sized businesses in 2026, a meaningful Google Ads test runs <strong>SAR 6,000–25,000 per month</strong>. Below SAR 5,000/month you typically don't have enough data to optimize; above SAR 25,000/month you should have a dedicated account manager rather than running it part-time.</p>
+<p>Average CPC across Saudi Arabia ranges from <strong>SAR 1.50 (low-competition B2B and informational queries) to SAR 80+ (legal, finance, high-ticket B2B services)</strong>. Most B2C verticals fall in the SAR 4–15 range.</p>
+<p>Now let's get specific.</p>
+
+<h2 id="cpc-by-industry">Real CPC ranges by industry (Saudi Arabia, 2026)</h2>
+<p>These are the ranges we see across active campaigns we manage and audit. They're approximations — exact CPC depends on bidding strategy, ad strength, location targeting, and competition level on any given day.</p>
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>Industry</th><th>Typical CPC range (SAR)</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Real estate (residential)</td><td>2 – 8</td><td>Highly local; CPC varies dramatically by neighborhood</td></tr>
+<tr><td>Restaurants &amp; food delivery</td><td>1.50 – 6</td><td>Cheap on broad terms, expensive on branded competitor terms</td></tr>
+<tr><td>Retail / e-commerce</td><td>2 – 12</td><td>Heavily seasonal; Q4 + Ramadan see 30–50% spikes</td></tr>
+<tr><td>Health &amp; medical clinics</td><td>8 – 35</td><td>Dental, cosmetic, and specialty clinics at the top of range</td></tr>
+<tr><td>Education &amp; training</td><td>4 – 18</td><td>Universities and certification programs at top</td></tr>
+<tr><td>Beauty &amp; salons</td><td>3 – 10</td><td>Higher in Olaya, Malqa, KAFD due to dense competition</td></tr>
+<tr><td>Auto sales &amp; service</td><td>3 – 14</td><td>Used-car queries cheaper than new-car</td></tr>
+<tr><td>Legal services</td><td>25 – 80+</td><td>Among the most expensive verticals in KSA</td></tr>
+<tr><td>Financial services</td><td>20 – 60</td><td>Insurance and lending consistently in upper range</td></tr>
+<tr><td>Home services (AC, plumbing, etc.)</td><td>4 – 16</td><td>Spike during summer and post-rain seasons</td></tr>
+<tr><td>B2B SaaS / technology</td><td>8 – 40</td><td>Long sales cycles justify higher CPCs</td></tr>
+<tr><td>Travel &amp; hospitality</td><td>3 – 12</td><td>Hajj and Umrah keywords highly competitive seasonally</td></tr>
+</tbody>
+</table>
+</div>
+<p>Two important caveats:</p>
+<p><strong>Arabic vs English CPCs differ.</strong> Arabic keyword auctions in Saudi Arabia are typically 15–30% cheaper than the equivalent English auction in the same vertical, mainly because fewer advertisers have set up proper Arabic campaigns. This is a meaningful arbitrage opportunity for Saudi businesses willing to run bilingual campaigns.</p>
+<p><strong>Branded competitor bidding inflates costs.</strong> If you're bidding on <code>[competitor name]</code> queries, expect to pay 2–4× the standard CPC for that vertical. Quality Score works against you when you're not the brand being searched for.</p>
+
+<h2 id="what-drives-cost">What actually drives your cost (it's not just the CPC)</h2>
+<p>Cost-per-click is only one of three variables that determine what you pay per customer. The full equation:</p>
+<blockquote><p>Cost per customer = CPC ÷ Conversion rate ÷ Lead-to-customer rate</p></blockquote>
+<p>A SAR 4 CPC sounds cheap until you realize your landing page converts at 1% and your sales close rate is 10%. That's SAR 4,000 per customer. A SAR 20 CPC with a 5% conversion rate and a 25% close rate is SAR 1,600 per customer — five times more efficient despite the higher CPC.</p>
+<p>This is why we tell clients to stop fixating on CPC. The three levers that actually move cost per customer are:</p>
+<ol>
+<li><strong>Match precision</strong> — getting the right intent, not the cheapest click</li>
+<li><strong>Landing page conversion rate</strong> — typical Saudi business sites convert at 0.5–2%; a properly optimized landing page hits 4–8%</li>
+<li><strong>Sales follow-up speed</strong> — leads contacted within 5 minutes close at 4× the rate of leads contacted within an hour</li>
+</ol>
+<p>We've covered the campaign-side mistakes in detail in our <a href="/en/blog/google-ads-mistakes-2026">Google Ads mistakes guide</a>. This article is about cost — and the biggest cost lever is usually post-click, not pre-click.</p>
+
+<h2 id="budget-math">How to build a Google Ads budget that works</h2>
+<p>Don't ask "how much should I spend?" Ask three different questions instead.</p>
+<p><strong>Question 1: How many customers do I need this month?</strong></p>
+<p>Be specific. "More leads" isn't a target. "20 qualified leads at under SAR 400 each" is.</p>
+<p><strong>Question 2: What's my historical conversion rate from click to qualified lead?</strong></p>
+<p>If you don't know, assume 2% for a decent landing page, 1% for a generic homepage, 4–6% for a well-optimized industry-specific landing page.</p>
+<p><strong>Question 3: What's my CPC range for this vertical?</strong></p>
+<p>Use the table above as a starting point.</p>
+<p>Then the math:</p>
+<pre><code>Required clicks = Target leads ÷ Conversion rate
+Required budget = Required clicks × Average CPC</code></pre>
+<p>For 20 leads at 2% conversion rate and SAR 8 CPC:</p>
+<pre><code>20 ÷ 0.02 = 1,000 clicks needed
+1,000 × SAR 8 = SAR 8,000/month</code></pre>
+<p>Now check whether your max CPA fits: SAR 8,000 ÷ 20 leads = SAR 400 per lead. If your customer LTV is SAR 4,000 and you close 25% of leads, your effective customer acquisition cost is SAR 1,600 — well within range for most service businesses. Profitable.</p>
+<p>If the math doesn't work, you have three levers: improve conversion rate, target lower-CPC keyword variations, or accept that this channel isn't economic for your business and shift to <a href="/en/services/seo">organic SEO</a> or <a href="/en/blog/google-ads-vs-meta-ads">Meta Ads</a>.</p>
+
+<h2 id="hidden-costs">Hidden costs people forget</h2>
+<p>Three line items that don't show up in Google's "ad spend" reports but are part of running campaigns profitably:</p>
+<p><strong>Account management.</strong> Whether internal time or agency fee — typically 10–20% of ad spend for an account that's actually being optimized. An ignored Google Ads account loses 15–30% of its efficiency within 90 days.</p>
+<p><strong>Landing pages.</strong> A proper conversion-optimized landing page costs SAR 3,000–15,000 to build (one-time) and benefits every campaign you run thereafter.</p>
+<p><strong>Tracking infrastructure.</strong> Conversion tracking, GA4 setup, server-side tracking for iOS users — typically a one-time SAR 2,000–8,000 setup. Without it, you're optimizing blind.</p>
+<p><strong>Creative.</strong> Ad copy variants, image ads for Display/PMax, video assets if you're running YouTube. Plan SAR 500–2,500/month for ongoing creative refresh.</p>
+<p>If you're budgeting SAR 10,000/month for ads but nothing for these supporting costs, your effective performance will be 30–50% below what the same spend with proper infrastructure would deliver.</p>
+
+<h2 id="what-we-charge">What we charge (since you'll ask)</h2>
+<p><a href="/en/services/google-ads">Local City Solutions</a> manages Google Ads for Saudi businesses ranging from SAR 8,000 to SAR 200,000+ in monthly ad spend. Our typical engagement includes campaign build, landing page optimization, weekly optimization, and monthly reporting.</p>
+<p>If you'd like a free assessment of your current campaigns — or a budget plan if you're starting fresh — <a href="/en/free-audit">book a strategy call</a>. We'll go through the math for your specific industry and target customer count.</p>
+
+<h2 id="bottom-line">The bottom line</h2>
+<p>Google Ads in Saudi Arabia is neither cheap nor uniformly expensive — it's a vertical-by-vertical question, with bilingual auctions creating meaningful arbitrage opportunities for Saudi businesses willing to invest in proper Arabic campaigns. The advertisers winning right now are the ones who treat the click as one variable in a three-variable equation, and who optimize the post-click experience as aggressively as the auction itself.</p>
+<p>Start with realistic budget math. Don't accept Google's recommended budget at face value. Track conversion value, not just count. And run Arabic and English in parallel.</p>
+<p><em>Pair this with our <a href="/en/blog/google-ads-mistakes-2026">Google Ads mistakes guide</a> and our <a href="/en/blog/facebook-marketing-cost-saudi-arabia-2026">Facebook marketing cost breakdown</a> for a complete view of paid acquisition economics in the Saudi market.</em></p>`,
+      ar: `<p>"كم تكلف إعلانات قوقل في السعودية؟" هذا واحد من أكثر الأسئلة التي يرسلها أصحاب الأعمال في الرياض — وواحد من أسوأ الأسئلة إجابةً على الإنترنت. معظم المقالات تتهرب بـ"يعتمد" ونطاق CPC عام يشمل السوق الأمريكي، حيث أسعار الكلمات المفتاحية أعلى بـ3-5 أضعاف من السعودية في معظم القطاعات.</p>
+<p>هذه هي الإجابة الصادقة، بأرقام حقيقية، ونطاقات حقيقية، وإطار ميزانية يمكنك تطبيقه هذا الأسبوع.</p>
+
+<h2 id="short-answer">الإجابة المختصرة</h2>
+<p>لمعظم الأعمال السعودية الصغيرة والمتوسطة في 2026، اختبار إعلانات قوقل الحقيقي يكلف <strong>6,000–25,000 ريال شهرياً</strong>. أقل من 5,000 ريال/شهر عادةً لا يكفي البيانات للتحسين؛ فوق 25,000 ريال/شهر يجب أن يكون لديك مدير حساب مخصص بدلاً من إدارته بشكل جزئي.</p>
+<p>متوسط CPC عبر السعودية يتراوح من <strong>1.50 ريال (استعلامات B2B ومعلوماتية منخفضة المنافسة) إلى أكثر من 80 ريال (قانوني، مالي، خدمات B2B عالية القيمة)</strong>. معظم قطاعات B2C تقع في نطاق 4-15 ريال.</p>
+<p>الآن لنكن أكثر تحديداً.</p>
+
+<h2 id="cpc-by-industry">نطاقات CPC الحقيقية حسب القطاع (السعودية، 2026)</h2>
+<p>هذه هي النطاقات التي نراها عبر الحملات النشطة التي ندير ونراجع. إنها تقريبية — يعتمد CPC الدقيق على استراتيجية المزايدة وقوة الإعلان واستهداف الموقع ومستوى المنافسة في أي يوم معين.</p>
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>القطاع</th><th>نطاق CPC النموذجي (ريال)</th><th>ملاحظات</th></tr></thead>
+<tbody>
+<tr><td>العقارات (سكني)</td><td>2 – 8</td><td>محلي للغاية؛ يتفاوت CPC بشكل كبير حسب الحي</td></tr>
+<tr><td>المطاعم والتوصيل</td><td>1.50 – 6</td><td>رخيص على الاستعلامات العامة، غالي على مصطلحات المنافسين</td></tr>
+<tr><td>التجزئة والتجارة الإلكترونية</td><td>2 – 12</td><td>موسمي جداً؛ الربع الرابع ورمضان ترتفع 30-50%</td></tr>
+<tr><td>الصحة والعيادات الطبية</td><td>8 – 35</td><td>الأسنان والتجميل والتخصصات في أعلى النطاق</td></tr>
+<tr><td>التعليم والتدريب</td><td>4 – 18</td><td>الجامعات وبرامج الشهادات في الأعلى</td></tr>
+<tr><td>الجمال والصالونات</td><td>3 – 10</td><td>أعلى في العليا والملقا وKAFD بسبب المنافسة الكثيفة</td></tr>
+<tr><td>مبيعات وخدمات السيارات</td><td>3 – 14</td><td>استعلامات السيارات المستعملة أرخص من الجديدة</td></tr>
+<tr><td>الخدمات القانونية</td><td>25 – 80+</td><td>من بين أغلى القطاعات في السعودية</td></tr>
+<tr><td>الخدمات المالية</td><td>20 – 60</td><td>التأمين والإقراض باستمرار في النطاق العلوي</td></tr>
+<tr><td>خدمات المنزل (تكييف، سباكة)</td><td>4 – 16</td><td>ارتفاع خلال الصيف وبعد موسم الأمطار</td></tr>
+<tr><td>تقنية المعلومات وSaaS</td><td>8 – 40</td><td>دورات مبيعات طويلة تبرر CPCs أعلى</td></tr>
+<tr><td>السفر والضيافة</td><td>3 – 12</td><td>كلمات الحج والعمرة تنافسية موسمياً</td></tr>
+</tbody>
+</table>
+</div>
+<p>تنبيهان مهمان:</p>
+<p><strong>CPCs العربية والإنجليزية مختلفة.</strong> مزادات الكلمات المفتاحية العربية في السعودية أرخص عادةً بـ15-30% من المزاد الإنجليزي المكافئ في نفس القطاع، بشكل رئيسي لأن عدداً أقل من المعلنين أعدوا حملات عربية صحيحة. هذه فرصة مراجحة حقيقية للأعمال السعودية المستعدة لتشغيل حملات ثنائية اللغة.</p>
+<p><strong>المزايدة على منافسي العلامة التجارية ترفع التكاليف.</strong> إذا كنت تزايد على استعلامات <code>[اسم المنافس]</code>، توقع دفع 2-4 أضعاف CPC العادي لذلك القطاع. نقاط الجودة تعمل ضدك عندما لا تكون العلامة التجارية المبحوث عنها.</p>
+
+<h2 id="what-drives-cost">ما الذي يحدد تكلفتك فعلاً (وليس فقط CPC)</h2>
+<p>تكلفة النقر هي واحدة فقط من ثلاثة متغيرات تحدد ما تدفعه لكل عميل. المعادلة الكاملة:</p>
+<blockquote><p>تكلفة العميل = CPC ÷ معدل التحويل ÷ معدل تحويل العميل المحتمل</p></blockquote>
+<p>CPC بـ4 ريال يبدو رخيصاً حتى تدرك أن صفحة هبوطك تتحول بنسبة 1% ومعدل إغلاق مبيعاتك 10%. هذا 4,000 ريال لكل عميل. CPC بـ20 ريال مع معدل تحويل 5% ومعدل إغلاق 25% يعطي 1,600 ريال للعميل — أكثر كفاءة بخمسة أضعاف رغم CPC الأعلى.</p>
+<p>لهذا نقول للعملاء التوقف عن التركيز على CPC. الروافع الثلاثة التي تحرك تكلفة العميل فعلاً هي:</p>
+<ol>
+<li><strong>دقة المطابقة</strong> — الحصول على النية الصحيحة، لا النقرة الأرخص</li>
+<li><strong>معدل تحويل صفحة الهبوط</strong> — مواقع الأعمال السعودية النموذجية تتحول بنسبة 0.5-2%؛ صفحة هبوط محسّنة بشكل صحيح تصل 4-8%</li>
+<li><strong>سرعة متابعة المبيعات</strong> — العملاء المحتملون الذين يُتواصل معهم خلال 5 دقائق يُغلقون بمعدل 4× مقارنة بمن يُتواصل معهم خلال ساعة</li>
+</ol>
+<p>غطينا أخطاء جانب الحملة بالتفصيل في <a href="/en/blog/google-ads-mistakes-2026">دليل أخطاء إعلانات قوقل</a>. هذا المقال يتعلق بالتكلفة — وأكبر رافعة تكلفة عادةً ما بعد النقر، لا قبله.</p>
+
+<h2 id="budget-math">كيف تبني ميزانية إعلانات قوقل تنجح</h2>
+<p>لا تسأل "كم يجب أن أنفق؟" اسأل ثلاثة أسئلة مختلفة بدلاً من ذلك.</p>
+<p><strong>السؤال 1: كم عميلاً أحتاج هذا الشهر؟</strong></p>
+<p>كن محدداً. "مزيد من العملاء المحتملين" ليس هدفاً. "20 عميلاً محتملاً مؤهلاً بأقل من 400 ريال لكل منهم" هو هدف.</p>
+<p><strong>السؤال 2: ما معدل تحويلي التاريخي من نقرة إلى عميل محتمل مؤهل؟</strong></p>
+<p>إذا لم تعرف، افترض 2% لصفحة هبوط لائقة، 1% للصفحة الرئيسية العامة، 4-6% لصفحة هبوط محسّنة خاصة بالقطاع.</p>
+<p><strong>السؤال 3: ما نطاق CPC لهذا القطاع؟</strong></p>
+<p>استخدم الجدول أعلاه كنقطة بداية.</p>
+<p>ثم الحساب:</p>
+<pre><code>النقرات المطلوبة = العملاء المحتملون المستهدفون ÷ معدل التحويل
+الميزانية المطلوبة = النقرات المطلوبة × متوسط CPC</code></pre>
+<p>لـ20 عميلاً محتملاً بمعدل تحويل 2% وCPC بـ8 ريال:</p>
+<pre><code>20 ÷ 0.02 = 1,000 نقرة مطلوبة
+1,000 × 8 ريال = 8,000 ريال/شهر</code></pre>
+<p>الآن تحقق من تكلفة الاكتساب القصوى: 8,000 ÷ 20 عميل محتمل = 400 ريال للعميل المحتمل. إذا كانت قيمة عمر العميل 4,000 ريال وتغلق 25% من العملاء المحتملين، تكلفة اكتساب العميل الفعلية هي 1,600 ريال — ضمن النطاق المقبول لمعظم أعمال الخدمات. مربح.</p>
+<p>إذا لم تنجح الحسابات، لديك ثلاث روافع: تحسين معدل التحويل، استهداف تنويعات كلمات مفتاحية أرخص CPC، أو قبول أن هذه القناة غير اقتصادية لعملك والتحول إلى <a href="/en/services/seo">SEO الطبيعي</a> أو <a href="/en/blog/google-ads-vs-meta-ads">إعلانات ميتا</a>.</p>
+
+<h2 id="hidden-costs">التكاليف الخفية التي ينساها الناس</h2>
+<p>ثلاثة بنود لا تظهر في تقارير "الإنفاق الإعلاني" من قوقل لكنها جزء من تشغيل الحملات بشكل مربح:</p>
+<p><strong>إدارة الحساب.</strong> سواء كانت وقتاً داخلياً أو رسوم وكالة — عادةً 10-20% من الإنفاق الإعلاني لحساب يُحسَّن فعلاً. حساب إعلانات قوقل مهمل يفقد 15-30% من كفاءته خلال 90 يوماً.</p>
+<p><strong>صفحات الهبوط.</strong> صفحة هبوط محسّنة للتحويل تكلف 3,000-15,000 ريال للبناء (مرة واحدة) وتفيد كل حملة تشغلها بعد ذلك.</p>
+<p><strong>البنية التحتية للتتبع.</strong> تتبع التحويلات وإعداد GA4 والتتبع من جانب الخادم لمستخدمي iOS — عادةً إعداد مرة واحدة بـ2,000-8,000 ريال. بدونه، أنت تحسّن بشكل أعمى.</p>
+<p><strong>الإبداع.</strong> نسخ إعلانية بديلة، إعلانات صور للعرض/PMax، أصول فيديو إذا كنت تشغل يوتيوب. خطط لـ500-2,500 ريال/شهر لتجديد الإبداع المستمر.</p>
+<p>إذا كنت تخصص 10,000 ريال/شهر للإعلانات لكن لا شيء لهذه التكاليف الداعمة، أداؤك الفعلي سيكون 30-50% أقل مما كان الإنفاق ذاته سيحققه مع البنية التحتية الصحيحة.</p>
+
+<h2 id="what-we-charge">ما نتقاضاه (بما أنك ستسأل)</h2>
+<p><a href="/en/services/google-ads">لوكال سيتي سولوشنز</a> تدير إعلانات قوقل للأعمال السعودية التي تتراوح بين 8,000 إلى أكثر من 200,000 ريال في الإنفاق الإعلاني الشهري. مشاركتنا النموذجية تشمل بناء الحملة، وتحسين صفحة الهبوط، والتحسين الأسبوعي، والتقارير الشهرية.</p>
+<p>إذا أردت تقييماً مجانياً لحملاتك الحالية — أو خطة ميزانية إذا كنت تبدأ من جديد — <a href="/en/free-audit">احجز استشارة استراتيجية</a>. سنتعمق في الحسابات لقطاعك المحدد وعدد العملاء المستهدف.</p>
+
+<h2 id="bottom-line">الخلاصة</h2>
+<p>إعلانات قوقل في السعودية ليست رخيصة ولا غالية بشكل موحد — إنها سؤال قطاع بقطاع، مع مزادات ثنائية اللغة التي تخلق فرص مراجحة حقيقية للأعمال السعودية المستعدة للاستثمار في حملات عربية صحيحة. المعلنون الفائزون الآن هم الذين يتعاملون مع النقرة كمتغير واحد في معادلة ثلاثية المتغيرات، ويحسّنون تجربة ما بعد النقر بنفس قوة تحسين المزاد نفسه.</p>
+<p>ابدأ بحسابات ميزانية واقعية. لا تقبل ميزانية قوقل الموصى بها بقيمتها الظاهرية. تتبع قيمة التحويل، لا فقط العدد. وشغّل العربية والإنجليزية بشكل متوازٍ.</p>
+<p><em>اجمع هذا مع <a href="/en/blog/google-ads-mistakes-2026">دليل أخطاء إعلانات قوقل</a> و<a href="/en/blog/facebook-marketing-cost-saudi-arabia-2026">تحليل تكلفة تسويق فيسبوك</a> للحصول على صورة كاملة عن اقتصاديات الاستحواذ المدفوع في السوق السعودي.</em></p>`,
+    },
+    toc: [
+      { id: "short-answer", text: { en: "The short answer", ar: "الإجابة المختصرة" }, level: 2 },
+      { id: "cpc-by-industry", text: { en: "CPC ranges by industry", ar: "نطاقات CPC حسب القطاع" }, level: 2 },
+      { id: "what-drives-cost", text: { en: "What actually drives your cost", ar: "ما الذي يحدد تكلفتك فعلاً" }, level: 2 },
+      { id: "budget-math", text: { en: "How to build a budget that works", ar: "كيف تبني ميزانية تنجح" }, level: 2 },
+      { id: "hidden-costs", text: { en: "Hidden costs people forget", ar: "التكاليف الخفية" }, level: 2 },
+      { id: "what-we-charge", text: { en: "What we charge", ar: "ما نتقاضاه" }, level: 2 },
+      { id: "bottom-line", text: { en: "The bottom line", ar: "الخلاصة" }, level: 2 },
+    ],
+    category: "google-ads",
+    categoryLabel: { en: "Google Ads", ar: "إعلانات قوقل" },
+    tags: ["Google Ads", "CPC", "Saudi Arabia", "Riyadh", "PPC", "Budget", "Digital Marketing"],
+    author: "Local City Solutions Team",
+    publishDate: "2026-04-30",
+    updatedDate: "2026-04-30",
+    featuredImage: "/images/blog/google-ads-cost-saudi-arabia.jpg",
+    readingTime: 10,
+    relatedServices: ["google-ads", "seo"],
+    relatedDistricts: [],
+    relatedPosts: ["google-ads-mistakes-2026", "google-ads-vs-meta-ads", "facebook-marketing-cost-saudi-arabia-2026"],
+  },
 ];
 
 export const CATEGORIES = [
