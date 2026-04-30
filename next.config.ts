@@ -94,6 +94,9 @@ const nextConfig: NextConfig = {
       // 301s: blog republish phase 3a
       { source: "/programmatic-seo-guide", destination: "/en/blog/programmatic-seo-guide", statusCode: 301 },
       { source: "/programmatic-seo-guide/", destination: "/en/blog/programmatic-seo-guide", statusCode: 301 },
+      // 301s: blog republish phase 3b
+      { source: "/local-link-building-strategy", destination: "/en/blog/local-link-building-strategy", statusCode: 301 },
+      { source: "/local-link-building-strategy/", destination: "/en/blog/local-link-building-strategy", statusCode: 301 },
     ];
   },
 };
