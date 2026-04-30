@@ -1442,6 +1442,147 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedDistricts: [],
     relatedPosts: ["programmatic-seo-guide", "local-seo-dominate-riyadh-search", "technical-seo-audit-checklist"],
   },
+  {
+    id: 17,
+    slug: "google-ads-mistakes-2026",
+    title: {
+      en: "Top Google Ads Mistakes Killing ROI in 2026 (and How Saudi Advertisers Can Fix Them)",
+      ar: "أبرز أخطاء إعلانات قوقل التي تدمر العائد على الاستثمار في 2026 (وكيف يصلحها المعلنون السعوديون)",
+    },
+    metaDescription: {
+      en: "9 Google Ads mistakes silently draining ad budgets for Saudi businesses in 2026. Each with a concrete fix you can apply this week.",
+      ar: "9 أخطاء في إعلانات قوقل تستنزف ميزانيات الإعلانات للأعمال السعودية في 2026. كل خطأ مع إصلاح ملموس يمكنك تطبيقه هذا الأسبوع.",
+    },
+    excerpt: {
+      en: "Average CPCs in Riyadh have climbed 20-35% year-over-year. These 9 mistakes are draining the most budget right now — with a concrete fix for each.",
+      ar: "ارتفعت تكاليف النقر في الرياض بنسبة 20-35% سنوياً. هذه الأخطاء التسعة تستنزف أكبر قدر من الميزانية الآن — مع إصلاح ملموس لكل منها.",
+    },
+    content: {
+      en: `<p>Google Ads has changed more in the last 18 months than in the previous five years combined. Performance Max went from optional to default, broad match got more aggressive, and AI-driven recommendations push advertisers toward decisions that benefit Google's revenue more than the advertiser's ROI.</p>
+<p>For Saudi businesses, the cost of getting this wrong is steeper than ever — average CPCs in Riyadh have climbed 20–35% across most B2C verticals year-over-year. Below are the 9 mistakes draining the most budget right now, with a concrete fix for each.</p>
+
+<h2 id="mistake-1-budget">1. Accepting Google's recommended budget without checking the math</h2>
+<p>The most expensive mistake on the list. Google recommends budgets based on "share of available impressions" — which is Google's interest, not yours. The recommended budget often assumes you want to capture every possible click, regardless of whether those clicks convert profitably for your business.</p>
+<p><strong>The fix:</strong> Calculate your maximum profitable CPA before you log into Google Ads. Take your average customer lifetime value, multiply by an acceptable acquisition cost ratio (typically 20–35%), and divide by your expected conversion rate. That's your ceiling. Set tCPA bidding to that number — never higher because Google "recommended" it.</p>
+
+<h2 id="mistake-2-broad-match">2. Running broad match keywords without negative keyword discipline</h2>
+<p>Broad match in 2026 is far more aggressive than it was in 2023. A keyword like <code>digital marketing services</code> will now match queries like <code>free digital marketing courses</code> or <code>digital marketing salary</code> — clicks you absolutely do not want to pay for.</p>
+<p><strong>The fix:</strong> If you use broad match (which Google heavily incentivizes), you must add 50–200 negative keywords across topical buckets: jobs, salaries, free, course, tutorial, cheap, DIY, and any competitor names you don't want to bid on. Review the search-terms report weekly for the first 60 days, then monthly.</p>
+
+<h2 id="mistake-3-pmax">3. Treating Performance Max as "set and forget"</h2>
+<p>Performance Max promises automation, and Google markets it that way. In reality, PMax campaigns leak budget into low-intent placements (apps, partner sites, irrelevant YouTube channels) unless you actively constrain them.</p>
+<p><strong>The fix:</strong> Use audience signals (not "audience targeting" — Google removed strict targeting from PMax) to give the algorithm a starting point. Add brand exclusions for competitor terms. Use account-level negative keywords. Most critically, segment PMax by asset group — one for branded queries, one for generic, one for shopping if applicable. Don't dump everything into one campaign.</p>
+
+<h2 id="mistake-4-bilingual">4. Ignoring bilingual search behavior</h2>
+<p>Saudi searchers move fluidly between Arabic and English on the same day, sometimes within the same search session. An English-only Google Ads account in KSA leaves 40–60% of the relevant traffic untapped, depending on vertical.</p>
+<p><strong>The fix:</strong> Run parallel ad groups in Arabic and English, with separate landing pages for each. Don't auto-translate — Arabic ad copy needs to be written by a native speaker who understands Saudi market nuance. Translation-quality ad copy underperforms native copy by 3–5× on CTR. If you don't have Arabic resources internally, <a href="/en/services/google-ads">our team can build the Arabic side</a>.</p>
+
+<h2 id="mistake-5-attribution">5. Using last-click attribution as the source of truth</h2>
+<p>Last-click attribution gives all credit to the final touchpoint before conversion. In 2026, with multi-device journeys averaging 6–8 touches before purchase in most B2C verticals, that's a misleading view of which campaigns actually drive results.</p>
+<p><strong>The fix:</strong> Switch to data-driven attribution in Google Ads (it's the default for new accounts but many older accounts are still on last-click). For accounts with low conversion volume, position-based attribution is a reasonable alternative. Either way, evaluate ROAS over a 30-day window, not a same-day window.</p>
+
+<h2 id="mistake-6-homepage">6. Sending all traffic to the homepage</h2>
+<p>This one's older than Google Ads itself, but Saudi advertisers still do it. If you're paying SAR 12 per click for <code>Riyadh dental clinic</code> and sending the click to your homepage, you're paying the user to find your services menu themselves. Most won't.</p>
+<p><strong>The fix:</strong> Every ad group should point to a dedicated landing page that matches the keyword intent. If you're advertising "emergency dental care," the landing page should lead with emergency dental care — not your full services menu. This single change typically improves conversion rate by 30–60%.</p>
+
+<h2 id="mistake-7-conversion-value">7. Not using conversion value, only conversion count</h2>
+<p>If you optimize for "conversions," Google treats every conversion as equal. A SAR 50 lead and a SAR 5,000 sale count the same. The algorithm will happily over-deliver on the cheap leads and starve the expensive ones.</p>
+<p><strong>The fix:</strong> Set conversion <em>values</em> in your tracking, not just counts. For lead-gen, assign a value based on lead-to-customer rate × average customer value (e.g. SAR 800 per qualified lead if your close rate is 20% and average customer is SAR 4,000). For e-commerce, pass the actual transaction value. Then optimize toward target ROAS, not target CPA.</p>
+
+<h2 id="mistake-8-avoiding-pmax">8. Refusing to test Performance Max because "it's a black box"</h2>
+<p>This is the inverse mistake of #3. Many sophisticated advertisers refuse to use Performance Max at all because they distrust the lack of transparency. The result is they leave 20–40% of incremental conversions on the table — particularly in YouTube and Discover, channels that are now exclusively reachable through PMax.</p>
+<p><strong>The fix:</strong> Run PMax alongside, not instead of, your search campaigns. Allocate 20–30% of your budget to PMax with proper guardrails (asset groups, audience signals, negatives) and measure incrementality, not raw conversions. If PMax is genuinely cannibalizing search, you'll see it in the data and can scale back.</p>
+
+<h2 id="mistake-9-no-audit">9. Setting it up once and never auditing</h2>
+<p>Google Ads accounts decay. Match types broaden over time. Negative keyword lists go stale. Auction dynamics shift as competitors enter. Landing pages drift out of date. An account that was profitable in January 2025 will quietly become unprofitable by April 2026 if no one is auditing it.</p>
+<p><strong>The fix:</strong> Schedule a monthly account audit. The basics: review search-terms report, add new negatives, pause underperforming keywords/assets, check that conversion tracking still fires correctly, and verify quality scores haven't dropped on your top spenders. Quarterly, do a deeper review including landing page experience, ad strength, and bidding strategy alignment.</p>
+
+<h2 id="what-wed-do">What we'd actually do if we audited your account today</h2>
+<p>The fastest 30-day improvement we typically find for Saudi B2C advertisers boils down to four moves:</p>
+<ol>
+<li>Add 100+ negative keywords across the most common irrelevant query patterns</li>
+<li>Split single-language campaigns into Arabic + English mirrors with native ad copy</li>
+<li>Replace homepage destinations with intent-matched landing pages</li>
+<li>Switch optimization from conversion count to conversion value with target ROAS</li>
+</ol>
+<p>These four together usually shift ROAS by 25–60% within 30 days, with no increase in budget.</p>
+<p>If you'd like a structured audit of your current Google Ads account against this list — and a prioritized fix plan — <a href="/en/free-audit">book a free strategy call</a>. We'll go through your account live and tell you exactly which of these mistakes are costing you the most.</p>
+<p><em>For more on Google Ads in the Saudi market, read our breakdown of <a href="/en/blog/google-ads-cost-saudi-arabia">Google Ads cost in Saudi Arabia</a> and our comparison of <a href="/en/blog/google-ads-vs-meta-ads">Google Ads vs Meta Ads</a>.</em></p>`,
+      ar: `<p>تغيرت إعلانات قوقل في آخر 18 شهراً أكثر مما تغيرت في السنوات الخمس السابقة مجتمعة. أصبح Performance Max الخيار الافتراضي، وصار المطابقة الواسعة أكثر عدوانية، وتدفع التوصيات المعتمدة على الذكاء الاصطناعي المعلنين نحو قرارات تخدم إيرادات قوقل أكثر مما تخدم عائد المعلن على الاستثمار.</p>
+<p>للأعمال السعودية، تكلفة الخطأ أعلى من أي وقت مضى — ارتفعت متوسطات تكلفة النقر في الرياض بنسبة 20-35% عبر معظم القطاعات B2C سنة بعد سنة. فيما يلي الأخطاء التسعة التي تستنزف أكبر قدر من الميزانية الآن، مع إصلاح ملموس لكل منها.</p>
+
+<h2 id="mistake-1-budget">1. قبول ميزانية قوقل الموصى بها دون مراجعة الحسابات</h2>
+<p>أغلى خطأ في القائمة. توصي قوقل بالميزانيات بناءً على "حصة الظهور المتاح" — وهو ما يخدم مصلحة قوقل لا مصلحتك. الميزانية الموصى بها في الغالب تفترض أنك تريد التقاط كل نقرة ممكنة، بغض النظر عما إذا كانت تتحول بشكل مربح لعملك.</p>
+<p><strong>الإصلاح:</strong> احسب الحد الأقصى لتكلفة الاكتساب المربحة قبل الدخول لإعلانات قوقل. خذ متوسط قيمة عمر العميل، اضربه بنسبة تكلفة الاكتساب المقبولة (عادةً 20-35%)، واقسمه على معدل التحويل المتوقع. هذا هو سقفك. اضبط مزايدة tCPA على هذا الرقم — لا تزيده لأن قوقل "أوصت" بذلك.</p>
+
+<h2 id="mistake-2-broad-match">2. تشغيل كلمات المطابقة الواسعة بدون انضباط في الكلمات السلبية</h2>
+<p>المطابقة الواسعة في 2026 أكثر عدوانية بكثير مما كانت في 2023. كلمة مفتاحية مثل <code>خدمات التسويق الرقمي</code> ستطابق الآن استعلامات مثل <code>دورات تسويق رقمي مجانية</code> أو <code>راتب التسويق الرقمي</code> — نقرات لا تريد أن تدفع عنها مطلقاً.</p>
+<p><strong>الإصلاح:</strong> إذا استخدمت المطابقة الواسعة (التي تحفز عليها قوقل بقوة)، يجب إضافة 50-200 كلمة سلبية عبر مجموعات موضوعية: وظائف، رواتب، مجاني، دورة، تعليمي، رخيص، DIY، وأي أسماء منافسين لا تريد المزايدة عليها. راجع تقرير مصطلحات البحث أسبوعياً في الـ60 يوماً الأولى، ثم شهرياً.</p>
+
+<h2 id="mistake-3-pmax">3. التعامل مع Performance Max كـ"اضبط وانسَ"</h2>
+<p>يعد Performance Max بالأتمتة وتسوقه قوقل على هذا الأساس. في الواقع، تسرب حملات PMax الميزانية إلى المواضع منخفضة النية (التطبيقات، المواقع الشريكة، قنوات يوتيوب غير ذات صلة) ما لم تقيدها بنشاط.</p>
+<p><strong>الإصلاح:</strong> استخدم إشارات الجمهور (وليس "استهداف الجمهور" — أزالت قوقل الاستهداف الصارم من PMax) لتمنح الخوارزمية نقطة بداية. أضف استثناءات العلامة التجارية لمصطلحات المنافسين. استخدم الكلمات السلبية على مستوى الحساب. والأهم، قسّم PMax حسب مجموعة الأصول — واحدة للاستعلامات ذات العلامة التجارية، وأخرى للعامة، وأخرى للتسوق إن أمكن. لا تضع كل شيء في حملة واحدة.</p>
+
+<h2 id="mistake-4-bilingual">4. تجاهل سلوك البحث ثنائي اللغة</h2>
+<p>يتنقل المستخدمون السعوديون بسلاسة بين العربية والإنجليزية في نفس اليوم، وأحياناً في نفس جلسة البحث. حساب إعلانات قوقل باللغة الإنجليزية فقط في السعودية يفوّت 40-60% من حركة المرور ذات الصلة، حسب القطاع.</p>
+<p><strong>الإصلاح:</strong> شغّل مجموعات إعلانية متوازية بالعربية والإنجليزية، مع صفحات هبوط منفصلة لكل منها. لا تعتمد الترجمة الآلية — نسخة الإعلان العربية تحتاج كاتباً أصلياً يفهم دقائق السوق السعودي. نسخة الإعلان بجودة الترجمة تؤدي أسوأ من النسخة الأصلية بـ3-5 أضعاف على CTR. إذا لم تكن لديك موارد عربية داخلياً، <a href="/en/services/google-ads">يمكن لفريقنا بناء الجانب العربي</a>.</p>
+
+<h2 id="mistake-5-attribution">5. استخدام نسب آخر نقرة كمصدر الحقيقة</h2>
+<p>نسب آخر نقرة يعطي كل الفضل لنقطة التواصل الأخيرة قبل التحويل. في 2026، مع رحلات متعددة الأجهزة تتوسط 6-8 نقاط تواصل قبل الشراء في معظم قطاعات B2C، هذا منظور مضلل لمعرفة الحملات الفعلية التي تحقق النتائج.</p>
+<p><strong>الإصلاح:</strong> انتقل إلى النسب المعتمد على البيانات في إعلانات قوقل (هو الافتراضي للحسابات الجديدة لكن كثيراً من الحسابات القديمة ما زالت على آخر نقرة). للحسابات ذات حجم التحويل المنخفض، نسب قائم على الموقع بديل معقول. في كلتا الحالتين، قيّم ROAS على نافذة 30 يوماً، لا نافذة نفس اليوم.</p>
+
+<h2 id="mistake-6-homepage">6. إرسال كل حركة المرور للصفحة الرئيسية</h2>
+<p>هذا أقدم من إعلانات قوقل ذاتها، لكن المعلنين السعوديين ما زالوا يفعلونه. إذا كنت تدفع 12 ريالاً للنقرة على <code>عيادة أسنان الرياض</code> وترسل النقرة للصفحة الرئيسية، فأنت تدفع للمستخدم كي يجد قائمة خدماتك بنفسه. معظمهم لن يفعل.</p>
+<p><strong>الإصلاح:</strong> كل مجموعة إعلانية يجب أن تشير لصفحة هبوط مخصصة تطابق نية الكلمة المفتاحية. إذا كنت تعلن "رعاية أسنان طارئة"، يجب أن تبدأ صفحة الهبوط برعاية الأسنان الطارئة — لا بقائمة خدماتك الكاملة. هذا التغيير الواحد يحسن معدل التحويل عادةً بنسبة 30-60%.</p>
+
+<h2 id="mistake-7-conversion-value">7. عدم استخدام قيمة التحويل، فقط عدد التحويلات</h2>
+<p>إذا حسّنت لـ"التحويلات"، تتعامل قوقل مع كل تحويل بالتساوي. عميل محتمل بـ50 ريالاً وصفقة بـ5000 ريال تُعدّان متساويتين. الخوارزمية ستوفر العملاء المحتملين الرخيصة بشكل مفرط وتجوّع الغالية.</p>
+<p><strong>الإصلاح:</strong> اضبط <em>قيم</em> التحويل في تتبعك، ليس فقط العدد. للعملاء المحتملين، خصص قيمة بناءً على معدل تحويل العميل المحتمل × متوسط قيمة العميل (مثلاً 800 ريال للعميل المحتمل المؤهل إذا كان معدل إغلاقك 20% ومتوسط العميل 4000 ريال). للتجارة الإلكترونية، مرّر قيمة المعاملة الفعلية. ثم حسّن نحو ROAS المستهدف، لا CPA المستهدف.</p>
+
+<h2 id="mistake-8-avoiding-pmax">8. رفض تجربة Performance Max لأنه "صندوق أسود"</h2>
+<p>هذا عكس الخطأ رقم 3. كثير من المعلنين المتطورين يرفضون استخدام Performance Max كلياً لعدم ثقتهم بغياب الشفافية. النتيجة أنهم يتركون 20-40% من التحويلات التدريجية على الطاولة — خاصةً في يوتيوب وDiscover، القناتان اللتان يمكن الوصول إليهما الآن فقط عبر PMax.</p>
+<p><strong>الإصلاح:</strong> شغّل PMax جنباً إلى جنب، لا بدلاً من، حملاتك في البحث. خصص 20-30% من ميزانيتك لـPMax مع ضمانات مناسبة (مجموعات الأصول، إشارات الجمهور، الكلمات السلبية) وقس التدريجية، لا التحويلات الخام. إذا كان PMax يأكل فعلاً من حملات البحث، سترى ذلك في البيانات وتستطيع التراجع.</p>
+
+<h2 id="mistake-9-no-audit">9. إعداده مرة واحدة وعدم مراجعته أبداً</h2>
+<p>حسابات إعلانات قوقل تتدهور. أنواع المطابقة تتسع مع الوقت. قوائم الكلمات السلبية تصبح قديمة. تتغير ديناميكيات المزادات مع دخول منافسين جدد. تنحرف صفحات الهبوط عن الواقع. حساب كان مربحاً في يناير 2025 سيصبح بهدوء غير مربح بحلول أبريل 2026 إذا لم يراجعه أحد.</p>
+<p><strong>الإصلاح:</strong> جدوِل مراجعة حساب شهرية. الأساسيات: راجع تقرير مصطلحات البحث، أضف كلمات سلبية جديدة، أوقف الكلمات المفتاحية/الأصول الضعيفة، تحقق من أن تتبع التحويلات ما زال يعمل بشكل صحيح، وتحقق من عدم انخفاض نقاط الجودة على أكبر منفقيك. كل ربع سنة، أجرِ مراجعة أعمق تشمل تجربة صفحة الهبوط وقوة الإعلان ومحاذاة استراتيجية المزايدة.</p>
+
+<h2 id="what-wed-do">ما سنفعله فعلاً لو دققنا حسابك اليوم</h2>
+<p>أسرع تحسين لـ30 يوماً نجده عادةً للمعلنين السعوديين B2C يتلخص في أربع خطوات:</p>
+<ol>
+<li>إضافة 100+ كلمة سلبية عبر أكثر أنماط الاستعلامات غير ذات الصلة شيوعاً</li>
+<li>تقسيم الحملات أحادية اللغة إلى مرايا عربية + إنجليزية بنسخة إعلانية أصلية</li>
+<li>استبدال وجهات الصفحة الرئيسية بصفحات هبوط مطابقة للنية</li>
+<li>تحويل التحسين من عدد التحويلات إلى قيمة التحويل مع ROAS مستهدف</li>
+</ol>
+<p>هذه الأربعة معاً عادةً تحوّل ROAS بنسبة 25-60% خلال 30 يوماً، بدون زيادة في الميزانية.</p>
+<p>إذا أردت تدقيقاً منظماً لحساب إعلانات قوقل الحالي مقارنةً بهذه القائمة — وخطة إصلاح ذات أولويات — <a href="/en/free-audit">احجز استشارة استراتيجية مجانية</a>. سنراجع حسابك مباشرةً ونخبرك تحديداً أي هذه الأخطاء يكلفك الأكثر.</p>
+<p><em>لمزيد حول إعلانات قوقل في السوق السعودي، اقرأ تحليلنا لـ<a href="/en/blog/google-ads-cost-saudi-arabia">تكلفة إعلانات قوقل في السعودية</a> ومقارنتنا بين <a href="/en/blog/google-ads-vs-meta-ads">إعلانات قوقل وإعلانات ميتا</a>.</em></p>`,
+    },
+    toc: [
+      { id: "mistake-1-budget", text: { en: "1. Accepting Google's recommended budget", ar: "1. قبول ميزانية قوقل الموصى بها" }, level: 2 },
+      { id: "mistake-2-broad-match", text: { en: "2. Broad match without negative keywords", ar: "2. المطابقة الواسعة بدون كلمات سلبية" }, level: 2 },
+      { id: "mistake-3-pmax", text: { en: "3. Performance Max as set-and-forget", ar: "3. Performance Max كـ\"اضبط وانسَ\"" }, level: 2 },
+      { id: "mistake-4-bilingual", text: { en: "4. Ignoring bilingual search behavior", ar: "4. تجاهل سلوك البحث ثنائي اللغة" }, level: 2 },
+      { id: "mistake-5-attribution", text: { en: "5. Last-click attribution", ar: "5. نسب آخر نقرة" }, level: 2 },
+      { id: "mistake-6-homepage", text: { en: "6. Sending traffic to the homepage", ar: "6. إرسال حركة المرور للصفحة الرئيسية" }, level: 2 },
+      { id: "mistake-7-conversion-value", text: { en: "7. Conversion count over conversion value", ar: "7. عدد التحويلات بدل قيمتها" }, level: 2 },
+      { id: "mistake-8-avoiding-pmax", text: { en: "8. Refusing to test Performance Max", ar: "8. رفض تجربة Performance Max" }, level: 2 },
+      { id: "mistake-9-no-audit", text: { en: "9. No ongoing account audits", ar: "9. غياب مراجعات الحساب المستمرة" }, level: 2 },
+      { id: "what-wed-do", text: { en: "What we'd do in a 30-day audit", ar: "ما سنفعله في تدقيق 30 يوماً" }, level: 2 },
+    ],
+    category: "google-ads",
+    categoryLabel: { en: "Google Ads", ar: "إعلانات قوقل" },
+    tags: ["Google Ads", "PPC", "ROI", "Saudi Arabia", "Riyadh", "Performance Max", "Digital Marketing"],
+    author: "Local City Solutions Team",
+    publishDate: "2026-04-30",
+    updatedDate: "2026-04-30",
+    featuredImage: "/images/blog/google-ads-mistakes-2026.jpg",
+    readingTime: 11,
+    relatedServices: ["google-ads", "meta-ads"],
+    relatedDistricts: [],
+    relatedPosts: ["google-ads-vs-meta-ads", "local-link-building-strategy", "programmatic-seo-guide"],
+  },
 ];
 
 export const CATEGORIES = [

@@ -97,6 +97,9 @@ const nextConfig: NextConfig = {
       // 301s: blog republish phase 3b
       { source: "/local-link-building-strategy", destination: "/en/blog/local-link-building-strategy", statusCode: 301 },
       { source: "/local-link-building-strategy/", destination: "/en/blog/local-link-building-strategy", statusCode: 301 },
+      // 301s: blog republish phase 3c (slug year refresh: 2025 → 2026)
+      { source: "/google-ads-mistakes-2025", destination: "/en/blog/google-ads-mistakes-2026", statusCode: 301 },
+      { source: "/google-ads-mistakes-2025/", destination: "/en/blog/google-ads-mistakes-2026", statusCode: 301 },
     ];
   },
 };
