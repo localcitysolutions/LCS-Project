@@ -53,6 +53,37 @@ const GONE_PATHS = new Set([
   "/en/top-10-profitable-legal-business-ideas-foreigners-saudi-arabia",
   "/en/foreign-ownership-saudi-arabia-misa-policy",
   "/en/register-business-in-saudi-arabia-remotely",
+  // Phase 4 — /en/<slug> mirrors of Phase 1 410s (4)
+  "/en/business-setup-saudi-arabia-guide",
+  "/en/business-setup-partner-saudi-arabia",
+  "/en/business-license-registration-saudi-arabia",
+  "/en/business-structures-saudi-arabia-expats-investors",
+  // Phase 4 — /en/<slug> mirrors of Phase 2 medium-priority 410s (10, skip already-present /en/how-to-get-misa and /en/register-business)
+  "/en/business-setup-women-saudi-arabia-2025",
+  "/en/business-setup-tier-2-cities-saudi-arabia",
+  "/en/cost-to-start-small-business-saudi-arabia",
+  "/en/grow-small-business-saudi-arabia-2025",
+  "/en/local-city-solutions-licensing-cr-misa-registration-saudi-arabia",
+  "/en/new-business-laws-saudi-arabia-2025",
+  "/en/real-cost-of-starting-business-saudi-arabia",
+  "/en/set-up-company-saudi-arabia-no-sponsor",
+  "/en/vision-2030-business-models-youth-startups",
+  "/en/best-cities-to-start-business-saudi-arabia-2025",
+  // Phase 4 — /en/<slug> mirrors of Phase 2 low-priority root 410s (14)
+  "/en/can-have-multiple-business-licenses-saudi-arabia",
+  "/en/freelancing-with-student-visa-saudi-arabia",
+  "/en/holding-vs-operating-company-ksa",
+  "/en/local-city-solutions-vs-traditional-legal-firms",
+  "/en/multiple-crs-under-one-person-ksa",
+  "/en/need-physical-office-register-company-ksa",
+  "/en/open-company-branch-ksa-same-cr",
+  "/en/register-business-while-employed-saudi-arabia",
+  "/en/sagia-vs-misa-saudi-investment",
+  "/en/strategies-to-succeed-in-saudi-arabia-market",
+  "/en/top-mistakes-expats-starting-business-saudi-arabia",
+  "/en/update-commercial-registration-saudi-arabia",
+  "/en/virtual-address-saudi-business-registration",
+  "/en/align-business-with-vision-2030",
 ]);
 
 export default function middleware(request: NextRequest) {
