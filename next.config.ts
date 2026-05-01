@@ -143,6 +143,25 @@ const nextConfig: NextConfig = {
       { source: "/contact-2/", destination: "/en/contact", statusCode: 301 },
       { source: "/en/contact-2", destination: "/en/contact", statusCode: 301 },
       { source: "/en/contact-2/", destination: "/en/contact", statusCode: 301 },
+      // 301s: phase 5 — Arabic legacy slugs (5 pairs)
+      // Sources are URL-encoded because Next.js redirects() matches against the
+      // raw encoded URL pathname; raw Arabic chars in `source` would not match
+      // incoming requests like /ar/%D9%86%D9%8A%D8%A9-... that browsers send.
+      // /ar/نية-البحث
+      { source: "/ar/%D9%86%D9%8A%D8%A9-%D8%A7%D9%84%D8%A8%D8%AD%D8%AB", destination: "/ar/services/seo", statusCode: 301 },
+      { source: "/ar/%D9%86%D9%8A%D8%A9-%D8%A7%D9%84%D8%A8%D8%AD%D8%AB/", destination: "/ar/services/seo", statusCode: 301 },
+      // /ar/تحسين-محركات-البحث
+      { source: "/ar/%D8%AA%D8%AD%D8%B3%D9%8A%D9%86-%D9%85%D8%AD%D8%B1%D9%83%D8%A7%D8%AA-%D8%A7%D9%84%D8%A8%D8%AD%D8%AB", destination: "/ar/services/seo", statusCode: 301 },
+      { source: "/ar/%D8%AA%D8%AD%D8%B3%D9%8A%D9%86-%D9%85%D8%AD%D8%B1%D9%83%D8%A7%D8%AA-%D8%A7%D9%84%D8%A8%D8%AD%D8%AB/", destination: "/ar/services/seo", statusCode: 301 },
+      // /ar/اهمية-التسويق-في-السوشيال-ميديا-للبزنس
+      { source: "/ar/%D8%A7%D9%87%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AA%D8%B3%D9%88%D9%8A%D9%82-%D9%81%D9%8A-%D8%A7%D9%84%D8%B3%D9%88%D8%B4%D9%8A%D8%A7%D9%84-%D9%85%D9%8A%D8%AF%D9%8A%D8%A7-%D9%84%D9%84%D8%A8%D8%B2%D9%86%D8%B3", destination: "/ar/services/social-media", statusCode: 301 },
+      { source: "/ar/%D8%A7%D9%87%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AA%D8%B3%D9%88%D9%8A%D9%82-%D9%81%D9%8A-%D8%A7%D9%84%D8%B3%D9%88%D8%B4%D9%8A%D8%A7%D9%84-%D9%85%D9%8A%D8%AF%D9%8A%D8%A7-%D9%84%D9%84%D8%A8%D8%B2%D9%86%D8%B3/", destination: "/ar/services/social-media", statusCode: 301 },
+      // /ar/أفضل-10-شركات-التسويق-الرقمي-في-المملكة
+      { source: "/ar/%D8%A3%D9%81%D8%B6%D9%84-10-%D8%B4%D8%B1%D9%83%D8%A7%D8%AA-%D8%A7%D9%84%D8%AA%D8%B3%D9%88%D9%8A%D9%82-%D8%A7%D9%84%D8%B1%D9%82%D9%85%D9%8A-%D9%81%D9%8A-%D8%A7%D9%84%D9%85%D9%85%D9%84%D9%83%D8%A9", destination: "/ar/services", statusCode: 301 },
+      { source: "/ar/%D8%A3%D9%81%D8%B6%D9%84-10-%D8%B4%D8%B1%D9%83%D8%A7%D8%AA-%D8%A7%D9%84%D8%AA%D8%B3%D9%88%D9%8A%D9%82-%D8%A7%D9%84%D8%B1%D9%82%D9%85%D9%8A-%D9%81%D9%8A-%D8%A7%D9%84%D9%85%D9%85%D9%84%D9%83%D8%A9/", destination: "/ar/services", statusCode: 301 },
+      // /ar/اعلانات-فيسبوك-مقابل-اعلانات-تيك-توك-2025
+      { source: "/ar/%D8%A7%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA-%D9%81%D9%8A%D8%B3%D8%A8%D9%88%D9%83-%D9%85%D9%82%D8%A7%D8%A8%D9%84-%D8%A7%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA-%D8%AA%D9%8A%D9%83-%D8%AA%D9%88%D9%83-2025", destination: "/ar/services/meta-ads", statusCode: 301 },
+      { source: "/ar/%D8%A7%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA-%D9%81%D9%8A%D8%B3%D8%A8%D9%88%D9%83-%D9%85%D9%82%D8%A7%D8%A8%D9%84-%D8%A7%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA-%D8%AA%D9%8A%D9%83-%D8%AA%D9%88%D9%83-2025/", destination: "/ar/services/meta-ads", statusCode: 301 },
     ];
   },
 };

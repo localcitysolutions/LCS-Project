@@ -84,13 +84,43 @@ const GONE_PATHS = new Set([
   "/en/update-commercial-registration-saudi-arabia",
   "/en/virtual-address-saudi-business-registration",
   "/en/align-business-with-vision-2030",
+  // Phase 5 — Arabic legacy paths (off-strategy: business setup, MISA, CR, legal)
+  "/ar/ترخيص-ميسا-للاستثمار-في-السعودية",
+  "/ar/حجز-اسم-تجاري-في-السعودية",
+  "/ar/استخراج-رخصة-بلدية-في-السعودية",
+  "/ar/أفكار-شغل-للأجانب-في-السعودية-2025",
+  "/ar/التوسع-الذكي-للأعمال-حلول-المدينة-المحلية",
+  "/ar/مقارنة-local-city-solutions-والمكاتب-القانونية-التقليدية",
+  "/ar/تكلفة-بدء-مشروع-صغير-في-السعودية",
 ]);
 
+// Phase 5 — prefix-match safety net for truncated Arabic slugs.
+// Google's index display sometimes truncates long URLs, so the indexed form
+// may not match the full exact-match entry above. Catch any path beginning
+// with one of these stems.
+const GONE_PREFIXES = [
+  "/ar/التوسع-الذكي-للأعمال-حلول-المدينة-",
+  "/ar/مقارنة-local-city-solutions-والمكاتب-القانوني",
+];
+
 export default function middleware(request: NextRequest) {
-  // Normalise trailing slash so "/path/" and "/path" both match GONE_PATHS
-  const pathname = request.nextUrl.pathname.replace(/\/$/, "") || "/";
+  // Normalise trailing slash so "/path/" and "/path" both match GONE_PATHS.
+  // Decode percent-encoded segments — request.nextUrl.pathname keeps non-ASCII
+  // chars in their %XX form, so Set lookups against raw Arabic strings need
+  // the decoded form to match.
+  const rawPathname = request.nextUrl.pathname.replace(/\/$/, "") || "/";
+  let pathname = rawPathname;
+  try {
+    pathname = decodeURIComponent(rawPathname);
+  } catch {
+    // malformed percent-encoding — fall back to raw pathname
+  }
 
   if (GONE_PATHS.has(pathname)) {
+    return new NextResponse(null, { status: 410 });
+  }
+
+  if (GONE_PREFIXES.some((prefix) => pathname.startsWith(prefix))) {
     return new NextResponse(null, { status: 410 });
   }
   const userAgent = request.headers.get("user-agent") || "";
