@@ -92,6 +92,45 @@ const GONE_PATHS = new Set([
   "/ar/التوسع-الذكي-للأعمال-حلول-المدينة-المحلية",
   "/ar/مقارنة-local-city-solutions-والمكاتب-القانونية-التقليدية",
   "/ar/تكلفة-بدء-مشروع-صغير-في-السعودية",
+  // Phase 6 — /ar/<english-slug> mirrors of Phase 1 410s (4)
+  "/ar/business-setup-saudi-arabia-guide",
+  "/ar/business-setup-partner-saudi-arabia",
+  "/ar/business-license-registration-saudi-arabia",
+  "/ar/business-structures-saudi-arabia-expats-investors",
+  // Phase 6 — /ar/<english-slug> mirrors of Phase 2 medium-priority 410s (12)
+  "/ar/business-setup-women-saudi-arabia-2025",
+  "/ar/business-setup-tier-2-cities-saudi-arabia",
+  "/ar/cost-to-start-small-business-saudi-arabia",
+  "/ar/grow-small-business-saudi-arabia-2025",
+  "/ar/how-to-get-misa-investment-license-saudi-arabia",
+  "/ar/local-city-solutions-licensing-cr-misa-registration-saudi-arabia",
+  "/ar/new-business-laws-saudi-arabia-2025",
+  "/ar/real-cost-of-starting-business-saudi-arabia",
+  "/ar/register-business-in-saudi-arabia-remotely",
+  "/ar/set-up-company-saudi-arabia-no-sponsor",
+  "/ar/vision-2030-business-models-youth-startups",
+  "/ar/best-cities-to-start-business-saudi-arabia-2025",
+  // Phase 6 — /ar/<english-slug> mirrors of Phase 2 low-priority 410s (14)
+  "/ar/can-have-multiple-business-licenses-saudi-arabia",
+  "/ar/freelancing-with-student-visa-saudi-arabia",
+  "/ar/holding-vs-operating-company-ksa",
+  "/ar/local-city-solutions-vs-traditional-legal-firms",
+  "/ar/multiple-crs-under-one-person-ksa",
+  "/ar/need-physical-office-register-company-ksa",
+  "/ar/open-company-branch-ksa-same-cr",
+  "/ar/register-business-while-employed-saudi-arabia",
+  "/ar/sagia-vs-misa-saudi-investment",
+  "/ar/strategies-to-succeed-in-saudi-arabia-market",
+  "/ar/top-mistakes-expats-starting-business-saudi-arabia",
+  "/ar/update-commercial-registration-saudi-arabia",
+  "/ar/virtual-address-saudi-business-registration",
+  "/ar/align-business-with-vision-2030",
+  // Phase 6 — extra-safety /ar/ mirrors of Phase 2 already-/en/-prefixed entries (4 unique;
+  // 2 of the 6 spec'd entries duplicate Phase 6 medium-priority entries above — Set deduplicates).
+  "/ar/how-to-get-freelance-visa-saudi-arabia",
+  "/ar/business-visa-vs-freelance-visa-in-saudi-arabia",
+  "/ar/top-10-profitable-legal-business-ideas-foreigners-saudi-arabia",
+  "/ar/foreign-ownership-saudi-arabia-misa-policy",
 ]);
 
 // Phase 5 — prefix-match safety net for truncated Arabic slugs.

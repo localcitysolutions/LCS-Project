@@ -162,6 +162,62 @@ const nextConfig: NextConfig = {
       // /ar/اعلانات-فيسبوك-مقابل-اعلانات-تيك-توك-2025
       { source: "/ar/%D8%A7%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA-%D9%81%D9%8A%D8%B3%D8%A8%D9%88%D9%83-%D9%85%D9%82%D8%A7%D8%A8%D9%84-%D8%A7%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA-%D8%AA%D9%8A%D9%83-%D8%AA%D9%88%D9%83-2025", destination: "/ar/services/meta-ads", statusCode: 301 },
       { source: "/ar/%D8%A7%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA-%D9%81%D9%8A%D8%B3%D8%A8%D9%88%D9%83-%D9%85%D9%82%D8%A7%D8%A8%D9%84-%D8%A7%D8%B9%D9%84%D8%A7%D9%86%D8%A7%D8%AA-%D8%AA%D9%8A%D9%83-%D8%AA%D9%88%D9%83-2025/", destination: "/ar/services/meta-ads", statusCode: 301 },
+      // 301s: phase 6 — /ar/<english-slug> mirrors of Phase 1 service slugs (7 pairs)
+      { source: "/ar/best-seo-company", destination: "/ar/services/seo", statusCode: 301 },
+      { source: "/ar/best-seo-company/", destination: "/ar/services/seo", statusCode: 301 },
+      { source: "/ar/google-ads", destination: "/ar/services/google-ads", statusCode: 301 },
+      { source: "/ar/google-ads/", destination: "/ar/services/google-ads", statusCode: 301 },
+      { source: "/ar/google-my-business", destination: "/ar/services/google-business-profile", statusCode: 301 },
+      { source: "/ar/google-my-business/", destination: "/ar/services/google-business-profile", statusCode: 301 },
+      { source: "/ar/website-development", destination: "/ar/services/web-design", statusCode: 301 },
+      { source: "/ar/website-development/", destination: "/ar/services/web-design", statusCode: 301 },
+      { source: "/ar/social-media-marketing", destination: "/ar/services/social-media", statusCode: 301 },
+      { source: "/ar/social-media-marketing/", destination: "/ar/services/social-media", statusCode: 301 },
+      { source: "/ar/local-business-listing-agency-riyadh", destination: "/ar/services/google-business-profile", statusCode: 301 },
+      { source: "/ar/local-business-listing-agency-riyadh/", destination: "/ar/services/google-business-profile", statusCode: 301 },
+      { source: "/ar/blog-2", destination: "/ar/blog", statusCode: 301 },
+      { source: "/ar/blog-2/", destination: "/ar/blog", statusCode: 301 },
+      // 301s: phase 6 — /ar/<english-slug> mirrors of Phase 2 service slugs (5 pairs)
+      { source: "/ar/social-media-marketing-services", destination: "/ar/services/social-media", statusCode: 301 },
+      { source: "/ar/social-media-marketing-services/", destination: "/ar/services/social-media", statusCode: 301 },
+      { source: "/ar/search-engine-optimization-services-2", destination: "/ar/services/seo", statusCode: 301 },
+      { source: "/ar/search-engine-optimization-services-2/", destination: "/ar/services/seo", statusCode: 301 },
+      { source: "/ar/seo-experts-saudi-arabia-local-city-solutions", destination: "/ar/services/seo", statusCode: 301 },
+      { source: "/ar/seo-experts-saudi-arabia-local-city-solutions/", destination: "/ar/services/seo", statusCode: 301 },
+      { source: "/ar/affordable-digital-marketing-services-saudi-arabia", destination: "/ar/services", statusCode: 301 },
+      { source: "/ar/affordable-digital-marketing-services-saudi-arabia/", destination: "/ar/services", statusCode: 301 },
+      { source: "/ar/blog-2/page/3", destination: "/ar/blog", statusCode: 301 },
+      { source: "/ar/blog-2/page/3/", destination: "/ar/blog", statusCode: 301 },
+      // 301s: phase 6 — /ar/<english-slug> mirrors of Phase 3 blog reposts (4 pairs, slug mismatches intentional)
+      { source: "/ar/programmatic-seo-guide", destination: "/ar/blog/programmatic-seo-guide", statusCode: 301 },
+      { source: "/ar/programmatic-seo-guide/", destination: "/ar/blog/programmatic-seo-guide", statusCode: 301 },
+      { source: "/ar/local-link-building-strategy", destination: "/ar/blog/local-link-building-strategy", statusCode: 301 },
+      { source: "/ar/local-link-building-strategy/", destination: "/ar/blog/local-link-building-strategy", statusCode: 301 },
+      { source: "/ar/google-ads-mistakes-2025", destination: "/ar/blog/google-ads-mistakes-2026", statusCode: 301 },
+      { source: "/ar/google-ads-mistakes-2025/", destination: "/ar/blog/google-ads-mistakes-2026", statusCode: 301 },
+      { source: "/ar/google-ads-cost-small-business-2025", destination: "/ar/blog/google-ads-cost-saudi-arabia", statusCode: 301 },
+      { source: "/ar/google-ads-cost-small-business-2025/", destination: "/ar/blog/google-ads-cost-saudi-arabia", statusCode: 301 },
+      // 301s: phase 6 — /ar/contact-2 mirror
+      { source: "/ar/contact-2", destination: "/ar/contact", statusCode: 301 },
+      { source: "/ar/contact-2/", destination: "/ar/contact", statusCode: 301 },
+      // 301s: phase 6 — Arabic slug truncation fix.
+      // Google's index shows /ar/اهمية-التسويق-في-السوشيال-ميديا-للبزن (no trailing س).
+      // The full-form Phase 5 rule above stays; this catches the truncated indexed form.
+      // Source uses URL-encoded form for the same reason as the Phase 5 rules — Next.js
+      // matches redirects() against the raw encoded request URL.
+      { source: "/ar/%D8%A7%D9%87%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AA%D8%B3%D9%88%D9%8A%D9%82-%D9%81%D9%8A-%D8%A7%D9%84%D8%B3%D9%88%D8%B4%D9%8A%D8%A7%D9%84-%D9%85%D9%8A%D8%AF%D9%8A%D8%A7-%D9%84%D9%84%D8%A8%D8%B2%D9%86", destination: "/ar/services/social-media", statusCode: 301 },
+      // 301s: phase 6 — interim destinations for deferred Rewrite items (3 families × 3 variants).
+      // Email-marketing redirects route to /services/digital-marketing because no dedicated
+      // email-marketing service hub exists. Update destinations when Rewrite content lands.
+      { source: "/start-email-marketing-2025", destination: "/en/services/digital-marketing", statusCode: 301 },
+      { source: "/en/start-email-marketing-2025", destination: "/en/services/digital-marketing", statusCode: 301 },
+      { source: "/ar/start-email-marketing-2025", destination: "/ar/services/digital-marketing", statusCode: 301 },
+      { source: "/on-page-seo-agency-dammam", destination: "/en/services/seo", statusCode: 301 },
+      { source: "/en/on-page-seo-agency-dammam", destination: "/en/services/seo", statusCode: 301 },
+      { source: "/ar/on-page-seo-agency-dammam", destination: "/ar/services/seo", statusCode: 301 },
+      { source: "/social-media-marketing-strategy-2025-guide", destination: "/en/services/social-media", statusCode: 301 },
+      { source: "/en/social-media-marketing-strategy-2025-guide", destination: "/en/services/social-media", statusCode: 301 },
+      { source: "/ar/social-media-marketing-strategy-2025-guide", destination: "/ar/services/social-media", statusCode: 301 },
     ];
   },
 };
