@@ -188,6 +188,35 @@ const INDUSTRIES = {
   ],
 };
 
+const TESTIMONIALS_LABELS = {
+  en: { label: "Testimonials", heading: "What Riyadh Businesses Say", sub: "Real feedback from Saudi business owners we've worked with." },
+  ar: { label: "آراء العملاء", heading: "وش يقولون أعمال الرياض", sub: "آراء حقيقية من أصحاب أعمال سعوديين اشتغلنا معاهم." },
+};
+
+const TESTIMONIALS = [
+  {
+    avatarIdx: 0,
+    nameEn: "Restaurant Owner, Al Malqa",
+    nameAr: "صاحب مطعم، الملقا",
+    quoteEn: "Reservations went up 40% in 3 months. Their Reels strategy actually understands Saudi food culture.",
+    quoteAr: "الحجوزات زادت ٤٠٪ في ٣ شهور. استراتيجيتهم في الريلز تفهم ثقافة الأكل السعودي.",
+  },
+  {
+    avatarIdx: 1,
+    nameEn: "Clinic Manager, Al Sulaimaniyah",
+    nameAr: "مدير عيادة، السليمانية",
+    quoteEn: "They built our Google Ads from zero. Now we get 8 patient bookings per week from search.",
+    quoteAr: "بنوا لنا إعلانات قوقل من الصفر. الحين نستقبل ٨ حجوزات مرضى أسبوعياً من البحث.",
+  },
+  {
+    avatarIdx: 2,
+    nameEn: "E-commerce Founder, KAFD",
+    nameAr: "مؤسس متجر إلكتروني، كافد",
+    quoteEn: "Honest pricing, real results. They know the Saudi market — that matters.",
+    quoteAr: "أسعار شفافة ونتائج حقيقية. يعرفون السوق السعودي — وهذا اللي يفرق.",
+  },
+];
+
 const DISTRICTS = [
   { en: "Al Olaya", ar: "العليا", slug: "al-olaya" },
   { en: "Al Malqa", ar: "الملقا", slug: "al-malqa" },
@@ -435,6 +464,42 @@ export default async function HomePage({ params }: PageProps) {
           </div>
           <div className="mt-8">
             <Link href={`${p}/riyadh`} className="inline-flex items-center gap-2 text-[#F5C518] text-sm font-semibold hover:gap-3 transition-all">{c.districts.viewAll}</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-12 md:py-20 bg-[#0C1424]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 md:mb-14 reveal">
+            <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{(TESTIMONIALS_LABELS[locale] || TESTIMONIALS_LABELS.en).label}</span>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white">{(TESTIMONIALS_LABELS[locale] || TESTIMONIALS_LABELS.en).heading}</h2>
+            <p className="text-white/45 mt-2 md:mt-4 max-w-xl mx-auto text-xs md:text-base">{(TESTIMONIALS_LABELS[locale] || TESTIMONIALS_LABELS.en).sub}</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+            {TESTIMONIALS.map((t, i) => {
+              const avatar = IMAGES.avatars[t.avatarIdx];
+              const name = isAr ? t.nameAr : t.nameEn;
+              const quote = isAr ? t.quoteAr : t.quoteEn;
+              return (
+                <figure key={i} className={`reveal delay-${i + 1} relative bg-[#0E1A2E] border border-white/[0.06] rounded-xl p-6 md:p-7 hover:border-[#F5C518]/20 transition-all h-full flex flex-col`}>
+                  <div className="text-[#F5C518] text-3xl leading-none mb-3 select-none" aria-hidden="true">&ldquo;</div>
+                  <blockquote className="text-white/80 text-sm md:text-base leading-relaxed mb-5 flex-1">{quote}</blockquote>
+                  <figcaption className="flex items-center gap-3 mt-auto">
+                    <Image
+                      src={avatar.src}
+                      alt={altFor(avatar, locale)}
+                      width={avatar.width}
+                      height={avatar.height}
+                      loading="lazy"
+                      sizes="48px"
+                      className="rounded-full w-12 h-12 object-cover border border-white/10"
+                    />
+                    <span className="text-white/70 font-semibold text-xs md:text-sm">{name}</span>
+                  </figcaption>
+                </figure>
+              );
+            })}
           </div>
         </div>
       </section>
