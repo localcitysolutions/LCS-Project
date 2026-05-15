@@ -37,12 +37,13 @@ export const metadata: Metadata = {
   keywords:
     "digital marketing agency riyadh, seo riyadh, google ads saudi arabia, meta ads riyadh, web design riyadh",
   openGraph: {
-    siteName: "Local City Solutions",
-    locale: "en_US",
     type: "website",
+    locale: "en_SA",
+    alternateLocale: "ar_SA",
+    siteName: "Local City Solutions",
     title: "Digital Marketing Agency in Riyadh | Local City Solutions",
     description:
-      "Local City Solutions — Riyadh's leading digital marketing agency. SEO, Google Ads, Meta Ads, Web Design, Google Business Profile, and Social Media Marketing built for the Saudi market.",
+      "Full-service digital marketing agency in Riyadh, Saudi Arabia. SEO, Google Ads, Meta Ads, web design.",
     url: "https://localcitysolutions.com",
     images: [
       {
@@ -50,14 +51,14 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "Local City Solutions — Digital Marketing Agency in Riyadh",
+        type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Digital Marketing Agency in Riyadh | Local City Solutions",
-    description:
-      "Local City Solutions — Riyadh's leading digital marketing agency. SEO, Google Ads, Meta Ads, Web Design & more for the Saudi market.",
+    description: "SEO, Google Ads, Meta Ads, web design for Saudi businesses.",
     images: ["https://localcitysolutions.com/og-image.jpg"],
   },
 };
