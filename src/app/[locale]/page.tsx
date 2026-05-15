@@ -237,18 +237,21 @@ export default async function HomePage({ params }: PageProps) {
 
   return (
     <main dir={isAr ? "rtl" : "ltr"}>
-      {/* HERO — background image with dark gradient overlay */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#0A1628] pt-16 md:pt-20">
+      {/* HERO — background image with dark gradient overlay.
+          `isolate` creates a local stacking context so the -z-10 image + overlay
+          stay scoped inside the section instead of being pushed behind document body. */}
+      <section className="relative isolate min-h-[85vh] flex items-center justify-center overflow-hidden pt-16 md:pt-20">
         <Image
           src={IMAGES.hero.src}
           alt={altFor(IMAGES.hero, locale)}
           fill
-          preload
+          priority
           sizes="100vw"
+          quality={85}
           className="object-cover -z-10"
         />
         <div
-          className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0A1628]/85 via-[#0A1628]/75 to-[#0A1628]/95"
+          className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0A1628]/80 via-[#0A1628]/70 to-[#0A1628]/90"
           aria-hidden="true"
         />
 
