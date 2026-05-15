@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       url: canonicalUrl,
       type: "article",
-      locale: isAr ? "ar_SA" : "en_US",
+      locale: isAr ? "ar_SA" : "en_SA",
       images: [{ url: "https://localcitysolutions.com/og-image.jpg", width: 1200, height: 630, alt: title }],
     },
   };
