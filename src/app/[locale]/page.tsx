@@ -273,7 +273,7 @@ export default async function HomePage({ params }: PageProps) {
             {c.hero.sub}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 md:mb-14">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <TrackableLink href={`${p}/free-audit`} track="free-audit" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full bg-[#F5C518] text-[#0A1628] font-bold text-sm md:text-base hover:bg-[#F5C518]/90 transition-all shadow-2xl shadow-[#F5C518]/25 hover:-translate-y-0.5">
               {c.hero.cta1}
             </TrackableLink>
@@ -281,12 +281,27 @@ export default async function HomePage({ params }: PageProps) {
               {isAr ? <>{c.hero.cta2} <span dir="ltr">+966 56 422 9190</span></> : c.hero.cta2}
             </TrackableLink>
           </div>
+        </div>
+      </section>
 
-          <div className="flex flex-row items-center justify-center gap-6 sm:gap-12 md:gap-14">
+      {/* STATS — background image with dark overlay */}
+      <section className="relative isolate py-16 md:py-24 overflow-hidden">
+        <Image
+          src={IMAGES.statsBg.src}
+          alt=""
+          fill
+          loading="lazy"
+          sizes="100vw"
+          className="object-cover -z-20"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0A1628]/92 via-[#0A1628]/85 to-[#0A1628]/92" aria-hidden="true" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-3 gap-4 md:gap-10">
             {c.hero.stats.map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-xl md:text-3xl font-extrabold text-[#F5C518] leading-none mb-1">{stat.value}</div>
-                <div className="text-[10px] md:text-sm text-white/60 font-medium tracking-wide">{stat.label}</div>
+              <div key={i} className={`reveal delay-${i + 1} text-center`}>
+                <div className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#F5C518] leading-none mb-2 md:mb-3">{stat.value}</div>
+                <div className="text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.18em] text-white/70 font-semibold">{stat.label}</div>
               </div>
             ))}
           </div>
