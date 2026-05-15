@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import CTABox from "@/components/CTABox";
 import TrackableLink from "@/components/TrackableLink";
+import { IMAGES, altFor } from "@/lib/images";
 
 type Locale = "en" | "ar";
 
@@ -282,6 +284,24 @@ export default async function HomePage({ params }: PageProps) {
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#080E1A] to-transparent pointer-events-none" />
+      </section>
+
+      {/* HERO IMAGE BANNER */}
+      <section className="bg-[#080E1A] px-4 sm:px-6 lg:px-8 pb-4 md:pb-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/40">
+            <Image
+              src={IMAGES.hero.src}
+              alt={altFor(IMAGES.hero, locale)}
+              width={IMAGES.hero.width}
+              height={IMAGES.hero.height}
+              preload
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="w-full h-auto"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#080E1A]/40 via-transparent to-transparent" aria-hidden="true" />
+          </div>
+        </div>
       </section>
 
       {/* SERVICES */}
