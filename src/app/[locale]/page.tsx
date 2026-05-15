@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import CTABox from "@/components/CTABox";
 import TrackableLink from "@/components/TrackableLink";
@@ -112,24 +113,24 @@ const CONTENT = {
 
 const SERVICES = {
   en: [
-    { icon: "🚀", title: "Digital Marketing", slug: "digital-marketing", desc: "Full-stack digital marketing strategy for Riyadh businesses. From brand awareness to lead generation." },
-    { icon: "🖥️", title: "Web Design", slug: "web-design", desc: "Modern, fast, mobile-first websites built for conversions. Performance-optimized and SEO-ready." },
-    { icon: "🔍", title: "SEO Services", slug: "seo", desc: "Local SEO, technical SEO, bilingual keyword strategy. Rank higher, get found faster in Riyadh." },
-    { icon: "📢", title: "Google Ads", slug: "google-ads", desc: "Search, Display, Shopping, and Maps Ads for Riyadh businesses. Maximum ROI, minimum waste." },
-    { icon: "📱", title: "Meta Ads", slug: "meta-ads", desc: "Facebook and Instagram ads precisely targeting Riyadh customers. Creative campaigns that convert." },
-    { icon: "📍", title: "Google Business Profile", slug: "google-business-profile", desc: "GBP optimization and Maps ranking. Be the first business customers find locally." },
-    { icon: "💬", title: "Social Media", slug: "social-media", desc: "Content creation, community management, and growth strategies across all major platforms." },
-    { icon: "🛒", title: "E-Commerce", slug: "ecommerce", desc: "End-to-end e-commerce setup, optimization, and management for Saudi online stores." },
+    { icon: "🚀", img: "/images/ai-marketing.webp", title: "Digital Marketing", slug: "digital-marketing", desc: "Full-stack digital marketing strategy for Riyadh businesses. From brand awareness to lead generation." },
+    { icon: "🖥️", img: "/images/web-design.webp", title: "Web Design", slug: "web-design", desc: "Modern, fast, mobile-first websites built for conversions. Performance-optimized and SEO-ready." },
+    { icon: "🔍", img: "/images/seo.webp", title: "SEO Services", slug: "seo", desc: "Local SEO, technical SEO, bilingual keyword strategy. Rank higher, get found faster in Riyadh." },
+    { icon: "📢", img: "/images/google-ads.webp", title: "Google Ads", slug: "google-ads", desc: "Search, Display, Shopping, and Maps Ads for Riyadh businesses. Maximum ROI, minimum waste." },
+    { icon: "📱", img: "/images/meta-ads.webp", title: "Meta Ads", slug: "meta-ads", desc: "Facebook and Instagram ads precisely targeting Riyadh customers. Creative campaigns that convert." },
+    { icon: "📍", img: "/images/brand-strategy.webp", title: "Google Business Profile", slug: "google-business-profile", desc: "GBP optimization and Maps ranking. Be the first business customers find locally." },
+    { icon: "💬", img: "/images/social-media.webp", title: "Social Media", slug: "social-media", desc: "Content creation, community management, and growth strategies across all major platforms." },
+    { icon: "🛒", img: "/images/ecommerce.webp", title: "E-Commerce", slug: "ecommerce", desc: "End-to-end e-commerce setup, optimization, and management for Saudi online stores." },
   ],
   ar: [
-    { icon: "🚀", title: "التسويق الرقمي", slug: "digital-marketing", desc: "استراتيجية تسويق رقمي متكاملة لأعمال الرياض. من بناء الوعي بالعلامة التجارية إلى توليد العملاء." },
-    { icon: "🖥️", title: "تصميم المواقع", slug: "web-design", desc: "مواقع عصرية وسريعة ومحسّنة للجوال، مصممة للتحويل. أداء عالٍ وجاهزة لتحسين محركات البحث." },
-    { icon: "🔍", title: "تحسين محركات البحث", slug: "seo", desc: "SEO محلي، تقني، واستراتيجية كلمات مفتاحية ثنائية اللغة. ارتقِ في النتائج، وظهر أسرع في الرياض." },
-    { icon: "📢", title: "إعلانات قوقل", slug: "google-ads", desc: "إعلانات البحث والشبكة الإعلانية والتسوق والخرائط لأعمال الرياض. أعلى عائد، أقل هدر." },
-    { icon: "📱", title: "إعلانات ميتا", slug: "meta-ads", desc: "إعلانات فيسبوك وإنستقرام تستهدف بدقة عملاء الرياض. حملات إبداعية تحوّل وتبيع." },
-    { icon: "📍", title: "ملف النشاط في قوقل", slug: "google-business-profile", desc: "تحسين ملف النشاط والتصدر في قوقل ماب. كن أول نشاط يجده العملاء عند البحث محلياً." },
-    { icon: "💬", title: "السوشيال ميديا", slug: "social-media", desc: "إنشاء محتوى، إدارة المجتمع، واستراتيجيات نمو عبر كل المنصات الرئيسية." },
-    { icon: "🛒", title: "التجارة الإلكترونية", slug: "ecommerce", desc: "إعداد وتحسين وإدارة متاجر إلكترونية سعودية من الألف إلى الياء." },
+    { icon: "🚀", img: "/images/ai-marketing.webp", title: "التسويق الرقمي", slug: "digital-marketing", desc: "استراتيجية تسويق رقمي متكاملة لأعمال الرياض. من بناء الوعي بالعلامة التجارية إلى توليد العملاء." },
+    { icon: "🖥️", img: "/images/web-design.webp", title: "تصميم المواقع", slug: "web-design", desc: "مواقع عصرية وسريعة ومحسّنة للجوال، مصممة للتحويل. أداء عالٍ وجاهزة لتحسين محركات البحث." },
+    { icon: "🔍", img: "/images/seo.webp", title: "تحسين محركات البحث", slug: "seo", desc: "SEO محلي، تقني، واستراتيجية كلمات مفتاحية ثنائية اللغة. ارتقِ في النتائج، وظهر أسرع في الرياض." },
+    { icon: "📢", img: "/images/google-ads.webp", title: "إعلانات قوقل", slug: "google-ads", desc: "إعلانات البحث والشبكة الإعلانية والتسوق والخرائط لأعمال الرياض. أعلى عائد، أقل هدر." },
+    { icon: "📱", img: "/images/meta-ads.webp", title: "إعلانات ميتا", slug: "meta-ads", desc: "إعلانات فيسبوك وإنستقرام تستهدف بدقة عملاء الرياض. حملات إبداعية تحوّل وتبيع." },
+    { icon: "📍", img: "/images/brand-strategy.webp", title: "ملف النشاط في قوقل", slug: "google-business-profile", desc: "تحسين ملف النشاط والتصدر في قوقل ماب. كن أول نشاط يجده العملاء عند البحث محلياً." },
+    { icon: "💬", img: "/images/social-media.webp", title: "السوشيال ميديا", slug: "social-media", desc: "إنشاء محتوى، إدارة المجتمع، واستراتيجيات نمو عبر كل المنصات الرئيسية." },
+    { icon: "🛒", img: "/images/ecommerce.webp", title: "التجارة الإلكترونية", slug: "ecommerce", desc: "إعداد وتحسين وإدارة متاجر إلكترونية سعودية من الألف إلى الياء." },
   ],
 };
 
@@ -236,7 +237,20 @@ export default async function HomePage({ params }: PageProps) {
   return (
     <main dir={isAr ? "rtl" : "ltr"}>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#080E1A] pt-16 md:pt-20">
+      <section className="relative overflow-hidden bg-[#080E1A] pt-16 md:pt-20 min-h-[85vh] flex items-center">
+        {/* Background image */}
+        <Image
+          src="/images/hero.webp"
+          alt={isAr ? "فريق وكالة تسويق رقمي يعمل مع أعمال الرياض" : "Digital marketing agency team working with Riyadh businesses"}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover -z-10 opacity-60"
+          quality={85}
+        />
+        {/* Dark gradient overlay for text readability */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#080E1A]/80 via-[#080E1A]/70 to-[#080E1A]/95" aria-hidden="true" />
+
         <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none select-none overflow-hidden">
           <div className="w-[680px] h-[680px] rounded-full border border-[#F5C518]/[0.07]" style={{ animation: "spin-slow 28s linear infinite" }} />
           <div className="absolute w-[480px] h-[480px] rounded-full border border-[#F5C518]/[0.05]" style={{ animation: "spin-slow-reverse 20s linear infinite" }} />
@@ -294,14 +308,27 @@ export default async function HomePage({ params }: PageProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
             {services.map((service, i) => (
-              <article key={service.slug} className={`reveal delay-${(i % 4) + 1} group relative bg-[#0E1A2E] border border-white/[0.06] rounded-xl p-5 md:p-7 hover:-translate-y-1 hover:border-[#F5C518]/25 transition-all duration-300 overflow-hidden`}>
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5C518] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                <span className="absolute top-3 right-4 text-5xl md:text-7xl font-black text-white/[0.025] select-none pointer-events-none leading-none">{String(i + 1).padStart(2, "0")}</span>
-                <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold text-[#F5C518] bg-[#F5C518]/10 mb-4">{c.services.badge}</span>
-                <div className="text-xl md:text-3xl leading-none mb-3 md:mb-4">{service.icon}</div>
-                <h3 className="text-white font-bold text-sm md:text-lg mb-2 leading-tight">{service.title}</h3>
-                <p className="text-white/50 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">{service.desc}</p>
-                <Link href={`${p}/services/${service.slug}`} className="inline-flex items-center gap-1 text-[#F5C518] text-xs md:text-sm font-semibold group-hover:gap-2 transition-all">{c.services.learnMore}</Link>
+              <article key={service.slug} className={`reveal delay-${(i % 4) + 1} group relative bg-[#0E1A2E] border border-white/[0.06] rounded-xl overflow-hidden hover:-translate-y-1 hover:border-[#F5C518]/25 transition-all duration-300 flex flex-col h-full`}>
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5C518] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-20" />
+                {/* Service image */}
+                <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#0A1628]">
+                  <Image
+                    src={service.img}
+                    alt={`${service.title} ${isAr ? 'في الرياض' : 'in Riyadh'}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0E1A2E] via-transparent to-transparent" aria-hidden="true" />
+                  <span className="absolute top-3 right-4 text-5xl md:text-7xl font-black text-white/[0.18] select-none pointer-events-none leading-none">{String(i + 1).padStart(2, "0")}</span>
+                </div>
+                <div className="p-5 md:p-7 flex flex-col flex-1">
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold text-[#F5C518] bg-[#F5C518]/10 mb-3 self-start">{c.services.badge}</span>
+                  <h3 className="text-white font-bold text-sm md:text-lg mb-2 leading-tight">{service.title}</h3>
+                  <p className="text-white/50 text-xs md:text-sm leading-relaxed mb-4 md:mb-6 flex-1">{service.desc}</p>
+                  <Link href={`${p}/services/${service.slug}`} className="inline-flex items-center gap-1 text-[#F5C518] text-xs md:text-sm font-semibold group-hover:gap-2 transition-all self-start">{c.services.learnMore}</Link>
+                </div>
               </article>
             ))}
           </div>
@@ -390,6 +417,62 @@ export default async function HomePage({ params }: PageProps) {
           </div>
           <div className="mt-8">
             <Link href={`${p}/riyadh`} className="inline-flex items-center gap-2 text-[#F5C518] text-sm font-semibold hover:gap-3 transition-all">{c.districts.viewAll}</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-12 md:py-20 bg-[#0E1A2E]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 md:mb-14 reveal">
+            <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{isAr ? "آراء عملائنا" : "What Our Clients Say"}</span>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">{isAr ? "نتائج حقيقية لأعمال سعودية" : "Real Results for Saudi Businesses"}</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                avatar: "/images/avatar-1.webp",
+                nameEn: "Restaurant Owner, Al Malqa",
+                nameAr: "صاحب مطعم، الملقا",
+                quoteEn: "Reservations went up 40% in 3 months. Their Reels strategy actually understands Saudi food culture.",
+                quoteAr: "الحجوزات زادت ٤٠٪ في ٣ شهور. استراتيجيتهم في الريلز تفهم ثقافة الأكل السعودي.",
+              },
+              {
+                avatar: "/images/avatar-2.webp",
+                nameEn: "Clinic Manager, Al Sulaimaniyah",
+                nameAr: "مدير عيادة، السليمانية",
+                quoteEn: "They built our Google Ads from zero. Now we get 8 patient bookings per week from search.",
+                quoteAr: "بنوا لنا إعلانات قوقل من الصفر. الحين نستقبل ٨ حجوزات مرضى أسبوعياً من البحث.",
+              },
+              {
+                avatar: "/images/avatar-3.webp",
+                nameEn: "E-commerce Founder, KAFD",
+                nameAr: "مؤسس متجر إلكتروني، كافد",
+                quoteEn: "Honest pricing, real results. They know the Saudi market — that matters.",
+                quoteAr: "أسعار شفافة ونتائج حقيقية. يعرفون السوق السعودي — وهذا اللي يفرق.",
+              },
+            ].map((t, i) => (
+              <article key={i} className={`reveal delay-${i + 1} bg-[#0A1628] border border-white/[0.08] rounded-xl p-6 md:p-7 hover:border-[#F5C518]/30 transition-all duration-300`}>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#F5C518]/40 shrink-0">
+                    <Image
+                      src={t.avatar}
+                      alt={isAr ? t.nameAr : t.nameEn}
+                      width={48}
+                      height={48}
+                      sizes="48px"
+                      className="object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div>
+                    <div className="text-white font-semibold text-sm">{isAr ? t.nameAr : t.nameEn}</div>
+                    <div className="text-[#F5C518] text-xs">★★★★★</div>
+                  </div>
+                </div>
+                <p className="text-white/70 text-sm md:text-base leading-relaxed">&ldquo;{isAr ? t.quoteAr : t.quoteEn}&rdquo;</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

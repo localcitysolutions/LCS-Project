@@ -90,10 +90,12 @@ export default function Header({ locale }: HeaderProps) {
             <Image
               src="/logo.webp"
               alt="Local City Solutions logo"
-              width={251}
-              height={160}
+              width={681}
+              height={217}
               priority
-              className="h-10 md:h-12 w-auto"
+              sizes="(max-width: 768px) 140px, 200px"
+              style={{ height: "auto" }}
+              className="h-10 md:h-14 w-auto max-w-[140px] md:max-w-[200px]"
             />
           </Link>
 
