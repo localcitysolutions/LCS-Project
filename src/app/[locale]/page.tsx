@@ -313,17 +313,38 @@ export default async function HomePage({ params }: PageProps) {
             <p className="text-white/45 mt-2 md:mt-4 text-xs md:text-base max-w-xl mx-auto">{c.services.sub}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
-            {services.map((service, i) => (
-              <article key={service.slug} className={`reveal delay-${(i % 4) + 1} group relative bg-[#0E1A2E] border border-white/[0.06] rounded-xl p-5 md:p-7 hover:-translate-y-1 hover:border-[#F5C518]/25 transition-all duration-300 overflow-hidden`}>
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5C518] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                <span className="absolute top-3 right-4 text-5xl md:text-7xl font-black text-white/[0.025] select-none pointer-events-none leading-none">{String(i + 1).padStart(2, "0")}</span>
-                <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold text-[#F5C518] bg-[#F5C518]/10 mb-4">{c.services.badge}</span>
-                <div className="text-xl md:text-3xl leading-none mb-3 md:mb-4">{service.icon}</div>
-                <h3 className="text-white font-bold text-sm md:text-lg mb-2 leading-tight">{service.title}</h3>
-                <p className="text-white/50 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">{service.desc}</p>
-                <Link href={`${p}/services/${service.slug}`} className="inline-flex items-center gap-1 text-[#F5C518] text-xs md:text-sm font-semibold group-hover:gap-2 transition-all">{c.services.learnMore}</Link>
+            {services.map((service, i) => {
+              const img = IMAGES.services[service.slug as keyof typeof IMAGES.services];
+              return (
+              <article key={service.slug} className={`reveal delay-${(i % 4) + 1} group relative bg-[#0E1A2E] border border-white/[0.06] rounded-xl hover:-translate-y-1 hover:border-[#F5C518]/25 transition-all duration-300 overflow-hidden`}>
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5C518] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
+                {img ? (
+                  <div className="relative w-full aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={img.src}
+                      alt={altFor(img, locale)}
+                      width={img.width}
+                      height={img.height}
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0E1A2E] via-[#0E1A2E]/30 to-transparent" aria-hidden="true" />
+                  </div>
+                ) : null}
+                <div className="relative p-5 md:p-7">
+                  <span className="absolute top-3 right-4 text-5xl md:text-7xl font-black text-white/[0.025] select-none pointer-events-none leading-none">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold text-[#F5C518] bg-[#F5C518]/10 mb-4">{c.services.badge}</span>
+                  {!img ? (
+                    <div className="text-xl md:text-3xl leading-none mb-3 md:mb-4">{service.icon}</div>
+                  ) : null}
+                  <h3 className="text-white font-bold text-sm md:text-lg mb-2 leading-tight">{service.title}</h3>
+                  <p className="text-white/50 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">{service.desc}</p>
+                  <Link href={`${p}/services/${service.slug}`} className="inline-flex items-center gap-1 text-[#F5C518] text-xs md:text-sm font-semibold group-hover:gap-2 transition-all">{c.services.learnMore}</Link>
+                </div>
               </article>
-            ))}
+              );
+            })}
           </div>
           <div className="text-center mt-8">
             <Link href={`${p}/services`} className="inline-flex items-center gap-2 text-[#F5C518] text-sm font-semibold hover:gap-3 transition-all">{c.services.viewAll}</Link>
