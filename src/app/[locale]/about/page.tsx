@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import CTABox from "@/components/CTABox";
+import { IMAGES, altFor } from "@/lib/images";
 
 type Locale = "en" | "ar";
 interface PageProps { params: Promise<{ locale: Locale }> }
@@ -139,11 +141,26 @@ export default async function AboutPage({ params }: PageProps) {
 
       {/* Story */}
       <section className="bg-[#0C1424] py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 reveal">
-          <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{c.story.label}</span>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">{c.story.h2}</h2>
-          <div className="space-y-5">
-            {c.story.paras.map((p2, i) => <p key={i} className="text-white/60 leading-relaxed">{p2}</p>)}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="reveal">
+              <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{c.story.label}</span>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">{c.story.h2}</h2>
+              <div className="space-y-5">
+                {c.story.paras.map((p2, i) => <p key={i} className="text-white/60 leading-relaxed">{p2}</p>)}
+              </div>
+            </div>
+            <div className="reveal delay-1 relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/40">
+              <Image
+                src={IMAGES.aboutTeam.src}
+                alt={altFor(IMAGES.aboutTeam, locale)}
+                width={IMAGES.aboutTeam.width}
+                height={IMAGES.aboutTeam.height}
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="w-full h-auto"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -154,6 +171,17 @@ export default async function AboutPage({ params }: PageProps) {
           <div className="text-center mb-10 reveal">
             <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{c.values.label}</span>
             <h2 className="text-2xl md:text-3xl font-bold text-white">{c.values.h2}</h2>
+          </div>
+          <div className="reveal relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/40 mb-8 md:mb-12 aspect-[16/7]">
+            <Image
+              src={IMAGES.brandStrategy.src}
+              alt={altFor(IMAGES.brandStrategy, locale)}
+              fill
+              loading="lazy"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="object-cover"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#080E1A]/60 via-transparent to-transparent" aria-hidden="true" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 reveal delay-1">
             {c.values.items.map((v) => (
