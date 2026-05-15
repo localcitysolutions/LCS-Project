@@ -237,17 +237,22 @@ export default async function HomePage({ params }: PageProps) {
 
   return (
     <main dir={isAr ? "rtl" : "ltr"}>
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-[#080E1A] pt-16 md:pt-20">
-        <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none select-none overflow-hidden">
-          <div className="w-[680px] h-[680px] rounded-full border border-[#F5C518]/[0.07]" style={{ animation: "spin-slow 28s linear infinite" }} />
-          <div className="absolute w-[480px] h-[480px] rounded-full border border-[#F5C518]/[0.05]" style={{ animation: "spin-slow-reverse 20s linear infinite" }} />
-          <div className="absolute w-[290px] h-[290px] rounded-full border border-[#F5C518]/[0.06]" style={{ animation: "spin-slow 14s linear infinite" }} />
-          <div className="absolute w-[260px] h-[260px] rounded-full" style={{ background: "radial-gradient(circle, rgba(245,197,24,0.11) 0%, transparent 70%)", animation: "pulse-glow 5s ease-in-out infinite" }} />
-        </div>
-        <div className="absolute inset-0 pointer-events-none opacity-30" style={{ backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+      {/* HERO — background image with dark gradient overlay */}
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#0A1628] pt-16 md:pt-20">
+        <Image
+          src={IMAGES.hero.src}
+          alt={altFor(IMAGES.hero, locale)}
+          fill
+          preload
+          sizes="100vw"
+          className="object-cover -z-10"
+        />
+        <div
+          className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0A1628]/85 via-[#0A1628]/75 to-[#0A1628]/95"
+          aria-hidden="true"
+        />
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center py-8 md:py-12">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center py-12 md:py-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#F5C518]/25 bg-[#F5C518]/[0.08] text-[#F5C518] text-xs md:text-sm font-semibold mb-6 md:mb-8">
             <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#F5C518] shrink-0 badge-dot" />
             {c.hero.badge}
@@ -261,15 +266,15 @@ export default async function HomePage({ params }: PageProps) {
             </span>
           </h1>
 
-          <p className="text-sm md:text-lg lg:text-xl text-white/55 max-w-2xl mx-auto mb-7 md:mb-10 leading-relaxed">
+          <p className="text-sm md:text-lg lg:text-xl text-white/70 max-w-2xl mx-auto mb-7 md:mb-10 leading-relaxed">
             {c.hero.sub}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10 md:mb-14">
-            <TrackableLink href={`${p}/free-audit`} track="free-audit" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm md:text-base hover:bg-[#F5C518]/90 transition-all shadow-2xl shadow-[#F5C518]/25 hover:-translate-y-0.5">
+            <TrackableLink href={`${p}/free-audit`} track="free-audit" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full bg-[#F5C518] text-[#0A1628] font-bold text-sm md:text-base hover:bg-[#F5C518]/90 transition-all shadow-2xl shadow-[#F5C518]/25 hover:-translate-y-0.5">
               {c.hero.cta1}
             </TrackableLink>
-            <TrackableLink href="tel:+966564229190" track="phone" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full border border-white/20 text-white font-medium text-sm md:text-base hover:border-white/40 hover:bg-white/[0.03] transition-all">
+            <TrackableLink href="tel:+966564229190" track="phone" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full border border-white/30 text-white font-medium text-sm md:text-base hover:border-white/50 hover:bg-white/[0.05] transition-all">
               {isAr ? <>{c.hero.cta2} <span dir="ltr">+966 56 422 9190</span></> : c.hero.cta2}
             </TrackableLink>
           </div>
@@ -278,28 +283,9 @@ export default async function HomePage({ params }: PageProps) {
             {c.hero.stats.map((stat, i) => (
               <div key={i} className="text-center">
                 <div className="text-xl md:text-3xl font-extrabold text-[#F5C518] leading-none mb-1">{stat.value}</div>
-                <div className="text-[10px] md:text-sm text-white/40 font-medium tracking-wide">{stat.label}</div>
+                <div className="text-[10px] md:text-sm text-white/60 font-medium tracking-wide">{stat.label}</div>
               </div>
             ))}
-          </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#080E1A] to-transparent pointer-events-none" />
-      </section>
-
-      {/* HERO IMAGE BANNER */}
-      <section className="bg-[#080E1A] px-4 sm:px-6 lg:px-8 pb-4 md:pb-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/40">
-            <Image
-              src={IMAGES.hero.src}
-              alt={altFor(IMAGES.hero, locale)}
-              width={IMAGES.hero.width}
-              height={IMAGES.hero.height}
-              preload
-              sizes="(max-width: 1280px) 100vw, 1280px"
-              className="w-full h-auto"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#080E1A]/40 via-transparent to-transparent" aria-hidden="true" />
           </div>
         </div>
       </section>
@@ -312,11 +298,11 @@ export default async function HomePage({ params }: PageProps) {
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">{c.services.heading}</h2>
             <p className="text-white/45 mt-2 md:mt-4 text-xs md:text-base max-w-xl mx-auto">{c.services.sub}</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, i) => {
               const img = IMAGES.services[service.slug as keyof typeof IMAGES.services];
               return (
-              <article key={service.slug} className={`reveal delay-${(i % 4) + 1} group relative bg-[#0E1A2E] border border-white/[0.06] rounded-xl hover:-translate-y-1 hover:border-[#F5C518]/25 transition-all duration-300 overflow-hidden`}>
+              <article key={service.slug} className={`reveal delay-${(i % 4) + 1} group relative bg-[#0E1A2E] border border-white/[0.06] rounded-xl hover:-translate-y-1 hover:border-[#F5C518]/25 transition-all duration-300 overflow-hidden h-full flex flex-col`}>
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5C518] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
                 {img ? (
                   <div className="relative w-full aspect-[4/3] overflow-hidden">
@@ -332,15 +318,15 @@ export default async function HomePage({ params }: PageProps) {
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0E1A2E] via-[#0E1A2E]/30 to-transparent" aria-hidden="true" />
                   </div>
                 ) : null}
-                <div className="relative p-5 md:p-7">
+                <div className="relative p-5 md:p-7 flex-1 flex flex-col">
                   <span className="absolute top-3 right-4 text-5xl md:text-7xl font-black text-white/[0.025] select-none pointer-events-none leading-none">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold text-[#F5C518] bg-[#F5C518]/10 mb-4">{c.services.badge}</span>
+                  <span className="inline-flex items-center self-start px-2 py-0.5 rounded-md text-[10px] font-bold text-[#F5C518] bg-[#F5C518]/10 mb-4">{c.services.badge}</span>
                   {!img ? (
                     <div className="text-xl md:text-3xl leading-none mb-3 md:mb-4">{service.icon}</div>
                   ) : null}
                   <h3 className="text-white font-bold text-sm md:text-lg mb-2 leading-tight">{service.title}</h3>
-                  <p className="text-white/50 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">{service.desc}</p>
-                  <Link href={`${p}/services/${service.slug}`} className="inline-flex items-center gap-1 text-[#F5C518] text-xs md:text-sm font-semibold group-hover:gap-2 transition-all">{c.services.learnMore}</Link>
+                  <p className="text-white/50 text-xs md:text-sm leading-relaxed mb-4 md:mb-6 flex-1">{service.desc}</p>
+                  <Link href={`${p}/services/${service.slug}`} className="inline-flex items-center gap-1 text-[#F5C518] text-xs md:text-sm font-semibold group-hover:gap-2 transition-all mt-auto self-start">{c.services.learnMore}</Link>
                 </div>
               </article>
               );
@@ -360,9 +346,9 @@ export default async function HomePage({ params }: PageProps) {
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white">{c.why.heading}</h2>
             <p className="text-white/45 mt-2 md:mt-4 max-w-lg mx-auto text-xs md:text-base">{c.why.sub}</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyItems.map((item, i) => (
-              <div key={item.title} className={`reveal delay-${i + 1} p-5 md:p-7 rounded-xl border border-white/[0.06] bg-[#0E1A2E] hover:border-[#F5C518]/20 hover:-translate-y-0.5 transition-all duration-300`}>
+              <div key={item.title} className={`reveal delay-${i + 1} p-5 md:p-7 rounded-xl border border-white/[0.06] bg-[#0E1A2E] hover:border-[#F5C518]/20 hover:-translate-y-0.5 transition-all duration-300 h-full flex flex-col`}>
                 <div className="text-3xl md:text-4xl leading-none mb-3 md:mb-4">{item.icon}</div>
                 <h3 className="text-white font-bold text-sm md:text-base mb-2">{item.title}</h3>
                 <p className="text-white/45 text-xs md:text-sm leading-relaxed">{item.desc}</p>
