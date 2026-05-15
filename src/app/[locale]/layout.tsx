@@ -70,6 +70,7 @@ const orgSchema = {
   alternateName: "لوكال سيتي سولوشنز",
   url: "https://localcitysolutions.com",
   logo: "https://localcitysolutions.com/logo.png",
+  image: "https://localcitysolutions.com/og-image.png",
   description: "Full-service digital marketing agency in Riyadh, Saudi Arabia",
   telephone: "+966564229190",
   email: "hello@localcitysolutions.com",
@@ -106,6 +107,8 @@ const localBizSchema = {
   name: "Local City Solutions",
   description: "Full-service digital marketing agency in Riyadh, Saudi Arabia",
   url: "https://localcitysolutions.com",
+  logo: "https://localcitysolutions.com/logo.png",
+  image: "https://localcitysolutions.com/og-image.png",
   email: "hello@localcitysolutions.com",
   telephone: "+966564229190",
   address: {
