@@ -38,6 +38,18 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  images: {
+    // AVIF first — typically 30-50% smaller than WebP for our hero photo;
+    // browsers that don't accept AVIF fall back to WebP automatically.
+    formats: ["image/avif", "image/webp"],
+    // Single quality (75 is the LCP-vs-visual sweet spot for our photos) and
+    // a trimmed device-size set so srcset attributes stay small and the
+    // optimizer caches fewer variants.
+    qualities: [75],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+  },
   async headers() {
     return [
       {

@@ -14,6 +14,9 @@ import TabTitleSwap from "@/components/TabTitleSwap";
 import { DM_Sans, Almarai } from "next/font/google";
 import Script from "next/script";
 
+// Preload only the default-locale font (English). The Arabic font swaps in on
+// demand when an /ar/ route renders — display: swap means a brief fallback
+// flash instead of blocking the critical path with two font payloads.
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -25,7 +28,7 @@ const almarai = Almarai({
   subsets: ["arabic"],
   weight: ["400", "700"],
   display: "swap",
-  preload: true,
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -182,7 +185,10 @@ export default async function LocaleLayout({
         {process.env.NODE_ENV === "production" && (
           <Script
             id="ms-clarity"
-            strategy="afterInteractive"
+            // lazyOnload: defer until after the window load event so Clarity
+            // never competes with the LCP image or first interaction. Heatmap
+            // tracking quality is unaffected.
+            strategy="lazyOnload"
             dangerouslySetInnerHTML={{
               __html: `
                 (function(c,l,a,r,i,t,y){

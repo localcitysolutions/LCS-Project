@@ -245,12 +245,11 @@ export default async function HomePage({ params }: PageProps) {
           fill
           priority
           sizes="100vw"
-          className="object-cover"
-          quality={88}
-          style={{ zIndex: 0 }}
+          className="object-cover z-0"
+          quality={75}
         />
         {/* Dark gradient overlay for text readability — sits above image, below content */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#080E1A]/65 via-[#080E1A]/45 to-[#080E1A]/90" style={{ zIndex: 1 }} aria-hidden="true" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#080E1A]/65 via-[#080E1A]/45 to-[#080E1A]/90" aria-hidden="true" />
 
         <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none select-none overflow-hidden">
           <div className="w-[680px] h-[680px] rounded-full border border-[#F5C518]/[0.07]" style={{ animation: "spin-slow 28s linear infinite" }} />
