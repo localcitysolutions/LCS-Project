@@ -84,19 +84,22 @@ export default function Header({ locale }: HeaderProps) {
           <Link
             href={isRTL ? "/ar" : "/en"}
             onClick={() => setMenuOpen(false)}
-            className="flex items-center shrink-0"
+            className="flex items-center gap-2 md:gap-3 shrink-0"
             aria-label="Local City Solutions — Digital Marketing Agency in Riyadh"
           >
             <Image
               src="/logo.webp"
               alt="Local City Solutions logo"
-              width={681}
-              height={217}
+              width={256}
+              height={256}
               priority
-              sizes="(max-width: 768px) 140px, 200px"
+              sizes="(max-width: 768px) 36px, 48px"
               style={{ height: "auto" }}
-              className="h-10 md:h-14 w-auto max-w-[140px] md:max-w-[200px]"
+              className="h-9 md:h-12 w-auto"
             />
+            <span className="text-white font-bold text-sm md:text-lg tracking-tight leading-tight whitespace-nowrap">
+              Local <span className="text-[#F5C518]">City</span> Solutions
+            </span>
           </Link>
 
           {/* Desktop nav */}
