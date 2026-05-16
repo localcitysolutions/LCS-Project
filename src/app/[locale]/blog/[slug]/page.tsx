@@ -1,10 +1,23 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { BLOG_POSTS, getRelatedPosts } from "@/data/blog-posts";
 import CTABox from "@/components/CTABox";
 import TrackableLink from "@/components/TrackableLink";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { mdxComponents } from "@/components/blog/mdxComponents";
+import {
+  calculateReadingTime,
+  formatPostDate,
+  formatPostDateAr,
+  wordCount,
+} from "@/lib/blog/utils";
 
 type Locale = "en" | "ar";
 interface PageProps {
@@ -80,7 +93,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const ui = isAr
     ? {
-        author: "فريق لوكال سيتي سولوشنز",
+        author: "فريق تحرير لوكال سيتي",
         authorRole: "رؤى تسويقية رقمية من وكالة التسويق الرقمي المتخصصة في الرياض.",
         toc: "محتويات المقال",
         relatedServices: "خدمات ذات صلة",
@@ -96,7 +109,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         ctaSubtitle: "احصل على تدقيق مجاني وخطة تسويقية مخصصة لقطاعك.",
       }
     : {
-        author: "Local City Solutions Team",
+        author: "LCS Editorial Team",
         authorRole: "Digital marketing insights from Riyadh's specialist digital marketing agency.",
         toc: "Table of Contents",
         relatedServices: "Related Services",
@@ -118,27 +131,41 @@ export default async function BlogPostPage({ params }: PageProps) {
   const twitterShare = `https://x.com/intent/tweet?text=${shareTitle}&url=${encodeURIComponent(shareUrl)}`;
   const linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
 
+  const featuredImageUrl = post.featuredImage
+    ? post.featuredImage.startsWith("http")
+      ? post.featuredImage
+      : `https://localcitysolutions.com${post.featuredImage}`
+    : "https://localcitysolutions.com/og-image.jpg";
+
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
+    "@id": `${shareUrl}#article`,
     headline: title,
     description: isAr ? post.metaDescription.ar : post.metaDescription.en,
     url: shareUrl,
+    image: featuredImageUrl,
     datePublished: post.publishDate,
-    dateModified: post.publishDate,
+    dateModified: post.updatedDate || post.publishDate,
     author: {
       "@type": "Organization",
-      name: "Local City Solutions",
-      url: "https://localcitysolutions.com",
+      name: "LCS Editorial Team",
+      url: "https://localcitysolutions.com/about",
     },
     publisher: {
       "@type": "Organization",
       name: "Local City Solutions",
-      url: "https://localcitysolutions.com",
-      logo: { "@type": "ImageObject", url: "https://localcitysolutions.com/logo.png" },
+      logo: {
+        "@type": "ImageObject",
+        url: "https://localcitysolutions.com/logo.png",
+      },
     },
-    inLanguage: isAr ? "ar" : "en",
-    image: "https://localcitysolutions.com/og-image.jpg",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": shareUrl,
+    },
+    wordCount: wordCount(content),
+    inLanguage: isAr ? "ar-SA" : "en-SA",
   };
 
   return (
@@ -173,22 +200,51 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
 
           {/* Category + meta */}
-          <div className={`flex items-center gap-3 mb-4 ${isAr ? "flex-row-reverse" : ""}`}>
+          <div className={`flex flex-wrap items-center gap-3 mb-4 ${isAr ? "flex-row-reverse" : ""}`}>
             <span className="inline-block px-2.5 py-1 rounded-full bg-[#F5C518]/10 text-[#F5C518] text-[10px] font-bold uppercase tracking-widest">
               {isAr ? post.categoryLabel.ar : post.categoryLabel.en}
             </span>
-            <span className="text-white/30 text-xs">{post.publishDate}</span>
-            <span className="text-white/30 text-xs">{post.readingTime} {ui.minRead}</span>
+            <span className="text-white/40 text-xs">
+              {isAr ? formatPostDateAr(post.publishDate) : formatPostDate(post.publishDate)}
+            </span>
+            <span className="text-white/30 text-xs">·</span>
+            <span className="text-white/40 text-xs">
+              {calculateReadingTime(content)} {ui.minRead}
+            </span>
+            {post.updatedDate && post.updatedDate !== post.publishDate ? (
+              <>
+                <span className="text-white/30 text-xs">·</span>
+                <span className="text-white/40 text-xs">
+                  {isAr
+                    ? `حُدِّث ${formatPostDateAr(post.updatedDate)}`
+                    : `Updated ${formatPostDate(post.updatedDate)}`}
+                </span>
+              </>
+            ) : null}
           </div>
 
           <h1 className={`text-2xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-6 ${isAr ? "text-right" : ""}`}>
             {title}
           </h1>
 
+          {/* Featured image */}
+          {post.featuredImage ? (
+            <div className="relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/40 mb-8 aspect-[16/9] bg-[#0E1A2E]">
+              <Image
+                src={post.featuredImage}
+                alt={title}
+                fill
+                priority
+                sizes="(max-width: 896px) 100vw, 896px"
+                className="object-cover"
+              />
+            </div>
+          ) : null}
+
           {/* Author row */}
           <div className={`flex items-center gap-3 ${isAr ? "flex-row-reverse" : ""}`}>
-            <div className="w-9 h-9 rounded-full bg-[#F5C518]/20 flex items-center justify-center text-[#F5C518] font-bold text-sm shrink-0">
-              MF
+            <div className="w-9 h-9 rounded-full bg-[#F5C518]/20 flex items-center justify-center text-[#F5C518] font-bold text-xs shrink-0">
+              LCS
             </div>
             <div>
               <p className="text-white text-xs font-semibold">{ui.author}</p>
@@ -206,19 +262,41 @@ export default async function BlogPostPage({ params }: PageProps) {
             {/* Article body — 70% */}
             <div className="flex-1 min-w-0">
               <div
-                className={`prose prose-invert prose-sm md:prose-base max-w-none
-                  prose-headings:text-white prose-headings:font-bold
-                  prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4
-                  prose-h3:text-base prose-h3:mt-6 prose-h3:mb-3
-                  prose-p:text-white/70 prose-p:leading-relaxed prose-p:mb-4
-                  prose-li:text-white/70 prose-li:leading-relaxed
-                  prose-ul:my-4 prose-ol:my-4
-                  prose-strong:text-white prose-strong:font-semibold
-                  prose-a:text-[#F5C518] prose-a:no-underline hover:prose-a:underline
+                className={`prose prose-invert prose-lg max-w-none
+                  prose-headings:text-white prose-headings:font-bold prose-headings:scroll-mt-24
+                  prose-h2:text-2xl md:prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-5 prose-h2:border-l-4 prose-h2:border-[#F5C518] prose-h2:pl-4
+                  prose-h3:text-xl md:prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-[#F5C518]
+                  prose-p:text-white/80 prose-p:leading-[1.8] prose-p:mb-5 prose-p:text-base md:prose-p:text-lg
+                  prose-li:text-white/80 prose-li:leading-relaxed prose-li:my-1
+                  prose-ul:my-5 prose-ul:pl-6 prose-ul:list-disc prose-ul:marker:text-[#F5C518]
+                  prose-ol:my-5 prose-ol:pl-6 prose-ol:list-decimal prose-ol:marker:text-[#F5C518]
+                  prose-strong:text-white prose-strong:font-bold
+                  prose-em:text-white/90
+                  prose-a:text-[#F5C518] prose-a:font-medium prose-a:underline prose-a:decoration-[#F5C518]/40 hover:prose-a:decoration-[#F5C518] prose-a:underline-offset-4
+                  prose-blockquote:border-l-4 prose-blockquote:border-[#F5C518] prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-white/85 prose-blockquote:my-8
+                  prose-img:rounded-xl prose-img:my-8 prose-img:shadow-2xl
+                  prose-code:text-[#F5C518] prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+                  prose-pre:bg-[#0A1628] prose-pre:border prose-pre:border-white/10 prose-pre:rounded-xl
+                  prose-hr:border-white/10 prose-hr:my-12
+                  prose-table:my-8 prose-th:text-white prose-th:font-bold prose-th:bg-white/5 prose-td:text-white/80
                   ${isAr ? "text-right" : ""}
                 `}
-                dangerouslySetInnerHTML={{ __html: content }}
-              />
+              >
+                <MDXRemote
+                  source={content}
+                  options={{
+                    mdxOptions: {
+                      remarkPlugins: [remarkGfm],
+                      rehypePlugins: [
+                        rehypeRaw,
+                        rehypeSlug,
+                        [rehypeAutolinkHeadings, { behavior: "wrap" }],
+                      ],
+                    },
+                  }}
+                  components={mdxComponents}
+                />
+              </div>
 
               {/* Tags */}
               <div className={`flex flex-wrap gap-2 mt-10 pt-6 border-t border-white/10 ${isAr ? "flex-row-reverse" : ""}`}>
@@ -260,8 +338,8 @@ export default async function BlogPostPage({ params }: PageProps) {
 
               {/* Author box */}
               <div className={`mt-10 p-6 bg-[#0E1A2E] border border-white/5 rounded-xl flex gap-4 ${isAr ? "flex-row-reverse" : ""}`}>
-                <div className="w-12 h-12 rounded-full bg-[#F5C518]/20 flex items-center justify-center text-[#F5C518] font-black text-lg shrink-0">
-                  MF
+                <div className="w-12 h-12 rounded-full bg-[#F5C518]/20 flex items-center justify-center text-[#F5C518] font-black text-sm shrink-0">
+                  LCS
                 </div>
                 <div className={isAr ? "text-right" : ""}>
                   <p className="text-white font-bold text-sm">{ui.author}</p>
