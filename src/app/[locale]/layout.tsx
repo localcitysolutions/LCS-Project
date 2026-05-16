@@ -10,6 +10,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import ScrollReveal from "@/components/ScrollReveal";
+import TabTitleSwap from "@/components/TabTitleSwap";
 import { DM_Sans, Almarai } from "next/font/google";
 import Script from "next/script";
 
@@ -194,6 +195,7 @@ export default async function LocaleLayout({
           />
         )}
         <NextIntlClientProvider messages={messages}>
+          <TabTitleSwap locale={locale} />
           <Header locale={locale} />
           <ScrollReveal />
           {children}
