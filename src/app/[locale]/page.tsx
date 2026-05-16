@@ -243,7 +243,7 @@ export default async function HomePage({ params }: PageProps) {
           src="/images/hero.webp"
           alt={isAr ? "فريق وكالة تسويق رقمي يعمل مع أعمال الرياض" : "Digital marketing agency team working with Riyadh businesses"}
           fill
-          priority
+          preload
           sizes="100vw"
           className="object-cover z-0"
           quality={75}

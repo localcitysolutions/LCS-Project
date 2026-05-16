@@ -234,7 +234,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 src={post.featuredImage}
                 alt={title}
                 fill
-                priority
+                preload
                 sizes="(max-width: 896px) 100vw, 896px"
                 className="object-cover"
               />

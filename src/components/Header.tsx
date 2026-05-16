@@ -92,7 +92,7 @@ export default function Header({ locale }: HeaderProps) {
               alt="Local City Solutions logo"
               width={256}
               height={256}
-              priority
+              preload
               sizes="(max-width: 768px) 36px, 48px"
               style={{ height: "auto" }}
               className="h-9 md:h-12 w-auto"
