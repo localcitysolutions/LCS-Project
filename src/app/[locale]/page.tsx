@@ -237,19 +237,20 @@ export default async function HomePage({ params }: PageProps) {
   return (
     <main dir={isAr ? "rtl" : "ltr"}>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#080E1A] pt-16 md:pt-20 min-h-[85vh] flex items-center">
-        {/* Background image */}
+      <section className="relative overflow-hidden pt-16 md:pt-20 min-h-[85vh] flex items-center">
+        {/* Background image — z-0 so it sits inside section, behind overlay */}
         <Image
           src="/images/hero.webp"
           alt={isAr ? "فريق وكالة تسويق رقمي يعمل مع أعمال الرياض" : "Digital marketing agency team working with Riyadh businesses"}
           fill
           priority
           sizes="100vw"
-          className="object-cover -z-10"
+          className="object-cover"
           quality={88}
+          style={{ zIndex: 0 }}
         />
-        {/* Dark gradient overlay for text readability — image visible behind */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#080E1A]/55 via-[#080E1A]/40 to-[#080E1A]/85" aria-hidden="true" />
+        {/* Dark gradient overlay for text readability — sits above image, below content */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#080E1A]/65 via-[#080E1A]/45 to-[#080E1A]/90" style={{ zIndex: 1 }} aria-hidden="true" />
 
         <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none select-none overflow-hidden">
           <div className="w-[680px] h-[680px] rounded-full border border-[#F5C518]/[0.07]" style={{ animation: "spin-slow 28s linear infinite" }} />
