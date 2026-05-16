@@ -287,8 +287,21 @@ export default async function BlogPostPage({ params }: PageProps) {
                   options={{
                     mdxOptions: {
                       remarkPlugins: [remarkGfm],
+                      // rehype-raw must passThrough MDX JSX nodes or it strips
+                      // <TLDR>/<Callout>/<Stat>/etc. before MDX compiles them.
                       rehypePlugins: [
-                        rehypeRaw,
+                        [
+                          rehypeRaw,
+                          {
+                            passThrough: [
+                              "mdxFlowExpression",
+                              "mdxJsxFlowElement",
+                              "mdxJsxTextElement",
+                              "mdxTextExpression",
+                              "mdxjsEsm",
+                            ],
+                          },
+                        ],
                         rehypeSlug,
                         [rehypeAutolinkHeadings, { behavior: "wrap" }],
                       ],

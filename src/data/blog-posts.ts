@@ -88,26 +88,50 @@ We went from 14 reviews to 220 in four months just from a WhatsApp message after
 
 <p>Maps ranking and delivery app optimization are separate disciplines but complement each other. On HungerStation and Jahez, focus on three things: menu photography, keyword-rich bilingual descriptions, and a completion rate that doesn't drop. Each platform weights those signals slightly differently:</p>
 
-<Comparison
-  headers={["Tactic", "HungerStation", "Jahez"]}
-  rows={[
-    ["Photo coverage", "Every menu item — required for featured placement", "Every item + lifestyle/plating shots boost CTR"],
-    ["Menu copy", "Bilingual EN + AR dish names with key ingredients", "Bilingual + dietary tags (حلال / نباتي / بدون قمح)"],
-    ["Completion rate floor", "95% minimum to stay in featured rotation", "97% minimum — Jahez weighs this heavier than HS"],
-    ["Best promo type", "Free delivery on minimum order", "Percentage discount + bundle deals"],
-  ]}
-/>
+<Comparison>
+  <Row head>
+    <Cell head>Tactic</Cell>
+    <Cell head>HungerStation</Cell>
+    <Cell head>Jahez</Cell>
+  </Row>
+  <Row>
+    <Cell>Photo coverage</Cell>
+    <Cell>Every menu item — required for featured placement</Cell>
+    <Cell>Every item + lifestyle/plating shots boost CTR</Cell>
+  </Row>
+  <Row>
+    <Cell>Menu copy</Cell>
+    <Cell>Bilingual EN + AR dish names with key ingredients</Cell>
+    <Cell>Bilingual + dietary tags (حلال / نباتي / بدون قمح)</Cell>
+  </Row>
+  <Row>
+    <Cell>Completion rate floor</Cell>
+    <Cell>95% minimum to stay in featured rotation</Cell>
+    <Cell>97% minimum — Jahez weighs this heavier than HS</Cell>
+  </Row>
+  <Row>
+    <Cell>Best promo type</Cell>
+    <Cell>Free delivery on minimum order</Cell>
+    <Cell>Percentage discount + bundle deals</Cell>
+  </Row>
+</Comparison>
 
 <h2 id="action-plan">Your 30-Day Action Plan</h2>
 
-<Steps
-  items={[
-    { title: "Week 1 — GBP foundation", body: "Spend 2-3 hours completing every GBP field. Upload 30+ photos covering exterior, interior, food, and team. Write a 750-character description with your neighbourhood name and 2-3 signature dishes named naturally." },
-    { title: "Week 2 — Review system", body: "Set up a WhatsApp Business message template with your direct Google review link. Commit to sending it within 2 hours of every dine-in visit for the next 60 days. Track weekly review count to confirm the cadence holds." },
-    { title: "Week 3 — Citation cleanup", body: "Audit Zomato, TripAdvisor, your website, and every social profile for name / address / phone consistency. Fix every discrepancy — a single mismatch dilutes ranking signals across the board." },
-    { title: "Week 4 — Delivery apps polish", body: "Add photos to every menu item on HungerStation and Jahez. Update menu descriptions with English + Arabic dish names. Push completion rate above 97% and keep it there." },
-  ]}
-/>
+<Steps>
+  <Step title="Week 1 — GBP foundation">
+    Spend 2-3 hours completing every GBP field. Upload 30+ photos covering exterior, interior, food, and team. Write a 750-character description with your neighbourhood name and 2-3 signature dishes named naturally.
+  </Step>
+  <Step title="Week 2 — Review system">
+    Set up a WhatsApp Business message template with your direct Google review link. Commit to sending it within 2 hours of every dine-in visit for the next 60 days. Track weekly review count to confirm the cadence holds.
+  </Step>
+  <Step title="Week 3 — Citation cleanup">
+    Audit Zomato, TripAdvisor, your website, and every social profile for name / address / phone consistency. Fix every discrepancy — a single mismatch dilutes ranking signals across the board.
+  </Step>
+  <Step title="Week 4 — Delivery apps polish">
+    Add photos to every menu item on HungerStation and Jahez. Update menu descriptions with English + Arabic dish names. Push completion rate above 97% and keep it there.
+  </Step>
+</Steps>
 
 <PostCTA
   title="Want LCS to run this for your restaurant?"
@@ -167,26 +191,50 @@ We went from 14 reviews to 220 in four months just from a WhatsApp message after
 
 <p>ترتيب الخريطة وتحسين تطبيقات التوصيل منفصلان لكنهما يكمّلان بعضهما. على هنقرستيشن وجاهز، ركّز على ثلاثة أشياء: تصوير المنيو، أوصاف ثنائية اللغة بكلمات مفتاحية، ومعدل اكتمال ما ينزل. كل منصة توزن هذه الإشارات بشكل مختلف بسيط:</p>
 
-<Comparison
-  headers={["العامل", "هنقرستيشن", "جاهز"]}
-  rows={[
-    ["تغطية الصور", "صورة لكل طبق — أساسي للظهور المميز", "كل طبق + صور تقديم وأجواء تزيد نسبة النقر"],
-    ["نص المنيو", "أسماء أطباق بالعربي والإنجليزي مع المكونات", "ثنائي اللغة + علامات (حلال / نباتي / بدون قمح)"],
-    ["حد معدل الاكتمال", "٩٥٪ كحد أدنى للبقاء في القائمة المميزة", "٩٧٪ كحد أدنى — جاهز يوزن هذا أكثر من هنقرستيشن"],
-    ["أفضل عرض ترويجي", "توصيل مجاني على حد أدنى من الطلب", "خصم بنسبة مئوية + عروض الباقات"],
-  ]}
-/>
+<Comparison>
+  <Row head>
+    <Cell head>العامل</Cell>
+    <Cell head>هنقرستيشن</Cell>
+    <Cell head>جاهز</Cell>
+  </Row>
+  <Row>
+    <Cell>تغطية الصور</Cell>
+    <Cell>صورة لكل طبق — أساسي للظهور المميز</Cell>
+    <Cell>كل طبق + صور تقديم وأجواء تزيد نسبة النقر</Cell>
+  </Row>
+  <Row>
+    <Cell>نص المنيو</Cell>
+    <Cell>أسماء أطباق بالعربي والإنجليزي مع المكونات</Cell>
+    <Cell>ثنائي اللغة + علامات (حلال / نباتي / بدون قمح)</Cell>
+  </Row>
+  <Row>
+    <Cell>حد معدل الاكتمال</Cell>
+    <Cell>٩٥٪ كحد أدنى للبقاء في القائمة المميزة</Cell>
+    <Cell>٩٧٪ كحد أدنى — جاهز يوزن هذا أكثر من هنقرستيشن</Cell>
+  </Row>
+  <Row>
+    <Cell>أفضل عرض ترويجي</Cell>
+    <Cell>توصيل مجاني على حد أدنى من الطلب</Cell>
+    <Cell>خصم بنسبة مئوية + عروض الباقات</Cell>
+  </Row>
+</Comparison>
 
 <h2 id="action-plan">خطة ٣٠ يوم للتصدر</h2>
 
-<Steps
-  items={[
-    { title: "الأسبوع ١ — أساسات ملف النشاط", body: "خصص ٢-٣ ساعات لاستكمال كل حقل في ملف النشاط. ارفع ٣٠+ صورة تغطي الخارج والداخل والأكل والفريق. اكتب وصف ٧٥٠ حرف يذكر اسم حيك و٢-٣ من أطباقك المميزة بشكل طبيعي." },
-    { title: "الأسبوع ٢ — نظام التقييمات", body: "حضّر قالب رسالة واتساب بيزنس مع رابط مباشر لتقييم قوقل. التزم بإرسالها خلال ساعتين من كل زيارة طوال الـ ٦٠ يوم اللي جاية. تابع عدد التقييمات أسبوعياً للتأكد إن الوتيرة شغالة." },
-    { title: "الأسبوع ٣ — تنظيف البيانات", body: "راجع زوماتو وتريب أدفايزر وموقعك وكل حساباتك للتأكد إن الاسم والعنوان ورقم الهاتف متطابقين. أي اختلاف بسيط يضعف إشارات ترتيبك في كل المنصات." },
-    { title: "الأسبوع ٤ — تحسين تطبيقات التوصيل", body: "أضف صور لكل طبق على هنقرستيشن وجاهز. حدّث أوصاف المنيو بأسماء عربية وإنجليزية. خلّي معدل الاكتمال فوق ٩٧٪ واحرص على بقاءه هناك." },
-  ]}
-/>
+<Steps>
+  <Step title="الأسبوع ١ — أساسات ملف النشاط">
+    خصص ٢-٣ ساعات لاستكمال كل حقل في ملف النشاط. ارفع ٣٠+ صورة تغطي الخارج والداخل والأكل والفريق. اكتب وصف ٧٥٠ حرف يذكر اسم حيك و٢-٣ من أطباقك المميزة بشكل طبيعي.
+  </Step>
+  <Step title="الأسبوع ٢ — نظام التقييمات">
+    حضّر قالب رسالة واتساب بيزنس مع رابط مباشر لتقييم قوقل. التزم بإرسالها خلال ساعتين من كل زيارة طوال الـ ٦٠ يوم اللي جاية. تابع عدد التقييمات أسبوعياً للتأكد إن الوتيرة شغالة.
+  </Step>
+  <Step title="الأسبوع ٣ — تنظيف البيانات">
+    راجع زوماتو وتريب أدفايزر وموقعك وكل حساباتك للتأكد إن الاسم والعنوان ورقم الهاتف متطابقين. أي اختلاف بسيط يضعف إشارات ترتيبك في كل المنصات.
+  </Step>
+  <Step title="الأسبوع ٤ — تحسين تطبيقات التوصيل">
+    أضف صور لكل طبق على هنقرستيشن وجاهز. حدّث أوصاف المنيو بأسماء عربية وإنجليزية. خلّي معدل الاكتمال فوق ٩٧٪ واحرص على بقاءه هناك.
+  </Step>
+</Steps>
 
 <PostCTA
   title="حاضر تترك لوكال يدير لك هذا كله؟"

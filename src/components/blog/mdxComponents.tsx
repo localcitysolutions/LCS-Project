@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { Children, isValidElement, type ReactNode } from "react";
 
 type CalloutType = "tip" | "warning" | "note" | "insight";
 
@@ -75,52 +75,79 @@ export function PullQuote({
   );
 }
 
-export function Comparison({
-  headers,
-  rows,
-}: {
-  headers: string[];
-  rows: Array<Array<string>>;
-}) {
+// Comparison + Row + Cell: children-based composition so MDX content doesn't
+// have to embed multi-dimensional JSX attribute expressions (which MDX's flow
+// parser silently drops, leaving the receiving component with undefined props).
+// Usage:
+//   <Comparison>
+//     <Row head>
+//       <Cell>Tactic</Cell><Cell>HungerStation</Cell><Cell>Jahez</Cell>
+//     </Row>
+//     <Row>
+//       <Cell>Photo coverage</Cell><Cell>...</Cell><Cell>...</Cell>
+//     </Row>
+//   </Comparison>
+export function Comparison({ children }: { children: ReactNode }) {
   return (
     <div className="my-8 overflow-x-auto not-prose rounded-xl border border-white/10">
-      <table className="w-full text-sm md:text-base">
-        <thead>
-          <tr className="bg-[#F5C518]/15">
-            {headers.map((h, i) => (
-              <th key={i} className="text-left p-4 font-bold text-white">{h}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, ri) => (
-            <tr key={ri} className="border-t border-white/10 hover:bg-white/5">
-              {row.map((cell, ci) => (
-                <td key={ci} className="p-4 text-white/80">{cell}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <table className="w-full text-sm md:text-base">{children}</table>
     </div>
   );
 }
 
-export function Steps({ items }: { items: Array<{ title: string; body: string }> }) {
+export function Row({ head, children }: { head?: boolean; children: ReactNode }) {
+  if (head) {
+    return (
+      <thead>
+        <tr className="bg-[#F5C518]/15">{children}</tr>
+      </thead>
+    );
+  }
+  return (
+    <tbody>
+      <tr className="border-t border-white/10 hover:bg-white/5">{children}</tr>
+    </tbody>
+  );
+}
+
+export function Cell({ head, children }: { head?: boolean; children: ReactNode }) {
+  if (head) {
+    return <th className="text-left p-4 font-bold text-white">{children}</th>;
+  }
+  return <td className="p-4 text-white/80">{children}</td>;
+}
+
+// Steps + Step: same pattern — children composition avoids passing structured
+// data through MDX JSX attribute expressions.
+// Usage:
+//   <Steps>
+//     <Step title="Week 1">Body text...</Step>
+//     <Step title="Week 2">Body text...</Step>
+//   </Steps>
+// <Steps> walks its <Step> children to assign the visible numbered circle —
+// keeps the author-facing API simple while letting the wrapper own the layout.
+export function Steps({ children }: { children: ReactNode }) {
+  const items = Children.toArray(children).filter(isValidElement);
   return (
     <ol className="my-8 space-y-6 not-prose list-none p-0">
-      {items.map((step, i) => (
+      {items.map((child, i) => (
         <li key={i} className="flex gap-4">
           <div className="shrink-0 w-10 h-10 rounded-full bg-[#F5C518] text-[#0A1628] font-extrabold flex items-center justify-center text-lg">
             {i + 1}
           </div>
-          <div className="flex-1">
-            <div className="text-white font-bold text-lg mb-1">{step.title}</div>
-            <div className="text-white/75 leading-relaxed">{step.body}</div>
-          </div>
+          <div className="flex-1">{child}</div>
         </li>
       ))}
     </ol>
+  );
+}
+
+export function Step({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <>
+      <div className="text-white font-bold text-lg mb-1">{title}</div>
+      <div className="text-white/75 leading-relaxed">{children}</div>
+    </>
   );
 }
 
@@ -198,7 +225,10 @@ export const mdxComponents = {
   Stat,
   PullQuote,
   Comparison,
+  Row,
+  Cell,
   Steps,
+  Step,
   Figure,
   TLDR,
   PostCTA,
