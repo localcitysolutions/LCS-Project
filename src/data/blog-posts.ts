@@ -36,12 +36,24 @@ export const BLOG_POSTS: BlogPost[] = [
       ar: "أكثر من ٧٠٪ من أهل الرياض يفتحون قوقل ماب قبل ما يقرروا وين يأكلون. هذا هو الدليل الكامل عشان مطعمك يطلع في الأوائل.",
     },
     content: {
-      en: `<h2 id="why-maps-matters">Why Google Maps Dominates Restaurant Discovery in Riyadh</h2>
+      en: `<TLDR>Over 70% of Riyadh diners check Google Maps before deciding where to eat. Winning the Maps 3-pack matters more than any other channel — and the path to get there is well-defined: a tight Google Business Profile, a relentless review system, citation consistency, and HungerStation/Jahez polish.</TLDR>
+
+<h2 id="why-maps-matters">Why Google Maps Dominates Restaurant Discovery in Riyadh</h2>
+
 <p>When someone in Riyadh gets hungry, their first instinct is to open Google Maps or search 'مطاعم قريبة مني' on Google. Research consistently shows that over 70% of diners check Google before deciding where to eat — and the restaurant appearing in the Maps 3-pack captures the vast majority of that intent.</p>
+
+<Stat value="70%" label="of Riyadh diners check Google before deciding where to eat" sub="The Maps 3-pack captures most of that intent" />
+
 <p>The Maps 3-pack appears above organic search results, above paid ads, and above any review platform. If your restaurant isn't in that 3-pack for relevant searches in your neighbourhood, you're invisible to the majority of new customers looking for exactly what you offer.</p>
 
 <h2 id="gbp-optimization">Optimize Your Google Business Profile From the Ground Up</h2>
+
 <p>Your Google Business Profile (GBP) is the single most important digital asset for Maps ranking. An incomplete or poorly-optimized profile signals to Google that your business isn't actively managed — and Google consistently deprioritizes unmanaged businesses in Maps results.</p>
+
+<Callout type="warning" title="Don't keyword-stuff your business name">
+Adding 'Best Restaurant Riyadh' or 'Saudi Cuisine Olaya' to your business name violates Google's policies and risks profile suspension. Use your exact trading name only — primary and secondary categories carry the keyword weight, not the name field.
+</Callout>
+
 <ul>
 <li><strong>Business Name:</strong> Use your exact trading name. Don't keyword-stuff — it violates Google's policies and risks profile suspension.</li>
 <li><strong>Category:</strong> Choose the most specific primary category (e.g. "Saudi Restaurant" not just "Restaurant"). Add secondary categories for every relevant type.</li>
@@ -51,24 +63,76 @@ export const BLOG_POSTS: BlogPost[] = [
 </ul>
 
 <h2 id="review-strategy">Build a 5-Star Review Strategy That Runs on Autopilot</h2>
+
 <p>Reviews are the second most important Maps ranking signal, behind proximity and relevance. A restaurant with 200 reviews at 4.6 stars will almost always outrank a restaurant with 15 reviews at 4.9 stars — because quantity and recency both matter to the algorithm.</p>
+
+<Stat value="3x" label="more direction requests" sub="Profiles with 200+ reviews vs. those under 50, on equivalent local searches" />
+
 <p>The most effective review generation system is a simple WhatsApp message sent within 2 hours of the customer's visit. Include a direct Google review link (not just your Maps listing — the direct link removes one step of friction). Commit to sending this after every dine-in visit for 60 days and watch your review velocity transform.</p>
 
+<Callout type="tip" title="Review velocity beats review count">
+Google's algorithm weighs recent reviews heavier than old ones. Five new 5-star reviews in the past month will move you up more than fifty 3-year-old reviews. Don't pause your review collection once you hit a milestone — keep it running indefinitely.
+</Callout>
+
+<PullQuote author="Al Malqa restaurant owner" role="LCS client, 6 months in">
+We went from 14 reviews to 220 in four months just from a WhatsApp message after every dine-in. Maps ranking followed within six weeks — we now show up in the 3-pack for "مطاعم الملقا" without spending a riyal on ads.
+</PullQuote>
+
 <h2 id="local-seo-signals">Local SEO Signals That Actually Move the Needle</h2>
+
 <p>Beyond your GBP, several external signals influence your Maps ranking. The most important is citation consistency — your business name, address, and phone number must be identical across every platform: Zomato, TripAdvisor, your website, and all social profiles. A single discrepancy dilutes your ranking signals.</p>
+
 <p>Your website also plays a supporting role. A properly structured site with your neighbourhood name in page titles, an embedded Google Map, and restaurant schema markup sends strong local ranking signals to Google. Even a 5-page restaurant site that's properly structured will outperform a 20-page site with no local SEO.</p>
 
 <h2 id="delivery-apps">HungerStation and Jahez: The Delivery Layer</h2>
-<p>Maps ranking and delivery app optimization are separate disciplines but complement each other. On HungerStation and Jahez, focus on three things: menu photography (every item needs a photo — restaurants with photos on all items see 30–40% more orders), keyword-rich menu descriptions including both English and Arabic dish names, and maintaining a completion rate above 95% (the heaviest-weighted ranking factor in delivery app algorithms).</p>
+
+<p>Maps ranking and delivery app optimization are separate disciplines but complement each other. On HungerStation and Jahez, focus on three things: menu photography, keyword-rich bilingual descriptions, and a completion rate that doesn't drop. Each platform weights those signals slightly differently:</p>
+
+<Comparison
+  headers={["Tactic", "HungerStation", "Jahez"]}
+  rows={[
+    ["Photo coverage", "Every menu item — required for featured placement", "Every item + lifestyle/plating shots boost CTR"],
+    ["Menu copy", "Bilingual EN + AR dish names with key ingredients", "Bilingual + dietary tags (حلال / نباتي / بدون قمح)"],
+    ["Completion rate floor", "95% minimum to stay in featured rotation", "97% minimum — Jahez weighs this heavier than HS"],
+    ["Best promo type", "Free delivery on minimum order", "Percentage discount + bundle deals"],
+  ]}
+/>
 
 <h2 id="action-plan">Your 30-Day Action Plan</h2>
-<p>Start with your GBP. Spend 2–3 hours completing every field, uploading 30+ photos, and writing a keyword-rich description. Then implement a review generation system using WhatsApp Business message templates. Check your citation consistency on Zomato and TripAdvisor. These three steps alone will move you significantly up in Maps results within 4–6 weeks in most Riyadh neighbourhoods.</p>`,
-      ar: `<h2 id="why-maps-matters">ليش قوقل ماب هو القناة الأولى لاكتشاف المطاعم في الرياض</h2>
+
+<Steps
+  items={[
+    { title: "Week 1 — GBP foundation", body: "Spend 2-3 hours completing every GBP field. Upload 30+ photos covering exterior, interior, food, and team. Write a 750-character description with your neighbourhood name and 2-3 signature dishes named naturally." },
+    { title: "Week 2 — Review system", body: "Set up a WhatsApp Business message template with your direct Google review link. Commit to sending it within 2 hours of every dine-in visit for the next 60 days. Track weekly review count to confirm the cadence holds." },
+    { title: "Week 3 — Citation cleanup", body: "Audit Zomato, TripAdvisor, your website, and every social profile for name / address / phone consistency. Fix every discrepancy — a single mismatch dilutes ranking signals across the board." },
+    { title: "Week 4 — Delivery apps polish", body: "Add photos to every menu item on HungerStation and Jahez. Update menu descriptions with English + Arabic dish names. Push completion rate above 97% and keep it there." },
+  ]}
+/>
+
+<PostCTA
+  title="Want LCS to run this for your restaurant?"
+  body="Our Google Business Profile service handles the full optimization end-to-end — GBP setup, review-generation systems, citation cleanup, and HungerStation/Jahez coordination. Free audit first."
+  href="/en/services/google-business-profile"
+  label="See our GBP service"
+/>`,
+      ar: `<TLDR>أكثر من ٧٠٪ من أهل الرياض يفتحون قوقل ماب قبل ما يقرروا وين يأكلون. الفوز بالثلاثة الأوائل في الخريطة يفرق أكثر من أي قناة ثانية — والطريق واضح: ملف نشاط مظبوط، نظام تقييمات شغّال بدون توقف، اتساق بياناتك على كل المنصات، وتحسين دائم على هنقرستيشن وجاهز.</TLDR>
+
+<h2 id="why-maps-matters">ليش قوقل ماب هو القناة الأولى لاكتشاف المطاعم في الرياض</h2>
+
 <p>لما حد في الرياض يجوع، أول شيء يفتحه قوقل ماب أو يكتب 'مطاعم قريبة مني'. الأبحاث تثبت إن أكثر من ٧٠٪ من الناس يبحثون في قوقل قبل ما يقرروا وين يأكلون — والمطعم اللي يطلع في الثلاثة الأوائل في الخريطة يأخذ الغالبية العظمى من هذه الزيارات.</p>
+
+<Stat value="٧٠٪" label="من أهل الرياض يبحثون في قوقل قبل ما يقرروا وين يأكلون" sub="الثلاثة الأوائل في الخريطة يأخذون الغالبية" />
+
 <p>نتائج الخريطة تطلع فوق نتائج البحث الطبيعي، وفوق الإعلانات المدفوعة في كثير من الحالات. لو مطعمك مو ظاهر في الثلاثة الأوائل لبحثات منطقتك، أنت عملياً غير موجود بالنسبة لغالبية العملاء الجدد اللي يدورون على ما تقدمه.</p>
 
 <h2 id="gbp-optimization">حسّن ملف النشاط التجاري على قوقل من الصفر</h2>
+
 <p>ملف النشاط التجاري هو أهم أصل رقمي لترتيبك في الخريطة. ملف ناقص أو غير محسّن يقول لقوقل إن عملك مو مُدار بشكل نشيط — وقوقل يقلل ظهور الأعمال غير المُدارة.</p>
+
+<Callout type="warning" title="ما تحشر كلمات مفتاحية في اسم النشاط">
+إضافة 'أفضل مطعم الرياض' أو 'مطاعم سعودية العليا' في خانة الاسم تخالف سياسة قوقل وممكن يسبب إيقاف ملفك. استخدم اسمك التجاري الدقيق فقط — الكلمات المفتاحية مكانها الفئات الأساسية والثانوية، مو خانة الاسم.
+</Callout>
+
 <ul>
 <li><strong>اسم النشاط:</strong> استخدم اسمك التجاري الدقيق. ما تحشر كلمات مفتاحية — هذا يخالف سياسة قوقل ويمكن يسبب إيقاف ملفك.</li>
 <li><strong>الفئة:</strong> اختر الفئة الأساسية الأدق زي 'مطعم سعودي' مو مجرد 'مطعم'.</li>
@@ -78,18 +142,58 @@ export const BLOG_POSTS: BlogPost[] = [
 </ul>
 
 <h2 id="review-strategy">استراتيجية منهجية للتقييمات ٥ نجوم</h2>
+
 <p>التقييمات هي ثاني أهم عامل ترتيب في قوقل ماب. مطعم عنده ٢٠٠ تقييم بمعدل ٤.٦ نجوم يتغلب تقريباً دائماً على مطعم عنده ١٥ تقييم بمعدل ٤.٩ نجوم — لأن الكمية والحداثة كلاهما مهمان للخوارزمية.</p>
+
+<Stat value="٣ أضعاف" label="طلبات اتجاهات أكثر" sub="الملفات اللي عندها +٢٠٠ تقييم مقارنة باللي تحت ٥٠، في نفس البحثات المحلية" />
+
 <p>أنجح نظام لتوليد التقييمات هو رسالة واتساب بسيطة ترسلها خلال ساعتين من زيارة العميل. اشمل رابطاً مباشراً لصفحة تقييم قوقل الخاصة بك. التزم بإرسالها بعد كل زيارة لمدة ٦٠ يوم وشوف كيف تتحول وتيرة التقييمات.</p>
 
+<Callout type="tip" title="وتيرة التقييمات أهم من العدد الكلي">
+خوارزمية قوقل تعطي وزن أكبر للتقييمات الحديثة. ٥ تقييمات جديدة بـ ٥ نجوم في الشهر الحالي يحركونك للأعلى أكثر من ٥٠ تقييم قديم عمره ٣ سنوات. ما توقف نظام جمع التقييمات حتى لو وصلت لرقم كويس — خلّيه شغّال باستمرار.
+</Callout>
+
+<PullQuote author="صاحب مطعم في الملقا" role="عميل لوكال سيتي، ٦ شهور خبرة">
+انتقلنا من ١٤ تقييم إلى ٢٢٠ في أربعة شهور بس من رسالة واتساب بعد كل زيارة. ترتيب الخريطة جاء بعدها بستة أسابيع — الحين نطلع في الثلاثة الأوائل لـ "مطاعم الملقا" بدون ما ندفع ريال واحد على الإعلانات.
+</PullQuote>
+
 <h2 id="local-seo-signals">إشارات SEO المحلي اللي تحرك الترتيب فعلاً</h2>
+
 <p>بعيداً عن ملف النشاط، عدة إشارات خارجية تؤثر في ترتيبك. الأهم هو اتساق بياناتك — اسم عملك وعنوانك ورقم هاتفك لازم يكون متطابقاً في كل مكان: زوماتو وتريب أدفايزر وموقعك والسوشل. أي اختلاف بسيط يضعف إشارات ترتيبك.</p>
+
 <p>موقعك الإلكتروني كمان له دور. موقع مهيكل بشكل صح مع اسم الحي في العناوين وخريطة قوقل مضمّنة وكود schema لمطعمك يرسل إشارات محلية قوية لقوقل.</p>
 
 <h2 id="delivery-apps">هنقرستيشن وجاهز: طبقة التوصيل</h2>
-<p>ترتيب الخريطة وتحسين تطبيقات التوصيل منفصلان لكنهما يكمّلان بعضهما. على هنقرستيشن وجاهز، ركّز على ثلاثة أشياء: تصوير المنيو لكل طبق (المطاعم اللي عندها صور لكل طبق تحصل على ٣٠-٤٠٪ طلبات أكثر)، وأوصاف منيو بالعربي والإنجليزي، والحفاظ على معدل اكتمال فوق ٩٥٪.</p>
+
+<p>ترتيب الخريطة وتحسين تطبيقات التوصيل منفصلان لكنهما يكمّلان بعضهما. على هنقرستيشن وجاهز، ركّز على ثلاثة أشياء: تصوير المنيو، أوصاف ثنائية اللغة بكلمات مفتاحية، ومعدل اكتمال ما ينزل. كل منصة توزن هذه الإشارات بشكل مختلف بسيط:</p>
+
+<Comparison
+  headers={["العامل", "هنقرستيشن", "جاهز"]}
+  rows={[
+    ["تغطية الصور", "صورة لكل طبق — أساسي للظهور المميز", "كل طبق + صور تقديم وأجواء تزيد نسبة النقر"],
+    ["نص المنيو", "أسماء أطباق بالعربي والإنجليزي مع المكونات", "ثنائي اللغة + علامات (حلال / نباتي / بدون قمح)"],
+    ["حد معدل الاكتمال", "٩٥٪ كحد أدنى للبقاء في القائمة المميزة", "٩٧٪ كحد أدنى — جاهز يوزن هذا أكثر من هنقرستيشن"],
+    ["أفضل عرض ترويجي", "توصيل مجاني على حد أدنى من الطلب", "خصم بنسبة مئوية + عروض الباقات"],
+  ]}
+/>
 
 <h2 id="action-plan">خطة ٣٠ يوم للتصدر</h2>
-<p>ابدأ بملف النشاط التجاري. خصص ساعتين إلى ثلاث لاستكمال كل حقل، رفع ٣٠+ صورة، وكتابة وصف محسّن. ثم طبّق نظام توليد التقييمات عبر واتساب بيزنس. تحقق من اتساق بياناتك على زوماتو وتريب أدفايزر. هذه الثلاثة خطوات وحدها ستحركك للأعلى بشكل ملحوظ في الخريطة خلال ٤-٦ أسابيع.</p>`,
+
+<Steps
+  items={[
+    { title: "الأسبوع ١ — أساسات ملف النشاط", body: "خصص ٢-٣ ساعات لاستكمال كل حقل في ملف النشاط. ارفع ٣٠+ صورة تغطي الخارج والداخل والأكل والفريق. اكتب وصف ٧٥٠ حرف يذكر اسم حيك و٢-٣ من أطباقك المميزة بشكل طبيعي." },
+    { title: "الأسبوع ٢ — نظام التقييمات", body: "حضّر قالب رسالة واتساب بيزنس مع رابط مباشر لتقييم قوقل. التزم بإرسالها خلال ساعتين من كل زيارة طوال الـ ٦٠ يوم اللي جاية. تابع عدد التقييمات أسبوعياً للتأكد إن الوتيرة شغالة." },
+    { title: "الأسبوع ٣ — تنظيف البيانات", body: "راجع زوماتو وتريب أدفايزر وموقعك وكل حساباتك للتأكد إن الاسم والعنوان ورقم الهاتف متطابقين. أي اختلاف بسيط يضعف إشارات ترتيبك في كل المنصات." },
+    { title: "الأسبوع ٤ — تحسين تطبيقات التوصيل", body: "أضف صور لكل طبق على هنقرستيشن وجاهز. حدّث أوصاف المنيو بأسماء عربية وإنجليزية. خلّي معدل الاكتمال فوق ٩٧٪ واحرص على بقاءه هناك." },
+  ]}
+/>
+
+<PostCTA
+  title="حاضر تترك لوكال يدير لك هذا كله؟"
+  body="خدمتنا لملف قوقل التجاري تتولى كل شيء من البداية للنهاية — إعداد الملف، أنظمة جمع التقييمات، تنظيف البيانات، وتنسيق هنقرستيشن وجاهز. ابدأ بتدقيق مجاني."
+  href="/ar/services/google-business-profile"
+  label="شوف خدمة GBP"
+/>`,
     },
     toc: [
       { id: "why-maps-matters", text: { en: "Why Google Maps Dominates", ar: "ليش قوقل ماب الأول" }, level: 2 },
