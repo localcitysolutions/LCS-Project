@@ -60,6 +60,17 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // 301: www.localcitysolutions.com → localcitysolutions.com (apex).
+      // Canonicals, sitemap, hreflang and JSON-LD all use the apex host, so
+      // serving www would make every page declare a different canonical than
+      // its own URL (Lighthouse SEO flags it as "canonical points to another
+      // hreflang location"). One canonical host, one source of truth.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.localcitysolutions.com" }],
+        destination: "https://localcitysolutions.com/:path*",
+        permanent: true,
+      },
       // 301s: old WordPress blog slugs → new Next.js blog posts
       // Runs at the edge before locale middleware — safe for non-prefixed legacy paths
       {
