@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Script from "next/script";
 import { IBM_Plex_Sans_Arabic, Noto_Naskh_Arabic, Poppins } from "next/font/google";
 
 import Breadcrumbs from "@/components/Breadcrumbs";
@@ -97,10 +96,10 @@ export default function WpArticle({ post, locale }: Props) {
 
   return (
     <>
-      <Script
-        id={`article-schema-${post.id}`}
+      {/* Plain <script> for JSON-LD — next/script is for executable JS and
+          can mis-handle non-JS types during SSR. Matches LocalArticle.tsx. */}
+      <script
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
