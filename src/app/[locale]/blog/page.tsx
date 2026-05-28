@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BLOG_POSTS, CATEGORIES } from "@/data/blog-posts";
+import { type BlogPost, BLOG_POSTS, CATEGORIES } from "@/data/blog-posts";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { getAllWpPosts, stripHtml, type NormalizedWpPost } from "@/lib/wordpress";
 
 type Locale = "en" | "ar";
 interface PageProps {
   params: Promise<{ locale: Locale }>;
   searchParams: Promise<{ category?: string; q?: string; page?: string }>;
 }
+
+// ISR: refresh WordPress-sourced posts every 60s without redeploy.
+export const revalidate = 60;
 
 const CONTENT = {
   en: {
@@ -26,6 +30,7 @@ const CONTENT = {
     prev: "← Previous",
     next: "Next →",
     pageOf: (p: number, t: number) => `Page ${p} of ${t}`,
+    externalCategory: "Article",
   },
   ar: {
     meta: {
@@ -43,10 +48,48 @@ const CONTENT = {
     prev: "→ السابق",
     next: "← التالي",
     pageOf: (p: number, t: number) => `صفحة ${p} من ${t}`,
+    externalCategory: "مقالة",
   },
 };
 
 const PER_PAGE = 9;
+
+/**
+ * Adapt a NormalizedWpPost into a BlogPost-shaped object so the existing card
+ * render keeps working without branching. Only the fields the card actually
+ * uses are populated — TOC, related services, etc. stay empty.
+ *
+ * Both `title.en` and `title.ar` get the WP title because we currently can't
+ * tell Polylang languages apart on this install (see lib/wordpress.ts).
+ */
+function adaptWpToBlogPost(wp: NormalizedWpPost, externalLabel: string): BlogPost {
+  const title = stripHtml(wp.titleHtml);
+  const excerpt = stripHtml(wp.excerptHtml);
+  // Rough reading time: ~200 wpm on the visible body.
+  const wordCount = stripHtml(wp.contentHtml).split(/\s+/).filter(Boolean).length;
+  const readingTime = Math.max(1, Math.round(wordCount / 200));
+
+  return {
+    id: 1_000_000 + wp.id, // separate ID space from local posts
+    slug: wp.slug,
+    title: { en: title, ar: title },
+    metaDescription: { en: excerpt, ar: excerpt },
+    excerpt: { en: excerpt, ar: excerpt },
+    content: { en: wp.contentHtml, ar: wp.contentHtml },
+    toc: [],
+    category: "external", // never matches a CATEGORIES pill — only shows in "All Posts"
+    categoryLabel: { en: externalLabel, ar: externalLabel },
+    tags: [],
+    author: "LCS",
+    publishDate: wp.date.slice(0, 10),
+    updatedDate: (wp.modified || wp.date).slice(0, 10),
+    featuredImage: wp.featuredImageUrl || "",
+    readingTime,
+    relatedServices: [],
+    relatedDistricts: [],
+    relatedPosts: [],
+  };
+}
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
@@ -83,7 +126,15 @@ export default async function BlogPage({ params, searchParams }: PageProps) {
   const query = sp.q || "";
   const page = Math.max(1, parseInt(sp.page || "1", 10));
 
-  let posts = [...BLOG_POSTS];
+  // Merge local + WordPress posts. WP collisions (same slug as local) are
+  // already filtered in getAllWpPosts. Local posts always win.
+  const wpPosts = await getAllWpPosts(locale);
+  const wpAdapted = wpPosts.map((wp) => adaptWpToBlogPost(wp, c.externalCategory));
+
+  let posts: BlogPost[] = [...BLOG_POSTS, ...wpAdapted];
+  // Newest first.
+  posts.sort((a, b) => (a.publishDate < b.publishDate ? 1 : -1));
+
   if (activeCat) posts = posts.filter((p) => p.category === activeCat);
   if (query) {
     const q = query.toLowerCase();
@@ -198,6 +249,21 @@ export default async function BlogPage({ params, searchParams }: PageProps) {
                   {/* Color accent top bar */}
                   <div className="h-1.5 bg-gradient-to-r from-[#F5C518]/40 to-transparent" />
 
+                  {/* Featured image — rendered only when the post has one
+                      (local posts often don't, WP posts usually do). Plain
+                      <img> so we don't need to whitelist cms.* under
+                      next/image's remotePatterns. */}
+                  {post.featuredImage && post.featuredImage.startsWith("http") && (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={post.featuredImage}
+                      alt={isAr ? post.title.ar : post.title.en}
+                      className="w-full h-44 object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+
                   <div className="p-6 flex flex-col flex-1">
                     {/* Category badge */}
                     <span className="inline-block px-2.5 py-1 rounded-full bg-[#F5C518]/10 text-[#F5C518] text-[10px] font-bold uppercase tracking-widest mb-3 self-start">
@@ -221,13 +287,15 @@ export default async function BlogPage({ params, searchParams }: PageProps) {
                     </div>
 
                     {/* Tags */}
-                    <div className={`flex flex-wrap gap-1 mb-4 ${isAr ? "flex-row-reverse" : ""}`}>
-                      {post.tags.slice(0, 3).map((tag) => (
-                        <span key={tag} className="text-[9px] text-white/25 border border-white/10 rounded px-1.5 py-0.5">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                    {post.tags.length > 0 && (
+                      <div className={`flex flex-wrap gap-1 mb-4 ${isAr ? "flex-row-reverse" : ""}`}>
+                        {post.tags.slice(0, 3).map((tag) => (
+                          <span key={tag} className="text-[9px] text-white/25 border border-white/10 rounded px-1.5 py-0.5">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
 
                     {/* Read link */}
                     <div className="mt-auto pt-4 border-t border-white/5">
