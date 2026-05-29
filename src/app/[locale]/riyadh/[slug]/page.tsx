@@ -1429,7 +1429,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title,
       description,
       url: `${base}/${locale}/riyadh/${slug}`,
-      locale: isAr ? "ar_SA" : "en_US",
+      locale: isAr ? "ar_SA" : "en_SA",
       images: [{ url: `${base}/og-image.jpg`, width: 1200, height: 630, alt: title }],
     },
   };
