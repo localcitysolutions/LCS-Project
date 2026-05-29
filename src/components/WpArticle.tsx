@@ -4,7 +4,11 @@ import { IBM_Plex_Sans_Arabic, Noto_Naskh_Arabic, Poppins } from "next/font/goog
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CTABox from "@/components/CTABox";
 import { sanitizeWordpressHtml } from "@/lib/sanitize-html";
-import { stripHtml, type NormalizedWpPost } from "@/lib/wordpress";
+import {
+  counterpartHref,
+  stripHtml,
+  type NormalizedWpPost,
+} from "@/lib/wordpress";
 
 // Article-scoped fonts. These only load on /blog/[slug] pages that fall through
 // to a WordPress post; the rest of the site keeps DM_Sans / Almarai untouched.
@@ -35,7 +39,11 @@ interface Props {
 }
 
 export default function WpArticle({ post, locale }: Props) {
-  const isAr = locale === "ar";
+  // `post.dir` and `post.lang` come from the LCS plugin and are authoritative.
+  // We only fall back to deriving from locale if the plugin ever returns
+  // unexpected values (the normalizer already guards that).
+  const isAr = post.lang === "ar";
+  const dir = post.dir;
   const titleText = stripHtml(post.titleHtml);
   const safeHtml = sanitizeWordpressHtml(post.contentHtml);
 
@@ -45,11 +53,14 @@ export default function WpArticle({ post, locale }: Props) {
     day: "numeric",
   }).format(new Date(post.date));
 
+  // Translation switcher: read from lcs_hreflang via the helper. If there's
+  // no counterpart, we hide the toggle entirely instead of linking nowhere.
+  const otherLocaleHref = counterpartHref(post);
+  const otherLocaleLabel = isAr ? "Read in English" : "اقرأ بالعربي";
+
   const ui = isAr
     ? {
         backToBlog: "→ كل المقالات",
-        toggleLang: "Read in English",
-        toggleHref: `/en/blog/${post.slug}`,
         ctaHeading: "حاضر تزيد نشاطك في الرياض؟",
         ctaSubtitle: "احصل على تدقيق مجاني وخطة تسويقية مخصصة لقطاعك.",
         homeLabel: "الرئيسية",
@@ -57,8 +68,6 @@ export default function WpArticle({ post, locale }: Props) {
       }
     : {
         backToBlog: "← All Articles",
-        toggleLang: "اقرأ بالعربي",
-        toggleHref: `/ar/blog/${post.slug}`,
         ctaHeading: "Ready to Grow Your Riyadh Business?",
         ctaSubtitle:
           "Get a free audit and tailored digital marketing plan for your industry.",
@@ -97,14 +106,14 @@ export default function WpArticle({ post, locale }: Props) {
   return (
     <>
       {/* Plain <script> for JSON-LD — next/script is for executable JS and
-          can mis-handle non-JS types during SSR. Matches LocalArticle.tsx. */}
+          can mis-handle non-JS types during SSR. */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
       <div
-        dir={isAr ? "rtl" : "ltr"}
+        dir={dir}
         className={`${ibmPlexAr.variable} ${notoNaskhAr.variable} ${poppinsEn.variable} ${
           isAr ? "wp-article-ar" : "wp-article-en"
         }`}
@@ -138,12 +147,32 @@ export default function WpArticle({ post, locale }: Props) {
               >
                 {ui.backToBlog}
               </Link>
-              <Link
-                href={ui.toggleHref}
-                className="text-[#F5C518]/70 text-xs hover:text-[#F5C518] transition-colors border border-[#F5C518]/20 rounded-full px-3 py-1"
-              >
-                {ui.toggleLang}
-              </Link>
+              {otherLocaleHref ? (
+                <Link
+                  href={otherLocaleHref}
+                  hrefLang={isAr ? "en" : "ar"}
+                  className="text-[#F5C518]/70 text-xs hover:text-[#F5C518] transition-colors border border-[#F5C518]/20 rounded-full px-3 py-1 inline-flex items-center gap-1.5"
+                  aria-label={isAr ? "Read in English" : "اقرأ بالعربي"}
+                >
+                  <span aria-hidden>{isAr ? "EN" : "ع"}</span>
+                  <span>{otherLocaleLabel}</span>
+                </Link>
+              ) : (
+                /* No counterpart — render a disabled, screenreader-explained
+                   stub so the header layout stays consistent and so we tell
+                   crawlers this article is single-language. */
+                <span
+                  className="text-white/20 text-xs border border-white/5 rounded-full px-3 py-1 cursor-not-allowed"
+                  aria-disabled="true"
+                  title={
+                    isAr
+                      ? "لا توجد نسخة إنجليزية بعد"
+                      : "No Arabic translation yet"
+                  }
+                >
+                  {isAr ? "EN" : "ع"}
+                </span>
+              )}
             </div>
 
             <h1

@@ -1,15 +1,21 @@
 /**
  * Headless-WordPress fetch utility for the blog.
  *
+ * Reads the custom fields exposed by our "LCS Blog Translations" plugin:
+ *   - `lcs_lang`             → "en" | "ar"
+ *   - `lcs_translation_id`   → counterpart post ID, or null
+ *   - `lcs_dir`              → "ltr" | "rtl"
+ *   - `lcs_hreflang`         → { en, ar, "x-default" } where each entry is
+ *                              { id, lang, hreflang, slug, permalink } or null
+ *
+ * The plugin's posts endpoint accepts `?lcs_lang=en|ar`. Arabic results
+ * exclude posts without a valid English counterpart (enforced server-side
+ * by the plugin), so we treat the response as authoritative for the locale.
+ *
  * Design contract:
- *   - The TS-data blog in `src/data/blog-posts.ts` is the source of truth.
+ *   - The MDX/TS-data blog in `src/data/blog-posts.ts` is the source of truth.
  *     Any WordPress post whose slug collides with an existing local post is
  *     dropped before merging. Local posts ALWAYS win.
- *   - Polylang on this WP install (free edition) does NOT currently expose the
- *     `lang` field over REST, nor does it honor the `?lang=` query param.
- *     We still pass `?lang=<en|ar>` here so the moment Polylang Pro (or a
- *     mu-plugin that registers `register_rest_field('post','lang',...)`) is
- *     added, filtering starts working without any code change.
  *   - Network errors and missing responses return [] / null — never throw.
  *     The blog pages must keep rendering when WP is down.
  */
@@ -21,7 +27,21 @@ const PER_PAGE = 50;
 
 export type Locale = "en" | "ar";
 
-// --- Raw WP shapes -----------------------------------------------------------
+// --- Raw WP shapes (as returned by the LCS plugin) --------------------------
+
+export interface WpHreflangEntry {
+  id: number;
+  lang: Locale;
+  hreflang: string;       // "en" | "ar" | "x-default"
+  slug: string;
+  permalink: string;      // absolute WP permalink (we don't use it for routing)
+}
+
+export interface WpHreflang {
+  en: WpHreflangEntry | null;
+  ar: WpHreflangEntry | null;
+  "x-default": WpHreflangEntry | null;
+}
 
 export interface WpPost {
   id: number;
@@ -31,21 +51,20 @@ export interface WpPost {
   title: { rendered: string };
   excerpt: { rendered: string };
   content: { rendered: string };
-  featured_media: number;  // 0 when none
+  featured_media: number;
   link: string;
-  // Polylang Pro / mu-plugin fields (defensively typed, currently absent):
-  lang?: string;
-  translations?: Record<string, number>;
+
+  // Custom plugin fields
+  lcs_lang: Locale;
+  lcs_translation_id: number | null;
+  lcs_dir: "ltr" | "rtl";
+  lcs_hreflang: WpHreflang;
 }
 
 export interface WpMedia {
   id: number;
   source_url: string;
   alt_text?: string;
-  media_details?: {
-    width?: number;
-    height?: number;
-  };
 }
 
 // --- Normalized shape consumed by the React layer ---------------------------
@@ -53,7 +72,7 @@ export interface WpMedia {
 export interface NormalizedWpPost {
   id: number;
   slug: string;
-  /** Raw HTML title from WP (use as text after stripping tags). */
+  /** Raw HTML title from WP — strip with `stripHtml` before using as text. */
   titleHtml: string;
   excerptHtml: string;
   contentHtml: string;
@@ -61,8 +80,12 @@ export interface NormalizedWpPost {
   modified: string;
   featuredImageUrl: string | null;
   featuredImageAlt: string;
-  /** The locale this post was queried under. Best-effort until Polylang exposes `lang`. */
+
+  // From the LCS plugin
   lang: Locale;
+  dir: "ltr" | "rtl";
+  translationId: number | null;
+  hreflang: WpHreflang;
 }
 
 // --- Internals ---------------------------------------------------------------
@@ -73,7 +96,7 @@ async function wpFetch<T>(path: string): Promise<T | null> {
   try {
     const res = await fetch(`${WP_BASE}${path}`, {
       // ISR: cache responses for 60s. New posts appear within a minute without
-      // a redeploy. Override per-call by passing { cache: 'no-store' } in dev.
+      // a redeploy.
       next: { revalidate: 60 },
       headers: { Accept: "application/json" },
     });
@@ -95,7 +118,7 @@ async function resolveFeaturedMedia(
 
 function normalize(
   post: WpPost,
-  lang: Locale,
+  fallbackLang: Locale,
   media: { url: string | null; alt: string }
 ): NormalizedWpPost {
   return {
@@ -108,7 +131,12 @@ function normalize(
     modified: post.modified,
     featuredImageUrl: media.url,
     featuredImageAlt: media.alt,
-    lang,
+    // Prefer the plugin's authoritative values; fall back to the query lang
+    // and a sensible direction default if the plugin ever returns null/missing.
+    lang: (post.lcs_lang as Locale) || fallbackLang,
+    dir: post.lcs_dir || (fallbackLang === "ar" ? "rtl" : "ltr"),
+    translationId: post.lcs_translation_id ?? null,
+    hreflang: post.lcs_hreflang ?? { en: null, ar: null, "x-default": null },
   };
 }
 
@@ -117,10 +145,13 @@ function normalize(
 /**
  * All WordPress posts for a locale, sorted newest first, with slugs colliding
  * with local BLOG_POSTS filtered OUT. Returns [] on any error or empty source.
+ *
+ * The plugin already excludes Arabic posts that don't have an English
+ * counterpart — we trust that filtering.
  */
 export async function getAllWpPosts(lang: Locale): Promise<NormalizedWpPost[]> {
   const posts = await wpFetch<WpPost[]>(
-    `/wp-json/wp/v2/posts?per_page=${PER_PAGE}&lang=${lang}&orderby=date&order=desc&status=publish`
+    `/wp-json/wp/v2/posts?per_page=${PER_PAGE}&lcs_lang=${lang}&orderby=date&order=desc&status=publish`
   );
   if (!posts || posts.length === 0) return [];
 
@@ -136,8 +167,9 @@ export async function getAllWpPosts(lang: Locale): Promise<NormalizedWpPost[]> {
 }
 
 /**
- * Fetch one WordPress post by slug. Returns null if missing OR if the slug
- * collides with a local post (callers should still check local first anyway).
+ * Fetch one WordPress post by slug for a given locale. Returns null if
+ * missing OR if the slug collides with a local post (callers should still
+ * check local first anyway).
  */
 export async function getWpPostBySlug(
   slug: string,
@@ -145,7 +177,7 @@ export async function getWpPostBySlug(
 ): Promise<NormalizedWpPost | null> {
   if (RESERVED_SLUGS.has(slug)) return null;
   const posts = await wpFetch<WpPost[]>(
-    `/wp-json/wp/v2/posts?slug=${encodeURIComponent(slug)}&lang=${lang}&status=publish`
+    `/wp-json/wp/v2/posts?slug=${encodeURIComponent(slug)}&lcs_lang=${lang}&status=publish`
   );
   if (!posts || posts.length === 0) return null;
   const p = posts[0];
@@ -159,10 +191,43 @@ export async function getWpPostBySlug(
  */
 export async function getAllWpSlugs(lang: Locale): Promise<string[]> {
   const posts = await wpFetch<WpPost[]>(
-    `/wp-json/wp/v2/posts?per_page=${PER_PAGE}&lang=${lang}&_fields=slug&status=publish`
+    `/wp-json/wp/v2/posts?per_page=${PER_PAGE}&lcs_lang=${lang}&_fields=slug&status=publish`
   );
   if (!posts) return [];
   return posts.map((p) => p.slug).filter((s) => !RESERVED_SLUGS.has(s));
+}
+
+// --- Helpers for the routing/SEO layer --------------------------------------
+
+const SITE = "https://localcitysolutions.com";
+
+/**
+ * Build the Next.js route for the counterpart translation of this post, or
+ * `null` if no counterpart exists (i.e. show a disabled/hidden toggle).
+ */
+export function counterpartHref(post: NormalizedWpPost): string | null {
+  const otherLang: Locale = post.lang === "en" ? "ar" : "en";
+  const entry = post.hreflang?.[otherLang];
+  if (!entry || !entry.slug) return null;
+  return `/${otherLang}/blog/${entry.slug}`;
+}
+
+/**
+ * Build the `alternates.languages` object for Next.js Metadata from the
+ * plugin's hreflang map. Always includes whichever languages exist plus
+ * x-default; missing entries are omitted (Next emits no tag for them).
+ */
+export function hreflangAlternates(
+  post: NormalizedWpPost
+): Record<string, string> {
+  const out: Record<string, string> = {};
+  const h = post.hreflang;
+  if (h?.en?.slug) out["en"] = `${SITE}/en/blog/${h.en.slug}`;
+  if (h?.ar?.slug) out["ar"] = `${SITE}/ar/blog/${h.ar.slug}`;
+  if (h?.["x-default"]?.slug) {
+    out["x-default"] = `${SITE}/${h["x-default"].lang}/blog/${h["x-default"].slug}`;
+  }
+  return out;
 }
 
 /** Strip HTML tags safely for text-only contexts (titles, meta description). */
