@@ -476,13 +476,17 @@ export default async function HomePage({ params }: PageProps) {
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white">{(TESTIMONIALS_LABELS[locale] || TESTIMONIALS_LABELS.en).heading}</h2>
             <p className="text-white/45 mt-2 md:mt-4 max-w-xl mx-auto text-xs md:text-base">{(TESTIMONIALS_LABELS[locale] || TESTIMONIALS_LABELS.en).sub}</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+          {/* Mobile: snap-scroll carousel (~85% width per card so the next one
+              peeks ~15% as a swipe affordance). Desktop (md+): regular 3-col
+              grid, scroll/snap disabled. RTL is automatic — overflow-x scrolls
+              right-to-left when the parent <main> carries dir="rtl". */}
+          <div className="-mx-4 sm:-mx-6 md:mx-0 px-4 sm:px-6 md:px-0 flex md:grid md:grid-cols-3 gap-5 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none pb-3 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {TESTIMONIALS.map((t, i) => {
               const avatar = IMAGES.avatars[t.avatarIdx];
               const name = isAr ? t.nameAr : t.nameEn;
               const quote = isAr ? t.quoteAr : t.quoteEn;
               return (
-                <figure key={i} className={`reveal delay-${i + 1} relative bg-[#0E1A2E] border border-white/[0.06] rounded-xl p-6 md:p-7 hover:border-[#F5C518]/20 transition-all h-full flex flex-col`}>
+                <figure key={i} className={`reveal delay-${i + 1} shrink-0 basis-[85%] sm:basis-[55%] md:basis-auto md:shrink snap-center relative bg-[#0E1A2E] border border-white/[0.06] rounded-xl p-6 md:p-7 hover:border-[#F5C518]/20 transition-all h-full flex flex-col`}>
                   <div className="text-[#F5C518] text-3xl leading-none mb-3 select-none" aria-hidden="true">&ldquo;</div>
                   <blockquote className="text-white/80 text-sm md:text-base leading-relaxed mb-5 flex-1">{quote}</blockquote>
                   <figcaption className="flex items-center gap-3 mt-auto">
