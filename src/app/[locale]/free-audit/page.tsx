@@ -161,7 +161,7 @@ function ScoreRing({ score, size = 120, stroke = 8 }: { score: number; size?: nu
   const [displayed, setDisplayed] = useState(0);
   const r = (size - stroke) / 2;
   const circ = 2 * Math.PI * r;
-  const color = score >= 80 ? "#22c55e" : score >= 50 ? "#B89112" : "#ef4444";
+  const color = score >= 80 ? "#22c55e" : score >= 50 ? "#F5C518" : "#ef4444";
 
   useEffect(() => {
     let start: number | null = null;
@@ -177,7 +177,7 @@ function ScoreRing({ score, size = 120, stroke = 8 }: { score: number; size?: nu
   const offset = circ - (displayed / 100) * circ;
   return (
     <svg width={size} height={size} className="rotate-[-90deg]">
-      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(20,33,31,0.08)" strokeWidth={stroke} />
+      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth={stroke} />
       <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth={stroke}
         strokeDasharray={circ} strokeDashoffset={offset} strokeLinecap="round"
         style={{ transition: "stroke-dashoffset 0.04s linear" }} />
@@ -195,7 +195,7 @@ function MiniRing({ score, size = 44 }: { score: number; size?: number }) {
   const stroke = 4;
   const r = (size - stroke) / 2;
   const circ = 2 * Math.PI * r;
-  const color = score >= 80 ? "#22c55e" : score >= 50 ? "#B89112" : "#ef4444";
+  const color = score >= 80 ? "#22c55e" : score >= 50 ? "#F5C518" : "#ef4444";
   useEffect(() => {
     let s: number | null = null;
     const step = (ts: number) => {
@@ -209,7 +209,7 @@ function MiniRing({ score, size = 44 }: { score: number; size?: number }) {
   const offset = circ - (d / 100) * circ;
   return (
     <svg width={size} height={size} className="rotate-[-90deg] shrink-0">
-      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(20,33,31,0.08)" strokeWidth={stroke} />
+      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth={stroke} />
       <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth={stroke}
         strokeDasharray={circ} strokeDashoffset={offset} strokeLinecap="round"
         style={{ transition: "stroke-dashoffset 0.04s linear" }} />
@@ -236,7 +236,7 @@ function ScannerAnimation({
   const stroke = 10;
   const r = (size - stroke) / 2;
   const circ = 2 * Math.PI * r;
-  const color = isDone ? "#22c55e" : "#B89112";
+  const color = isDone ? "#22c55e" : "#F5C518";
   const offset = circ - (progress / 100) * circ;
 
   const completedCount = STEP_THRESHOLDS.filter((t) => progress >= t).length;
@@ -245,12 +245,12 @@ function ScannerAnimation({
   return (
     <div className="flex flex-col items-center py-8 px-4">
       {/* Domain pill */}
-      <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#14211F]/[0.04] border border-[#D8E4DF] mb-8 max-w-xs overflow-hidden">
+      <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.05] border border-white/10 mb-8 max-w-xs overflow-hidden">
         <span className="relative flex h-2 w-2 shrink-0">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B89112] opacity-75" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#B89112]" />
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F5C518] opacity-75" />
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F5C518]" />
         </span>
-        <span className="text-[#657872] text-xs font-mono truncate" dir="ltr">{domain}</span>
+        <span className="text-white/50 text-xs font-mono truncate" dir="ltr">{domain}</span>
       </div>
 
       {/* Main ring */}
@@ -259,15 +259,15 @@ function ScannerAnimation({
         <svg className="absolute inset-0 opacity-20" width={size} height={size}
           style={{ animation: "spin-slow 12s linear infinite" }}>
           <circle cx={size / 2} cy={size / 2} r={r + 18} fill="none"
-            stroke="#B89112" strokeWidth="1" strokeDasharray="4 8" strokeLinecap="round" />
+            stroke="#F5C518" strokeWidth="1" strokeDasharray="4 8" strokeLinecap="round" />
         </svg>
 
         {/* Ping rings */}
         {!isDone && (
           <>
-            <div className="absolute inset-0 rounded-full border border-[#B89112]/20"
+            <div className="absolute inset-0 rounded-full border border-[#F5C518]/20"
               style={{ animation: "ping-ring 2.5s ease-out infinite" }} />
-            <div className="absolute inset-0 rounded-full border border-[#B89112]/10"
+            <div className="absolute inset-0 rounded-full border border-[#F5C518]/10"
               style={{ animation: "ping-ring 2.5s ease-out 1.25s infinite" }} />
           </>
         )}
@@ -278,7 +278,7 @@ function ScannerAnimation({
             style={{ animation: "spin-fast 2s linear infinite" }}>
             <div className="w-full h-full rounded-full"
               style={{
-                background: "conic-gradient(from 0deg, transparent 0deg, rgba(184,145,18,0.8) 60deg, transparent 60deg)",
+                background: "conic-gradient(from 0deg, transparent 0deg, rgba(245,197,24,0.8) 60deg, transparent 60deg)",
               }} />
           </div>
         )}
@@ -286,34 +286,34 @@ function ScannerAnimation({
         {/* Progress ring SVG */}
         <svg width={size} height={size} className="rotate-[-90deg]">
           <circle cx={size / 2} cy={size / 2} r={r} fill="none"
-            stroke="rgba(20,33,31,0.08)" strokeWidth={stroke} />
+            stroke="rgba(255,255,255,0.06)" strokeWidth={stroke} />
           <circle cx={size / 2} cy={size / 2} r={r} fill="none"
             stroke={color} strokeWidth={stroke}
             strokeDasharray={circ} strokeDashoffset={offset} strokeLinecap="round"
             style={{
               transition: "stroke-dashoffset 0.3s ease, stroke 0.5s ease",
-              filter: `drop-shadow(0 0 ${isDone ? "14px" : "8px"} ${isDone ? "rgba(34,197,94,0.7)" : "rgba(184,145,18,0.5)"})`,
+              filter: `drop-shadow(0 0 ${isDone ? "14px" : "8px"} ${isDone ? "rgba(34,197,94,0.7)" : "rgba(245,197,24,0.5)"})`,
             }} />
         </svg>
 
         {/* Center content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center gap-1">
-          <div className="text-3xl leading-none" style={{ filter: "drop-shadow(0 0 6px rgba(184,145,18,0.5))" }}>
+          <div className="text-3xl leading-none" style={{ filter: "drop-shadow(0 0 6px rgba(245,197,24,0.5))" }}>
             {isDone ? "✅" : steps[currentStep]?.icon}
           </div>
-          <div className={`text-4xl font-black leading-none ${isDone ? "text-green-400" : "text-[#14211F]"}`}
+          <div className={`text-4xl font-black leading-none ${isDone ? "text-green-400" : "text-white"}`}
             style={{ fontVariantNumeric: "tabular-nums" }}>
             {Math.round(progress)}
             <span className="text-xl">%</span>
           </div>
-          <div className="text-[#8A9B96] text-[10px] uppercase tracking-widest">
+          <div className="text-white/30 text-[10px] uppercase tracking-widest">
             {isAr ? (isDone ? "اكتمل" : "فحص جارٍ") : (isDone ? "Complete" : "Scanning")}
           </div>
         </div>
       </div>
 
       {/* Current step label */}
-      <p className={`text-sm font-semibold mb-6 text-center min-h-[20px] transition-all duration-500 ${isDone ? "text-green-400" : "text-[#B89112]"}`}>
+      <p className={`text-sm font-semibold mb-6 text-center min-h-[20px] transition-all duration-500 ${isDone ? "text-green-400" : "text-[#F5C518]"}`}>
         {isDone
           ? (isAr ? "تم التحليل بنجاح!" : "Analysis complete!")
           : steps[currentStep]?.label}
@@ -330,8 +330,8 @@ function ScannerAnimation({
                 done
                   ? "bg-green-400/10 border border-green-400/20 text-green-300"
                   : active
-                  ? "bg-[#B89112]/10 border border-[#B89112]/30 text-[#B89112]"
-                  : "bg-[#14211F]/[0.03] border border-[#E2EAE7] text-[#A7B4B0]"
+                  ? "bg-[#F5C518]/10 border border-[#F5C518]/30 text-[#F5C518]"
+                  : "bg-white/[0.03] border border-white/5 text-white/20"
               }`}>
               <span className="text-base shrink-0 leading-none">
                 {done ? "✓" : step.icon}
@@ -488,7 +488,7 @@ export default function FreeAuditPage() {
     const getStatusIcon = (status: string) =>
       status === "pass" ? "✅" : status === "warning" ? "⚠️" : "❌";
     const getScoreColor = (score: number) =>
-      score >= 80 ? "#22C55E" : score >= 50 ? "#B89112" : "#EF4444";
+      score >= 80 ? "#22C55E" : score >= 50 ? "#F5C518" : "#EF4444";
 
     const dir = isAr ? "rtl" : "ltr";
     const arFont = isAr ? "'Segoe UI','Tahoma','Arial',sans-serif" : "'Segoe UI',Arial,sans-serif";
@@ -512,12 +512,12 @@ export default function FreeAuditPage() {
       </div>`).join("");
 
     const prioritiesHTML = auditResult.topPriorities.map((p, i) => `
-      <div style="padding:8px 12px;margin-bottom:8px;background:#FFF7E6;${isAr ? "border-right:3px solid #B89112" : "border-left:3px solid #B89112"};border-radius:4px;">
+      <div style="padding:8px 12px;margin-bottom:8px;background:#FFF7E6;${isAr ? "border-right:3px solid #F5C518" : "border-left:3px solid #F5C518"};border-radius:4px;">
         <strong>${i + 1}.</strong> <strong>${p.category}:</strong> ${p.detail}
       </div>`).join("");
 
     const cwvHTML = auditResult.coreWebVitals ? `
-      <div style="margin-bottom:24px;padding:16px;border:2px solid #B89112;border-radius:8px;background:#FFFBEB;">
+      <div style="margin-bottom:24px;padding:16px;border:2px solid #F5C518;border-radius:8px;background:#FFFBEB;">
         <h3 style="margin:0 0 12px 0;color:#1a1a1a;">Core Web Vitals (Google PageSpeed)</h3>
         <table style="width:100%;border-collapse:collapse;font-size:13px;">
           <tr>
@@ -552,9 +552,9 @@ export default function FreeAuditPage() {
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body { font-family:${arFont}; color:#1a1a1a; padding:40px; line-height:1.8; font-size:13px; direction:${dir}; }
-    .header { display:flex; justify-content:space-between; align-items:center; border-bottom:3px solid #B89112; padding-bottom:16px; margin-bottom:24px; }
-    .logo { font-size:22px; font-weight:bold; color:#14211F; }
-    .logo span { color:#B89112; }
+    .header { display:flex; justify-content:space-between; align-items:center; border-bottom:3px solid #F5C518; padding-bottom:16px; margin-bottom:24px; }
+    .logo { font-size:22px; font-weight:bold; color:#0A1628; }
+    .logo span { color:#F5C518; }
     .header-right { text-align:${isAr ? "left" : "right"}; font-size:11px; color:#6b7280; }
     .score-section { text-align:center; margin-bottom:30px; padding:24px; background:#f9fafb; border-radius:12px; }
     .overall-score { font-size:64px; font-weight:bold; }
@@ -562,7 +562,7 @@ export default function FreeAuditPage() {
     .stat { text-align:center; }
     .stat-val { font-size:24px; font-weight:bold; }
     .stat-lbl { font-size:11px; color:#6b7280; }
-    .section-title { font-size:18px; font-weight:bold; color:#14211F; margin:24px 0 12px; border-bottom:2px solid #f3f4f6; padding-bottom:8px; }
+    .section-title { font-size:18px; font-weight:bold; color:#0A1628; margin:24px 0 12px; border-bottom:2px solid #f3f4f6; padding-bottom:8px; }
     .footer { margin-top:32px; padding-top:16px; border-top:1px solid #e5e7eb; font-size:11px; color:#6b7280; text-align:center; }
     @media print { body { padding:20px; } }
   </style>
@@ -583,7 +583,7 @@ export default function FreeAuditPage() {
     <div class="stats">
       <div class="stat"><div class="stat-val">${auditResult.totalChecks}</div><div class="stat-lbl">${t.statsBar.checks}</div></div>
       <div class="stat"><div class="stat-val" style="color:#22C55E">${auditResult.passed}</div><div class="stat-lbl">${t.statsBar.passed}</div></div>
-      <div class="stat"><div class="stat-val" style="color:#B89112">${auditResult.warnings}</div><div class="stat-lbl">${t.statsBar.warnings}</div></div>
+      <div class="stat"><div class="stat-val" style="color:#F5C518">${auditResult.warnings}</div><div class="stat-lbl">${t.statsBar.warnings}</div></div>
       <div class="stat"><div class="stat-val" style="color:#EF4444">${auditResult.failed}</div><div class="stat-lbl">${t.statsBar.failed}</div></div>
     </div>
   </div>
@@ -613,20 +613,20 @@ export default function FreeAuditPage() {
 
   const catStatusStyle = (s: CategoryStatus) =>
     s === "good" ? "text-green-400 bg-green-400/10 border-green-400/20"
-    : s === "warning" ? "text-[#B89112] bg-[#B89112]/10 border-[#B89112]/20"
+    : s === "warning" ? "text-[#F5C518] bg-[#F5C518]/10 border-[#F5C518]/20"
     : "text-red-400 bg-red-400/10 border-red-400/20";
 
   const catStatusLabel = (s: CategoryStatus) =>
     s === "good" ? t.statusGood : s === "warning" ? t.statusWarning : t.statusCritical;
 
   const findingDot = (s: FindingStatus) =>
-    s === "pass" ? "bg-green-400" : s === "warning" ? "bg-[#B89112]" : "bg-red-400";
+    s === "pass" ? "bg-green-400" : s === "warning" ? "bg-[#F5C518]" : "bg-red-400";
 
   const cwvColor = (ms: number, thresholds: [number, number]) =>
-    ms < thresholds[0] ? "text-green-400" : ms < thresholds[1] ? "text-[#B89112]" : "text-red-400";
+    ms < thresholds[0] ? "text-green-400" : ms < thresholds[1] ? "text-[#F5C518]" : "text-red-400";
 
   const psColor = (s: number) =>
-    s >= 90 ? "text-green-400" : s >= 50 ? "text-[#B89112]" : "text-red-400";
+    s >= 90 ? "text-green-400" : s >= 50 ? "text-[#F5C518]" : "text-red-400";
 
   const domain = auditedUrl ? auditedUrl.replace(/^https?:\/\//, "").split("/")[0] : "";
 
@@ -648,32 +648,32 @@ export default function FreeAuditPage() {
       `}</style>
 
       {/* HERO */}
-      <section id="audit-hero" className="relative bg-[#F7F9F8] pt-28 md:pt-36 pb-10 overflow-hidden" dir={isAr ? "rtl" : "ltr"}>
+      <section id="audit-hero" className="relative bg-[#080E1A] pt-28 md:pt-36 pb-10 overflow-hidden" dir={isAr ? "rtl" : "ltr"}>
         <div className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184,145,18,0.07) 0%, transparent 70%)" }} />
+          style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.07) 0%, transparent 70%)" }} />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#B89112]/25 bg-[#B89112]/[0.08] text-[#B89112] text-[11px] font-bold uppercase tracking-[0.12em] mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B89112] animate-pulse shrink-0" />
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#F5C518]/25 bg-[#F5C518]/[0.08] text-[#F5C518] text-[11px] font-bold uppercase tracking-[0.12em] mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#F5C518] animate-pulse shrink-0" />
             {t.badge}
           </span>
-          <h1 className="text-3xl md:text-5xl font-black text-[#14211F] mb-4 leading-tight">{t.h1}</h1>
-          <p className="text-[#657872] text-base md:text-lg max-w-2xl mx-auto">{t.sub}</p>
+          <h1 className="text-3xl md:text-5xl font-black text-white mb-4 leading-tight">{t.h1}</h1>
+          <p className="text-white/55 text-base md:text-lg max-w-2xl mx-auto">{t.sub}</p>
         </div>
       </section>
 
       {/* FORM / SCANNER */}
-      <section className="bg-[#F7F9F8] pb-16 md:pb-20" dir={isAr ? "rtl" : "ltr"}>
+      <section className="bg-[#080E1A] pb-16 md:pb-20" dir={isAr ? "rtl" : "ltr"}>
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
 
           {/* URL form — hidden while analyzing */}
           {!isAnalyzing && !auditResult && (
             <form onSubmit={handleSubmit} noValidate>
-              <div className="bg-[#FFFFFF] border border-[#D8E4DF] rounded-2xl p-6 md:p-8">
+              <div className="bg-[#0E1A2E] border border-white/[0.07] rounded-2xl p-6 md:p-8">
                 {/* URL input row */}
                 <div className="flex flex-col sm:flex-row gap-3">
                   <div className="relative flex-1">
                     {/* Globe icon */}
-                    <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8A9B96] pointer-events-none"
+                    <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 pointer-events-none"
                       fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round"
                         d="M12 21a9 9 0 100-18 9 9 0 000 18zm0 0c-2.5 0-4.5-4-4.5-9S9.5 3 12 3m0 18c2.5 0 4.5-4 4.5-9S14.5 3 12 3M3.5 12h17" />
@@ -684,14 +684,14 @@ export default function FreeAuditPage() {
                       onChange={(e) => { setUrlValue(e.target.value); setUrlError(""); }}
                       placeholder={t.placeholder}
                       dir="ltr"
-                      className={`w-full bg-[#F7F9F8] border rounded-xl pl-10 pr-4 py-3.5 text-[#14211F] placeholder-[#98A6A2] text-sm focus:outline-none transition-colors ${
-                        urlError ? "border-red-400/50 focus:border-red-400" : "border-[#D8E4DF] focus:border-[#B89112]/50"
+                      className={`w-full bg-[#080E1A] border rounded-xl pl-10 pr-4 py-3.5 text-white placeholder-white/25 text-sm focus:outline-none transition-colors ${
+                        urlError ? "border-red-400/50 focus:border-red-400" : "border-white/10 focus:border-[#F5C518]/50"
                       }`}
                     />
                   </div>
                   <button
                     type="submit"
-                    className="sm:w-auto px-6 py-3.5 rounded-xl bg-[#B89112] text-[#F7F9F8] font-bold text-sm hover:bg-[#B89112]/90 transition-all shadow-xl shadow-[#B89112]/20 whitespace-nowrap flex items-center justify-center gap-2"
+                    className="sm:w-auto px-6 py-3.5 rounded-xl bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all shadow-xl shadow-[#F5C518]/20 whitespace-nowrap flex items-center justify-center gap-2"
                   >
                     {t.btnIdle}
                   </button>
@@ -700,7 +700,7 @@ export default function FreeAuditPage() {
                   <p className="text-red-400 text-xs mt-2 px-1">{urlError}</p>
                 )}
                 {/* Trust signals */}
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-4 text-[#8A9B96] text-[11px]">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-4 text-white/30 text-[11px]">
                   <span className="flex items-center gap-1">
                     <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -726,7 +726,7 @@ export default function FreeAuditPage() {
 
           {/* Scanner animation — visible while analyzing */}
           {isAnalyzing && (
-            <div className="bg-[#FFFFFF] border border-[#D8E4DF] rounded-2xl overflow-hidden">
+            <div className="bg-[#0E1A2E] border border-white/[0.07] rounded-2xl overflow-hidden">
               <ScannerAnimation
                 domain={domain}
                 progress={progress}
@@ -741,11 +741,11 @@ export default function FreeAuditPage() {
           {error && !isAnalyzing && (
             <div className={`mt-6 p-4 rounded-xl border border-red-400/20 bg-red-400/[0.05] ${isAr ? "text-right" : ""}`}>
               <p className="text-red-400 font-semibold text-sm mb-1">{t.errorLabel}</p>
-              <p className="text-[#566A65] text-sm mb-3">{error}</p>
+              <p className="text-white/60 text-sm mb-3">{error}</p>
               <div className="flex gap-3 flex-wrap">
                 <button
                   onClick={() => { setError(""); setAuditResult(null); }}
-                  className="text-sm px-4 py-2 rounded-lg border border-[#D2DFDA] text-[#3D514D] hover:border-[#B8C9C3] transition-colors">
+                  className="text-sm px-4 py-2 rounded-lg border border-white/15 text-white/70 hover:border-white/30 transition-colors">
                   {t.tryAgain}
                 </button>
                 <a href="https://wa.me/966564229190" target="_blank" rel="noopener noreferrer"
@@ -760,14 +760,14 @@ export default function FreeAuditPage() {
 
       {/* AUDIT REPORT */}
       {auditResult && (
-        <section ref={reportRef} className="bg-[#EEF5F2] py-12 md:py-16" dir={isAr ? "rtl" : "ltr"}>
+        <section ref={reportRef} className="bg-[#0C1424] py-12 md:py-16" dir={isAr ? "rtl" : "ltr"}>
           <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-10">
 
             {/* Try another URL */}
             <div className={`flex ${isAr ? "justify-end" : "justify-start"}`}>
               <button
                 onClick={() => { setAuditResult(null); setError(""); setProgress(0); setApiDone(false); }}
-                className="inline-flex items-center gap-2 text-[#748781] text-xs hover:text-[#3D514D] transition-colors">
+                className="inline-flex items-center gap-2 text-white/40 text-xs hover:text-white/70 transition-colors">
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
@@ -778,29 +778,29 @@ export default function FreeAuditPage() {
             {/* Overall Score */}
             <div className="flex flex-col items-center text-center">
               <ScoreRing score={auditResult.overallScore} size={150} stroke={11} />
-              <p className="text-[#657872] text-sm mt-3 mb-1">{t.overallLabel}</p>
-              <p className="text-[#8A9B96] text-xs" dir="ltr">{auditedUrl}</p>
+              <p className="text-white/55 text-sm mt-3 mb-1">{t.overallLabel}</p>
+              <p className="text-white/30 text-xs" dir="ltr">{auditedUrl}</p>
             </div>
 
             {/* Stats bar */}
             <div className="grid grid-cols-4 gap-3">
               {[
-                { label: t.statsBar.checks, val: auditResult.totalChecks, color: "text-[#14211F]" },
+                { label: t.statsBar.checks, val: auditResult.totalChecks, color: "text-white" },
                 { label: t.statsBar.passed, val: auditResult.passed, color: "text-green-400" },
-                { label: t.statsBar.warnings, val: auditResult.warnings, color: "text-[#B89112]" },
+                { label: t.statsBar.warnings, val: auditResult.warnings, color: "text-[#F5C518]" },
                 { label: t.statsBar.failed, val: auditResult.failed, color: "text-red-400" },
               ].map(({ label, val, color }) => (
-                <div key={label} className="bg-[#FFFFFF] border border-[#D8E4DF] rounded-xl p-3 md:p-4 text-center">
+                <div key={label} className="bg-[#0E1A2E] border border-white/[0.07] rounded-xl p-3 md:p-4 text-center">
                   <div className={`text-xl md:text-3xl font-black ${color}`}>{val}</div>
-                  <div className="text-[#748781] text-[10px] md:text-xs mt-1">{label}</div>
+                  <div className="text-white/40 text-[10px] md:text-xs mt-1">{label}</div>
                 </div>
               ))}
             </div>
 
             {/* Core Web Vitals */}
             {auditResult.coreWebVitals && (
-              <div className="bg-[#FFFFFF] border border-[#D8E4DF] rounded-2xl p-5 md:p-6">
-                <h2 className="text-[#14211F] font-bold text-base md:text-lg mb-5">{t.cwvTitle}</h2>
+              <div className="bg-[#0E1A2E] border border-white/[0.07] rounded-2xl p-5 md:p-6">
+                <h2 className="text-white font-bold text-base md:text-lg mb-5">{t.cwvTitle}</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
                   {[
                     { key: t.cwvLcp, val: auditResult.coreWebVitals.lcp, color: cwvColor(auditResult.coreWebVitals.lcpMs, [2500, 4000]) },
@@ -808,9 +808,9 @@ export default function FreeAuditPage() {
                     { key: t.cwvCls, val: auditResult.coreWebVitals.cls, color: cwvColor(auditResult.coreWebVitals.clsValue * 1000, [100, 250]) },
                     { key: t.cwvTbt, val: auditResult.coreWebVitals.tbt, color: cwvColor(auditResult.coreWebVitals.tbtMs, [200, 600]) },
                   ].map(({ key, val, color }) => (
-                    <div key={key} className="bg-[#F7F9F8] rounded-xl p-3 text-center">
+                    <div key={key} className="bg-[#080E1A] rounded-xl p-3 text-center">
                       <div className={`text-lg md:text-2xl font-black ${color}`} dir="ltr">{val}</div>
-                      <div className="text-[#748781] text-[10px] mt-1">{key}</div>
+                      <div className="text-white/40 text-[10px] mt-1">{key}</div>
                     </div>
                   ))}
                 </div>
@@ -824,9 +824,9 @@ export default function FreeAuditPage() {
                       ? [{ key: t.cwvDesktop, val: auditResult.coreWebVitals.desktopScore }]
                       : []),
                   ].map(({ key, val }) => (
-                    <div key={key} className="bg-[#F7F9F8] rounded-xl p-3 text-center">
+                    <div key={key} className="bg-[#080E1A] rounded-xl p-3 text-center">
                       <div className={`text-xl font-black ${psColor(val)}`}>{val}</div>
-                      <div className="text-[#748781] text-[10px] mt-1">{key}</div>
+                      <div className="text-white/40 text-[10px] mt-1">{key}</div>
                     </div>
                   ))}
                 </div>
@@ -836,10 +836,10 @@ export default function FreeAuditPage() {
             {/* Technologies */}
             {auditResult.technologies.length > 0 && (
               <div>
-                <h2 className="text-[#14211F] font-bold text-sm mb-3">{t.techTitle}</h2>
+                <h2 className="text-white font-bold text-sm mb-3">{t.techTitle}</h2>
                 <div className="flex flex-wrap gap-2">
                   {auditResult.technologies.map((tech) => (
-                    <span key={tech} className="px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#D8E4DF] text-[#566A65] text-xs">
+                    <span key={tech} className="px-3 py-1 rounded-full bg-[#0E1A2E] border border-white/10 text-white/60 text-xs">
                       {tech}
                     </span>
                   ))}
@@ -856,19 +856,19 @@ export default function FreeAuditPage() {
                 const warns = cat.findings.filter((f) => f.status === "warning").length;
                 return (
                   <div key={cat.name}
-                    className="bg-[#FFFFFF] border border-[#D8E4DF] rounded-xl overflow-hidden hover:border-[#B89112]/20 transition-all">
+                    className="bg-[#0E1A2E] border border-white/[0.07] rounded-xl overflow-hidden hover:border-[#F5C518]/20 transition-all">
                     <button onClick={() => toggleCard(cat.name)}
                       className="w-full flex items-center justify-between p-4 md:p-5 text-left">
                       <div className="flex items-center gap-3">
                         <MiniRing score={cat.score} />
                         <div>
-                          <div className="text-[#14211F] font-bold text-sm">
+                          <div className="text-white font-bold text-sm">
                             <span className="mr-1.5">{cat.icon}</span>
                             {isAr ? cat.nameAr : cat.name}
                           </div>
                           <div className="flex gap-2 mt-0.5">
                             <span className="text-green-400 text-[10px]">{passes}✓</span>
-                            <span className="text-[#B89112] text-[10px]">{warns}⚠</span>
+                            <span className="text-[#F5C518] text-[10px]">{warns}⚠</span>
                             <span className="text-red-400 text-[10px]">{fails}✗</span>
                           </div>
                         </div>
@@ -877,20 +877,20 @@ export default function FreeAuditPage() {
                         <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${catStatusStyle(cat.status)}`}>
                           {catStatusLabel(cat.status)}
                         </span>
-                        <svg className={`w-4 h-4 text-[#8A9B96] transition-transform ${isExpanded ? "rotate-180" : ""}`}
+                        <svg className={`w-4 h-4 text-white/30 transition-transform ${isExpanded ? "rotate-180" : ""}`}
                           fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                         </svg>
                       </div>
                     </button>
                     {isExpanded && (
-                      <div className="px-4 md:px-5 pb-4 space-y-2 border-t border-[#D8E4DF] pt-3">
+                      <div className="px-4 md:px-5 pb-4 space-y-2 border-t border-white/[0.05] pt-3">
                         {cat.findings.map((f, i) => (
                           <div key={i} className="flex items-start gap-2.5">
                             <span className={`w-1.5 h-1.5 rounded-full shrink-0 mt-1.5 ${findingDot(f.status)}`} />
                             <div className="flex-1 min-w-0">
-                              <span className="text-[#748781] text-[11px] font-semibold mr-1.5">{f.check}:</span>
-                              <span className="text-[#566A65] text-[11px] leading-relaxed">{f.detail}</span>
+                              <span className="text-white/45 text-[11px] font-semibold mr-1.5">{f.check}:</span>
+                              <span className="text-white/60 text-[11px] leading-relaxed">{f.detail}</span>
                               {f.impact === "high" && (
                                 <span className="ml-1.5 text-[9px] px-1.5 py-0.5 rounded bg-red-400/10 text-red-400 font-bold">
                                   {t.impactHigh}
@@ -907,17 +907,17 @@ export default function FreeAuditPage() {
             </div>
 
             {/* Top Priorities */}
-            <div className={`bg-[#FFFFFF] rounded-xl py-5 px-5 ${isAr ? "border-r-[3px] border-r-[#B89112]/60 rounded-l-xl" : "border-l-[3px] border-l-[#B89112]/60 rounded-r-xl"}`}>
-              <h2 className="text-[#14211F] font-bold text-lg mb-4">{t.priorities}</h2>
+            <div className={`bg-[#0E1A2E] rounded-xl py-5 px-5 ${isAr ? "border-r-[3px] border-r-[#F5C518]/60 rounded-l-xl" : "border-l-[3px] border-l-[#F5C518]/60 rounded-r-xl"}`}>
+              <h2 className="text-white font-bold text-lg mb-4">{t.priorities}</h2>
               <ol className="space-y-3">
                 {auditResult.topPriorities.map((p, i) => (
                   <li key={i} className="flex gap-3 items-start">
-                    <span className="w-6 h-6 rounded-full bg-[#B89112]/10 border border-[#B89112]/25 text-[#B89112] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="w-6 h-6 rounded-full bg-[#F5C518]/10 border border-[#F5C518]/25 text-[#F5C518] text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
                       {i + 1}
                     </span>
                     <div>
-                      <span className="text-[#B89112]/70 text-[10px] font-semibold uppercase tracking-wide">{p.category} · </span>
-                      <span className="text-[#334743] text-sm leading-relaxed">{p.detail}</span>
+                      <span className="text-[#F5C518]/70 text-[10px] font-semibold uppercase tracking-wide">{p.category} · </span>
+                      <span className="text-white/75 text-sm leading-relaxed">{p.detail}</span>
                     </div>
                   </li>
                 ))}
@@ -925,15 +925,15 @@ export default function FreeAuditPage() {
             </div>
 
             {/* Summary */}
-            <div className="bg-[#FFFFFF] border border-[#D8E4DF] rounded-xl p-5 md:p-6">
-              <h2 className="text-[#14211F] font-bold text-lg mb-3">{t.summaryLabel}</h2>
-              <p className="text-[#566A65] text-sm leading-relaxed">{auditResult.summary}</p>
+            <div className="bg-[#0E1A2E] border border-white/[0.07] rounded-xl p-5 md:p-6">
+              <h2 className="text-white font-bold text-lg mb-3">{t.summaryLabel}</h2>
+              <p className="text-white/60 text-sm leading-relaxed">{auditResult.summary}</p>
             </div>
 
             {/* PDF Button */}
             <div className={`flex ${isAr ? "justify-end" : "justify-start"}`}>
               <button onClick={handleDownloadPDF}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[#D2DFDA] text-[#3D514D] text-sm font-medium hover:border-[#B89112]/40 hover:text-[#14211F] transition-colors">
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/15 text-white/70 text-sm font-medium hover:border-[#F5C518]/40 hover:text-white transition-colors">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
                 </svg>
@@ -942,18 +942,18 @@ export default function FreeAuditPage() {
             </div>
 
             {/* CTA */}
-            <div className="bg-[#F7F9F8] border border-[#B89112]/15 rounded-2xl p-6 md:p-8 text-center">
-              <h2 className="text-[#14211F] font-black text-xl md:text-2xl mb-2">{t.ctaHeading}</h2>
-              <p className="text-[#657872] text-sm mb-6 max-w-lg mx-auto">{t.ctaSub}</p>
+            <div className="bg-[#080E1A] border border-[#F5C518]/15 rounded-2xl p-6 md:p-8 text-center">
+              <h2 className="text-white font-black text-xl md:text-2xl mb-2">{t.ctaHeading}</h2>
+              <p className="text-white/55 text-sm mb-6 max-w-lg mx-auto">{t.ctaSub}</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a href="https://wa.me/966564229190" target="_blank" rel="noopener noreferrer"
                   onClick={() => trackEvent("audit_cta_click", { type: "whatsapp" })}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#B89112] text-[#F7F9F8] font-bold text-sm hover:bg-[#B89112]/90 transition-all shadow-xl shadow-[#B89112]/20">
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all shadow-xl shadow-[#F5C518]/20">
                   {t.ctaWa}
                 </a>
                 <a href="tel:+966564229190"
                   onClick={() => trackEvent("audit_cta_click", { type: "call" })}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-[#C6D5D0] text-[#14211F] font-medium text-sm hover:border-[#8FA49D] transition-all">
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white font-medium text-sm hover:border-white/40 transition-all">
                   <span dir="ltr">{t.ctaCall}</span>
                 </a>
               </div>

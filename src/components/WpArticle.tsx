@@ -127,12 +127,12 @@ export default function WpArticle({ post, locale }: Props) {
         />
 
         {/* Hero */}
-        <section className="relative bg-[#F7F9F8] pt-6 md:pt-10 pb-12 overflow-hidden">
+        <section className="relative bg-[#080E1A] pt-6 md:pt-10 pb-12 overflow-hidden">
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
               background:
-                "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184,145,18,0.06) 0%, transparent 70%)",
+                "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.06) 0%, transparent 70%)",
             }}
           />
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
@@ -143,7 +143,7 @@ export default function WpArticle({ post, locale }: Props) {
             >
               <Link
                 href={`/${locale}/blog`}
-                className="text-[#748781] text-xs hover:text-[#3D514D] transition-colors"
+                className="text-white/40 text-xs hover:text-white/70 transition-colors"
               >
                 {ui.backToBlog}
               </Link>
@@ -151,7 +151,7 @@ export default function WpArticle({ post, locale }: Props) {
                 <Link
                   href={otherLocaleHref}
                   hrefLang={isAr ? "en" : "ar"}
-                  className="text-[#B89112]/70 text-xs hover:text-[#B89112] transition-colors border border-[#B89112]/20 rounded-full px-3 py-1 inline-flex items-center gap-1.5"
+                  className="text-[#F5C518]/70 text-xs hover:text-[#F5C518] transition-colors border border-[#F5C518]/20 rounded-full px-3 py-1 inline-flex items-center gap-1.5"
                   aria-label={isAr ? "Read in English" : "اقرأ بالعربي"}
                 >
                   <span aria-hidden>{isAr ? "EN" : "ع"}</span>
@@ -162,7 +162,7 @@ export default function WpArticle({ post, locale }: Props) {
                    stub so the header layout stays consistent and so we tell
                    crawlers this article is single-language. */
                 <span
-                  className="text-[#A7B4B0] text-xs border border-[#E2EAE7] rounded-full px-3 py-1 cursor-not-allowed"
+                  className="text-white/20 text-xs border border-white/5 rounded-full px-3 py-1 cursor-not-allowed"
                   aria-disabled="true"
                   title={
                     isAr
@@ -176,14 +176,14 @@ export default function WpArticle({ post, locale }: Props) {
             </div>
 
             <h1
-              className={`wp-article-title text-2xl md:text-4xl lg:text-5xl font-black text-[#14211F] leading-tight mb-4 ${
+              className={`wp-article-title text-2xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-4 ${
                 isAr ? "text-right" : ""
               }`}
             >
               {titleText}
             </h1>
 
-            <p className="text-[#8A9B96] text-xs">
+            <p className="text-white/30 text-xs">
               <time dateTime={post.date}>{formattedDate}</time>
             </p>
           </div>
@@ -191,9 +191,9 @@ export default function WpArticle({ post, locale }: Props) {
 
         {/* Featured image */}
         {post.featuredImageUrl && (
-          <section className="bg-[#EEF5F2] pt-8">
+          <section className="bg-[#0C1424] pt-8">
             <div className="max-w-4xl mx-auto px-4 sm:px-6">
-              <figure className="rounded-xl overflow-hidden border border-[#E2EAE7]">
+              <figure className="rounded-xl overflow-hidden border border-white/5">
                 {/* Plain <img>: WP returns optimized URLs already, and avoiding
                     next/image here skips a remotePatterns config dance. */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -210,7 +210,7 @@ export default function WpArticle({ post, locale }: Props) {
         )}
 
         {/* Body */}
-        <section className="bg-[#EEF5F2] py-12 md:py-20">
+        <section className="bg-[#0C1424] py-12 md:py-20">
           <div className="max-w-3xl mx-auto px-4 sm:px-6">
             <article
               className={`wp-article-body ${

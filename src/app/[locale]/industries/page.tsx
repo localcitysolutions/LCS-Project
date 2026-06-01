@@ -65,25 +65,25 @@ export default async function IndustriesPage({ params }: PageProps) {
 
   return (
     <>
-      <section className="relative bg-[#F7F9F8] pt-28 md:pt-36 pb-16 md:pb-20 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184,145,18,0.07) 0%, transparent 70%)" }} />
+      <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-16 md:pb-20 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.07) 0%, transparent 70%)" }} />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <span className="inline-block text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] mb-4">{c.label}</span>
-          <h1 className="text-3xl md:text-5xl font-black text-[#14211F] mb-4">{c.h1}</h1>
-          <p className="text-[#566A65] text-base md:text-lg max-w-2xl mx-auto">{c.sub}</p>
+          <span className="inline-block text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] mb-4">{c.label}</span>
+          <h1 className="text-3xl md:text-5xl font-black text-white mb-4">{c.h1}</h1>
+          <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto">{c.sub}</p>
         </div>
       </section>
 
-      <section className="bg-[#EEF5F2] py-16 md:py-24">
+      <section className="bg-[#0C1424] py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {industries.map((ind, i) => (
-              <Link key={ind.slug} href={`/${locale}/industries/${ind.slug}`} className={`reveal delay-${(i % 4) + 1} bg-[#FFFFFF] border border-[#E2EAE7] rounded-xl p-6 hover:border-[#B89112]/20 transition-all group`}>
+              <Link key={ind.slug} href={`/${locale}/industries/${ind.slug}`} className={`reveal delay-${(i % 4) + 1} bg-[#0E1A2E] border border-white/5 rounded-xl p-6 hover:border-[#F5C518]/20 transition-all group`}>
                 <div className="flex items-start gap-4">
                   <div className="text-3xl shrink-0 mt-0.5">{ind.icon}</div>
                   <div>
-                    <h2 className="text-[#14211F] font-bold text-base mb-2 group-hover:text-[#B89112] transition-colors">{ind.title}</h2>
-                    <p className="text-[#657872] text-sm leading-relaxed">{ind.desc}</p>
+                    <h2 className="text-white font-bold text-base mb-2 group-hover:text-[#F5C518] transition-colors">{ind.title}</h2>
+                    <p className="text-white/50 text-sm leading-relaxed">{ind.desc}</p>
                   </div>
                 </div>
               </Link>

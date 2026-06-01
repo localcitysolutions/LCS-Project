@@ -172,20 +172,20 @@ export default async function BlogPage({ params, searchParams }: PageProps) {
         ]}
       />
       {/* Hero */}
-      <section className="relative bg-[#F7F9F8] pt-6 md:pt-10 pb-16 md:pb-20 overflow-hidden">
+      <section className="relative bg-[#080E1A] pt-6 md:pt-10 pb-16 md:pb-20 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184,145,18,0.07) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.07) 0%, transparent 70%)" }}
         />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <span className="inline-block text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] mb-4">{c.label}</span>
-          <h1 className="text-3xl md:text-5xl font-black text-[#14211F] mb-4">{c.h1}</h1>
-          <p className="text-[#566A65] text-base md:text-lg max-w-2xl mx-auto">{c.sub}</p>
+          <span className="inline-block text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] mb-4">{c.label}</span>
+          <h1 className="text-3xl md:text-5xl font-black text-white mb-4">{c.h1}</h1>
+          <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto">{c.sub}</p>
         </div>
       </section>
 
       {/* Filter + Search bar */}
-      <section className="bg-[#F7F9F8] border-b border-[#E2EAE7] sticky top-16 z-30">
+      <section className="bg-[#080E1A] border-b border-white/5 sticky top-16 z-30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
           {/* Category tabs */}
           <div className="flex flex-wrap gap-2">
@@ -193,8 +193,8 @@ export default async function BlogPage({ params, searchParams }: PageProps) {
               href={buildUrl({ category: "", page: "1" })}
               className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
                 !activeCat
-                  ? "bg-[#B89112] text-[#F7F9F8]"
-                  : "bg-[#14211F]/[0.04] text-[#566A65] hover:bg-[#14211F]/[0.08] hover:text-[#14211F]"
+                  ? "bg-[#F5C518] text-[#080E1A]"
+                  : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white"
               }`}
             >
               {c.allCats}
@@ -205,8 +205,8 @@ export default async function BlogPage({ params, searchParams }: PageProps) {
                 href={buildUrl({ category: cat.slug, page: "1" })}
                 className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${
                   activeCat === cat.slug
-                    ? "bg-[#B89112] text-[#F7F9F8]"
-                    : "bg-[#14211F]/[0.04] text-[#566A65] hover:bg-[#14211F]/[0.08] hover:text-[#14211F]"
+                    ? "bg-[#F5C518] text-[#080E1A]"
+                    : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white"
                 }`}
               >
                 {isAr ? cat.label.ar : cat.label.en}
@@ -222,11 +222,11 @@ export default async function BlogPage({ params, searchParams }: PageProps) {
               name="q"
               defaultValue={query}
               placeholder={c.searchPlaceholder}
-              className="bg-[#14211F]/[0.04] border border-[#D8E4DF] rounded-lg px-3 py-1.5 text-xs text-[#14211F] placeholder-[#8A9B96] focus:outline-none focus:border-[#B89112]/50 w-48"
+              className="bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white placeholder-white/30 focus:outline-none focus:border-[#F5C518]/50 w-48"
             />
             <button
               type="submit"
-              className="px-3 py-1.5 bg-[#B89112]/10 border border-[#B89112]/20 rounded-lg text-[#B89112] text-xs font-semibold hover:bg-[#B89112]/20 transition-all"
+              className="px-3 py-1.5 bg-[#F5C518]/10 border border-[#F5C518]/20 rounded-lg text-[#F5C518] text-xs font-semibold hover:bg-[#F5C518]/20 transition-all"
             >
               {isAr ? "بحث" : "Search"}
             </button>
@@ -235,19 +235,19 @@ export default async function BlogPage({ params, searchParams }: PageProps) {
       </section>
 
       {/* Posts grid */}
-      <section className="bg-[#EEF5F2] py-16 md:py-24">
+      <section className="bg-[#0C1424] py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           {paginated.length === 0 ? (
-            <p className="text-[#748781] text-center py-20">{c.noResults}</p>
+            <p className="text-white/40 text-center py-20">{c.noResults}</p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {paginated.map((post, i) => (
                 <article
                   key={post.slug}
-                  className={`reveal delay-${(i % 3) + 1} bg-[#FFFFFF] border border-[#E2EAE7] rounded-xl overflow-hidden hover:border-[#B89112]/20 transition-all group flex flex-col`}
+                  className={`reveal delay-${(i % 3) + 1} bg-[#0E1A2E] border border-white/5 rounded-xl overflow-hidden hover:border-[#F5C518]/20 transition-all group flex flex-col`}
                 >
                   {/* Color accent top bar */}
-                  <div className="h-1.5 bg-gradient-to-r from-[#B89112]/40 to-transparent" />
+                  <div className="h-1.5 bg-gradient-to-r from-[#F5C518]/40 to-transparent" />
 
                   {/* Featured image — rendered only when the post has one
                       (local posts often don't, WP posts usually do). Plain
@@ -266,22 +266,22 @@ export default async function BlogPage({ params, searchParams }: PageProps) {
 
                   <div className="p-6 flex flex-col flex-1">
                     {/* Category badge */}
-                    <span className="inline-block px-2.5 py-1 rounded-full bg-[#B89112]/10 text-[#B89112] text-[10px] font-bold uppercase tracking-widest mb-3 self-start">
+                    <span className="inline-block px-2.5 py-1 rounded-full bg-[#F5C518]/10 text-[#F5C518] text-[10px] font-bold uppercase tracking-widest mb-3 self-start">
                       {isAr ? post.categoryLabel.ar : post.categoryLabel.en}
                     </span>
 
                     {/* Title */}
-                    <h2 className={`text-[#14211F] font-bold text-sm md:text-base mb-3 leading-snug group-hover:text-[#B89112] transition-colors flex-1 ${isAr ? "text-right" : ""}`}>
+                    <h2 className={`text-white font-bold text-sm md:text-base mb-3 leading-snug group-hover:text-[#F5C518] transition-colors flex-1 ${isAr ? "text-right" : ""}`}>
                       {isAr ? post.title.ar : post.title.en}
                     </h2>
 
                     {/* Excerpt */}
-                    <p className={`text-[#657872] text-xs leading-relaxed mb-4 line-clamp-3 ${isAr ? "text-right" : ""}`}>
+                    <p className={`text-white/50 text-xs leading-relaxed mb-4 line-clamp-3 ${isAr ? "text-right" : ""}`}>
                       {isAr ? post.excerpt.ar : post.excerpt.en}
                     </p>
 
                     {/* Meta row */}
-                    <div className={`flex items-center justify-between text-[#8A9B96] text-[10px] mb-4 ${isAr ? "flex-row-reverse" : ""}`}>
+                    <div className={`flex items-center justify-between text-white/30 text-[10px] mb-4 ${isAr ? "flex-row-reverse" : ""}`}>
                       <span>{post.publishDate}</span>
                       <span>{post.readingTime} {c.minRead}</span>
                     </div>
@@ -290,7 +290,7 @@ export default async function BlogPage({ params, searchParams }: PageProps) {
                     {post.tags.length > 0 && (
                       <div className={`flex flex-wrap gap-1 mb-4 ${isAr ? "flex-row-reverse" : ""}`}>
                         {post.tags.slice(0, 3).map((tag) => (
-                          <span key={tag} className="text-[9px] text-[#98A6A2] border border-[#D8E4DF] rounded px-1.5 py-0.5">
+                          <span key={tag} className="text-[9px] text-white/25 border border-white/10 rounded px-1.5 py-0.5">
                             {tag}
                           </span>
                         ))}
@@ -298,10 +298,10 @@ export default async function BlogPage({ params, searchParams }: PageProps) {
                     )}
 
                     {/* Read link */}
-                    <div className="mt-auto pt-4 border-t border-[#E2EAE7]">
+                    <div className="mt-auto pt-4 border-t border-white/5">
                       <Link
                         href={`/${locale}/blog/${post.slug}`}
-                        className="text-[#B89112] text-xs font-semibold hover:underline"
+                        className="text-[#F5C518] text-xs font-semibold hover:underline"
                       >
                         {c.readMore}
                       </Link>
@@ -318,16 +318,16 @@ export default async function BlogPage({ params, searchParams }: PageProps) {
               {currentPage > 1 && (
                 <Link
                   href={buildUrl({ page: String(currentPage - 1) })}
-                  className="px-4 py-2 bg-[#14211F]/[0.04] border border-[#D8E4DF] rounded-lg text-[#566A65] text-xs hover:bg-[#14211F]/[0.08] hover:text-[#14211F] transition-all"
+                  className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white/60 text-xs hover:bg-white/10 hover:text-white transition-all"
                 >
                   {c.prev}
                 </Link>
               )}
-              <span className="text-[#8A9B96] text-xs">{c.pageOf(currentPage, totalPages)}</span>
+              <span className="text-white/30 text-xs">{c.pageOf(currentPage, totalPages)}</span>
               {currentPage < totalPages && (
                 <Link
                   href={buildUrl({ page: String(currentPage + 1) })}
-                  className="px-4 py-2 bg-[#14211F]/[0.04] border border-[#D8E4DF] rounded-lg text-[#566A65] text-xs hover:bg-[#14211F]/[0.08] hover:text-[#14211F] transition-all"
+                  className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white/60 text-xs hover:bg-white/10 hover:text-white transition-all"
                 >
                   {c.next}
                 </Link>

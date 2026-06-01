@@ -143,75 +143,75 @@ export default function ContactPage() {
   };
 
   const inputClass = (field: string) =>
-    `w-full bg-[#F7F9F8] border rounded-lg px-4 py-3 text-[#14211F] text-sm placeholder-[#98A6A2] focus:outline-none transition-colors ${isAr ? "text-right" : ""} ${
-      errors[field] ? "border-[#EF4444]/60 focus:border-[#EF4444]" : "border-[#D8E4DF] focus:border-[#B89112]/40"
+    `w-full bg-[#080E1A] border rounded-lg px-4 py-3 text-white text-sm placeholder-white/25 focus:outline-none transition-colors ${isAr ? "text-right" : ""} ${
+      errors[field] ? "border-[#EF4444]/60 focus:border-[#EF4444]" : "border-white/10 focus:border-[#F5C518]/40"
     }`;
 
   return (
     <div dir={isAr ? "rtl" : "ltr"}>
       {/* Hero */}
-      <section className="relative bg-[#F7F9F8] pt-28 md:pt-36 pb-16 md:pb-20 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184,145,18,0.07) 0%, transparent 70%)" }} />
+      <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-16 md:pb-20 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.07) 0%, transparent 70%)" }} />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <span className="inline-block text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] mb-4">{c.hero.label}</span>
-          <h1 className="text-3xl md:text-5xl font-black text-[#14211F] mb-4">{c.hero.h1}</h1>
-          <p className="text-[#566A65] text-base md:text-lg max-w-2xl mx-auto">{c.hero.sub}</p>
+          <span className="inline-block text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] mb-4">{c.hero.label}</span>
+          <h1 className="text-3xl md:text-5xl font-black text-white mb-4">{c.hero.h1}</h1>
+          <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto">{c.hero.sub}</p>
         </div>
       </section>
 
-      <section className="bg-[#EEF5F2] py-16 md:py-24">
+      <section className="bg-[#0C1424] py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           {/* Contact method cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
             {c.methods.map((m) => (
               <a key={m.title} href={m.href} target={m.href.startsWith("http") ? "_blank" : undefined} rel={m.href.startsWith("http") ? "noopener noreferrer" : undefined}
                 onClick={() => { if (m.href.includes("wa.me")) trackWhatsAppClick(); else if (m.href.includes("tel:")) trackPhoneClick(); }}
-                className="bg-[#FFFFFF] border border-[#E2EAE7] rounded-xl p-6 text-center hover:border-[#B89112]/20 transition-all group">
+                className="bg-[#0E1A2E] border border-white/5 rounded-xl p-6 text-center hover:border-[#F5C518]/20 transition-all group">
                 <div className="text-3xl mb-3">{m.icon}</div>
-                <h3 className="text-[#14211F] font-bold text-base mb-2">{m.title}</h3>
-                <p className="text-[#657872] text-xs mb-4 leading-relaxed">{m.desc}</p>
-                <span dir="ltr" className="inline-block text-[#B89112] text-xs font-semibold group-hover:underline">{m.action}</span>
+                <h3 className="text-white font-bold text-base mb-2">{m.title}</h3>
+                <p className="text-white/50 text-xs mb-4 leading-relaxed">{m.desc}</p>
+                <span dir="ltr" className="inline-block text-[#F5C518] text-xs font-semibold group-hover:underline">{m.action}</span>
               </a>
             ))}
           </div>
 
           {/* Map section */}
           <div className="mb-14">
-            <h2 className={`text-[#14211F] font-bold text-xl mb-6 ${isAr ? "text-right" : ""}`}>
+            <h2 className={`text-white font-bold text-xl mb-6 ${isAr ? "text-right" : ""}`}>
               {isAr ? "زورونا في مكتب الرياض" : "Visit Our Riyadh Office"}
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
               <div className="lg:col-span-2">
-                <GoogleMapsEmbed heightClass="h-72" className="border border-[#E2EAE7]" />
+                <GoogleMapsEmbed heightClass="h-72" className="border border-white/5" />
               </div>
-              <div className="bg-[#FFFFFF] border border-[#E2EAE7] rounded-xl p-6">
+              <div className="bg-[#0E1A2E] border border-white/5 rounded-xl p-6">
                 {isAr ? (
-                  <address className="not-italic text-sm leading-relaxed text-[#566A65] text-right" dir="rtl">
+                  <address className="not-italic text-sm leading-relaxed text-white/60 text-right" dir="rtl">
                     لوكال سيتي سوليوشنز<br />
                     السعادة، طريق الأمير سعد بن عبدالرحمن الأول<br />
                     الرياض ١٤٢٥٧، المملكة العربية السعودية<br /><br />
                     الهاتف:{" "}
-                    <a href="tel:+966564229190" className="text-[#B89112] hover:underline" dir="ltr">
+                    <a href="tel:+966564229190" className="text-[#F5C518] hover:underline" dir="ltr">
                       +966 56 422 9190
                     </a>
                     <br />
                     البريد:{" "}
-                    <a href="mailto:hello@localcitysolutions.com" className="text-[#B89112] hover:underline" dir="ltr">
+                    <a href="mailto:hello@localcitysolutions.com" className="text-[#F5C518] hover:underline" dir="ltr">
                       hello@localcitysolutions.com
                     </a>
                   </address>
                 ) : (
-                  <address className="not-italic text-sm leading-relaxed text-[#566A65]">
+                  <address className="not-italic text-sm leading-relaxed text-white/60">
                     Local City Solutions<br />
                     As Saadah, Prince Saad bin Abdulrahman Al-Awwal Road<br />
                     Riyadh 14257, Saudi Arabia<br /><br />
                     Phone:{" "}
-                    <a href="tel:+966564229190" className="text-[#B89112] hover:underline">
+                    <a href="tel:+966564229190" className="text-[#F5C518] hover:underline">
                       +966 56 422 9190
                     </a>
                     <br />
                     Email:{" "}
-                    <a href="mailto:hello@localcitysolutions.com" className="text-[#B89112] hover:underline">
+                    <a href="mailto:hello@localcitysolutions.com" className="text-[#F5C518] hover:underline">
                       hello@localcitysolutions.com
                     </a>
                   </address>
@@ -222,8 +222,8 @@ export default function ContactPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Form column */}
-            <div className="lg:col-span-2 bg-[#FFFFFF] border border-[#E2EAE7] rounded-xl p-6 md:p-8">
-              <h2 className={`text-[#14211F] font-bold text-xl mb-6 ${isAr ? "text-right" : ""}`}>
+            <div className="lg:col-span-2 bg-[#0E1A2E] border border-white/5 rounded-xl p-6 md:p-8">
+              <h2 className={`text-white font-bold text-xl mb-6 ${isAr ? "text-right" : ""}`}>
                 {c.form.heading}
               </h2>
 
@@ -235,12 +235,12 @@ export default function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <h3 className="text-[#14211F] font-bold text-xl mb-3">{c.success.heading}</h3>
-                  <p className="text-[#566A65] text-sm leading-relaxed max-w-sm mb-8">{c.success.text}</p>
+                  <h3 className="text-white font-bold text-xl mb-3">{c.success.heading}</h3>
+                  <p className="text-white/60 text-sm leading-relaxed max-w-sm mb-8">{c.success.text}</p>
                   <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm">
                     <button
                       onClick={() => setSubmitStatus("idle")}
-                      className="flex-1 py-2.5 rounded-full bg-[#14211F]/[0.04] border border-[#D8E4DF] text-[#14211F] text-sm font-semibold hover:bg-[#14211F]/[0.08] transition-all"
+                      className="flex-1 py-2.5 rounded-full bg-white/5 border border-white/10 text-white text-sm font-semibold hover:bg-white/10 transition-all"
                     >
                       {c.success.reset}
                     </button>
@@ -248,7 +248,7 @@ export default function ContactPage() {
                       href="https://wa.me/966564229190"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 py-2.5 rounded-full bg-[#25D366] text-white text-sm font-bold text-center hover:bg-[#14924A] transition-all"
+                      className="flex-1 py-2.5 rounded-full bg-[#25D366] text-white text-sm font-bold text-center hover:bg-[#1fb858] transition-all"
                     >
                       {c.success.whatsapp}
                     </a>
@@ -278,7 +278,7 @@ export default function ContactPage() {
                     {/* Name + Email */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className={`block text-[#566A65] text-xs font-medium mb-1.5 ${isAr ? "text-right" : ""}`}>{c.form.name} *</label>
+                        <label className={`block text-white/60 text-xs font-medium mb-1.5 ${isAr ? "text-right" : ""}`}>{c.form.name} *</label>
                         <input
                           type="text" name="name" required
                           placeholder={c.form.placeholder.name}
@@ -288,7 +288,7 @@ export default function ContactPage() {
                         {errors.name && <p className="mt-1 text-[#EF4444] text-xs">{errors.name}</p>}
                       </div>
                       <div>
-                        <label className={`block text-[#566A65] text-xs font-medium mb-1.5 ${isAr ? "text-right" : ""}`}>{c.form.email} *</label>
+                        <label className={`block text-white/60 text-xs font-medium mb-1.5 ${isAr ? "text-right" : ""}`}>{c.form.email} *</label>
                         <input
                           type="email" name="email" required
                           placeholder={c.form.placeholder.email}
@@ -306,7 +306,7 @@ export default function ContactPage() {
                     {/* Phone + Service */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className={`block text-[#566A65] text-xs font-medium mb-1.5 ${isAr ? "text-right" : ""}`}>{c.form.phone}</label>
+                        <label className={`block text-white/60 text-xs font-medium mb-1.5 ${isAr ? "text-right" : ""}`}>{c.form.phone}</label>
                         <input
                           type="tel" name="phone"
                           placeholder={c.form.placeholder.phone}
@@ -315,7 +315,7 @@ export default function ContactPage() {
                         />
                       </div>
                       <div>
-                        <label className={`block text-[#566A65] text-xs font-medium mb-1.5 ${isAr ? "text-right" : ""}`}>{c.form.service} *</label>
+                        <label className={`block text-white/60 text-xs font-medium mb-1.5 ${isAr ? "text-right" : ""}`}>{c.form.service} *</label>
                         <select
                           name="service" required
                           className={inputClass("service")}
@@ -331,7 +331,7 @@ export default function ContactPage() {
 
                     {/* Message */}
                     <div>
-                      <label className={`block text-[#566A65] text-xs font-medium mb-1.5 ${isAr ? "text-right" : ""}`}>{c.form.message} *</label>
+                      <label className={`block text-white/60 text-xs font-medium mb-1.5 ${isAr ? "text-right" : ""}`}>{c.form.message} *</label>
                       <textarea
                         rows={4} name="message" required minLength={10}
                         placeholder={c.form.placeholder.message}
@@ -345,7 +345,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-3.5 rounded-full bg-[#B89112] text-[#F7F9F8] font-bold text-sm hover:bg-[#A47F0F] transition-all shadow-xl shadow-[#B89112]/20 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      className="w-full py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#e6b800] transition-all shadow-xl shadow-[#F5C518]/20 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     >
                       {isSubmitting ? (
                         <>
@@ -364,35 +364,35 @@ export default function ContactPage() {
 
             {/* Sidebar */}
             <div className="space-y-5">
-              <div className="bg-[#FFFFFF] border border-[#E2EAE7] rounded-xl p-6">
-                <h3 className={`text-[#14211F] font-bold text-sm mb-4 ${isAr ? "text-right" : ""}`}>{c.hours.title}</h3>
+              <div className="bg-[#0E1A2E] border border-white/5 rounded-xl p-6">
+                <h3 className={`text-white font-bold text-sm mb-4 ${isAr ? "text-right" : ""}`}>{c.hours.title}</h3>
                 <ul className="space-y-2">
                   {c.hours.items.map((h) => (
-                    <li key={h} className={`text-[#657872] text-xs ${isAr ? "text-right" : ""}`}>{h}</li>
+                    <li key={h} className={`text-white/50 text-xs ${isAr ? "text-right" : ""}`}>{h}</li>
                   ))}
                 </ul>
               </div>
-              <div className="bg-[#FFFFFF] border border-[#25D366]/20 rounded-xl p-6">
+              <div className="bg-[#0E1A2E] border border-[#25D366]/20 rounded-xl p-6">
                 <div className={`flex items-center gap-3 mb-3 ${isAr ? "flex-row-reverse" : ""}`}>
                   <div className="w-10 h-10 rounded-full bg-[#25D366]/20 flex items-center justify-center">
                     <svg className="w-5 h-5" fill="#25D366" viewBox="0 0 24 24">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                     </svg>
                   </div>
-                  <span className="text-[#14211F] font-bold text-sm">{isAr ? "واتساب" : "WhatsApp"}</span>
+                  <span className="text-white font-bold text-sm">{isAr ? "واتساب" : "WhatsApp"}</span>
                 </div>
-                <p className={`text-[#657872] text-xs mb-4 leading-relaxed ${isAr ? "text-right" : ""}`}>
+                <p className={`text-white/50 text-xs mb-4 leading-relaxed ${isAr ? "text-right" : ""}`}>
                   {isAr ? "الطريقة الأسرع. نرد عادةً في دقائق." : "Fastest way to reach us. We usually respond within minutes."}
                 </p>
                 <a href="https://wa.me/966564229190" target="_blank" rel="noopener noreferrer"
-                  className="block text-center py-2.5 rounded-full bg-[#25D366] text-white font-bold text-xs hover:bg-[#14924A] transition-all">
+                  className="block text-center py-2.5 rounded-full bg-[#25D366] text-white font-bold text-xs hover:bg-[#1fb858] transition-all">
                   {isAr ? "ابدأ المحادثة" : "Start Chat"}
                 </a>
               </div>
 
               {/* Social links */}
-              <div className="bg-[#FFFFFF] border border-[#E2EAE7] rounded-xl p-6">
-                <h3 className={`text-[#14211F] font-bold text-sm mb-4 ${isAr ? "text-right" : ""}`}>
+              <div className="bg-[#0E1A2E] border border-white/5 rounded-xl p-6">
+                <h3 className={`text-white font-bold text-sm mb-4 ${isAr ? "text-right" : ""}`}>
                   {isAr ? "تابعنا" : "Find Us Online"}
                 </h3>
                 <div className="space-y-3">
@@ -407,9 +407,9 @@ export default function ContactPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={s.label}
-                      className={`flex items-center gap-3 text-[#657872] hover:text-[#B89112] text-xs transition-colors ${isAr ? "flex-row-reverse" : ""}`}
+                      className={`flex items-center gap-3 text-white/50 hover:text-[#F5C518] text-xs transition-colors ${isAr ? "flex-row-reverse" : ""}`}
                     >
-                      <span className="w-7 h-7 rounded-full bg-[#14211F]/[0.04] flex items-center justify-center shrink-0">
+                      <span className="w-7 h-7 rounded-full bg-white/[0.05] flex items-center justify-center shrink-0">
                         <svg className="w-3.5 h-3.5" fill={s.fill ? "currentColor" : "none"} stroke={s.fill ? undefined : "currentColor"} strokeWidth={s.fill ? undefined : 2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                           <path d={s.d} />
                         </svg>

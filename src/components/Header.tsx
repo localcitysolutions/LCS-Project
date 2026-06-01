@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { trackPhoneClick, trackFreeAuditClick } from "@/lib/analytics";
+import { trackWhatsAppClick, trackPhoneClick, trackFreeAuditClick } from "@/lib/analytics";
 
 interface HeaderProps {
   locale: string;
@@ -73,7 +73,7 @@ export default function Header({ locale }: HeaderProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#F7F9F8]/95 backdrop-blur-xl border-b border-[#D8E4DF] shadow-2xl shadow-[#14211F]/10"
+          ? "bg-[#080E1A]/95 backdrop-blur-xl border-b border-white/[0.06] shadow-2xl shadow-black/30"
           : "bg-transparent"
       }`}
     >
@@ -84,8 +84,7 @@ export default function Header({ locale }: HeaderProps) {
           <Link
             href={isRTL ? "/ar" : "/en"}
             onClick={() => setMenuOpen(false)}
-            dir="ltr"
-            className="flex items-center gap-2 md:gap-3 min-w-0 max-w-[13rem] md:max-w-none"
+            className="flex items-center gap-2 md:gap-3 shrink-0"
             aria-label="Local City Solutions — Digital Marketing Agency in Riyadh"
           >
             <Image
@@ -96,10 +95,10 @@ export default function Header({ locale }: HeaderProps) {
               priority
               sizes="(max-width: 768px) 36px, 48px"
               style={{ height: "auto" }}
-              className="h-9 md:h-12 w-auto shrink-0"
+              className="h-9 md:h-12 w-auto"
             />
-            <span className="min-w-0 truncate text-[#14211F] font-bold text-sm md:text-lg tracking-tight leading-tight whitespace-nowrap">
-              Local <span className="text-[#B89112]">City</span> Solutions
+            <span className="text-white font-bold text-sm md:text-lg tracking-tight leading-tight whitespace-nowrap">
+              Local <span className="text-[#F5C518]">City</span> Solutions
             </span>
           </Link>
 
@@ -109,7 +108,7 @@ export default function Header({ locale }: HeaderProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-[#566A65] hover:text-[#14211F] text-sm font-medium transition-colors duration-200"
+                className="text-white/60 hover:text-white text-sm font-medium transition-colors duration-200"
               >
                 {item.label}
               </Link>
@@ -121,19 +120,19 @@ export default function Header({ locale }: HeaderProps) {
             <Link
               href={toggleHref}
               onClick={setLangCookie}
-              className="px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-[#C6D5D0] text-[#566A65] text-xs md:text-sm font-medium hover:border-[#B89112]/40 hover:text-[#B89112] transition-all duration-200"
+              className="px-3 py-1 md:px-4 md:py-1.5 rounded-full border border-white/20 text-white/60 text-xs md:text-sm font-medium hover:border-[#F5C518]/40 hover:text-[#F5C518] transition-all duration-200"
             >
               {t.langToggle}
             </Link>
             <Link
               href={`/${locale}/free-audit`}
               onClick={() => trackFreeAuditClick()}
-              className="hidden md:inline-flex px-5 py-2 rounded-full bg-[#B89112] text-[#F7F9F8] text-sm font-bold hover:bg-[#B89112]/90 transition-all duration-200 shadow-lg shadow-[#B89112]/20"
+              className="hidden md:inline-flex px-5 py-2 rounded-full bg-[#F5C518] text-[#080E1A] text-sm font-bold hover:bg-[#F5C518]/90 transition-all duration-200 shadow-lg shadow-[#F5C518]/20"
             >
               {t.freeAudit}
             </Link>
             <button
-              className="md:hidden text-[#14211F] p-1 -mr-1"
+              className="md:hidden text-white p-1 -mr-1"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
             >
@@ -153,7 +152,7 @@ export default function Header({ locale }: HeaderProps) {
 
       {/* Mobile full-screen menu */}
       <div
-        className={`md:hidden fixed inset-0 top-14 z-40 bg-[#F7F9F8] transition-all duration-300 overflow-y-auto ${
+        className={`md:hidden fixed inset-0 top-14 z-40 bg-[#080E1A] transition-all duration-300 overflow-y-auto ${
           menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -163,23 +162,23 @@ export default function Header({ locale }: HeaderProps) {
               key={item.href}
               href={item.href}
               onClick={() => setMenuOpen(false)}
-              className={`block px-4 py-3 text-[#3D514D] hover:text-[#14211F] hover:bg-[#14211F]/[0.03] rounded-lg text-base font-medium transition-colors ${isRTL ? "text-right" : ""}`}
+              className={`block px-4 py-3 text-white/70 hover:text-white hover:bg-white/[0.03] rounded-lg text-base font-medium transition-colors ${isRTL ? "text-right" : ""}`}
             >
               {item.label}
             </Link>
           ))}
-          <div className="mt-4 pt-4 border-t border-[#D8E4DF] flex flex-col gap-3">
+          <div className="mt-4 pt-4 border-t border-white/[0.06] flex flex-col gap-3">
             <Link
               href={`/${locale}/free-audit`}
               onClick={() => { setMenuOpen(false); trackFreeAuditClick(); }}
-              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#B89112] text-[#F7F9F8] font-bold text-sm"
+              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm"
             >
               {t.freeAudit}
             </Link>
             <a
               href="tel:+966564229190"
               onClick={() => trackPhoneClick()}
-              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-[#C6D5D0] text-[#14211F] font-medium text-sm"
+              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/20 text-white font-medium text-sm"
             >
               +966 56 422 9190
             </a>

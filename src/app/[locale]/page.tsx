@@ -266,7 +266,7 @@ export default async function HomePage({ params }: PageProps) {
 
   return (
     <main dir={isAr ? "rtl" : "ltr"}>
-      {/* HERO — background image with light gradient overlay.
+      {/* HERO — background image with dark gradient overlay.
           `isolate` creates a local stacking context so the -z-10 image + overlay
           stay scoped inside the section instead of being pushed behind document body. */}
       <section className="relative isolate min-h-[85vh] flex items-center justify-center overflow-hidden pt-16 md:pt-20">
@@ -280,47 +280,40 @@ export default async function HomePage({ params }: PageProps) {
           className="object-cover -z-10"
         />
         <div
-          className="absolute inset-0 -z-10 bg-gradient-to-b from-[#F7F9F8]/94 via-[#F7F9F8]/84 to-[#F7F9F8]/96"
+          className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0A1628]/80 via-[#0A1628]/70 to-[#0A1628]/90"
           aria-hidden="true"
         />
 
-        <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 text-center py-12 md:py-16">
-          <div className="inline-flex max-w-full items-center gap-2 px-4 py-2 rounded-full border border-[#B89112]/25 bg-[#B89112]/[0.08] text-[#B89112] text-xs md:text-sm font-semibold mb-6 md:mb-8">
-            <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#B89112] shrink-0 badge-dot" />
-            <span className="truncate">{c.hero.badge}</span>
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center py-12 md:py-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#F5C518]/25 bg-[#F5C518]/[0.08] text-[#F5C518] text-xs md:text-sm font-semibold mb-6 md:mb-8">
+            <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#F5C518] shrink-0 badge-dot" />
+            {c.hero.badge}
           </div>
 
-          <h1 className="max-w-4xl mx-auto text-[2rem] sm:text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold text-[#14211F] leading-[1.08] tracking-tight mb-4 md:mb-6">
-            {isAr ? (
-              <span className="block text-balance">{c.hero.h1a}</span>
-            ) : (
-              <>
-                <span className="block sm:hidden">We Help Riyadh</span>
-                <span className="block sm:hidden">Businesses</span>
-                <span className="hidden sm:block text-balance">{c.hero.h1a}</span>
-              </>
-            )}
-            <span className="block text-[#B89112]" style={{ textDecoration: "underline", textDecorationColor: "rgba(184,145,18,0.32)", textUnderlineOffset: "6px", textDecorationThickness: "2px" }}>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold text-white leading-[1.1] tracking-tight mb-4 md:mb-6">
+            {c.hero.h1a}
+            <br />
+            <span className="text-[#F5C518]" style={{ textDecoration: "underline", textDecorationColor: "rgba(245,197,24,0.35)", textUnderlineOffset: "6px", textDecorationThickness: "2px" }}>
               {c.hero.h1b}
             </span>
           </h1>
 
-          <p className="text-sm md:text-lg lg:text-xl text-[#3D514D] max-w-2xl mx-auto mb-7 md:mb-10 leading-relaxed">
+          <p className="text-sm md:text-lg lg:text-xl text-white/70 max-w-2xl mx-auto mb-7 md:mb-10 leading-relaxed">
             {c.hero.sub}
           </p>
 
-          <div className="flex w-full max-w-xs sm:max-w-none mx-auto flex-col sm:flex-row items-center justify-center gap-3">
-            <TrackableLink href={`${p}/free-audit`} track="free-audit" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full bg-[#B89112] text-[#F7F9F8] font-bold text-sm md:text-base hover:bg-[#A47F0F] transition-all shadow-2xl shadow-[#B89112]/25 hover:-translate-y-0.5">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <TrackableLink href={`${p}/free-audit`} track="free-audit" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full bg-[#F5C518] text-[#0A1628] font-bold text-sm md:text-base hover:bg-[#F5C518]/90 transition-all shadow-2xl shadow-[#F5C518]/25 hover:-translate-y-0.5">
               {c.hero.cta1}
             </TrackableLink>
-            <TrackableLink href="tel:+966564229190" track="phone" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full border border-[#B8C9C3] text-[#14211F] font-medium text-sm md:text-base hover:border-[#8FA49D] hover:bg-[#14211F]/[0.04] transition-all">
+            <TrackableLink href="tel:+966564229190" track="phone" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 md:px-8 md:py-4 rounded-full border border-white/30 text-white font-medium text-sm md:text-base hover:border-white/50 hover:bg-white/[0.05] transition-all">
               {isAr ? <>{c.hero.cta2} <span dir="ltr">+966 56 422 9190</span></> : c.hero.cta2}
             </TrackableLink>
           </div>
         </div>
       </section>
 
-      {/* STATS — background image with light overlay */}
+      {/* STATS — background image with dark overlay */}
       <section className="relative isolate py-16 md:py-24 overflow-hidden">
         <Image
           src={IMAGES.statsBg.src}
@@ -331,13 +324,13 @@ export default async function HomePage({ params }: PageProps) {
           className="object-cover -z-20"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#F7F9F8]/96 via-[#F7F9F8]/88 to-[#EEF5F2]/96" aria-hidden="true" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#0A1628]/92 via-[#0A1628]/85 to-[#0A1628]/92" aria-hidden="true" />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-3 gap-4 md:gap-10">
             {c.hero.stats.map((stat, i) => (
               <div key={i} className={`reveal delay-${i + 1} text-center`}>
-                <div className="text-2xl sm:text-5xl md:text-6xl font-extrabold text-[#B89112] leading-none mb-2 md:mb-3">{stat.value}</div>
-                <div className="text-[9px] sm:text-xs md:text-sm uppercase tracking-[0.08em] sm:tracking-[0.18em] text-[#3D514D] font-semibold break-words">{stat.label}</div>
+                <div className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#F5C518] leading-none mb-2 md:mb-3">{stat.value}</div>
+                <div className="text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.18em] text-white/70 font-semibold">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -345,19 +338,19 @@ export default async function HomePage({ params }: PageProps) {
       </section>
 
       {/* SERVICES */}
-      <section className="py-12 md:py-20 bg-[#F7F9F8]" id="services">
+      <section className="py-12 md:py-20 bg-[#080E1A]" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-14 reveal">
-            <span className="inline-block text-[#B89112] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.services.label}</span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#14211F] leading-tight">{c.services.heading}</h2>
-            <p className="text-[#748781] mt-2 md:mt-4 text-xs md:text-base max-w-xl mx-auto">{c.services.sub}</p>
+            <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.services.label}</span>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">{c.services.heading}</h2>
+            <p className="text-white/45 mt-2 md:mt-4 text-xs md:text-base max-w-xl mx-auto">{c.services.sub}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, i) => {
               const img = IMAGES.services[service.slug as keyof typeof IMAGES.services];
               return (
-              <article key={service.slug} className={`reveal delay-${(i % 4) + 1} group relative bg-[#FFFFFF] border border-[#D8E4DF] rounded-xl hover:-translate-y-1 hover:border-[#B89112]/25 transition-all duration-300 overflow-hidden h-full flex flex-col`}>
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#B89112] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
+              <article key={service.slug} className={`reveal delay-${(i % 4) + 1} group relative bg-[#0E1A2E] border border-white/[0.06] rounded-xl hover:-translate-y-1 hover:border-[#F5C518]/25 transition-all duration-300 overflow-hidden h-full flex flex-col`}>
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5C518] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
                 {img ? (
                   <div className="relative w-full aspect-[4/3] overflow-hidden">
                     <Image
@@ -369,43 +362,43 @@ export default async function HomePage({ params }: PageProps) {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#FFFFFF] via-[#FFFFFF]/30 to-transparent" aria-hidden="true" />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0E1A2E] via-[#0E1A2E]/30 to-transparent" aria-hidden="true" />
                   </div>
                 ) : null}
                 <div className="relative p-5 md:p-7 flex-1 flex flex-col">
-                  <span className="absolute top-3 right-4 text-5xl md:text-7xl font-black text-[#14211F]/[0.025] select-none pointer-events-none leading-none">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="inline-flex items-center self-start px-2 py-0.5 rounded-md text-[10px] font-bold text-[#B89112] bg-[#B89112]/10 mb-4">{c.services.badge}</span>
+                  <span className="absolute top-3 right-4 text-5xl md:text-7xl font-black text-white/[0.025] select-none pointer-events-none leading-none">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="inline-flex items-center self-start px-2 py-0.5 rounded-md text-[10px] font-bold text-[#F5C518] bg-[#F5C518]/10 mb-4">{c.services.badge}</span>
                   {!img ? (
                     <div className="text-xl md:text-3xl leading-none mb-3 md:mb-4">{service.icon}</div>
                   ) : null}
-                  <h3 className="text-[#14211F] font-bold text-sm md:text-lg mb-2 leading-tight">{service.title}</h3>
-                  <p className="text-[#657872] text-xs md:text-sm leading-relaxed mb-4 md:mb-6 flex-1">{service.desc}</p>
-                  <Link href={`${p}/services/${service.slug}`} className="inline-flex items-center gap-1 text-[#B89112] text-xs md:text-sm font-semibold group-hover:gap-2 transition-all mt-auto self-start">{c.services.learnMore}</Link>
+                  <h3 className="text-white font-bold text-sm md:text-lg mb-2 leading-tight">{service.title}</h3>
+                  <p className="text-white/50 text-xs md:text-sm leading-relaxed mb-4 md:mb-6 flex-1">{service.desc}</p>
+                  <Link href={`${p}/services/${service.slug}`} className="inline-flex items-center gap-1 text-[#F5C518] text-xs md:text-sm font-semibold group-hover:gap-2 transition-all mt-auto self-start">{c.services.learnMore}</Link>
                 </div>
               </article>
               );
             })}
           </div>
           <div className="text-center mt-8">
-            <Link href={`${p}/services`} className="inline-flex items-center gap-2 text-[#B89112] text-sm font-semibold hover:gap-3 transition-all">{c.services.viewAll}</Link>
+            <Link href={`${p}/services`} className="inline-flex items-center gap-2 text-[#F5C518] text-sm font-semibold hover:gap-3 transition-all">{c.services.viewAll}</Link>
           </div>
         </div>
       </section>
 
       {/* WHY LCS */}
-      <section className="py-12 md:py-20 bg-[#EEF5F2]">
+      <section className="py-12 md:py-20 bg-[#0C1424]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-14 reveal">
-            <span className="inline-block text-[#B89112] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.why.label}</span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#14211F]">{c.why.heading}</h2>
-            <p className="text-[#748781] mt-2 md:mt-4 max-w-lg mx-auto text-xs md:text-base">{c.why.sub}</p>
+            <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.why.label}</span>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white">{c.why.heading}</h2>
+            <p className="text-white/45 mt-2 md:mt-4 max-w-lg mx-auto text-xs md:text-base">{c.why.sub}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyItems.map((item, i) => (
-              <div key={item.title} className={`reveal delay-${i + 1} p-5 md:p-7 rounded-xl border border-[#D8E4DF] bg-[#FFFFFF] hover:border-[#B89112]/20 hover:-translate-y-0.5 transition-all duration-300 h-full flex flex-col`}>
+              <div key={item.title} className={`reveal delay-${i + 1} p-5 md:p-7 rounded-xl border border-white/[0.06] bg-[#0E1A2E] hover:border-[#F5C518]/20 hover:-translate-y-0.5 transition-all duration-300 h-full flex flex-col`}>
                 <div className="text-3xl md:text-4xl leading-none mb-3 md:mb-4">{item.icon}</div>
-                <h3 className="text-[#14211F] font-bold text-sm md:text-base mb-2">{item.title}</h3>
-                <p className="text-[#748781] text-xs md:text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="text-white font-bold text-sm md:text-base mb-2">{item.title}</h3>
+                <p className="text-white/45 text-xs md:text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -413,19 +406,19 @@ export default async function HomePage({ params }: PageProps) {
       </section>
 
       {/* HOW WE WORK */}
-      <section className="py-12 md:py-20 bg-[#F7F9F8]">
+      <section className="py-12 md:py-20 bg-[#080E1A]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-14 reveal">
-            <span className="inline-block text-[#B89112] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.howWeWork.label}</span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#14211F]">{c.howWeWork.heading}</h2>
+            <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.howWeWork.label}</span>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white">{c.howWeWork.heading}</h2>
           </div>
           <div className="relative grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            <div className="hidden md:block absolute top-[2rem] left-[14%] right-[14%] h-px bg-gradient-to-r from-transparent via-[#B89112]/20 to-transparent" />
+            <div className="hidden md:block absolute top-[2rem] left-[14%] right-[14%] h-px bg-gradient-to-r from-transparent via-[#F5C518]/20 to-transparent" />
             {steps.map((step, i) => (
               <div key={step.num} className={`reveal delay-${i + 1} relative text-center`}>
-                <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-xl border border-[#B89112]/25 bg-[#B89112]/[0.07] text-[#B89112] font-black text-base md:text-xl mb-3 md:mb-5 mx-auto">{step.num}</div>
-                <h3 className="text-[#14211F] font-bold text-sm md:text-base mb-1 md:mb-2">{step.title}</h3>
-                <p className="text-[#748781] text-xs md:text-sm leading-relaxed">{step.desc}</p>
+                <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-xl border border-[#F5C518]/25 bg-[#F5C518]/[0.07] text-[#F5C518] font-black text-base md:text-xl mb-3 md:mb-5 mx-auto">{step.num}</div>
+                <h3 className="text-white font-bold text-sm md:text-base mb-1 md:mb-2">{step.title}</h3>
+                <p className="text-white/45 text-xs md:text-sm leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -433,55 +426,55 @@ export default async function HomePage({ params }: PageProps) {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="py-12 md:py-20 bg-[#EEF5F2]">
+      <section className="py-12 md:py-20 bg-[#0C1424]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-14 reveal">
-            <span className="inline-block text-[#B89112] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.industries.label}</span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#14211F]">{c.industries.heading}</h2>
-            <p className="text-[#748781] mt-2 md:mt-4 max-w-xl mx-auto text-xs md:text-base">{c.industries.sub}</p>
+            <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.industries.label}</span>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white">{c.industries.heading}</h2>
+            <p className="text-white/45 mt-2 md:mt-4 max-w-xl mx-auto text-xs md:text-base">{c.industries.sub}</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {industries.map((ind, i) => (
-              <Link key={ind.slug} href={`${p}/industries/${ind.slug}`} className={`reveal delay-${(i % 4) + 1} group flex flex-row md:flex-col items-center gap-3 p-4 md:p-7 rounded-xl bg-[#FFFFFF] border border-[#D8E4DF] hover:border-[#B89112]/30 hover:-translate-y-1 transition-all duration-300`}>
+              <Link key={ind.slug} href={`${p}/industries/${ind.slug}`} className={`reveal delay-${(i % 4) + 1} group flex flex-row md:flex-col items-center gap-3 p-4 md:p-7 rounded-xl bg-[#0E1A2E] border border-white/[0.06] hover:border-[#F5C518]/30 hover:-translate-y-1 transition-all duration-300`}>
                 <span className="text-2xl md:text-4xl leading-none transition-transform duration-300 group-hover:scale-110 shrink-0 block">{ind.icon}</span>
-                <span className="text-[#4B5F5A] font-medium text-xs md:text-sm group-hover:text-[#14211F] transition-colors">{ind.name}</span>
+                <span className="text-white/65 font-medium text-xs md:text-sm group-hover:text-white transition-colors">{ind.name}</span>
               </Link>
             ))}
           </div>
           <div className="text-center mt-8">
-            <Link href={`${p}/industries`} className="inline-flex items-center gap-2 text-[#B89112] text-sm font-semibold hover:gap-3 transition-all">{c.industries.viewAll}</Link>
+            <Link href={`${p}/industries`} className="inline-flex items-center gap-2 text-[#F5C518] text-sm font-semibold hover:gap-3 transition-all">{c.industries.viewAll}</Link>
           </div>
         </div>
       </section>
 
       {/* RIYADH DISTRICTS */}
-      <section className="py-12 md:py-20 bg-[#F7F9F8]">
+      <section className="py-12 md:py-20 bg-[#080E1A]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="reveal mb-8 md:mb-12">
-            <span className="inline-block text-[#B89112] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.districts.label}</span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#14211F]">{c.districts.heading}</h2>
-            <p className="text-[#748781] mt-2 md:mt-4 text-xs md:text-base">{c.districts.sub}</p>
+            <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{c.districts.label}</span>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white">{c.districts.heading}</h2>
+            <p className="text-white/45 mt-2 md:mt-4 text-xs md:text-base">{c.districts.sub}</p>
           </div>
           <div className="flex flex-wrap justify-center gap-2">
             {DISTRICTS.map((d, i) => (
-              <Link key={d.slug} href={`${p}/riyadh/${d.slug}`} className={`reveal delay-${(i % 6) + 1} px-3 py-1.5 md:px-5 md:py-2.5 rounded-full border border-[#D8E4DF] text-[#657872] text-[10px] md:text-sm font-medium hover:border-[#B89112]/50 hover:text-[#B89112] hover:bg-[#B89112]/[0.05] transition-all`}>
+              <Link key={d.slug} href={`${p}/riyadh/${d.slug}`} className={`reveal delay-${(i % 6) + 1} px-3 py-1.5 md:px-5 md:py-2.5 rounded-full border border-white/10 text-white/55 text-[10px] md:text-sm font-medium hover:border-[#F5C518]/50 hover:text-[#F5C518] hover:bg-[#F5C518]/[0.05] transition-all`}>
                 {isAr ? d.ar : d.en}
               </Link>
             ))}
           </div>
           <div className="mt-8">
-            <Link href={`${p}/riyadh`} className="inline-flex items-center gap-2 text-[#B89112] text-sm font-semibold hover:gap-3 transition-all">{c.districts.viewAll}</Link>
+            <Link href={`${p}/riyadh`} className="inline-flex items-center gap-2 text-[#F5C518] text-sm font-semibold hover:gap-3 transition-all">{c.districts.viewAll}</Link>
           </div>
         </div>
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-12 md:py-20 bg-[#EEF5F2]">
+      <section className="py-12 md:py-20 bg-[#0C1424]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-14 reveal">
-            <span className="inline-block text-[#B89112] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{(TESTIMONIALS_LABELS[locale] || TESTIMONIALS_LABELS.en).label}</span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#14211F]">{(TESTIMONIALS_LABELS[locale] || TESTIMONIALS_LABELS.en).heading}</h2>
-            <p className="text-[#748781] mt-2 md:mt-4 max-w-xl mx-auto text-xs md:text-base">{(TESTIMONIALS_LABELS[locale] || TESTIMONIALS_LABELS.en).sub}</p>
+            <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">{(TESTIMONIALS_LABELS[locale] || TESTIMONIALS_LABELS.en).label}</span>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white">{(TESTIMONIALS_LABELS[locale] || TESTIMONIALS_LABELS.en).heading}</h2>
+            <p className="text-white/45 mt-2 md:mt-4 max-w-xl mx-auto text-xs md:text-base">{(TESTIMONIALS_LABELS[locale] || TESTIMONIALS_LABELS.en).sub}</p>
           </div>
           {/* Mobile: snap-scroll carousel (~85% width per card so the next one
               peeks ~15% as a swipe affordance). Desktop (md+): regular 3-col
@@ -493,9 +486,9 @@ export default async function HomePage({ params }: PageProps) {
               const name = isAr ? t.nameAr : t.nameEn;
               const quote = isAr ? t.quoteAr : t.quoteEn;
               return (
-                <figure key={i} className={`reveal delay-${i + 1} shrink-0 basis-[85%] sm:basis-[55%] md:basis-auto md:shrink snap-center relative bg-[#FFFFFF] border border-[#D8E4DF] rounded-xl p-6 md:p-7 hover:border-[#B89112]/20 transition-all h-full flex flex-col`}>
-                  <div className="text-[#B89112] text-3xl leading-none mb-3 select-none" aria-hidden="true">&ldquo;</div>
-                  <blockquote className="text-[#263835] text-sm md:text-base leading-relaxed mb-5 flex-1">{quote}</blockquote>
+                <figure key={i} className={`reveal delay-${i + 1} shrink-0 basis-[85%] sm:basis-[55%] md:basis-auto md:shrink snap-center relative bg-[#0E1A2E] border border-white/[0.06] rounded-xl p-6 md:p-7 hover:border-[#F5C518]/20 transition-all h-full flex flex-col`}>
+                  <div className="text-[#F5C518] text-3xl leading-none mb-3 select-none" aria-hidden="true">&ldquo;</div>
+                  <blockquote className="text-white/80 text-sm md:text-base leading-relaxed mb-5 flex-1">{quote}</blockquote>
                   <figcaption className="flex items-center gap-3 mt-auto">
                     <Image
                       src={avatar.src}
@@ -504,9 +497,9 @@ export default async function HomePage({ params }: PageProps) {
                       height={avatar.height}
                       loading="lazy"
                       sizes="48px"
-                      className="rounded-full w-12 h-12 object-cover border border-[#D8E4DF]"
+                      className="rounded-full w-12 h-12 object-cover border border-white/10"
                     />
-                    <span className="text-[#3D514D] font-semibold text-xs md:text-sm">{name}</span>
+                    <span className="text-white/70 font-semibold text-xs md:text-sm">{name}</span>
                   </figcaption>
                 </figure>
               );

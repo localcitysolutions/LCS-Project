@@ -1541,33 +1541,33 @@ export default async function DistrictPage({ params }: PageProps) {
         ]}
       />
       {/* Hero */}
-      <section className="relative bg-[#F7F9F8] pt-6 md:pt-10 pb-16 md:pb-24 overflow-hidden">
+      <section className="relative bg-[#080E1A] pt-6 md:pt-10 pb-16 md:pb-24 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184,145,18,0.08) 0%, transparent 70%)" }}
+          style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.08) 0%, transparent 70%)" }}
         />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
-          <div className="inline-flex items-center gap-2 bg-[#B89112]/10 border border-[#B89112]/20 rounded-full px-4 py-1.5 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#B89112] animate-pulse" />
-            <span className="text-[#B89112] text-xs font-semibold uppercase tracking-widest">{ui.zone}</span>
+          <div className="inline-flex items-center gap-2 bg-[#F5C518]/10 border border-[#F5C518]/20 rounded-full px-4 py-1.5 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#F5C518] animate-pulse" />
+            <span className="text-[#F5C518] text-xs font-semibold uppercase tracking-widest">{ui.zone}</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#14211F] leading-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
             {isAr ? `تسويق رقمي في حي ${d.nameAr}، الرياض` : `Digital Marketing Agency in ${d.name}, Riyadh`}
           </h1>
-          <p className="text-[#566A65] text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
             {ar?.heroDesc ?? d.heroDesc}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <TrackableLink
               href={`${p}/free-audit`}
               track="free-audit"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#B89112] text-[#F7F9F8] font-bold text-sm hover:bg-[#A47F0F] transition-all shadow-xl shadow-[#B89112]/20"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#e6b800] transition-all shadow-xl shadow-[#F5C518]/20"
             >
               {ui.ctaWa}
             </TrackableLink>
             <Link
               href={`${p}/contact`}
-              className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-[#C6D5D0] text-[#14211F] text-sm font-medium hover:border-[#8FA49D] transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-white/20 text-white text-sm font-medium hover:border-white/40 transition-all"
             >
               {ui.ctaTalk}
             </Link>
@@ -1576,36 +1576,36 @@ export default async function DistrictPage({ params }: PageProps) {
       </section>
 
       {/* About This District */}
-      <section className="bg-[#EEF5F2] py-16 md:py-24">
+      <section className="bg-[#0C1424] py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 reveal">
           <div className={`flex items-center gap-3 mb-8 ${isAr ? "flex-row-reverse" : ""}`}>
-            <span className="w-8 h-px bg-[#B89112]" />
-            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em]">{ui.aboutLabel}</span>
+            <span className="w-8 h-px bg-[#F5C518]" />
+            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em]">{ui.aboutLabel}</span>
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#14211F] mb-8">{ui.aboutH2}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">{ui.aboutH2}</h2>
           <div className="space-y-5">
             {(ar?.about ?? d.about).map((para, i) => (
-              <p key={i} className="text-[#566A65] leading-relaxed text-sm md:text-base">{para}</p>
+              <p key={i} className="text-white/60 leading-relaxed text-sm md:text-base">{para}</p>
             ))}
           </div>
         </div>
       </section>
 
       {/* Key Industries */}
-      <section className="bg-[#F7F9F8] py-16 md:py-24">
+      <section className="bg-[#080E1A] py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 reveal">
-            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.industriesLabel}</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#14211F]">{ui.industriesH2}</h2>
+            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.industriesLabel}</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">{ui.industriesH2}</h2>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 reveal delay-1">
             {d.industries.map((ind, i) => (
               <div
                 key={ind.name}
-                className="bg-[#FFFFFF] border border-[#E2EAE7] rounded-xl p-4 text-center hover:border-[#B89112]/20 transition-all"
+                className="bg-[#0E1A2E] border border-white/5 rounded-xl p-4 text-center hover:border-[#F5C518]/20 transition-all"
               >
                 <div className="text-2xl mb-2">{ind.icon}</div>
-                <p className="text-[#3D514D] text-xs font-medium leading-snug">{ar?.industries[i] ?? ind.name}</p>
+                <p className="text-white/70 text-xs font-medium leading-snug">{ar?.industries[i] ?? ind.name}</p>
               </div>
             ))}
           </div>
@@ -1613,24 +1613,24 @@ export default async function DistrictPage({ params }: PageProps) {
       </section>
 
       {/* Services in District */}
-      <section className="bg-[#EEF5F2] py-16 md:py-24">
+      <section className="bg-[#0C1424] py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 reveal">
-            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.servicesLabel}</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#14211F]">{ui.servicesH2}</h2>
-            <p className="text-[#657872] mt-3 text-sm max-w-xl mx-auto">{ui.servicesSub}</p>
+            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.servicesLabel}</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">{ui.servicesH2}</h2>
+            <p className="text-white/50 mt-3 text-sm max-w-xl mx-auto">{ui.servicesSub}</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal delay-1">
             {d.services.map((svc, i) => (
               <div
                 key={i}
-                className="bg-[#FFFFFF] border border-[#E2EAE7] rounded-xl p-6 hover:border-[#B89112]/20 transition-all group"
+                className="bg-[#0E1A2E] border border-white/5 rounded-xl p-6 hover:border-[#F5C518]/20 transition-all group"
               >
-                <div className="w-8 h-8 rounded-lg bg-[#B89112]/10 flex items-center justify-center mb-4 group-hover:bg-[#B89112]/20 transition-colors">
-                  <div className="w-3 h-3 rounded-full bg-[#B89112]" />
+                <div className="w-8 h-8 rounded-lg bg-[#F5C518]/10 flex items-center justify-center mb-4 group-hover:bg-[#F5C518]/20 transition-colors">
+                  <div className="w-3 h-3 rounded-full bg-[#F5C518]" />
                 </div>
-                <h3 className="text-[#14211F] font-bold text-sm mb-2">{ar?.services[i]?.title ?? svc.title}</h3>
-                <p className="text-[#657872] text-xs leading-relaxed">{ar?.services[i]?.desc ?? svc.desc}</p>
+                <h3 className="text-white font-bold text-sm mb-2">{ar?.services[i]?.title ?? svc.title}</h3>
+                <p className="text-white/50 text-xs leading-relaxed">{ar?.services[i]?.desc ?? svc.desc}</p>
               </div>
             ))}
           </div>
@@ -1638,27 +1638,27 @@ export default async function DistrictPage({ params }: PageProps) {
       </section>
 
       {/* Nearby Districts */}
-      <section className="bg-[#F7F9F8] py-12 md:py-16">
+      <section className="bg-[#080E1A] py-12 md:py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 reveal">
           <div className={`flex items-center gap-3 mb-6 ${isAr ? "flex-row-reverse" : ""}`}>
-            <span className="w-8 h-px bg-[#B89112]" />
-            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em]">{ui.nearbyLabel}</span>
+            <span className="w-8 h-px bg-[#F5C518]" />
+            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em]">{ui.nearbyLabel}</span>
           </div>
-          <h2 className="text-xl md:text-2xl font-bold text-[#14211F] mb-6">{ui.nearbyH2}</h2>
+          <h2 className="text-xl md:text-2xl font-bold text-white mb-6">{ui.nearbyH2}</h2>
           <div className="flex flex-wrap gap-3">
             {d.nearby.map((n) => (
               <Link
                 key={n.slug}
                 href={`${p}/riyadh/${n.slug}`}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#D8E4DF] text-[#3D514D] text-sm font-medium hover:border-[#B89112]/40 hover:text-[#B89112] transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 text-white/70 text-sm font-medium hover:border-[#F5C518]/40 hover:text-[#F5C518] transition-all"
               >
                 {isAr ? DISTRICTS.find(x => x.slug === n.slug)?.nameAr ?? n.name : n.name}
-                <span className="text-[#8A9B96]">{isAr ? "←" : "→"}</span>
+                <span className="text-white/30">{isAr ? "←" : "→"}</span>
               </Link>
             ))}
             <Link
               href={`${p}/riyadh`}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#B89112]/10 border border-[#B89112]/20 text-[#B89112] text-sm font-medium hover:bg-[#B89112]/20 transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#F5C518]/10 border border-[#F5C518]/20 text-[#F5C518] text-sm font-medium hover:bg-[#F5C518]/20 transition-all"
             >
               {ui.allDistricts}
             </Link>
@@ -1667,24 +1667,24 @@ export default async function DistrictPage({ params }: PageProps) {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#EEF5F2] py-16 md:py-24">
+      <section className="bg-[#0C1424] py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 reveal">
-            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.faqLabel}</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#14211F]">{ui.faqH2}</h2>
+            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.faqLabel}</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">{ui.faqH2}</h2>
           </div>
           <div className="space-y-4 reveal delay-1">
             {d.faq.map((item, i) => (
               <details
                 key={i}
-                className="group bg-[#FFFFFF] border border-[#E2EAE7] rounded-xl overflow-hidden hover:border-[#B89112]/20 transition-all"
+                className="group bg-[#0E1A2E] border border-white/5 rounded-xl overflow-hidden hover:border-[#F5C518]/20 transition-all"
               >
                 <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
-                  <span className="text-[#14211F] font-semibold text-sm pr-4">{ar?.faq[i]?.q ?? item.q}</span>
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#B89112]/10 flex items-center justify-center text-[#B89112] text-sm font-bold group-open:rotate-45 transition-transform">+</span>
+                  <span className="text-white font-semibold text-sm pr-4">{ar?.faq[i]?.q ?? item.q}</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#F5C518]/10 flex items-center justify-center text-[#F5C518] text-sm font-bold group-open:rotate-45 transition-transform">+</span>
                 </summary>
-                <div className="px-5 pb-5 border-t border-[#E2EAE7]">
-                  <p className="text-[#566A65] text-sm leading-relaxed pt-4">{ar?.faq[i]?.a ?? item.a}</p>
+                <div className="px-5 pb-5 border-t border-white/5">
+                  <p className="text-white/60 text-sm leading-relaxed pt-4">{ar?.faq[i]?.a ?? item.a}</p>
                 </div>
               </details>
             ))}

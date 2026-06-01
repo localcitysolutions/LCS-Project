@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-gold: #B89112;
-  --color-bg-primary: #F7F9F8;
-  --color-bg-secondary: #EEF5F2;
-  --color-bg-card: #FFFFFF;
+  --color-gold: #F5C518;
+  --color-bg-primary: #080E1A;
+  --color-bg-secondary: #0C1424;
+  --color-bg-card: #0E1A2E;
 }
 
 html {
@@ -12,15 +12,15 @@ html {
 }
 
 body {
-  background-color: #F7F9F8;
-  color: #14211F;
+  background-color: #080E1A;
+  color: #ffffff;
   -webkit-font-smoothing: antialiased;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #F7F9F8; }
-::-webkit-scrollbar-thumb { background: rgba(184, 145, 18, 0.3); border-radius: 9999px; }
+::-webkit-scrollbar-track { background: #080E1A; }
+::-webkit-scrollbar-thumb { background: rgba(245, 197, 24, 0.25); border-radius: 9999px; }
 
 /* Scroll reveal animations
  * Elements are VISIBLE by default — correct for SSR and no-JS.
@@ -68,8 +68,8 @@ body {
 
 /* Hero badge pulse dot */
 @keyframes badge-dot {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(184, 145, 18, 0.45); }
-  50% { box-shadow: 0 0 0 6px rgba(184, 145, 18, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 197, 24, 0.5); }
+  50% { box-shadow: 0 0 0 6px rgba(245, 197, 24, 0); }
 }
 .badge-dot { animation: badge-dot 2s ease-in-out infinite; }
 
@@ -85,11 +85,11 @@ body {
  * (`--font-ibm-plex-ar` etc.) on the article wrapper.
  * ========================================================================= */
 .wp-article-body {
-  color: #3D514D;
+  color: rgba(255, 255, 255, 0.78);
   max-width: none;
 }
 .wp-article-body :is(h1, h2, h3, h4, h5, h6) {
-  color: #14211F;
+  color: #ffffff;
   font-weight: 700;
 }
 .wp-article-body h2 {
@@ -110,12 +110,12 @@ body {
   margin-bottom: 1.25rem;
 }
 .wp-article-body a {
-  color: #B89112;
+  color: #F5C518;
   text-decoration: none;
   transition: color 0.15s ease;
 }
 .wp-article-body a:hover { text-decoration: underline; }
-.wp-article-body strong { color: #14211F; font-weight: 600; }
+.wp-article-body strong { color: #ffffff; font-weight: 600; }
 .wp-article-body em { font-style: italic; }
 .wp-article-body ul,
 .wp-article-body ol {
@@ -135,19 +135,19 @@ body {
 .wp-article-body figure { margin: 1.5rem 0; }
 .wp-article-body figcaption {
   font-size: 0.875rem;
-  color: #748781;
+  color: rgba(255, 255, 255, 0.5);
   text-align: center;
   margin-top: 0.5rem;
 }
 .wp-article-body blockquote {
-  border-inline-start: 4px solid #B89112;
+  border-inline-start: 4px solid #F5C518;
   padding: 0.5rem 1.25rem;
   margin: 1.5rem 0;
-  color: #263835;
+  color: rgba(255, 255, 255, 0.85);
   font-style: italic;
 }
 .wp-article-body pre {
-  background: #EEF5F2;
+  background: #0E1A2E;
   padding: 1rem;
   border-radius: 0.5rem;
   overflow-x: auto;
@@ -155,7 +155,7 @@ body {
   font-size: 0.9rem;
 }
 .wp-article-body code {
-  background: rgba(184, 145, 18, 0.12);
+  background: rgba(245, 197, 24, 0.1);
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
   font-size: 0.9em;
@@ -169,17 +169,17 @@ body {
 }
 .wp-article-body :is(th, td) {
   padding: 0.5rem 0.75rem;
-  border: 1px solid #D8E4DF;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .wp-article-body th {
-  background: rgba(184, 145, 18, 0.08);
+  background: rgba(245, 197, 24, 0.05);
   text-align: inherit;
   font-weight: 600;
-  color: #14211F;
+  color: #ffffff;
 }
 .wp-article-body hr {
   border: 0;
-  border-top: 1px solid #D8E4DF;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin: 2rem 0;
 }
 
