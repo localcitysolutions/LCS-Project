@@ -36,18 +36,18 @@ export default function ContactForm() {
   };
 
   const inputClass =
-    "w-full bg-[#080E1A] border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#F5C518]/40 focus:bg-[#0E1A2E] transition-all";
+    "w-full bg-[#F7F9F8] border border-[#D8E4DF] rounded-xl px-4 py-3 text-[#14211F] text-sm placeholder-[#8A9B96] focus:outline-none focus:border-[#B89112]/40 focus:bg-[#FFFFFF] transition-all";
 
   if (submitted) {
     return (
       <div className="flex flex-col items-center justify-center py-12 text-center">
-        <div className="w-16 h-16 rounded-full bg-[#F5C518]/10 border border-[#F5C518]/30 flex items-center justify-center mb-4">
-          <svg className="w-8 h-8 text-[#F5C518]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="w-16 h-16 rounded-full bg-[#B89112]/10 border border-[#B89112]/30 flex items-center justify-center mb-4">
+          <svg className="w-8 h-8 text-[#B89112]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-white font-bold text-xl mb-2">Message Sent!</h3>
-        <p className="text-white/50 text-sm mb-6">
+        <h3 className="text-[#14211F] font-bold text-xl mb-2">Message Sent!</h3>
+        <p className="text-[#657872] text-sm mb-6">
           We&#39;ll get back to you within 24 hours. Or WhatsApp us for a faster response.
         </p>
         <a
@@ -66,7 +66,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-white/60 text-xs font-medium mb-1.5">Full Name *</label>
+          <label className="block text-[#566A65] text-xs font-medium mb-1.5">Full Name *</label>
           <input
             type="text"
             name="name"
@@ -78,7 +78,7 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-white/60 text-xs font-medium mb-1.5">Phone Number *</label>
+          <label className="block text-[#566A65] text-xs font-medium mb-1.5">Phone Number *</label>
           <input
             type="tel"
             name="phone"
@@ -92,7 +92,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-white/60 text-xs font-medium mb-1.5">Email Address</label>
+        <label className="block text-[#566A65] text-xs font-medium mb-1.5">Email Address</label>
         <input
           type="email"
           name="email"
@@ -104,7 +104,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-white/60 text-xs font-medium mb-1.5">Service Needed</label>
+        <label className="block text-[#566A65] text-xs font-medium mb-1.5">Service Needed</label>
         <select
           name="service"
           value={form.service}
@@ -121,7 +121,7 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-white/60 text-xs font-medium mb-1.5">Message</label>
+        <label className="block text-[#566A65] text-xs font-medium mb-1.5">Message</label>
         <textarea
           name="message"
           rows={4}
@@ -134,7 +134,7 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="w-full py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all shadow-lg shadow-[#F5C518]/20 hover:-translate-y-0.5"
+        className="w-full py-3.5 rounded-full bg-[#B89112] text-[#F7F9F8] font-bold text-sm hover:bg-[#B89112]/90 transition-all shadow-lg shadow-[#B89112]/20 hover:-translate-y-0.5"
       >
         Send Message →
       </button>

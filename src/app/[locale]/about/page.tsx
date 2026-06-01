@@ -130,27 +130,27 @@ export default async function AboutPage({ params }: PageProps) {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.07) 0%, transparent 70%)" }} />
+      <section className="relative bg-[#F7F9F8] pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184,145,18,0.07) 0%, transparent 70%)" }} />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <span className="inline-block text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] mb-4">{c.hero.label}</span>
-          <h1 className="text-3xl md:text-5xl font-black text-white mb-5 leading-tight">{c.hero.h1}</h1>
-          <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto">{c.hero.sub}</p>
+          <span className="inline-block text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] mb-4">{c.hero.label}</span>
+          <h1 className="text-3xl md:text-5xl font-black text-[#14211F] mb-5 leading-tight">{c.hero.h1}</h1>
+          <p className="text-[#566A65] text-base md:text-lg max-w-2xl mx-auto">{c.hero.sub}</p>
         </div>
       </section>
 
       {/* Story */}
-      <section className="bg-[#0C1424] py-16 md:py-24">
+      <section className="bg-[#EEF5F2] py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="reveal">
-              <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{c.story.label}</span>
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">{c.story.h2}</h2>
+              <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{c.story.label}</span>
+              <h2 className="text-2xl md:text-3xl font-bold text-[#14211F] mb-8">{c.story.h2}</h2>
               <div className="space-y-5">
-                {c.story.paras.map((p2, i) => <p key={i} className="text-white/60 leading-relaxed">{p2}</p>)}
+                {c.story.paras.map((p2, i) => <p key={i} className="text-[#566A65] leading-relaxed">{p2}</p>)}
               </div>
             </div>
-            <div className="reveal delay-1 relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/40">
+            <div className="reveal delay-1 relative rounded-2xl overflow-hidden border border-[#D8E4DF] shadow-2xl shadow-[#14211F]/10">
               <Image
                 src={IMAGES.aboutTeam.src}
                 alt={altFor(IMAGES.aboutTeam, locale)}
@@ -166,13 +166,13 @@ export default async function AboutPage({ params }: PageProps) {
       </section>
 
       {/* Values */}
-      <section className="bg-[#080E1A] py-16 md:py-24">
+      <section className="bg-[#F7F9F8] py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 reveal">
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{c.values.label}</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">{c.values.h2}</h2>
+            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{c.values.label}</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#14211F]">{c.values.h2}</h2>
           </div>
-          <div className="reveal relative rounded-2xl overflow-hidden border border-white/[0.06] shadow-2xl shadow-black/40 mb-8 md:mb-12 aspect-[16/7]">
+          <div className="reveal relative rounded-2xl overflow-hidden border border-[#D8E4DF] shadow-2xl shadow-[#14211F]/10 mb-8 md:mb-12 aspect-[16/7]">
             <Image
               src={IMAGES.brandStrategy.src}
               alt={altFor(IMAGES.brandStrategy, locale)}
@@ -181,14 +181,14 @@ export default async function AboutPage({ params }: PageProps) {
               sizes="(max-width: 1024px) 100vw, 1024px"
               className="object-cover"
             />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#080E1A]/60 via-transparent to-transparent" aria-hidden="true" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#F7F9F8]/60 via-transparent to-transparent" aria-hidden="true" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 reveal delay-1">
             {c.values.items.map((v) => (
-              <div key={v.title} className="bg-[#0E1A2E] border border-white/5 rounded-xl p-6 hover:border-[#F5C518]/20 transition-all">
+              <div key={v.title} className="bg-[#FFFFFF] border border-[#E2EAE7] rounded-xl p-6 hover:border-[#B89112]/20 transition-all">
                 <div className="text-3xl mb-3">{v.icon}</div>
-                <h3 className="text-white font-bold text-base mb-2">{v.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{v.desc}</p>
+                <h3 className="text-[#14211F] font-bold text-base mb-2">{v.title}</h3>
+                <p className="text-[#657872] text-sm leading-relaxed">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -196,35 +196,35 @@ export default async function AboutPage({ params }: PageProps) {
       </section>
 
       {/* LCS vs Generic */}
-      <section className="bg-[#080E1A] py-16 md:py-24">
+      <section className="bg-[#F7F9F8] py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 reveal">
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{c.vs.label}</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">{c.vs.h2}</h2>
+            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{c.vs.label}</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#14211F]">{c.vs.h2}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 reveal delay-1">
-            <div className="bg-[#0E1A2E] border border-[#F5C518]/20 rounded-xl p-6">
-              <h3 className="text-[#F5C518] font-bold text-sm mb-4 flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-[#F5C518]/20 flex items-center justify-center text-[#F5C518] text-xs">✓</span>
+            <div className="bg-[#FFFFFF] border border-[#B89112]/20 rounded-xl p-6">
+              <h3 className="text-[#B89112] font-bold text-sm mb-4 flex items-center gap-2">
+                <span className="w-5 h-5 rounded-full bg-[#B89112]/20 flex items-center justify-center text-[#B89112] text-xs">✓</span>
                 {isAr ? "لوكال سيتي سولوشنز" : "Local City Solutions"}
               </h3>
               <ul className="space-y-2">
                 {c.vs.us.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-white/70 text-sm">
-                    <span className="text-[#F5C518] mt-0.5 shrink-0">✓</span>{item}
+                  <li key={item} className="flex items-start gap-2 text-[#3D514D] text-sm">
+                    <span className="text-[#B89112] mt-0.5 shrink-0">✓</span>{item}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-[#0E1A2E] border border-white/5 rounded-xl p-6">
-              <h3 className="text-white/40 font-bold text-sm mb-4 flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center text-white/30 text-xs">✗</span>
+            <div className="bg-[#FFFFFF] border border-[#E2EAE7] rounded-xl p-6">
+              <h3 className="text-[#748781] font-bold text-sm mb-4 flex items-center gap-2">
+                <span className="w-5 h-5 rounded-full bg-[#14211F]/[0.04] flex items-center justify-center text-[#8A9B96] text-xs">✗</span>
                 {isAr ? "الوكالات العامة" : "Generic Agencies"}
               </h3>
               <ul className="space-y-2">
                 {c.vs.them.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-white/30 text-sm">
-                    <span className="text-white/20 mt-0.5 shrink-0">✗</span>{item}
+                  <li key={item} className="flex items-start gap-2 text-[#8A9B96] text-sm">
+                    <span className="text-[#A7B4B0] mt-0.5 shrink-0">✗</span>{item}
                   </li>
                 ))}
               </ul>
@@ -234,10 +234,10 @@ export default async function AboutPage({ params }: PageProps) {
       </section>
 
       {/* Follow Us */}
-      <section className="bg-[#0C1424] py-12 md:py-16">
+      <section className="bg-[#EEF5F2] py-12 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center reveal">
-          <h2 className="text-white font-bold text-xl mb-2">{isAr ? "تابعنا" : "Follow Us"}</h2>
-          <p className="text-white/40 text-sm mb-6">{isAr ? "ابقَ على تواصل معنا عبر منصات التواصل الاجتماعي" : "Stay connected with us on social media"}</p>
+          <h2 className="text-[#14211F] font-bold text-xl mb-2">{isAr ? "تابعنا" : "Follow Us"}</h2>
+          <p className="text-[#748781] text-sm mb-6">{isAr ? "ابقَ على تواصل معنا عبر منصات التواصل الاجتماعي" : "Stay connected with us on social media"}</p>
           <div className="flex items-center justify-center gap-4">
             {[
               { label: "X (Twitter)", href: "https://x.com/LocalCitySoluti", d: "M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z", fill: true },
@@ -250,7 +250,7 @@ export default async function AboutPage({ params }: PageProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/[0.05] border border-white/[0.08] text-white/60 hover:text-[#F5C518] hover:border-[#F5C518]/30 hover:bg-[#F5C518]/5 transition-all text-sm"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#14211F]/[0.04] border border-[#D8E4DF] text-[#566A65] hover:text-[#B89112] hover:border-[#B89112]/30 hover:bg-[#B89112]/5 transition-all text-sm"
               >
                 <svg className="w-4 h-4" fill={s.fill ? "currentColor" : "none"} stroke={s.fill ? undefined : "currentColor"} strokeWidth={s.fill ? undefined : 2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                   <path d={s.d} />

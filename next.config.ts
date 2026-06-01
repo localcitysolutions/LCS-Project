@@ -43,10 +43,9 @@ const nextConfig: NextConfig = {
     // that don't accept AVIF (older Safari etc.) fall back to WebP
     // automatically via the next/image content negotiation.
     formats: ["image/avif", "image/webp"],
-    // Single quality (75 is the LCP-vs-visual sweet spot for our photos) and
-    // a trimmed device-size set so srcset attributes stay small and the
-    // optimizer caches fewer variants.
-    qualities: [75],
+    // Keep the normal 75 quality default, plus 85 for above-the-fold hero
+    // images where the source photo needs a little extra crispness.
+    qualities: [75, 85],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days

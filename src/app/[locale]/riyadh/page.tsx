@@ -31,7 +31,7 @@ const zones = {
   en: [
     {
       name: "North Riyadh",
-      color: "from-[#F5C518]/10 to-transparent",
+      color: "from-[#B89112]/10 to-transparent",
       districts: [
         { name: "Al Malqa", nameAr: "الملقا", slug: "al-malqa" },
         { name: "Al Nakheel", nameAr: "النخيل", slug: "al-nakheel" },
@@ -127,7 +127,7 @@ export default async function RiyadhPage({ params }: PageProps) {
   const reasons = [
     {
       icon: (
-        <svg className="w-6 h-6 text-[#F5C518]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 text-[#B89112]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
@@ -139,7 +139,7 @@ export default async function RiyadhPage({ params }: PageProps) {
     },
     {
       icon: (
-        <svg className="w-6 h-6 text-[#F5C518]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 text-[#B89112]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       ),
@@ -150,7 +150,7 @@ export default async function RiyadhPage({ params }: PageProps) {
     },
     {
       icon: (
-        <svg className="w-6 h-6 text-[#F5C518]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 text-[#B89112]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
@@ -177,37 +177,37 @@ export default async function RiyadhPage({ params }: PageProps) {
   ];
 
   return (
-    <main className="bg-[#080E1A] min-h-screen">
+    <main className="bg-[#F7F9F8] min-h-screen">
       {/* Hero */}
-      <section className="relative pt-28 md:pt-36 pb-12 md:pb-20 bg-[#080E1A] overflow-hidden">
+      <section className="relative pt-28 md:pt-36 pb-12 md:pb-20 bg-[#F7F9F8] overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(245,197,24,0.06) 0%, transparent 60%)" }}
+          style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(184,145,18,0.06) 0%, transparent 60%)" }}
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`max-w-3xl ${isAr ? "mr-auto" : ""}`}>
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#F5C518]/25 bg-[#F5C518]/[0.08] text-[#F5C518] text-xs font-semibold mb-6 reveal">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#B89112]/25 bg-[#B89112]/[0.08] text-[#B89112] text-xs font-semibold mb-6 reveal">
               {copy.badge}
             </span>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-4 md:mb-6 reveal delay-1">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#14211F] leading-tight mb-4 md:mb-6 reveal delay-1">
               {copy.h1a}{" "}
-              <span className="text-[#F5C518]">{copy.h1b}</span>
+              <span className="text-[#B89112]">{copy.h1b}</span>
             </h1>
-            <p className="text-sm md:text-xl text-white/55 mb-8 max-w-2xl leading-relaxed reveal delay-2">
+            <p className="text-sm md:text-xl text-[#657872] mb-8 max-w-2xl leading-relaxed reveal delay-2">
               {copy.hero}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 reveal delay-3">
               <TrackableLink
                 href={`${p}/free-audit`}
                 track="free-audit"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all shadow-lg shadow-[#F5C518]/20"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#B89112] text-[#F7F9F8] font-bold text-sm hover:bg-[#B89112]/90 transition-all shadow-lg shadow-[#B89112]/20"
               >
                 {copy.ctaWa}
               </TrackableLink>
               <a
                 href="tel:+966564229190"
                 dir="ltr"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white text-sm font-medium hover:border-white/40 transition-all"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-[#C6D5D0] text-[#14211F] text-sm font-medium hover:border-[#8FA49D] transition-all"
               >
                 {copy.ctaCall}
               </a>
@@ -217,13 +217,13 @@ export default async function RiyadhPage({ params }: PageProps) {
       </section>
 
       {/* Intro */}
-      <section className="py-10 md:py-16 bg-[#0C1424]">
+      <section className="py-10 md:py-16 bg-[#EEF5F2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl reveal">
-            <p className="text-white/60 text-sm md:text-base leading-relaxed">{copy.intro1}</p>
-            <p className="text-white/60 text-sm md:text-base leading-relaxed mt-4">
+            <p className="text-[#566A65] text-sm md:text-base leading-relaxed">{copy.intro1}</p>
+            <p className="text-[#566A65] text-sm md:text-base leading-relaxed mt-4">
               {copy.intro2a}
-              <Link href={`${p}/contact`} className="text-[#F5C518] hover:underline">
+              <Link href={`${p}/contact`} className="text-[#B89112] hover:underline">
                 {copy.intro2link}
               </Link>
               {copy.intro2b}
@@ -233,24 +233,24 @@ export default async function RiyadhPage({ params }: PageProps) {
       </section>
 
       {/* Districts by Zone */}
-      <section className="py-14 md:py-24 bg-[#080E1A]">
+      <section className="py-14 md:py-24 bg-[#F7F9F8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-14 reveal">
-            <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">
+            <span className="inline-block text-[#B89112] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">
               {copy.districtsBadge}
             </span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white">{copy.districtsH2}</h2>
-            <p className="text-white/45 mt-2 md:mt-4 max-w-2xl mx-auto text-xs md:text-base">{copy.districtsSub}</p>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#14211F]">{copy.districtsH2}</h2>
+            <p className="text-[#748781] mt-2 md:mt-4 max-w-2xl mx-auto text-xs md:text-base">{copy.districtsSub}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {zones.en.map((zone, zi) => (
               <div
                 key={zone.name}
-                className={`reveal delay-${zi + 1} bg-[#0E1A2E] border border-white/[0.06] rounded-xl p-6 md:p-7 hover:border-[#F5C518]/15 transition-all duration-300`}
+                className={`reveal delay-${zi + 1} bg-[#FFFFFF] border border-[#D8E4DF] rounded-xl p-6 md:p-7 hover:border-[#B89112]/15 transition-all duration-300`}
               >
                 <div className={`inline-block bg-gradient-to-r ${zone.color} rounded-lg px-3 py-1 mb-4`}>
-                  <h3 className="text-white font-bold text-sm md:text-base">
+                  <h3 className="text-[#14211F] font-bold text-sm md:text-base">
                     {isAr ? zoneNamesAr[zone.name] : zone.name}
                   </h3>
                 </div>
@@ -259,7 +259,7 @@ export default async function RiyadhPage({ params }: PageProps) {
                     <Link
                       key={district.slug}
                       href={`${p}/riyadh/${district.slug}`}
-                      className="px-4 py-2 rounded-full border border-white/15 text-white/60 text-sm hover:border-[#F5C518]/50 hover:text-[#F5C518] transition-all"
+                      className="px-4 py-2 rounded-full border border-[#D2DFDA] text-[#566A65] text-sm hover:border-[#B89112]/50 hover:text-[#B89112] transition-all"
                     >
                       {isAr ? district.nameAr : district.name}
                     </Link>
@@ -272,26 +272,26 @@ export default async function RiyadhPage({ params }: PageProps) {
       </section>
 
       {/* Why Local Targeting Matters */}
-      <section className="py-14 md:py-24 bg-[#0C1424]">
+      <section className="py-14 md:py-24 bg-[#EEF5F2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-14 reveal">
-            <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">
+            <span className="inline-block text-[#B89112] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">
               {copy.whyBadge}
             </span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white">{copy.whyH2}</h2>
-            <p className="text-white/45 mt-2 md:mt-4 max-w-2xl mx-auto text-xs md:text-base">{copy.whySub}</p>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#14211F]">{copy.whyH2}</h2>
+            <p className="text-[#748781] mt-2 md:mt-4 max-w-2xl mx-auto text-xs md:text-base">{copy.whySub}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {reasons.map((reason, i) => (
               <div
                 key={reason.title}
-                className={`reveal delay-${i + 1} bg-[#0E1A2E] border border-white/[0.06] rounded-xl p-6 md:p-7 hover:border-[#F5C518]/25 hover:-translate-y-1 transition-all duration-300`}
+                className={`reveal delay-${i + 1} bg-[#FFFFFF] border border-[#D8E4DF] rounded-xl p-6 md:p-7 hover:border-[#B89112]/25 hover:-translate-y-1 transition-all duration-300`}
               >
-                <div className="w-12 h-12 rounded-xl bg-[#F5C518]/10 flex items-center justify-center mb-5">
+                <div className="w-12 h-12 rounded-xl bg-[#B89112]/10 flex items-center justify-center mb-5">
                   {reason.icon}
                 </div>
-                <h3 className="text-white font-bold text-base mb-2">{reason.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{reason.description}</p>
+                <h3 className="text-[#14211F] font-bold text-base mb-2">{reason.title}</h3>
+                <p className="text-[#657872] text-sm leading-relaxed">{reason.description}</p>
               </div>
             ))}
           </div>
@@ -299,25 +299,25 @@ export default async function RiyadhPage({ params }: PageProps) {
       </section>
 
       {/* Our Riyadh Services */}
-      <section className="py-14 md:py-20 bg-[#080E1A]">
+      <section className="py-14 md:py-20 bg-[#F7F9F8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12 reveal">
-            <span className="inline-block text-[#F5C518] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">
+            <span className="inline-block text-[#B89112] text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">
               {copy.servicesBadge}
             </span>
-            <h2 className="text-2xl md:text-4xl font-bold text-white">{copy.servicesH2}</h2>
-            <p className="text-white/45 mt-2 md:mt-4 max-w-xl mx-auto text-xs md:text-base">{copy.servicesSub}</p>
+            <h2 className="text-2xl md:text-4xl font-bold text-[#14211F]">{copy.servicesH2}</h2>
+            <p className="text-[#748781] mt-2 md:mt-4 max-w-xl mx-auto text-xs md:text-base">{copy.servicesSub}</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {serviceLinks.map((service, i) => (
               <Link
                 key={service.href}
                 href={service.href}
-                className={`reveal delay-${i + 1} bg-[#0E1A2E] border border-white/[0.06] rounded-xl p-5 hover:border-[#F5C518]/25 hover:-translate-y-1 transition-all duration-300 flex items-center gap-3`}
+                className={`reveal delay-${i + 1} bg-[#FFFFFF] border border-[#D8E4DF] rounded-xl p-5 hover:border-[#B89112]/25 hover:-translate-y-1 transition-all duration-300 flex items-center gap-3`}
               >
                 <span className="text-2xl">{service.icon}</span>
-                <span className="text-white font-medium text-sm">{service.label}</span>
-                <svg className={`w-4 h-4 text-[#F5C518] ${isAr ? "mr-auto" : "ml-auto"} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span className="text-[#14211F] font-medium text-sm">{service.label}</span>
+                <svg className={`w-4 h-4 text-[#B89112] ${isAr ? "mr-auto" : "ml-auto"} flex-shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isAr ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"} />
                 </svg>
               </Link>
@@ -327,15 +327,15 @@ export default async function RiyadhPage({ params }: PageProps) {
       </section>
 
       {/* Internal links */}
-      <section className="py-10 bg-[#0C1424] border-t border-white/[0.05]">
+      <section className="py-10 bg-[#EEF5F2] border-t border-[#D8E4DF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-white/40 text-xs mb-4 font-semibold uppercase tracking-widest">{copy.exploreMore}</p>
+          <p className="text-[#748781] text-xs mb-4 font-semibold uppercase tracking-widest">{copy.exploreMore}</p>
           <div className="flex flex-wrap gap-3">
             {internalLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 rounded-full border border-white/15 text-white/60 text-sm hover:border-[#F5C518]/50 hover:text-[#F5C518] transition-all"
+                className="px-4 py-2 rounded-full border border-[#D2DFDA] text-[#566A65] text-sm hover:border-[#B89112]/50 hover:text-[#B89112] transition-all"
               >
                 {link.label}
               </Link>

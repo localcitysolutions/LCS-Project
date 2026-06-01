@@ -717,24 +717,24 @@ export default async function IndustryPage({ params }: PageProps) {
         ]}
       />
       {/* Hero */}
-      <section className="relative bg-[#080E1A] pt-6 md:pt-10 pb-16 md:pb-24 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.08) 0%, transparent 70%)" }} />
+      <section className="relative bg-[#F7F9F8] pt-6 md:pt-10 pb-16 md:pb-24 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184,145,18,0.08) 0%, transparent 70%)" }} />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
-          <div className="inline-flex items-center gap-2 bg-[#F5C518]/10 border border-[#F5C518]/20 rounded-full px-4 py-1.5 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F5C518] animate-pulse" />
-            <span className="text-[#F5C518] text-xs font-semibold uppercase tracking-widest">{ui.badge}</span>
+          <div className="inline-flex items-center gap-2 bg-[#B89112]/10 border border-[#B89112]/20 rounded-full px-4 py-1.5 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#B89112] animate-pulse" />
+            <span className="text-[#B89112] text-xs font-semibold uppercase tracking-widest">{ui.badge}</span>
           </div>
           <div className="text-5xl mb-4">{industry.icon}</div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#14211F] leading-tight mb-4">
             {ui.h1}
           </h1>
-          <p className="text-[#F5C518] font-semibold text-base md:text-lg mb-4">{c.tagline}</p>
-          <p className="text-white/60 text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed">{c.heroDesc}</p>
+          <p className="text-[#B89112] font-semibold text-base md:text-lg mb-4">{c.tagline}</p>
+          <p className="text-[#566A65] text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed">{c.heroDesc}</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <TrackableLink href={`${p}/free-audit`} track="free-audit" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#e6b800] transition-all shadow-xl shadow-[#F5C518]/20">
+            <TrackableLink href={`${p}/free-audit`} track="free-audit" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#B89112] text-[#F7F9F8] font-bold text-sm hover:bg-[#A47F0F] transition-all shadow-xl shadow-[#B89112]/20">
               {ui.ctaBtn}
             </TrackableLink>
-            <Link href={`${p}/contact`} className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-white/20 text-white text-sm font-medium hover:border-white/40 transition-all">
+            <Link href={`${p}/contact`} className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-[#C6D5D0] text-[#14211F] text-sm font-medium hover:border-[#8FA49D] transition-all">
               {ui.talkBtn}
             </Link>
           </div>
@@ -742,18 +742,18 @@ export default async function IndustryPage({ params }: PageProps) {
       </section>
 
       {/* Features */}
-      <section className="bg-[#0C1424] py-16 md:py-24">
+      <section className="bg-[#EEF5F2] py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 reveal">
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.whatWeOffer}</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">{ui.servicesH2}</h2>
+            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.whatWeOffer}</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#14211F]">{ui.servicesH2}</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal delay-1">
             {c.features.map((f, i) => (
-              <div key={i} className="bg-[#0E1A2E] border border-white/5 rounded-xl p-6 hover:border-[#F5C518]/20 transition-all">
+              <div key={i} className="bg-[#FFFFFF] border border-[#E2EAE7] rounded-xl p-6 hover:border-[#B89112]/20 transition-all">
                 <div className="text-3xl mb-3">{f.icon}</div>
-                <h3 className="text-white font-bold text-sm mb-2">{f.title}</h3>
-                <p className="text-white/50 text-xs leading-relaxed">{f.desc}</p>
+                <h3 className="text-[#14211F] font-bold text-sm mb-2">{f.title}</h3>
+                <p className="text-[#657872] text-xs leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
@@ -761,18 +761,18 @@ export default async function IndustryPage({ params }: PageProps) {
       </section>
 
       {/* Process */}
-      <section className="bg-[#080E1A] py-16 md:py-24">
+      <section className="bg-[#F7F9F8] py-16 md:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 reveal">
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.processLabel}</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">{ui.processH2}</h2>
+            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.processLabel}</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#14211F]">{ui.processH2}</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 reveal delay-1">
             {c.process.map((step, i) => (
               <div key={i} className="text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-xl border border-[#F5C518]/25 bg-[#F5C518]/[0.07] text-[#F5C518] font-black text-base md:text-xl mb-3 md:mb-4 mx-auto">{step.num}</div>
-                <h3 className="text-white font-bold text-sm mb-2">{step.title}</h3>
-                <p className="text-white/50 text-xs leading-relaxed">{step.desc}</p>
+                <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-xl border border-[#B89112]/25 bg-[#B89112]/[0.07] text-[#B89112] font-black text-base md:text-xl mb-3 md:mb-4 mx-auto">{step.num}</div>
+                <h3 className="text-[#14211F] font-bold text-sm mb-2">{step.title}</h3>
+                <p className="text-[#657872] text-xs leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -780,21 +780,21 @@ export default async function IndustryPage({ params }: PageProps) {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#0C1424] py-16 md:py-24">
+      <section className="bg-[#EEF5F2] py-16 md:py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-10 reveal">
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.faqLabel}</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">{ui.faqH2}</h2>
+            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] block mb-3">{ui.faqLabel}</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#14211F]">{ui.faqH2}</h2>
           </div>
           <div className="space-y-4 reveal delay-1">
             {c.faq.map((item, i) => (
-              <details key={i} className="group bg-[#0E1A2E] border border-white/5 rounded-xl overflow-hidden hover:border-[#F5C518]/20 transition-all">
+              <details key={i} className="group bg-[#FFFFFF] border border-[#E2EAE7] rounded-xl overflow-hidden hover:border-[#B89112]/20 transition-all">
                 <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
-                  <span className="text-white font-semibold text-sm pr-4">{item.q}</span>
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#F5C518]/10 flex items-center justify-center text-[#F5C518] text-sm font-bold group-open:rotate-45 transition-transform">+</span>
+                  <span className="text-[#14211F] font-semibold text-sm pr-4">{item.q}</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#B89112]/10 flex items-center justify-center text-[#B89112] text-sm font-bold group-open:rotate-45 transition-transform">+</span>
                 </summary>
-                <div className="px-5 pb-5 border-t border-white/5">
-                  <p className="text-white/60 text-sm leading-relaxed pt-4">{item.a}</p>
+                <div className="px-5 pb-5 border-t border-[#E2EAE7]">
+                  <p className="text-[#566A65] text-sm leading-relaxed pt-4">{item.a}</p>
                 </div>
               </details>
             ))}
@@ -803,28 +803,28 @@ export default async function IndustryPage({ params }: PageProps) {
       </section>
 
       {/* Related links */}
-      <section className="bg-[#080E1A] py-10 border-t border-white/5">
+      <section className="bg-[#F7F9F8] py-10 border-t border-[#E2EAE7]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="flex flex-wrap gap-8">
             <div>
-              <p className="text-white/30 text-xs uppercase tracking-widest mb-3">{ui.relatedServicesLabel}</p>
+              <p className="text-[#8A9B96] text-xs uppercase tracking-widest mb-3">{ui.relatedServicesLabel}</p>
               <div className="flex flex-wrap gap-2">
                 {services.map((link) => (
-                  <Link key={link.href} href={link.href} className="px-3 py-1.5 rounded-full border border-white/10 text-white/40 text-xs hover:text-white/70 hover:border-white/20 transition-all">
+                  <Link key={link.href} href={link.href} className="px-3 py-1.5 rounded-full border border-[#D8E4DF] text-[#748781] text-xs hover:text-[#3D514D] hover:border-[#C6D5D0] transition-all">
                     {link.label}
                   </Link>
                 ))}
               </div>
             </div>
             <div>
-              <p className="text-white/30 text-xs uppercase tracking-widest mb-3">{ui.districtLabel}</p>
-              <Link href={district.href} className="px-3 py-1.5 rounded-full border border-white/10 text-white/40 text-xs hover:text-white/70 hover:border-white/20 transition-all">
+              <p className="text-[#8A9B96] text-xs uppercase tracking-widest mb-3">{ui.districtLabel}</p>
+              <Link href={district.href} className="px-3 py-1.5 rounded-full border border-[#D8E4DF] text-[#748781] text-xs hover:text-[#3D514D] hover:border-[#C6D5D0] transition-all">
                 {district.label}
               </Link>
             </div>
             <div>
-              <p className="text-white/30 text-xs uppercase tracking-widest mb-3">{ui.allIndustriesLabel}</p>
-              <Link href={`${p}/industries`} className="px-3 py-1.5 rounded-full border border-white/10 text-white/40 text-xs hover:text-white/70 hover:border-white/20 transition-all">
+              <p className="text-[#8A9B96] text-xs uppercase tracking-widest mb-3">{ui.allIndustriesLabel}</p>
+              <Link href={`${p}/industries`} className="px-3 py-1.5 rounded-full border border-[#D8E4DF] text-[#748781] text-xs hover:text-[#3D514D] hover:border-[#C6D5D0] transition-all">
                 {ui.allIndustriesLink}
               </Link>
             </div>

@@ -170,7 +170,7 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBizSchema) }}
         />
       </head>
-      <body className={`min-h-screen bg-[#080E1A] ${fontClass}`}>
+      <body className={`min-h-screen overflow-x-hidden bg-[#F7F9F8] ${fontClass}`}>
         <GoogleTagManager gtmId="GTM-KRFZ7HW2" />
         <noscript>
           <iframe

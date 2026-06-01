@@ -134,7 +134,7 @@ const FAQ_EN = [
     q: "How accurate is the audit?",
     a: (
       <>
-        Very accurate. We pull real Core Web Vitals data directly from Google PageSpeed Insights API — the same data Google uses for ranking decisions. Our <Link href="/en/services/seo" className="text-[#F5C518] hover:underline">SEO</Link>, security, and technical checks analyze your actual HTML source code. The only limitation is that we audit the single URL you enter, not your entire site.
+        Very accurate. We pull real Core Web Vitals data directly from Google PageSpeed Insights API — the same data Google uses for ranking decisions. Our <Link href="/en/services/seo" className="text-[#B89112] hover:underline">SEO</Link>, security, and technical checks analyze your actual HTML source code. The only limitation is that we audit the single URL you enter, not your entire site.
       </>
     ),
   },
@@ -151,7 +151,7 @@ const FAQ_EN = [
     a: (
       <>
         We use your contact information solely to send you your audit results and may follow up with helpful recommendations. We never sell or share your data with third parties. Read our full{" "}
-        <Link href="/en/privacy-policy" className="text-[#F5C518] hover:underline">privacy policy</Link>.
+        <Link href="/en/privacy-policy" className="text-[#B89112] hover:underline">privacy policy</Link>.
       </>
     ),
   },
@@ -168,7 +168,7 @@ const FAQ_EN = [
     a: (
       <>
         Do not panic — most websites score between 40 and 70 on their first audit. Focus on the Top Priorities section in your report, starting with high-impact items marked in red. If you want professional help implementing the fixes, our team at Local City Solutions specializes in exactly this.{" "}
-        <Link href="/en/contact" className="text-[#F5C518] hover:underline">Contact us</Link> or WhatsApp us for a free consultation.
+        <Link href="/en/contact" className="text-[#B89112] hover:underline">Contact us</Link> or WhatsApp us for a free consultation.
       </>
     ),
   },
@@ -177,7 +177,7 @@ const FAQ_EN = [
     a: (
       <>
         This tool focuses on your website. For a dedicated Google Business Profile audit, check our{" "}
-        <Link href="/en/services/google-business-profile" className="text-[#F5C518] hover:underline">GBP optimization service</Link>{" "}
+        <Link href="/en/services/google-business-profile" className="text-[#B89112] hover:underline">GBP optimization service</Link>{" "}
         or contact us directly for a comprehensive local SEO review.
       </>
     ),
@@ -187,7 +187,7 @@ const FAQ_EN = [
     a: (
       <>
         We recommend running an audit after any major website change and at least once every 3 months to catch new issues. Google updates its algorithms regularly and your site health can change over time. Check our{" "}
-        <Link href="/en/blog" className="text-[#F5C518] hover:underline">blog</Link>{" "}
+        <Link href="/en/blog" className="text-[#B89112] hover:underline">blog</Link>{" "}
         for the latest SEO tips and algorithm updates.
       </>
     ),
@@ -208,7 +208,7 @@ const FAQ_AR = [
     a: (
       <>
         دقيق جداً. نسحب بيانات Core Web Vitals الحقيقية مباشرة من Google PageSpeed Insights API — نفس البيانات التي يستخدمها قوقل في قرارات الترتيب. فحوصات{" "}
-        <Link href="/ar/services/seo" className="text-[#F5C518] hover:underline">SEO</Link>، الأمان، والتقنية تحلل كود HTML الفعلي لموقعك. الحد الوحيد هو أننا ندقق الرابط المحدد الذي تدخله، لا الموقع بأكمله.
+        <Link href="/ar/services/seo" className="text-[#B89112] hover:underline">SEO</Link>، الأمان، والتقنية تحلل كود HTML الفعلي لموقعك. الحد الوحيد هو أننا ندقق الرابط المحدد الذي تدخله، لا الموقع بأكمله.
       </>
     ),
   },
@@ -225,7 +225,7 @@ const FAQ_AR = [
     a: (
       <>
         نستخدم معلوماتك فقط لإرسال نتائج التدقيق وقد نتابع بتوصيات مفيدة. لا نبيع أو نشارك بياناتك مع أطراف ثالثة. اقرأ{" "}
-        <Link href="/ar/privacy-policy" className="text-[#F5C518] hover:underline">سياسة الخصوصية الكاملة</Link>.
+        <Link href="/ar/privacy-policy" className="text-[#B89112] hover:underline">سياسة الخصوصية الكاملة</Link>.
       </>
     ),
   },
@@ -242,7 +242,7 @@ const FAQ_AR = [
     a: (
       <>
         لا تقلق — معظم المواقع تحصل على نتيجة بين ٤٠ و٧٠ في أول تدقيق. ركّز على قسم أهم الأولويات في تقريرك، وابدأ بالعناصر ذات التأثير العالي المحددة باللون الأحمر. إذا أردت مساعدة احترافية في التطبيق، فريقنا في لوكال سيتي سولوشنز متخصص في هذا بالضبط.{" "}
-        <Link href="/ar/contact" className="text-[#F5C518] hover:underline">تواصل معنا</Link> أو واتساب لاستشارة مجانية.
+        <Link href="/ar/contact" className="text-[#B89112] hover:underline">تواصل معنا</Link> أو واتساب لاستشارة مجانية.
       </>
     ),
   },
@@ -251,7 +251,7 @@ const FAQ_AR = [
     a: (
       <>
         هذه الأداة تركز على موقعك. لتدقيق ملف نشاط قوقل المخصص، تحقق من{" "}
-        <Link href="/ar/services/google-business-profile" className="text-[#F5C518] hover:underline">خدمة تحسين ملف النشاط التجاري</Link>{" "}
+        <Link href="/ar/services/google-business-profile" className="text-[#B89112] hover:underline">خدمة تحسين ملف النشاط التجاري</Link>{" "}
         أو تواصل معنا مباشرة لمراجعة SEO محلي شاملة.
       </>
     ),
@@ -261,7 +261,7 @@ const FAQ_AR = [
     a: (
       <>
         نوصي بتشغيل التدقيق بعد أي تغيير رئيسي على الموقع ومرة واحدة على الأقل كل ٣ أشهر لاكتشاف المشاكل الجديدة. قوقل يحدث خوارزمياته بانتظام. تابع{" "}
-        <Link href="/ar/blog" className="text-[#F5C518] hover:underline">مدونتنا</Link>{" "}
+        <Link href="/ar/blog" className="text-[#B89112] hover:underline">مدونتنا</Link>{" "}
         لأحدث نصائح SEO وتحديثات الخوارزميات.
       </>
     ),
@@ -278,16 +278,16 @@ export default function AuditPageSEO({ locale }: Props) {
   };
 
   return (
-    <div dir={isAr ? "rtl" : "ltr"} className="bg-[#080E1A]">
+    <div dir={isAr ? "rtl" : "ltr"} className="bg-[#F7F9F8]">
 
       {/* ─── Section 1: How It Works ─────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-[#0C1424]">
+      <section className="py-16 md:py-24 bg-[#EEF5F2]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 reveal">
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">
+            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] block mb-3">
               {isAr ? "كيف يعمل" : "How It Works"}
             </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#14211F]">
               {isAr ? "كيف يشتغل التدقيق المجاني" : "How Our Free Website Audit Works"}
             </h2>
           </div>
@@ -319,14 +319,14 @@ export default function AuditPageSEO({ locale }: Props) {
               <div key={i} className="relative">
                 {/* Connector line — desktop only */}
                 {i < 2 && (
-                  <div className={`hidden md:block absolute top-8 w-full border-t border-dashed border-white/10 ${isAr ? "right-1/2" : "left-1/2"}`} />
+                  <div className={`hidden md:block absolute top-8 w-full border-t border-dashed border-[#D8E4DF] ${isAr ? "right-1/2" : "left-1/2"}`} />
                 )}
-                <div className="relative bg-[#0E1A2E] border border-white/[0.07] rounded-xl p-6 hover:border-[#F5C518]/20 transition-all">
-                  <div className="w-12 h-12 rounded-full bg-[#F5C518]/10 border border-[#F5C518]/20 flex items-center justify-center text-[#F5C518] font-black text-lg mb-4">
+                <div className="relative bg-[#FFFFFF] border border-[#D8E4DF] rounded-xl p-6 hover:border-[#B89112]/20 transition-all">
+                  <div className="w-12 h-12 rounded-full bg-[#B89112]/10 border border-[#B89112]/20 flex items-center justify-center text-[#B89112] font-black text-lg mb-4">
                     {step.num}
                   </div>
-                  <h3 className="text-white font-bold text-base mb-2">{step.title}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed">{step.desc}</p>
+                  <h3 className="text-[#14211F] font-bold text-base mb-2">{step.title}</h3>
+                  <p className="text-[#657872] text-sm leading-relaxed">{step.desc}</p>
                 </div>
               </div>
             ))}
@@ -335,16 +335,16 @@ export default function AuditPageSEO({ locale }: Props) {
       </section>
 
       {/* ─── Section 2: 8 Category Cards ─────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-[#080E1A]">
+      <section className="py-16 md:py-24 bg-[#F7F9F8]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 reveal">
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">
+            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] block mb-3">
               {isAr ? "ما نفحصه" : "What We Check"}
             </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#14211F] mb-3">
               {isAr ? "أكثر من ٥٠ فحص في ٨ فئات" : "50+ Checks Across 8 Critical Categories"}
             </h2>
-            <p className="text-white/50 text-sm max-w-2xl mx-auto">
+            <p className="text-[#657872] text-sm max-w-2xl mx-auto">
               {isAr
                 ? "كل فحص مصمم ليكتشف المشاكل اللي تأثر على ترتيبك في قوقل وتجربة المستخدم وقدرتك على جذب العملاء في السوق السعودي."
                 : "Every check is designed to find issues that directly impact your Google rankings, user experience, and ability to generate leads in the Saudi market."}
@@ -358,22 +358,22 @@ export default function AuditPageSEO({ locale }: Props) {
               return (
                 <div
                   key={cat.en.title}
-                  className="bg-[#0E1A2E] border border-white/[0.07] rounded-xl p-5 hover:border-[#F5C518]/20 transition-all flex flex-col gap-3"
+                  className="bg-[#FFFFFF] border border-[#D8E4DF] rounded-xl p-5 hover:border-[#B89112]/20 transition-all flex flex-col gap-3"
                 >
                   <div className="text-3xl">{cat.icon}</div>
                   <div>
                     {serviceLink ? (
-                      <Link href={serviceLink} className="text-white font-bold text-sm hover:text-[#F5C518] transition-colors">
+                      <Link href={serviceLink} className="text-[#14211F] font-bold text-sm hover:text-[#B89112] transition-colors">
                         {c.title}
                       </Link>
                     ) : (
-                      <h3 className="text-white font-bold text-sm">{c.title}</h3>
+                      <h3 className="text-[#14211F] font-bold text-sm">{c.title}</h3>
                     )}
-                    <span className="inline-block mt-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#F5C518]/10 text-[#F5C518]">
+                    <span className="inline-block mt-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#B89112]/10 text-[#B89112]">
                       {c.count}
                     </span>
                   </div>
-                  <p className="text-white/45 text-xs leading-relaxed">{c.desc}</p>
+                  <p className="text-[#748781] text-xs leading-relaxed">{c.desc}</p>
                 </div>
               );
             })}
@@ -382,16 +382,16 @@ export default function AuditPageSEO({ locale }: Props) {
       </section>
 
       {/* ─── Section 3: Bonus Features ───────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-[#0C1424]">
+      <section className="py-16 md:py-24 bg-[#EEF5F2]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 reveal">
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">
+            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] block mb-3">
               {isAr ? "مميزات إضافية" : "Bonus Features"}
             </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#14211F] mb-3">
               {isAr ? "أكثر من مجرد تدقيق" : "More Than Just an Audit"}
             </h2>
-            <p className="text-white/50 text-sm">
+            <p className="text-[#657872] text-sm">
               {isAr ? "مميزات لن تجدها في معظم الأدوات المجانية." : "Features you won't find in most free tools."}
             </p>
           </div>
@@ -435,12 +435,12 @@ export default function AuditPageSEO({ locale }: Props) {
               const c = isAr ? f.ar : f.en;
               return (
                 <div key={f.en.title} className="flex gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#F5C518]/10 flex items-center justify-center text-2xl shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-[#B89112]/10 flex items-center justify-center text-2xl shrink-0">
                     {f.icon}
                   </div>
                   <div>
-                    <h3 className="text-white font-bold text-sm mb-2">{c.title}</h3>
-                    <p className="text-white/50 text-sm leading-relaxed">{c.desc}</p>
+                    <h3 className="text-[#14211F] font-bold text-sm mb-2">{c.title}</h3>
+                    <p className="text-[#657872] text-sm leading-relaxed">{c.desc}</p>
                   </div>
                 </div>
               );
@@ -450,13 +450,13 @@ export default function AuditPageSEO({ locale }: Props) {
       </section>
 
       {/* ─── Section 4: Who Is This For ──────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-[#080E1A]">
+      <section className="py-16 md:py-24 bg-[#F7F9F8]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 reveal">
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">
+            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] block mb-3">
               {isAr ? "لمن هذه الأداة" : "Who Is This For"}
             </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#14211F]">
               {isAr
                 ? "مصمم لأصحاب الأعمال وفرق التسويق في الرياض"
                 : "Built for Riyadh Business Owners & Marketing Teams"}
@@ -514,12 +514,12 @@ export default function AuditPageSEO({ locale }: Props) {
               return (
                 <div
                   key={persona.en.title}
-                  className="bg-[#0E1A2E] border border-white/[0.07] rounded-xl p-6 hover:border-[#F5C518]/20 transition-all flex gap-4"
+                  className="bg-[#FFFFFF] border border-[#D8E4DF] rounded-xl p-6 hover:border-[#B89112]/20 transition-all flex gap-4"
                 >
                   <div className="text-3xl shrink-0 mt-0.5">{persona.icon}</div>
                   <div>
-                    <h3 className="text-white font-bold text-base mb-2">{c.title}</h3>
-                    <p className="text-white/50 text-sm leading-relaxed">{c.desc}</p>
+                    <h3 className="text-[#14211F] font-bold text-base mb-2">{c.title}</h3>
+                    <p className="text-[#657872] text-sm leading-relaxed">{c.desc}</p>
                   </div>
                 </div>
               );
@@ -529,13 +529,13 @@ export default function AuditPageSEO({ locale }: Props) {
       </section>
 
       {/* ─── Section 5: FAQ ───────────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-[#0C1424]">
+      <section className="py-16 md:py-24 bg-[#EEF5F2]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12 reveal">
-            <span className="text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] block mb-3">
+            <span className="text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] block mb-3">
               {isAr ? "الأسئلة الشائعة" : "FAQ"}
             </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#14211F]">
               {isAr ? "الأسئلة الشائعة" : "Frequently Asked Questions"}
             </h2>
           </div>
@@ -544,12 +544,12 @@ export default function AuditPageSEO({ locale }: Props) {
             {faqItems.map((item, i) => (
               <details
                 key={i}
-                className="group bg-[#0E1A2E] border border-white/[0.07] rounded-xl overflow-hidden hover:border-[#F5C518]/20 transition-all"
+                className="group bg-[#FFFFFF] border border-[#D8E4DF] rounded-xl overflow-hidden hover:border-[#B89112]/20 transition-all"
               >
                 <summary className={`flex items-center justify-between gap-4 px-5 py-4 cursor-pointer list-none select-none ${isAr ? "flex-row-reverse" : ""}`}>
-                  <span className="text-white font-semibold text-sm leading-snug">{item.q}</span>
+                  <span className="text-[#14211F] font-semibold text-sm leading-snug">{item.q}</span>
                   <svg
-                    className="w-4 h-4 text-white/30 shrink-0 transition-transform duration-200 group-open:rotate-180"
+                    className="w-4 h-4 text-[#8A9B96] shrink-0 transition-transform duration-200 group-open:rotate-180"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth={2}
@@ -558,7 +558,7 @@ export default function AuditPageSEO({ locale }: Props) {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>
-                <div className={`px-5 pb-5 text-white/60 text-sm leading-relaxed border-t border-white/[0.05] pt-4 ${isAr ? "text-right" : ""}`}>
+                <div className={`px-5 pb-5 text-[#566A65] text-sm leading-relaxed border-t border-[#D8E4DF] pt-4 ${isAr ? "text-right" : ""}`}>
                   {item.a}
                 </div>
               </details>
@@ -568,16 +568,16 @@ export default function AuditPageSEO({ locale }: Props) {
       </section>
 
       {/* ─── Section 6: Final CTA ─────────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-[#080E1A]">
+      <section className="py-16 md:py-24 bg-[#F7F9F8]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center reveal">
           <div
-            className="relative rounded-2xl border border-[#F5C518]/15 p-8 md:p-12 overflow-hidden"
-            style={{ background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,197,24,0.06) 0%, transparent 70%), #0E1A2E" }}
+            className="relative rounded-2xl border border-[#B89112]/15 p-8 md:p-12 overflow-hidden"
+            style={{ background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184,145,18,0.06) 0%, transparent 70%), #FFFFFF" }}
           >
-            <h2 className="text-2xl md:text-4xl font-black text-white mb-4 leading-tight">
+            <h2 className="text-2xl md:text-4xl font-black text-[#14211F] mb-4 leading-tight">
               {isAr ? "نتيجة صحة موقعك بانتظارك" : "Your Website's Health Score Is Waiting"}
             </h2>
-            <p className="text-white/55 text-sm md:text-base mb-8 max-w-xl mx-auto">
+            <p className="text-[#657872] text-sm md:text-base mb-8 max-w-xl mx-auto">
               {isAr
                 ? "انضم لأكثر من ٥٠٠ نشاط سعودي استخدموا أداة التدقيق المجانية لاكتشاف وإصلاح مشاكل مواقعهم. ٦٠ ثانية، مجاناً بالكامل، وممكن تغيّر كل شيء."
                 : "Join 500+ Saudi businesses who have used our free audit tool to identify and fix their website issues. Takes 60 seconds, costs nothing, and could change everything."}
@@ -585,7 +585,7 @@ export default function AuditPageSEO({ locale }: Props) {
             <div className={`flex flex-col sm:flex-row items-center justify-center gap-3 ${isAr ? "sm:flex-row-reverse" : ""}`}>
               <button
                 onClick={scrollToTop}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all shadow-xl shadow-[#F5C518]/20"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-[#B89112] text-[#F7F9F8] font-bold text-sm hover:bg-[#B89112]/90 transition-all shadow-xl shadow-[#B89112]/20"
               >
                 {isAr ? "ابدأ التدقيق المجاني ↑" : "Run Free Audit ↑"}
               </button>
@@ -593,7 +593,7 @@ export default function AuditPageSEO({ locale }: Props) {
                 href="https://wa.me/966564229190"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-white/20 text-white font-medium text-sm hover:border-white/40 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-[#C6D5D0] text-[#14211F] font-medium text-sm hover:border-[#8FA49D] transition-all"
               >
                 {isAr ? "أو واتساب ←" : "Or WhatsApp Us →"}
               </a>

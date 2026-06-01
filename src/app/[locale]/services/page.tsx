@@ -76,25 +76,25 @@ export default async function ServicesPage({ params }: PageProps) {
 
   return (
     <>
-      <section className="relative bg-[#080E1A] pt-28 md:pt-36 pb-16 md:pb-20 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,197,24,0.07) 0%, transparent 70%)" }} />
+      <section className="relative bg-[#F7F9F8] pt-28 md:pt-36 pb-16 md:pb-20 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184,145,18,0.07) 0%, transparent 70%)" }} />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <span className="inline-block text-[#F5C518] text-xs font-bold uppercase tracking-[0.2em] mb-4">{c.label}</span>
-          <h1 className="text-3xl md:text-5xl font-black text-white mb-4 leading-tight">{c.h1}</h1>
-          <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto">{c.sub}</p>
+          <span className="inline-block text-[#B89112] text-xs font-bold uppercase tracking-[0.2em] mb-4">{c.label}</span>
+          <h1 className="text-3xl md:text-5xl font-black text-[#14211F] mb-4 leading-tight">{c.h1}</h1>
+          <p className="text-[#566A65] text-base md:text-lg max-w-2xl mx-auto">{c.sub}</p>
         </div>
       </section>
 
-      <section className="bg-[#0C1424] py-16 md:py-24">
+      <section className="bg-[#EEF5F2] py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {services.map((service, i) => (
-              <article key={service.slug} className={`reveal delay-${(i % 4) + 1} group relative bg-[#0E1A2E] border border-white/[0.06] rounded-xl p-6 md:p-7 hover:-translate-y-1 hover:border-[#F5C518]/25 transition-all duration-300 overflow-hidden`}>
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#F5C518] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+              <article key={service.slug} className={`reveal delay-${(i % 4) + 1} group relative bg-[#FFFFFF] border border-[#D8E4DF] rounded-xl p-6 md:p-7 hover:-translate-y-1 hover:border-[#B89112]/25 transition-all duration-300 overflow-hidden`}>
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#B89112] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 <div className="text-3xl mb-4">{service.icon}</div>
-                <h2 className="text-white font-bold text-base mb-2">{service.title}</h2>
-                <p className="text-white/50 text-sm leading-relaxed mb-5">{service.desc}</p>
-                <Link href={`${p}/services/${service.slug}`} className="inline-flex items-center gap-1 text-[#F5C518] text-xs font-semibold group-hover:gap-2 transition-all">{c.learnMore}</Link>
+                <h2 className="text-[#14211F] font-bold text-base mb-2">{service.title}</h2>
+                <p className="text-[#657872] text-sm leading-relaxed mb-5">{service.desc}</p>
+                <Link href={`${p}/services/${service.slug}`} className="inline-flex items-center gap-1 text-[#B89112] text-xs font-semibold group-hover:gap-2 transition-all">{c.learnMore}</Link>
               </article>
             ))}
           </div>
