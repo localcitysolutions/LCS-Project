@@ -16,6 +16,7 @@ const SERVICES = {
     { icon: "💬", slug: "social-media", title: "Social Media Marketing", desc: "Content creation, community management, and growth strategies across Instagram, Snapchat, TikTok, X, and LinkedIn." },
     { icon: "🛒", slug: "ecommerce", title: "E-Commerce Marketing", desc: "End-to-end e-commerce setup, optimization, and management for Saudi online stores on Salla, Zid, and Shopify." },
     { icon: "🎨", slug: "graphic-design", title: "Graphic Design", desc: "Bilingual logos, brand identity, social and ad creative — every visual touchpoint, on-brand in Arabic and English." },
+    { icon: "🎬", slug: "video-editing", title: "Video Editing", desc: "Reels, ads, and brand films with Arabic + English subtitles — hook-first editing built for how Saudi Arabia watches." },
   ],
   ar: [
     { icon: "🚀", slug: "digital-marketing", title: "التسويق الرقمي", desc: "استراتيجية تسويق رقمي متكاملة لأعمال الرياض. من بناء الوعي بالعلامة التجارية إلى توليد العملاء ونمو الإيرادات." },
@@ -27,6 +28,7 @@ const SERVICES = {
     { icon: "💬", slug: "social-media", title: "السوشيال ميديا", desc: "إنشاء محتوى وإدارة المجتمع واستراتيجيات النمو عبر إنستقرام وسناب وتيك توك وتويتر ولينكدإن." },
     { icon: "🛒", slug: "ecommerce", title: "التجارة الإلكترونية", desc: "إعداد وتحسين وإدارة متاجر إلكترونية سعودية من الألف إلى الياء على سلة وزد وشوبيفاي." },
     { icon: "🎨", slug: "graphic-design", title: "تصميم الجرافيك", desc: "شعارات وهوية بصرية وتصاميم سوشيال وإعلانات بالعربية والإنجليزية — كل عنصر بصري على هويتك." },
+    { icon: "🎬", slug: "video-editing", title: "مونتاج الفيديو", desc: "ريلز وإعلانات وأفلام تعريفية مع ترجمة عربية وإنجليزية — مونتاج يبدأ بمقدمة قوية ومصمّم لذوق السوق السعودي." },
   ],
 };
 

@@ -123,6 +123,7 @@ const SERVICES = {
     { icon: "💬", title: "Social Media", slug: "social-media", desc: "Content creation, community management, and growth strategies across all major platforms." },
     { icon: "🛒", title: "E-Commerce", slug: "ecommerce", desc: "End-to-end e-commerce setup, optimization, and management for Saudi online stores." },
     { icon: "🎨", title: "Graphic Design", slug: "graphic-design", desc: "Bilingual logos, brand identity, social and ad creative — every visual touchpoint, on-brand." },
+    { icon: "🎬", title: "Video Editing", slug: "video-editing", desc: "Reels, ads, and brand films with Arabic + English subtitles — hook-first edits built for how Saudi watches." },
   ],
   ar: [
     { icon: "🚀", title: "التسويق الرقمي", slug: "digital-marketing", desc: "استراتيجية تسويق رقمي متكاملة لأعمال الرياض. من بناء الوعي بالعلامة التجارية إلى توليد العملاء." },
@@ -134,6 +135,7 @@ const SERVICES = {
     { icon: "💬", title: "السوشيال ميديا", slug: "social-media", desc: "إنشاء محتوى، إدارة المجتمع، واستراتيجيات نمو عبر كل المنصات الرئيسية." },
     { icon: "🛒", title: "التجارة الإلكترونية", slug: "ecommerce", desc: "إعداد وتحسين وإدارة متاجر إلكترونية سعودية من الألف إلى الياء." },
     { icon: "🎨", title: "تصميم الجرافيك", slug: "graphic-design", desc: "شعارات وهوية بصرية وتصاميم سوشيال وإعلانات بالعربية والإنجليزية — كل عنصر بصري على هويتك." },
+    { icon: "🎬", title: "مونتاج الفيديو", slug: "video-editing", desc: "ريلز وإعلانات وأفلام تعريفية مع ترجمة عربية وإنجليزية — مونتاج يبدأ بمقدمة قوية ومصمّم لذوق السوق السعودي." },
   ],
 };
 
