@@ -122,6 +122,7 @@ const SERVICES = {
     { icon: "📍", title: "Google Business Profile", slug: "google-business-profile", desc: "GBP optimization and Maps ranking. Be the first business customers find locally." },
     { icon: "💬", title: "Social Media", slug: "social-media", desc: "Content creation, community management, and growth strategies across all major platforms." },
     { icon: "🛒", title: "E-Commerce", slug: "ecommerce", desc: "End-to-end e-commerce setup, optimization, and management for Saudi online stores." },
+    { icon: "🎨", title: "Graphic Design", slug: "graphic-design", desc: "Bilingual logos, brand identity, social and ad creative — every visual touchpoint, on-brand." },
   ],
   ar: [
     { icon: "🚀", title: "التسويق الرقمي", slug: "digital-marketing", desc: "استراتيجية تسويق رقمي متكاملة لأعمال الرياض. من بناء الوعي بالعلامة التجارية إلى توليد العملاء." },
@@ -132,6 +133,7 @@ const SERVICES = {
     { icon: "📍", title: "ملف النشاط في قوقل", slug: "google-business-profile", desc: "تحسين ملف النشاط والتصدر في قوقل ماب. كن أول نشاط يجده العملاء عند البحث محلياً." },
     { icon: "💬", title: "السوشيال ميديا", slug: "social-media", desc: "إنشاء محتوى، إدارة المجتمع، واستراتيجيات نمو عبر كل المنصات الرئيسية." },
     { icon: "🛒", title: "التجارة الإلكترونية", slug: "ecommerce", desc: "إعداد وتحسين وإدارة متاجر إلكترونية سعودية من الألف إلى الياء." },
+    { icon: "🎨", title: "تصميم الجرافيك", slug: "graphic-design", desc: "شعارات وهوية بصرية وتصاميم سوشيال وإعلانات بالعربية والإنجليزية — كل عنصر بصري على هويتك." },
   ],
 };
 
