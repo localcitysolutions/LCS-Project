@@ -15,6 +15,7 @@ const SERVICES = {
     { icon: "📍", slug: "google-business-profile", title: "Google Business Profile", desc: "GBP creation, optimization, and Maps ranking. Be the first business customers find when searching locally in Riyadh." },
     { icon: "💬", slug: "social-media", title: "Social Media Marketing", desc: "Content creation, community management, and growth strategies across Instagram, Snapchat, TikTok, X, and LinkedIn." },
     { icon: "🛒", slug: "ecommerce", title: "E-Commerce Marketing", desc: "End-to-end e-commerce setup, optimization, and management for Saudi online stores on Salla, Zid, and Shopify." },
+    { icon: "🎨", slug: "graphic-design", title: "Graphic Design", desc: "Bilingual logos, brand identity, social and ad creative — every visual touchpoint, on-brand in Arabic and English." },
   ],
   ar: [
     { icon: "🚀", slug: "digital-marketing", title: "التسويق الرقمي", desc: "استراتيجية تسويق رقمي متكاملة لأعمال الرياض. من بناء الوعي بالعلامة التجارية إلى توليد العملاء ونمو الإيرادات." },
@@ -25,6 +26,7 @@ const SERVICES = {
     { icon: "📍", slug: "google-business-profile", title: "ملف النشاط في قوقل", desc: "إنشاء وتحسين ملف النشاط والتصدر في قوقل ماب. كن أول نشاط يجده العملاء عند البحث محلياً في الرياض." },
     { icon: "💬", slug: "social-media", title: "السوشيال ميديا", desc: "إنشاء محتوى وإدارة المجتمع واستراتيجيات النمو عبر إنستقرام وسناب وتيك توك وتويتر ولينكدإن." },
     { icon: "🛒", slug: "ecommerce", title: "التجارة الإلكترونية", desc: "إعداد وتحسين وإدارة متاجر إلكترونية سعودية من الألف إلى الياء على سلة وزد وشوبيفاي." },
+    { icon: "🎨", slug: "graphic-design", title: "تصميم الجرافيك", desc: "شعارات وهوية بصرية وتصاميم سوشيال وإعلانات بالعربية والإنجليزية — كل عنصر بصري على هويتك." },
   ],
 };
 

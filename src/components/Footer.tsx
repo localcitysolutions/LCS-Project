@@ -13,6 +13,7 @@ const FOOTER_SERVICES = [
   { label: { en: "Google Business Profile", ar: "ملف النشاط في قوقل" }, slug: "google-business-profile" },
   { label: { en: "Social Media", ar: "السوشيال ميديا" }, slug: "social-media" },
   { label: { en: "E-Commerce", ar: "التجارة الإلكترونية" }, slug: "ecommerce" },
+  { label: { en: "Graphic Design", ar: "تصميم الجرافيك" }, slug: "graphic-design" },
 ];
 
 const FOOTER_INDUSTRIES = [

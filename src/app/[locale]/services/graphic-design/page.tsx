@@ -179,30 +179,45 @@ const COPY = {
     },
     packages: {
       label: "Packages",
-      heading: "Graphic Design Packages",
-      sub: "Bilingual delivery and source files included on every package.",
+      heading: "Design Bundles That Include More Than Just Design",
+      sub: "Bilingual delivery and source files on every bundle. Each one bundles graphic design with the next service most clients actually need — so you're not stitching three vendors together.",
       items: [
         {
-          name: "Logo & Essentials",
-          best: "New businesses needing a logo + basics",
-          from: "SAR 1,200",
-          cta: "Get a quote",
+          name: "Brand Essentials",
+          best: "New businesses launching a clean, professional visual identity from day one.",
+          includes: [
+            "Logo design (vector + PNG + favicon)",
+            "Brand colors + Arabic/Latin typography pairing",
+            "Business card + social profile graphics",
+            "Mini brand guidelines document",
+          ],
+          cta: "Request a tailored quote",
         },
         {
-          name: "Full Brand Identity",
-          best: "A complete, documented visual system",
-          from: "SAR 3,500",
-          cta: "Get a quote",
+          name: "Brand + Web Launch",
+          best: "Businesses launching with a complete digital presence — identity and a site to put it on.",
+          includes: [
+            "Full brand identity system",
+            "Landing page or 5-page website design",
+            "Social media kit (post + story templates)",
+            "Ad creative starter pack (Google + Meta)",
+          ],
+          cta: "Request a tailored quote",
           featured: true,
         },
         {
-          name: "Monthly Design Retainer",
-          best: "Ongoing social + marketing design",
-          from: "SAR 1,800 / month",
-          cta: "Talk to us",
+          name: "Brand Growth Retainer",
+          best: "Established businesses publishing every week and running paid campaigns.",
+          includes: [
+            "Monthly social media graphics",
+            "Paid ad creative (Google + Meta)",
+            "Marketing collateral as needed",
+            "Quarterly brand-consistency review",
+          ],
+          cta: "Request a tailored quote",
         },
       ],
-      note: "Not sure which fits? Talk to us — we'll recommend based on your goals, not your budget ceiling.",
+      note: "Every bundle is scoped and quoted to your business — not pulled off a shelf. Tell us what you're trying to do; we'll recommend the right mix.",
     },
     faq: {
       label: "FAQ",
@@ -210,7 +225,7 @@ const COPY = {
       items: [
         {
           q: "How much does graphic design cost in Riyadh?",
-          a: "Graphic design in Riyadh typically ranges from a few hundred riyals for a single piece to several thousand for a complete brand identity. At Local City Solutions, logo-and-essentials packages start from SAR 1,200 and full brand identities from SAR 3,500. Exact pricing depends on scope, which we confirm in a free quote.",
+          a: "Every project is different — a single logo and a full brand-and-website launch are not in the same league. We don't publish a fixed price list because it would lie to you. Send us your scope (what you need, when, and what you're trying to do) and you'll get a clear, fixed quote within one business day, free of charge.",
         },
         {
           q: "What graphic design services does Local City Solutions offer?",
@@ -408,30 +423,45 @@ const COPY = {
     },
     packages: {
       label: "الباقات",
-      heading: "باقات تصميم الجرافيك",
-      sub: "كل باقة ثنائية اللغة وتشمل الملفات المصدرية.",
+      heading: "باقات تشمل أكثر من مجرد تصميم",
+      sub: "كل باقة ثنائية اللغة وتشمل الملفات المصدرية. تجمع كل واحدة التصميم مع الخدمة التالية التي يحتاجها معظم العملاء فعلاً — حتى لا تجمع ثلاث جهات في مشروع واحد.",
       items: [
         {
-          name: "الشعار والأساسيات",
-          best: "الأنشطة الجديدة التي تحتاج شعاراً + أساسيات",
-          from: "1,200 ريال",
-          cta: "اطلب عرض سعر",
+          name: "أساسيات العلامة التجارية",
+          best: "الأنشطة الجديدة التي تُطلق هوية بصرية احترافية ومتناسقة من اليوم الأول.",
+          includes: [
+            "تصميم الشعار (فيكتور + PNG + أيقونة الموقع)",
+            "ألوان العلامة + خطوط عربية ولاتينية",
+            "بطاقة عمل + جرافيكس البروفايلات الاجتماعية",
+            "دليل هوية مختصر",
+          ],
+          cta: "اطلب عرض سعر مخصص",
         },
         {
-          name: "الهوية البصرية الكاملة",
-          best: "نظام بصري موثّق ومتكامل",
-          from: "3,500 ريال",
-          cta: "اطلب عرض سعر",
+          name: "إطلاق العلامة + الموقع",
+          best: "الأنشطة التي تُطلق حضوراً رقمياً متكاملاً — هوية وموقع للعرض عليه.",
+          includes: [
+            "نظام هوية بصرية كامل",
+            "تصميم لاندنق بيج أو موقع ٥ صفحات",
+            "كيت سوشيال ميديا (قوالب منشورات وقصص)",
+            "حزمة تصاميم إعلانية أولية (قوقل + ميتا)",
+          ],
+          cta: "اطلب عرض سعر مخصص",
           featured: true,
         },
         {
-          name: "باقة التصميم الشهرية",
-          best: "تصميم سوشيال وتسويق مستمر",
-          from: "1,800 ريال / شهرياً",
-          cta: "تواصل معنا",
+          name: "باقة نمو العلامة الشهرية",
+          best: "الأنشطة الراسخة التي تنشر أسبوعياً وتُشغّل حملات إعلانية مدفوعة.",
+          includes: [
+            "تصاميم سوشيال ميديا شهرية",
+            "تصاميم إعلانية مدفوعة (قوقل + ميتا)",
+            "مواد تسويقية حسب الحاجة",
+            "مراجعة تناسق العلامة كل ربع سنة",
+          ],
+          cta: "اطلب عرض سعر مخصص",
         },
       ],
-      note: "غير متأكد أيها يناسبك؟ تواصل معنا — سنوصي بناءً على أهدافك لا على ميزانيتك.",
+      note: "كل باقة مُسعّرة لنشاطك — لا قائمة سعر جاهزة. أخبرنا بما تحاول تحقيقه وسنوصي بالمزيج الصح.",
     },
     faq: {
       label: "FAQ",
@@ -439,7 +469,7 @@ const COPY = {
       items: [
         {
           q: "كم تكلفة تصميم الجرافيك في الرياض؟",
-          a: "تتراوح تكلفة تصميم الجرافيك في الرياض من بضع مئات من الريالات لعمل واحد إلى عدة آلاف لهوية بصرية كاملة. في Local City Solutions تبدأ باقة الشعار والأساسيات من 1,200 ريال، والهوية البصرية الكاملة من 3,500 ريال، ويُحدَّد السعر النهائي حسب نطاق العمل في عرض سعر مجاني.",
+          a: "كل مشروع يختلف — تصميم شعار واحد لا يساوي إطلاق علامة وموقع متكامل. ما ننشر قائمة أسعار ثابتة لأنها ستكون خادعة. أرسل لنا نطاق العمل (وش تحتاج، متى، ووش تحاول تحقق) وتوصلك ضمن يوم عمل واحد عرض سعر واضح ومحدد، بدون أي رسوم.",
         },
         {
           q: "ما خدمات تصميم الجرافيك التي تقدّمها Local City Solutions؟",
@@ -778,8 +808,15 @@ export default async function GraphicDesignPage({ params }: PageProps) {
                     </span>
                   ) : null}
                   <h3 className="text-white font-bold text-lg mb-2">{pkg.name}</h3>
-                  <p className="text-white/55 text-xs mb-5 leading-relaxed">{pkg.best}</p>
-                  <p className="text-[#F5C518] font-black text-2xl mb-6">{pkg.from}</p>
+                  <p className="text-white/55 text-xs mb-4 leading-relaxed">{pkg.best}</p>
+                  <ul className={`text-white/70 text-xs leading-relaxed space-y-1.5 mb-6 ${isAr ? "text-right" : ""}`}>
+                    {pkg.includes.map((line, j) => (
+                      <li key={j} className={`flex gap-2 items-start ${isAr ? "flex-row-reverse" : ""}`}>
+                        <span className="text-[#F5C518] mt-0.5 shrink-0">✓</span>
+                        <span>{line}</span>
+                      </li>
+                    ))}
+                  </ul>
                   <Link
                     href={`${p}/contact`}
                     className={`mt-auto inline-flex items-center justify-center w-full px-5 py-3 rounded-full text-sm font-bold transition-all ${
