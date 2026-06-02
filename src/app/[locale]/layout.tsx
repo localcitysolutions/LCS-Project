@@ -13,13 +13,14 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { DM_Sans, Almarai } from "next/font/google";
 import Script from "next/script";
 
-// Both fonts preload — next/font only emits the <link rel="preload"> for the
-// font whose className actually appears in the rendered page, so /en gets
-// just DM_Sans preloaded and /ar gets just Almarai preloaded. Setting
-// Almarai to `preload: false` previously meant Arabic visitors paid a late
-// font-discovery cost (font CSS had to parse before the @font-face fetch
-// kicked off), tanking FCP/LCP on /ar pages while saving zero bytes for
-// English visitors (who would never use Almarai's bytes anyway).
+// English is the default traffic — DM_Sans preloads on every page.
+// Almarai is preload: false intentionally: Next.js 16's font system was
+// observed pulling Almarai's woff2 into the critical path on /en pages even
+// when only DM_Sans was used in the className tree, which regressed /en
+// Lighthouse mobile scores (FCP 1.0s → 3.6s, perf 79 → 62) after a brief
+// experiment with preload: true here. Arabic pages still get Almarai via
+// display: swap — the fallback renders immediately, then the real font
+// swaps in once the @font-face fetch from the CSS bundle completes.
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -31,7 +32,7 @@ const almarai = Almarai({
   subsets: ["arabic"],
   weight: ["400", "700"],
   display: "swap",
-  preload: true,
+  preload: false,
 });
 
 export const metadata: Metadata = {
