@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { trackWhatsAppClick, trackPhoneClick } from "@/lib/analytics";
+import { IMAGES } from "@/lib/images";
 
 interface CTABoxProps {
   heading?: string;
@@ -30,8 +32,17 @@ export default function CTABox({
   return (
     <section className={`py-12 md:py-20 ${bg === "dark" ? "bg-[#080E1A]" : "bg-[#0C1424]"}`}>
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <div className="relative rounded-2xl overflow-hidden border border-[#F5C518]/15 p-6 md:p-12 text-center reveal">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0E1A2E] via-[#0E1A2E] to-[#080E1A]" />
+        <div className="relative isolate rounded-2xl overflow-hidden border border-[#F5C518]/15 p-6 md:p-12 text-center reveal">
+          <Image
+            src={IMAGES.ctaBg.src}
+            alt=""
+            fill
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover -z-20"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#0E1A2E]/85 via-[#0E1A2E]/82 to-[#080E1A]/92" />
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 md:w-96 h-64 md:h-96 rounded-full pointer-events-none"
             style={{ background: "radial-gradient(circle, rgba(245,197,24,0.07) 0%, transparent 65%)" }}

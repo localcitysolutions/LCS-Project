@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       url: `https://localcitysolutions.com/${locale}/contact`,
-      locale: isAr ? "ar_SA" : "en_US",
+      locale: isAr ? "ar_SA" : "en_SA",
       images: [
         {
           url: "https://localcitysolutions.com/og-image.jpg",

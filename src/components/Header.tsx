@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { trackWhatsAppClick, trackPhoneClick, trackFreeAuditClick } from "@/lib/analytics";
@@ -83,9 +84,22 @@ export default function Header({ locale }: HeaderProps) {
           <Link
             href={isRTL ? "/ar" : "/en"}
             onClick={() => setMenuOpen(false)}
-            className="text-white font-bold text-base md:text-xl tracking-tight shrink-0"
+            className="flex items-center gap-2 md:gap-3 shrink-0"
+            aria-label="Local City Solutions — Digital Marketing Agency in Riyadh"
           >
-            Local <span className="text-[#F5C518]">City</span> Solutions
+            <Image
+              src="/logo.webp"
+              alt="Local City Solutions logo"
+              width={256}
+              height={256}
+              priority
+              sizes="(max-width: 768px) 36px, 48px"
+              style={{ height: "auto" }}
+              className="h-9 md:h-12 w-auto"
+            />
+            <span className="text-white font-bold text-sm md:text-lg tracking-tight leading-tight whitespace-nowrap">
+              Local <span className="text-[#F5C518]">City</span> Solutions
+            </span>
           </Link>
 
           {/* Desktop nav */}

@@ -1,0 +1,25 @@
+{
+  "name": "Local City Solutions",
+  "short_name": "LCS",
+  "description": "Digital Marketing Agency in Riyadh, Saudi Arabia",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#0A1628",
+  "background_color": "#0A1628",
+  "display": "standalone",
+  "start_url": "/en",
+  "scope": "/",
+  "lang": "en"
+}

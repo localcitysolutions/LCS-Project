@@ -54,7 +54,8 @@ export function buildDistrictLocalBusinessSchema(
     name: "Local City Solutions",
     alternateName: "لوكال سيتي سولوشنز",
     url: `https://localcitysolutions.com/${locale}/riyadh/${slug}`,
-    image: "https://localcitysolutions.com/og-image.jpg",
+    logo: "https://localcitysolutions.com/logo.png",
+    image: "https://localcitysolutions.com/og-image.png",
     telephone: "+966-56-422-9190",
     priceRange: "$$",
     address: {
