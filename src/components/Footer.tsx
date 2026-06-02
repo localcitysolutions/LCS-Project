@@ -14,6 +14,7 @@ const FOOTER_SERVICES = [
   { label: { en: "Social Media", ar: "السوشيال ميديا" }, slug: "social-media" },
   { label: { en: "E-Commerce", ar: "التجارة الإلكترونية" }, slug: "ecommerce" },
   { label: { en: "Graphic Design", ar: "تصميم الجرافيك" }, slug: "graphic-design" },
+  { label: { en: "Video Editing", ar: "مونتاج الفيديو" }, slug: "video-editing" },
 ];
 
 const FOOTER_INDUSTRIES = [

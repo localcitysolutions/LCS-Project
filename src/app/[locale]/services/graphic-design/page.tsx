@@ -77,7 +77,7 @@ const COPY = {
         },
       ],
       footnoteHtml:
-        'Need motion, not just stills? Pair this with our <a class="text-[#F5C518] hover:underline" href="/en/services/social-media">Social Media service</a>.',
+        'Need motion, not just stills? Pair this with our <a class="text-[#F5C518] hover:underline" href="/en/services/video-editing">Video Editing service</a>.',
     },
     why: {
       label: "Why Us",
@@ -322,7 +322,7 @@ const COPY = {
         },
       ],
       footnoteHtml:
-        'تحتاج فيديو لا صوراً ثابتة فقط؟ اجمعها مع <a class="text-[#F5C518] hover:underline" href="/ar/services/social-media">خدمة السوشيال ميديا</a>.',
+        'تحتاج فيديو لا صوراً ثابتة فقط؟ اجمعها مع <a class="text-[#F5C518] hover:underline" href="/ar/services/video-editing">خدمة مونتاج الفيديو</a>.',
     },
     why: {
       label: "ليش نحن",
