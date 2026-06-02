@@ -279,8 +279,9 @@ export default async function HomePage({ params }: PageProps) {
           alt={altFor(IMAGES.hero, locale)}
           fill
           priority
+          fetchPriority="high"
           sizes="100vw"
-          quality={85}
+          quality={75}
           className="object-cover -z-10"
         />
         <div
