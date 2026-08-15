@@ -5,6 +5,22 @@ import { z } from "zod";
 
 export const clientStatusValues = ["lead", "active", "paused", "churned"] as const;
 
+// Fixed menu of services the agency offers. Stored as the key; label comes
+// from the dictionary (manageDict.*.clients.serviceLabels).
+export const serviceTypeValues = [
+  "seo",
+  "local_seo_gmb",
+  "web_design",
+  "web_development",
+  "google_ads_ppc",
+  "social_media",
+  "content_blogs",
+] as const;
+export type ServiceType = (typeof serviceTypeValues)[number];
+
+export const clientServiceStatusValues = ["active", "completed", "paused"] as const;
+export type ClientServiceStatusValue = (typeof clientServiceStatusValues)[number];
+
 export const clientSchema = z.object({
   name: z.string().trim().min(1, "Name is required"),
   company: z.string().trim().optional().or(z.literal("")),
@@ -13,11 +29,27 @@ export const clientSchema = z.object({
   whatsapp: z.string().trim().optional().or(z.literal("")),
   industry: z.string().trim().optional().or(z.literal("")),
   status: z.enum(clientStatusValues),
+  website: z.string().trim().optional().or(z.literal("")),
+  start_date: z.string().trim().optional().or(z.literal("")),
+  primary_service: z.enum(serviceTypeValues).optional().or(z.literal("")),
+  gmb_name: z.string().trim().optional().or(z.literal("")),
+  gmb_location: z.string().trim().optional().or(z.literal("")),
+  gmb_link: z.string().trim().optional().or(z.literal("")),
   notes: z.string().trim().optional().or(z.literal("")),
   assigned_to: z.string().uuid().optional().or(z.literal("")),
 });
 
 export type ClientInput = z.infer<typeof clientSchema>;
+
+export const clientServiceSchema = z.object({
+  service: z.enum(serviceTypeValues),
+  status: z.enum(clientServiceStatusValues).default("active"),
+  started_at: z.string().trim().optional().or(z.literal("")),
+  ended_at: z.string().trim().optional().or(z.literal("")),
+  notes: z.string().trim().optional().or(z.literal("")),
+});
+
+export type ClientServiceInput = z.infer<typeof clientServiceSchema>;
 
 export const paymentStatusValues = ["unpaid", "paid"] as const;
 

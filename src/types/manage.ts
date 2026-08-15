@@ -26,8 +26,29 @@ export type Client = {
   whatsapp: string | null;
   industry: string | null;
   status: ClientStatus;
+  website: string | null;
+  start_date: string | null;
+  primary_service: string | null;
+  gmb_name: string | null;
+  gmb_location: string | null;
+  gmb_link: string | null;
   notes: string | null;
   assigned_to: string | null;
+  created_by: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type ClientServiceStatus = "active" | "completed" | "paused";
+
+export type ClientService = {
+  id: string;
+  client_id: string;
+  service: string;
+  status: ClientServiceStatus;
+  started_at: string | null;
+  ended_at: string | null;
+  notes: string | null;
   created_by: string | null;
   created_at: string;
   updated_at: string;
@@ -93,6 +114,12 @@ export type Database = {
         Row: Client;
         Insert: Partial<Client> & { name: string };
         Update: Partial<Client>;
+        Relationships: [];
+      };
+      client_services: {
+        Row: ClientService;
+        Insert: Partial<ClientService> & { client_id: string; service: string };
+        Update: Partial<ClientService>;
         Relationships: [];
       };
       payments: {

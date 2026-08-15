@@ -22,12 +22,14 @@ export default async function ClientsPage({
   const supabase = await createClient();
   let query = supabase
     .from("clients")
-    .select("id, name, company, status, phone, email")
+    .select("id, name, company, status, phone, email, primary_service")
     .order("created_at", { ascending: false });
   if (status && isClientStatus(status)) query = query.eq("status", status);
   if (q) query = query.ilike("name", `%${q}%`);
 
   const { data: clients } = await query;
+  const serviceLabel = (key: string | null) =>
+    (key && (dict.clients.serviceLabels as Record<string, string>)[key]) || null;
 
   return (
     <div>
@@ -79,6 +81,13 @@ export default async function ClientsPage({
                       {c.name}
                     </Link>
                     {c.company && <div className="text-white/40 text-xs">{c.company}</div>}
+                  </td>
+                  <td className="p-4 text-white/60">
+                    {serviceLabel(c.primary_service) && (
+                      <span className="text-xs px-2 py-1 rounded-full bg-[#F5C518]/10 text-[#F5C518]">
+                        {serviceLabel(c.primary_service)}
+                      </span>
+                    )}
                   </td>
                   <td className="p-4 text-white/60">{c.email || c.phone || "—"}</td>
                   <td className="p-4">
