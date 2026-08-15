@@ -2,6 +2,7 @@ import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { manageAuthGuard } from "./lib/supabase/middleware";
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -16,9 +17,16 @@ const GONE_PATHS = new Set([
   "/video-production-riyadh",
 ]);
 
-export default function middleware(request: NextRequest) {
+export default async function middleware(request: NextRequest) {
   // Normalise trailing slash so "/path/" and "/path" both match GONE_PATHS
   const pathname = request.nextUrl.pathname.replace(/\/$/, "") || "/";
+
+  // /manage is a standalone route tree outside next-intl's [locale] routing
+  // (see src/app/manage/). It owns its own auth gate and must never reach
+  // intlMiddleware below — branch out first.
+  if (pathname === "/manage" || pathname.startsWith("/manage/")) {
+    return manageAuthGuard(request);
+  }
 
   if (GONE_PATHS.has(pathname)) {
     return new NextResponse(null, { status: 410 });

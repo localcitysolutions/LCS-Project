@@ -28,7 +28,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob: https://images.unsplash.com https://www.google-analytics.com https://www.googletagmanager.com https://localcitysolutions.com https://cms.localcitysolutions.com",
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://api.web3forms.com https://pagespeedonline.googleapis.com https://www.clarity.ms https://cms.localcitysolutions.com",
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://api.web3forms.com https://pagespeedonline.googleapis.com https://www.clarity.ms https://cms.localcitysolutions.com https://*.supabase.co",
       "frame-src 'self' https://www.google.com https://maps.google.com https://www.googletagmanager.com",
       "object-src 'none'",
       "base-uri 'self'",
