@@ -37,6 +37,7 @@ export const clientSchema = z.object({
   gmb_name: z.string().trim().optional().or(z.literal("")),
   gmb_location: z.string().trim().optional().or(z.literal("")),
   gmb_link: z.string().trim().optional().or(z.literal("")),
+  vat_number: z.string().trim().optional().or(z.literal("")),
   notes: z.string().trim().optional().or(z.literal("")),
   assigned_to: z.string().uuid().optional().or(z.literal("")),
 });
@@ -53,20 +54,88 @@ export const clientServiceSchema = z.object({
 
 export type ClientServiceInput = z.infer<typeof clientServiceSchema>;
 
-export const paymentStatusValues = ["unpaid", "paid"] as const;
+// An unchecked HTML checkbox submits nothing at all, so FormData.get() returns
+// null rather than "false" — z.coerce.boolean() would read that as false only
+// by accident and would read the string "false" as true. Be explicit instead.
+const checkboxField = z.any().transform((v) => v === "on" || v === "true" || v === true);
 
+/** Standard Saudi VAT. Applied per-charge when the VAT box is ticked. */
+export const VAT_RATE = 15;
+
+export const billingPlanStatusValues = ["active", "paused", "ended"] as const;
+
+export const billingPlanSchema = z
+  .object({
+    monthly_amount: z.coerce.number().min(0, "Monthly amount must be 0 or more"),
+    setup_fee: z.coerce.number().min(0, "Setup fee must be 0 or more"),
+    currency: z.string().trim().min(1).default("SAR"),
+    billing_day: z.coerce
+      .number()
+      .int("Billing day must be a whole number")
+      .min(1, "Billing day must be between 1 and 28")
+      .max(28, "Billing day must be between 1 and 28"),
+    start_date: z.string().trim().min(1, "Start date is required"),
+    end_date: z.string().trim().optional().or(z.literal("")),
+    vat_enabled: checkboxField,
+    status: z.enum(billingPlanStatusValues).default("active"),
+    notes: z.string().trim().optional().or(z.literal("")),
+  })
+  .refine((d) => !d.end_date || d.end_date >= d.start_date, {
+    message: "End date cannot be before the start date",
+    path: ["end_date"],
+  })
+  .refine((d) => d.monthly_amount > 0 || d.setup_fee > 0, {
+    message: "Set a monthly amount, a setup fee, or both",
+    path: ["monthly_amount"],
+  });
+
+export type BillingPlanInput = z.infer<typeof billingPlanSchema>;
+
+export const paymentStatusValues = ["unpaid", "partial", "paid"] as const;
+export const paymentKindValues = ["monthly", "setup", "one_off"] as const;
+
+// NOTE: `status` is deliberately absent. A charge's status is derived in the
+// database from how much has actually been received against it, so it can
+// never drift from the money on record. To settle a charge, record a payment.
 export const paymentSchema = z.object({
   client_id: z.string().uuid("Select a client"),
+  kind: z.enum(paymentKindValues).default("one_off"),
   description: z.string().trim().optional().or(z.literal("")),
   amount: z.coerce.number().min(0, "Amount must be 0 or more"),
   currency: z.string().trim().min(1).default("SAR"),
   due_date: z.string().trim().optional().or(z.literal("")),
-  status: z.enum(paymentStatusValues),
+  period_month: z.string().trim().optional().or(z.literal("")),
+  vat_enabled: checkboxField,
   invoice_number: z.string().trim().optional().or(z.literal("")),
   notes: z.string().trim().optional().or(z.literal("")),
 });
 
 export type PaymentInput = z.infer<typeof paymentSchema>;
+
+export const paymentMethodValues = [
+  "bank",
+  "cash",
+  "stc_pay",
+  "card",
+  "cheque",
+  "other",
+] as const;
+
+/** Recording money that actually arrived. `apply_to` is either "auto" (settle
+ * the oldest open charges first), "credit" (hold it all as advance), or the id
+ * of a specific charge. */
+export const receiptSchema = z.object({
+  client_id: z.string().uuid("Select a client"),
+  amount: z.coerce.number().gt(0, "Amount must be greater than 0"),
+  currency: z.string().trim().min(1).default("SAR"),
+  received_at: z.string().trim().min(1, "Date received is required"),
+  method: z.enum(paymentMethodValues).default("bank"),
+  reference: z.string().trim().optional().or(z.literal("")),
+  notes: z.string().trim().optional().or(z.literal("")),
+  apply_to: z.string().trim().default("auto"),
+});
+
+export type ReceiptInput = z.infer<typeof receiptSchema>;
 
 export const reminderChannelValues = ["dashboard", "email", "whatsapp"] as const;
 export const reminderStatusValues = ["pending", "sent", "done", "dismissed"] as const;

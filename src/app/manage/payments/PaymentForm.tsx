@@ -1,10 +1,11 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import type { ActionResult } from "@/lib/manage/action-result";
-import { paymentStatusValues } from "@/lib/manage/schemas";
+import { paymentKindValues } from "@/lib/manage/schemas";
+import { money } from "@/lib/manage/money";
 import type { getDict } from "@/lib/manage/lang";
-import type { Payment } from "@/types/manage";
+import type { Payment, PaymentKind } from "@/types/manage";
 
 type Dict = ReturnType<typeof getDict>;
 
@@ -28,6 +29,16 @@ export default function PaymentForm({
   const field = (name: string) => state.fieldErrors?.[name];
   const inputClass =
     "w-full bg-[#0E1A2E] border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#F5C518]/40";
+
+  // Kept in state purely so the live VAT/total preview and the month field can
+  // react as you type — the real figures are always recomputed server-side.
+  const [kind, setKind] = useState<PaymentKind>(payment?.kind || "one_off");
+  const [amount, setAmount] = useState(String(payment?.amount ?? ""));
+  const [vat, setVat] = useState(Number(payment?.vat_rate ?? 0) > 0);
+  const [currency, setCurrency] = useState(payment?.currency || "SAR");
+
+  const subtotal = Number(amount) || 0;
+  const vatAmount = vat ? Math.round(subtotal * 15) / 100 : 0;
 
   return (
     <form action={formAction} className="max-w-xl space-y-4">
@@ -62,7 +73,8 @@ export default function PaymentForm({
             type="number"
             step="0.01"
             min="0"
-            defaultValue={payment?.amount ?? ""}
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
             required
             className={inputClass}
           />
@@ -70,25 +82,91 @@ export default function PaymentForm({
         </div>
         <div>
           <label className="block text-white/60 text-xs font-medium mb-1.5">{t.currency}</label>
-          <input name="currency" defaultValue={payment?.currency || "SAR"} className={inputClass} />
+          <input
+            name="currency"
+            value={currency}
+            onChange={(e) => setCurrency(e.target.value)}
+            className={inputClass}
+          />
         </div>
       </div>
+
+      <label className="flex items-center gap-2 text-sm text-white/70">
+        <input
+          type="checkbox"
+          name="vat_enabled"
+          checked={vat}
+          onChange={(e) => setVat(e.target.checked)}
+          className="accent-[#F5C518]"
+        />
+        {t.vat}
+      </label>
+
+      {vat && (
+        <div className="rounded-lg bg-white/[0.03] border border-white/10 px-4 py-3 text-sm space-y-1">
+          <div className="flex justify-between text-white/60">
+            <span>{t.subtotal}</span>
+            <span>{money(subtotal, currency)}</span>
+          </div>
+          <div className="flex justify-between text-white/60">
+            <span>{t.vatAmount}</span>
+            <span>{money(vatAmount, currency)}</span>
+          </div>
+          <div className="flex justify-between font-semibold border-t border-white/10 pt-1">
+            <span>{t.total}</span>
+            <span>{money(subtotal + vatAmount, currency)}</span>
+          </div>
+        </div>
+      )}
+
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-white/60 text-xs font-medium mb-1.5">{t.dueDate}</label>
           <input name="due_date" type="date" defaultValue={payment?.due_date || ""} className={inputClass} />
         </div>
         <div>
-          <label className="block text-white/60 text-xs font-medium mb-1.5">{t.status}</label>
-          <select name="status" defaultValue={payment?.status || "unpaid"} className={inputClass}>
-            {paymentStatusValues.map((s) => (
-              <option key={s} value={s}>
-                {t.statusLabels[s]}
+          <label className="block text-white/60 text-xs font-medium mb-1.5">{t.kind}</label>
+          <select
+            name="kind"
+            value={kind}
+            onChange={(e) => setKind(e.target.value as PaymentKind)}
+            className={inputClass}
+          >
+            {paymentKindValues.map((k) => (
+              <option key={k} value={k}>
+                {t.kindLabels[k]}
               </option>
             ))}
           </select>
         </div>
       </div>
+
+      {kind === "monthly" && (
+        <div>
+          <label className="block text-white/60 text-xs font-medium mb-1.5">{t.period} *</label>
+          <input
+            name="period_month"
+            type="month"
+            defaultValue={payment?.period_month ? payment.period_month.slice(0, 7) : ""}
+            className={inputClass}
+          />
+          <p className="text-white/30 text-[11px] mt-1">{t.periodHint}</p>
+          {field("period_month") && (
+            <p className="text-red-400 text-xs mt-1">{field("period_month")}</p>
+          )}
+        </div>
+      )}
+
+      {payment && (
+        <div className="rounded-lg bg-white/[0.03] border border-white/10 px-4 py-3 text-sm flex justify-between">
+          <span className="text-white/60">
+            {t.received}: {money(payment.amount_paid, payment.currency)}
+          </span>
+          <span className="text-white/60">
+            {t.status}: {t.statusLabels[payment.status]}
+          </span>
+        </div>
+      )}
       <div>
         <label className="block text-white/60 text-xs font-medium mb-1.5">{t.invoiceNumber}</label>
         <input name="invoice_number" defaultValue={payment?.invoice_number || ""} className={inputClass} />

@@ -27,6 +27,7 @@ function parseClientForm(formData: FormData) {
     gmb_name: formData.get("gmb_name"),
     gmb_location: formData.get("gmb_location"),
     gmb_link: formData.get("gmb_link"),
+    vat_number: formData.get("vat_number"),
     notes: formData.get("notes"),
     assigned_to: formData.get("assigned_to"),
   });
@@ -47,6 +48,7 @@ function clientRow(data: ReturnType<typeof clientSchema.parse>) {
     gmb_name: data.gmb_name || null,
     gmb_location: data.gmb_location || null,
     gmb_link: data.gmb_link || null,
+    vat_number: data.vat_number || null,
     notes: data.notes || null,
     assigned_to: data.assigned_to || null,
   };

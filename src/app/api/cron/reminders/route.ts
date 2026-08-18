@@ -23,6 +23,19 @@ export async function GET(request: Request) {
 
   const supabase = createAdminClient();
 
+  // Billing first: create any monthly/setup charges that have come due, then
+  // apply whatever the client has already paid in advance. The generator is
+  // idempotent (unique index on client + billed month), so running it hourly
+  // is safe and a missed run simply catches up on the next tick.
+  let chargesCreated = 0;
+  const { data: generated, error: generateError } = await supabase.rpc("generate_due_charges");
+  if (generateError) {
+    // Don't abort — reminders are independent and still worth sending.
+    console.error("[cron] generate_due_charges failed", generateError);
+  } else {
+    chargesCreated = Number(generated ?? 0);
+  }
+
   const { data: dueReminders, error } = await supabase
     .from("reminders")
     .select("id, title, description, due_at, channels")
@@ -102,5 +115,10 @@ export async function GET(request: Request) {
     }
   }
 
-  return NextResponse.json({ processed: dueReminders?.length || 0, sent, skipped });
+  return NextResponse.json({
+    chargesCreated,
+    processed: dueReminders?.length || 0,
+    sent,
+    skipped,
+  });
 }

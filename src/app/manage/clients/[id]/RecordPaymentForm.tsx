@@ -1,0 +1,124 @@
+"use client";
+
+import { useActionState } from "react";
+import type { ActionResult } from "@/lib/manage/action-result";
+import { paymentMethodValues } from "@/lib/manage/schemas";
+import { money } from "@/lib/manage/money";
+import type { getDict } from "@/lib/manage/lang";
+
+type Dict = ReturnType<typeof getDict>;
+
+export type OpenCharge = {
+  id: string;
+  label: string;
+  balance: number;
+  currency: string;
+};
+
+const initialState: ActionResult = {};
+
+const inputClass =
+  "w-full bg-[#0A1524] border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#F5C518]/40";
+const labelClass = "block text-white/50 text-xs font-medium mb-1.5";
+
+export default function RecordPaymentForm({
+  dict,
+  action,
+  openCharges,
+  currency,
+  today,
+}: {
+  dict: Dict;
+  action: (prevState: ActionResult, formData: FormData) => Promise<ActionResult>;
+  openCharges: OpenCharge[];
+  currency: string;
+  today: string;
+}) {
+  const [state, formAction, pending] = useActionState(action, initialState);
+  const t = dict.receipts;
+  const field = (name: string) => state.fieldErrors?.[name];
+
+  return (
+    <form action={formAction} className="space-y-3 mb-5 pb-5 border-b border-white/10">
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className={labelClass}>{t.amount} *</label>
+          <input
+            name="amount"
+            type="number"
+            step="0.01"
+            min="0.01"
+            required
+            placeholder="500.00"
+            className={inputClass}
+          />
+          {field("amount") && <p className="text-red-400 text-xs mt-1">{field("amount")}</p>}
+        </div>
+        <div>
+          <label className={labelClass}>{t.receivedAt} *</label>
+          <input
+            name="received_at"
+            type="date"
+            required
+            defaultValue={today}
+            className={inputClass}
+          />
+          {field("received_at") && (
+            <p className="text-red-400 text-xs mt-1">{field("received_at")}</p>
+          )}
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className={labelClass}>{t.method}</label>
+          <select name="method" defaultValue="bank" className={inputClass}>
+            {paymentMethodValues.map((m) => (
+              <option key={m} value={m}>
+                {t.methodLabels[m]}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className={labelClass}>{dict.payments.currency}</label>
+          <input name="currency" defaultValue={currency} className={inputClass} />
+        </div>
+      </div>
+
+      <div>
+        <label className={labelClass}>{t.applyTo}</label>
+        <select name="apply_to" defaultValue="auto" className={inputClass}>
+          <option value="auto">{t.applyAuto}</option>
+          {openCharges.map((c) => (
+            <option key={c.id} value={c.id}>
+              {c.label} — {money(c.balance, c.currency)}
+            </option>
+          ))}
+          <option value="credit">{t.applyCredit}</option>
+        </select>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className={labelClass}>{t.reference}</label>
+          <input name="reference" className={inputClass} />
+        </div>
+        <div>
+          <label className={labelClass}>{t.notes}</label>
+          <input name="notes" className={inputClass} />
+        </div>
+      </div>
+
+      {state.error && <p className="text-red-400 text-sm">{state.error}</p>}
+
+      <button
+        type="submit"
+        disabled={pending}
+        className="px-5 py-2 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all disabled:opacity-50"
+      >
+        {pending ? dict.common.loading : t.save}
+      </button>
+    </form>
+  );
+}

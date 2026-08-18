@@ -32,6 +32,7 @@ export type Client = {
   gmb_name: string | null;
   gmb_location: string | null;
   gmb_link: string | null;
+  vat_number: string | null;
   notes: string | null;
   assigned_to: string | null;
   created_by: string | null;
@@ -54,13 +55,45 @@ export type ClientService = {
   updated_at: string;
 };
 
-export type PaymentStatus = "unpaid" | "paid";
+export type BillingPlanStatus = "active" | "paused" | "ended";
 
+/** What a client owes on a recurring basis, plus the one-time setup fee. */
+export type BillingPlan = {
+  id: string;
+  client_id: string;
+  monthly_amount: number;
+  setup_fee: number;
+  setup_fee_charged: boolean;
+  currency: string;
+  billing_day: number;
+  start_date: string;
+  end_date: string | null;
+  vat_enabled: boolean;
+  status: BillingPlanStatus;
+  notes: string | null;
+  created_by: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+// "partial" is never written by the app — a database trigger derives it from
+// how much of the charge has actually been settled by receipts.
+export type PaymentStatus = "unpaid" | "partial" | "paid";
+export type PaymentKind = "monthly" | "setup" | "one_off";
+
+/** A CHARGE (invoice). `amount` is the pre-VAT subtotal. */
 export type Payment = {
   id: string;
   client_id: string;
+  plan_id: string | null;
+  kind: PaymentKind;
+  period_month: string | null;
   description: string | null;
   amount: number;
+  vat_rate: number;
+  vat_amount: number;
+  total: number;
+  amount_paid: number;
   currency: string;
   due_date: string | null;
   status: PaymentStatus;
@@ -73,7 +106,45 @@ export type Payment = {
 };
 
 export type PaymentWithStatus = Payment & {
+  balance: number;
   is_overdue: boolean;
+};
+
+export type PaymentMethod = "bank" | "cash" | "stc_pay" | "card" | "cheque" | "other";
+
+/** Money actually received from a client. Separate from the charge it settles
+ * so one payment can cover several months and one month can be covered by
+ * several payments (partial) — and so an advance can sit unapplied as credit. */
+export type PaymentReceipt = {
+  id: string;
+  client_id: string;
+  amount: number;
+  currency: string;
+  received_at: string;
+  method: PaymentMethod;
+  reference: string | null;
+  notes: string | null;
+  created_by: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type PaymentAllocation = {
+  id: string;
+  receipt_id: string;
+  payment_id: string;
+  amount: number;
+  created_at: string;
+};
+
+export type ClientBalance = {
+  client_id: string;
+  total_charged: number;
+  total_applied: number;
+  outstanding: number;
+  total_received: number;
+  credit_balance: number;
+  overdue_count: number;
 };
 
 export type ReminderChannel = "dashboard" | "email" | "whatsapp";
@@ -122,10 +193,32 @@ export type Database = {
         Update: Partial<ClientService>;
         Relationships: [];
       };
+      billing_plans: {
+        Row: BillingPlan;
+        Insert: Partial<BillingPlan> & { client_id: string; start_date: string };
+        Update: Partial<BillingPlan>;
+        Relationships: [];
+      };
       payments: {
         Row: Payment;
         Insert: Partial<Payment> & { client_id: string; amount: number };
         Update: Partial<Payment>;
+        Relationships: [];
+      };
+      payment_receipts: {
+        Row: PaymentReceipt;
+        Insert: Partial<PaymentReceipt> & { client_id: string; amount: number };
+        Update: Partial<PaymentReceipt>;
+        Relationships: [];
+      };
+      payment_allocations: {
+        Row: PaymentAllocation;
+        Insert: Partial<PaymentAllocation> & {
+          receipt_id: string;
+          payment_id: string;
+          amount: number;
+        };
+        Update: Partial<PaymentAllocation>;
         Relationships: [];
       };
       reminders: {
@@ -140,8 +233,21 @@ export type Database = {
         Row: PaymentWithStatus;
         Relationships: [];
       };
+      client_balances: {
+        Row: ClientBalance;
+        Relationships: [];
+      };
     };
-    Functions: Record<string, never>;
+    Functions: {
+      generate_due_charges: {
+        Args: Record<string, never>;
+        Returns: number;
+      };
+      apply_client_credit: {
+        Args: { p_client_id: string | null };
+        Returns: number;
+      };
+    };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
   };

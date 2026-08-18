@@ -2,11 +2,19 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { getManageLang, getDict } from "@/lib/manage/lang";
 import { paymentStatusValues } from "@/lib/manage/schemas";
+import { money, monthLabel } from "@/lib/manage/money";
+import GenerateChargesButton from "./GenerateChargesButton";
 import type { PaymentStatus } from "@/types/manage";
 
 function isPaymentStatus(value: string): value is PaymentStatus {
   return (paymentStatusValues as readonly string[]).includes(value);
 }
+
+const paymentStatusClasses: Record<PaymentStatus, string> = {
+  unpaid: "bg-white/10 text-white/60",
+  partial: "bg-amber-500/15 text-amber-400",
+  paid: "bg-green-500/15 text-green-400",
+};
 
 export const dynamic = "force-dynamic";
 
@@ -33,14 +41,17 @@ export default async function PaymentsPage({
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <h1 className="text-2xl font-bold">{dict.payments.title}</h1>
-        <Link
-          href="/manage/payments/new"
-          className="px-4 py-2 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm"
-        >
-          {dict.payments.new}
-        </Link>
+        <div className="flex flex-wrap items-center gap-3">
+          <GenerateChargesButton dict={dict} />
+          <Link
+            href="/manage/payments/new"
+            className="px-4 py-2 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm"
+          >
+            {dict.payments.new}
+          </Link>
+        </div>
       </div>
 
       <form className="flex flex-wrap items-center gap-4 mb-6" method="get">
@@ -50,8 +61,11 @@ export default async function PaymentsPage({
           className="bg-[#0E1A2E] border border-white/10 rounded-lg px-4 py-2 text-sm"
         >
           <option value="">{dict.payments.status}</option>
-          <option value="unpaid">{dict.payments.statusLabels.unpaid}</option>
-          <option value="paid">{dict.payments.statusLabels.paid}</option>
+          {paymentStatusValues.map((s) => (
+            <option key={s} value={s}>
+              {dict.payments.statusLabels[s]}
+            </option>
+          ))}
         </select>
         <label className="flex items-center gap-2 text-sm text-white/60">
           <input type="checkbox" name="overdue" value="1" defaultChecked={overdue === "1"} />
@@ -74,20 +88,44 @@ export default async function PaymentsPage({
                     <Link href={`/manage/payments/${p.id}/edit`} className="font-medium hover:text-[#F5C518]">
                       {names.get(p.client_id) || "—"}
                     </Link>
-                    <div className="text-white/40 text-xs">{p.description}</div>
+                    <div className="text-white/40 text-xs">
+                      {dict.payments.kindLabels[p.kind]}
+                      {p.period_month ? ` · ${monthLabel(p.period_month, lang)}` : ""}
+                      {p.description ? ` · ${p.description}` : ""}
+                    </div>
                   </td>
-                  <td className="p-4">
-                    {p.amount} {p.currency}
+                  <td className="p-4 whitespace-nowrap">
+                    {money(p.total, p.currency)}
+                    {Number(p.vat_amount) > 0 && (
+                      <div className="text-white/30 text-[11px]">
+                        {dict.payments.vatAmount} {money(p.vat_amount, p.currency)}
+                      </div>
+                    )}
                   </td>
-                  <td className="p-4 text-white/60">{p.due_date || "—"}</td>
+                  <td className="p-4 whitespace-nowrap">
+                    {Number(p.balance) > 0 ? (
+                      <span className="text-amber-400">{money(p.balance, p.currency)}</span>
+                    ) : (
+                      <span className="text-white/30">—</span>
+                    )}
+                    {Number(p.amount_paid) > 0 && Number(p.balance) > 0 && (
+                      <div className="text-white/30 text-[11px]">
+                        {dict.payments.received} {money(p.amount_paid, p.currency)}
+                      </div>
+                    )}
+                  </td>
+                  <td className="p-4 text-white/60 whitespace-nowrap">{p.due_date || "—"}</td>
                   <td className="p-4">
                     <span
-                      className={`text-xs px-2 py-1 rounded-full ${
-                        p.is_overdue ? "bg-red-500/10 text-red-400" : "bg-white/5"
-                      }`}
+                      className={`text-xs px-2 py-1 rounded-full ${paymentStatusClasses[p.status]}`}
                     >
-                      {p.is_overdue ? dict.payments.overdue : dict.payments.statusLabels[p.status]}
+                      {dict.payments.statusLabels[p.status]}
                     </span>
+                    {p.is_overdue && (
+                      <span className="ms-1 text-xs px-2 py-1 rounded-full bg-red-500/10 text-red-400">
+                        {dict.payments.overdue}
+                      </span>
+                    )}
                   </td>
                 </tr>
               ))}

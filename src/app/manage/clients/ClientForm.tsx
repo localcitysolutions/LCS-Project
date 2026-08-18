@@ -118,6 +118,15 @@ export default function ClientForm({
         />
       </div>
       <div>
+        <label className={labelClass}>{t.vatNumber}</label>
+        <input
+          name="vat_number"
+          placeholder="3xxxxxxxxxxxxx3"
+          defaultValue={client?.vat_number || ""}
+          className={inputClass}
+        />
+      </div>
+      <div>
         <label className={labelClass}>{t.assignedTo}</label>
         <select name="assigned_to" defaultValue={client?.assigned_to || ""} className={inputClass}>
           <option value="">{t.unassigned}</option>

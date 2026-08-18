@@ -3,10 +3,16 @@ import type { ZodError } from "zod";
 /** Shared return shape for every /manage Server Action. */
 export interface ActionResult {
   error?: string;
+  /** Success feedback shown next to the form (e.g. "3 charges created"). */
+  message?: string;
   fieldErrors?: Record<string, string>;
 }
 
 export const actionOk: ActionResult = {};
+
+export function actionMessage(message: string): ActionResult {
+  return { message };
+}
 
 export function actionError(error: string, fieldErrors?: Record<string, string>): ActionResult {
   return { error, fieldErrors };
