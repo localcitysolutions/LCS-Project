@@ -350,7 +350,18 @@ export default async function ClientDetailPage({
         </section>
 
         <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
-          <h2 className="font-semibold mb-4">{rc.title}</h2>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-semibold">{rc.title}</h2>
+            {Number(balance?.outstanding ?? 0) > 0 && (
+              <a
+                href={`/manage/clients/${id}/statement`}
+                className="text-xs text-[#F5C518] hover:underline"
+                title={dict.documents.statementHint}
+              >
+                {dict.documents.statement} PDF
+              </a>
+            )}
+          </div>
           <RecordPaymentForm
             dict={dict}
             action={boundCreateReceipt}
@@ -373,6 +384,12 @@ export default async function ClientDetailPage({
                     <span className="text-white/40 text-xs">{r.received_at}</span>
                     <span className="text-white/40 text-xs">{rc.methodLabels[r.method]}</span>
                     {r.reference && <span className="text-white/40 text-xs">#{r.reference}</span>}
+                    <a
+                      href={`/manage/receipts/${r.id}`}
+                      className="text-xs text-[#F5C518] hover:underline"
+                    >
+                      {dict.documents.receipt} PDF
+                    </a>
                     {unapplied > 0.005 && (
                       <span className="text-[11px] px-2 py-0.5 rounded-full bg-[#F5C518]/15 text-[#F5C518]">
                         {money(unapplied, r.currency)} {rc.unapplied}
@@ -427,7 +444,13 @@ export default async function ClientDetailPage({
                         {pay.overdue}
                       </span>
                     )}
-                    <span className="flex gap-1 ms-auto">
+                    <span className="flex items-center gap-1 ms-auto">
+                      <a
+                        href={`/manage/invoices/${p.id}`}
+                        className="text-xs px-2 py-1 rounded bg-white/5 hover:bg-white/10 text-[#F5C518]"
+                      >
+                        {dict.documents.invoice} PDF
+                      </a>
                       {Number(p.balance) > 0 && (
                         <form action={markPaymentPaidAction.bind(null, p.id, id)}>
                           <button className="text-xs px-2 py-1 rounded bg-white/5 hover:bg-white/10">

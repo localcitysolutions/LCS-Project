@@ -60,6 +60,9 @@ export default async function ManageLayout({ children }: { children: React.React
                     {dict.nav.team}
                   </Link>
                 )}
+                <Link href="/manage/settings" className={navLinkClass}>
+                  {dict.nav.settings}
+                </Link>
               </nav>
               <div className="mt-auto pt-5 border-t border-white/10 space-y-3">
                 <div className="text-xs text-white/50 leading-relaxed">

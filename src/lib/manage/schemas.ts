@@ -112,6 +112,27 @@ export const paymentSchema = z.object({
 
 export type PaymentInput = z.infer<typeof paymentSchema>;
 
+/** The seller details printed on every invoice, receipt and statement. */
+export const companySettingsSchema = z.object({
+  name_en: z.string().trim().min(1, "Company name is required"),
+  name_ar: z.string().trim().optional().or(z.literal("")),
+  vat_number: z.string().trim().optional().or(z.literal("")),
+  cr_number: z.string().trim().optional().or(z.literal("")),
+  address_en: z.string().trim().optional().or(z.literal("")),
+  address_ar: z.string().trim().optional().or(z.literal("")),
+  phone: z.string().trim().optional().or(z.literal("")),
+  email: z.string().trim().email("Invalid email").optional().or(z.literal("")),
+  website: z.string().trim().optional().or(z.literal("")),
+  bank_name: z.string().trim().optional().or(z.literal("")),
+  iban: z.string().trim().optional().or(z.literal("")),
+  invoice_prefix: z.string().trim().min(1).max(8).default("INV"),
+  receipt_prefix: z.string().trim().min(1).max(8).default("RCT"),
+  payment_terms_en: z.string().trim().optional().or(z.literal("")),
+  payment_terms_ar: z.string().trim().optional().or(z.literal("")),
+});
+
+export type CompanySettingsInput = z.infer<typeof companySettingsSchema>;
+
 export const paymentMethodValues = [
   "bank",
   "cash",

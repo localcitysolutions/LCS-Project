@@ -118,6 +118,7 @@ export type PaymentMethod = "bank" | "cash" | "stc_pay" | "card" | "cheque" | "o
 export type PaymentReceipt = {
   id: string;
   client_id: string;
+  receipt_number: string | null;
   amount: number;
   currency: string;
   received_at: string;
@@ -135,6 +136,28 @@ export type PaymentAllocation = {
   payment_id: string;
   amount: number;
   created_at: string;
+};
+
+/** The seller side of every invoice. Exactly one row exists — the database
+ * enforces that with a boolean primary key. */
+export type CompanySettings = {
+  id: boolean;
+  name_en: string;
+  name_ar: string;
+  vat_number: string | null;
+  cr_number: string | null;
+  address_en: string | null;
+  address_ar: string | null;
+  phone: string | null;
+  email: string | null;
+  website: string | null;
+  bank_name: string | null;
+  iban: string | null;
+  invoice_prefix: string;
+  receipt_prefix: string;
+  payment_terms_en: string | null;
+  payment_terms_ar: string | null;
+  updated_at: string;
 };
 
 export type ClientBalance = {
@@ -209,6 +232,12 @@ export type Database = {
         Row: PaymentReceipt;
         Insert: Partial<PaymentReceipt> & { client_id: string; amount: number };
         Update: Partial<PaymentReceipt>;
+        Relationships: [];
+      };
+      company_settings: {
+        Row: CompanySettings;
+        Insert: Partial<CompanySettings>;
+        Update: Partial<CompanySettings>;
         Relationships: [];
       };
       payment_allocations: {

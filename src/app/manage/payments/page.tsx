@@ -1,3 +1,7 @@
+/* eslint-disable @next/next/no-html-link-for-pages --
+ * The bulk-download links point at a route handler that returns a PDF
+ * attachment, not a page. next/link would prefetch it and then try to
+ * client-side navigate into a binary response instead of downloading it. */
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { getManageLang, getDict } from "@/lib/manage/lang";
@@ -45,6 +49,18 @@ export default async function PaymentsPage({
         <h1 className="text-2xl font-bold">{dict.payments.title}</h1>
         <div className="flex flex-wrap items-center gap-3">
           <GenerateChargesButton dict={dict} />
+          <a
+            href="/manage/invoices/bulk"
+            className="px-4 py-2 rounded-full bg-white/10 text-sm hover:bg-white/15 transition-all"
+          >
+            {dict.documents.bulkInvoices}
+          </a>
+          <a
+            href="/manage/invoices/bulk?overdue=1"
+            className="px-4 py-2 rounded-full bg-red-500/10 text-red-300 text-sm hover:bg-red-500/20 transition-all"
+          >
+            {dict.documents.bulkOverdue}
+          </a>
           <Link
             href="/manage/payments/new"
             className="px-4 py-2 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm"
@@ -126,6 +142,14 @@ export default async function PaymentsPage({
                         {dict.payments.overdue}
                       </span>
                     )}
+                  </td>
+                  <td className="p-4 text-right">
+                    <a
+                      href={`/manage/invoices/${p.id}`}
+                      className="text-xs text-[#F5C518] hover:underline whitespace-nowrap"
+                    >
+                      {dict.documents.invoice} PDF
+                    </a>
                   </td>
                 </tr>
               ))}
