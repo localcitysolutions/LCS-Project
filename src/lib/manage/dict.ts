@@ -67,6 +67,8 @@ export const manageDict = {
         google_ads_ppc: "Google Ads / PPC",
         social_media: "Social Media",
         content_blogs: "Content / Blogs",
+        google_ads_fee: "Google Ads Fee",
+        gmb_creation_fee: "GMB Creation Fee",
       },
     },
     services: {
@@ -195,6 +197,8 @@ export const manageDict = {
         google_ads_ppc: "إعلانات Google / الدفع بالنقرة",
         social_media: "وسائل التواصل الاجتماعي",
         content_blogs: "المحتوى / المدونات",
+        google_ads_fee: "رسوم إعلانات Google",
+        gmb_creation_fee: "رسوم إنشاء نشاط Google",
       },
     },
     services: {

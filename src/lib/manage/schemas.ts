@@ -15,6 +15,8 @@ export const serviceTypeValues = [
   "google_ads_ppc",
   "social_media",
   "content_blogs",
+  "google_ads_fee",
+  "gmb_creation_fee",
 ] as const;
 export type ServiceType = (typeof serviceTypeValues)[number];
 
