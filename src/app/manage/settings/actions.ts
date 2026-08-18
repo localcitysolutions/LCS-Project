@@ -28,6 +28,8 @@ export async function saveCompanySettingsAction(
     iban: formData.get("iban"),
     invoice_prefix: formData.get("invoice_prefix") || "INV",
     receipt_prefix: formData.get("receipt_prefix") || "RCT",
+    quote_prefix: formData.get("quote_prefix") || "QTN",
+    quote_validity_days: formData.get("quote_validity_days") || 14,
     payment_terms_en: formData.get("payment_terms_en"),
     payment_terms_ar: formData.get("payment_terms_ar"),
   });
@@ -57,6 +59,8 @@ export async function saveCompanySettingsAction(
       iban: d.iban || null,
       invoice_prefix: d.invoice_prefix,
       receipt_prefix: d.receipt_prefix,
+      quote_prefix: d.quote_prefix,
+      quote_validity_days: d.quote_validity_days,
       payment_terms_en: d.payment_terms_en || null,
       payment_terms_ar: d.payment_terms_ar || null,
     })

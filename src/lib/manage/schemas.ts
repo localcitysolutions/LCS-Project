@@ -112,6 +112,56 @@ export const paymentSchema = z.object({
 
 export type PaymentInput = z.infer<typeof paymentSchema>;
 
+export const quotationStatusValues = [
+  "draft",
+  "sent",
+  "accepted",
+  "declined",
+  "expired",
+  "converted",
+] as const;
+
+export const quotationItemSchema = z.object({
+  service: z.string().trim().optional().or(z.literal("")),
+  description: z.string().trim().min(1, "Every line needs a description"),
+  kind: z.enum(paymentKindValues).default("one_off"),
+  quantity: z.coerce.number().gt(0, "Quantity must be greater than 0"),
+  unit_price: z.coerce.number().min(0, "Price cannot be negative"),
+});
+
+export type QuotationItemInput = z.infer<typeof quotationItemSchema>;
+
+export const quotationSchema = z
+  .object({
+    client_id: z.string().uuid("Select a client"),
+    title: z.string().trim().optional().or(z.literal("")),
+    issue_date: z.string().trim().min(1, "Issue date is required"),
+    valid_until: z.string().trim().optional().or(z.literal("")),
+    currency: z.string().trim().min(1).default("SAR"),
+    vat_enabled: checkboxField,
+    discount: z.coerce.number().min(0, "Discount cannot be negative").default(0),
+    notes: z.string().trim().optional().or(z.literal("")),
+    terms: z.string().trim().optional().or(z.literal("")),
+    items: z.array(quotationItemSchema).min(1, "Add at least one line item"),
+  })
+  .refine((d) => !d.valid_until || d.valid_until >= d.issue_date, {
+    message: "Valid-until cannot be before the issue date",
+    path: ["valid_until"],
+  })
+  .refine(
+    (d) => {
+      // The discount applies to the one-off total only — a recurring line is
+      // not something you can take a one-time discount off.
+      const oneOff = d.items
+        .filter((i) => i.kind !== "monthly")
+        .reduce((sum, i) => sum + i.quantity * i.unit_price, 0);
+      return d.discount <= oneOff + 0.005;
+    },
+    { message: "Discount cannot be more than the one-off total", path: ["discount"] }
+  );
+
+export type QuotationInput = z.infer<typeof quotationSchema>;
+
 /** The seller details printed on every invoice, receipt and statement. */
 export const companySettingsSchema = z.object({
   name_en: z.string().trim().min(1, "Company name is required"),
@@ -127,6 +177,8 @@ export const companySettingsSchema = z.object({
   iban: z.string().trim().optional().or(z.literal("")),
   invoice_prefix: z.string().trim().min(1).max(8).default("INV"),
   receipt_prefix: z.string().trim().min(1).max(8).default("RCT"),
+  quote_prefix: z.string().trim().min(1).max(8).default("QTN"),
+  quote_validity_days: z.coerce.number().int().min(1).max(365).default(14),
   payment_terms_en: z.string().trim().optional().or(z.literal("")),
   payment_terms_ar: z.string().trim().optional().or(z.literal("")),
 });

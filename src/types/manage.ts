@@ -138,6 +138,54 @@ export type PaymentAllocation = {
   created_at: string;
 };
 
+export type QuotationStatus =
+  | "draft"
+  | "sent"
+  | "accepted"
+  | "declined"
+  | "expired"
+  | "converted";
+
+export type Quotation = {
+  id: string;
+  client_id: string;
+  quote_number: string | null;
+  title: string | null;
+  status: QuotationStatus;
+  issue_date: string;
+  valid_until: string | null;
+  currency: string;
+  vat_enabled: boolean;
+  discount: number;
+  notes: string | null;
+  terms: string | null;
+  /** One-off total after discount. Derived in the database from the items. */
+  subtotal: number;
+  vat_amount: number;
+  total: number;
+  /** Recurring total, deliberately kept out of `total` — it is what the client
+   * pays every month, not what they owe on acceptance. */
+  monthly_total: number;
+  accepted_at: string | null;
+  converted_at: string | null;
+  created_by: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type QuotationItem = {
+  id: string;
+  quotation_id: string;
+  position: number;
+  service: string | null;
+  description: string;
+  kind: PaymentKind;
+  quantity: number;
+  unit_price: number;
+  line_total: number;
+  created_at: string;
+};
+
 /** The seller side of every invoice. Exactly one row exists — the database
  * enforces that with a boolean primary key. */
 export type CompanySettings = {
@@ -155,6 +203,8 @@ export type CompanySettings = {
   iban: string | null;
   invoice_prefix: string;
   receipt_prefix: string;
+  quote_prefix: string;
+  quote_validity_days: number;
   payment_terms_en: string | null;
   payment_terms_ar: string | null;
   updated_at: string;
@@ -234,6 +284,18 @@ export type Database = {
         Update: Partial<PaymentReceipt>;
         Relationships: [];
       };
+      quotations: {
+        Row: Quotation;
+        Insert: Partial<Quotation> & { client_id: string };
+        Update: Partial<Quotation>;
+        Relationships: [];
+      };
+      quotation_items: {
+        Row: QuotationItem;
+        Insert: Partial<QuotationItem> & { quotation_id: string; description: string };
+        Update: Partial<QuotationItem>;
+        Relationships: [];
+      };
       company_settings: {
         Row: CompanySettings;
         Insert: Partial<CompanySettings>;
@@ -274,6 +336,10 @@ export type Database = {
       };
       apply_client_credit: {
         Args: { p_client_id: string | null };
+        Returns: number;
+      };
+      convert_quotation: {
+        Args: { p_quotation_id: string; p_replace_plan?: boolean };
         Returns: number;
       };
     };

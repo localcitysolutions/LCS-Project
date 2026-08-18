@@ -117,7 +117,7 @@ export default function CompanySettingsForm({
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div>
             <label className={labelClass}>{t.invoicePrefix}</label>
             <input
@@ -133,6 +133,26 @@ export default function CompanySettingsForm({
               name="receipt_prefix"
               defaultValue={settings?.receipt_prefix || "RCT"}
               maxLength={8}
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label className={labelClass}>{t.quotePrefix}</label>
+            <input
+              name="quote_prefix"
+              defaultValue={settings?.quote_prefix || "QTN"}
+              maxLength={8}
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label className={labelClass}>{t.quoteValidity}</label>
+            <input
+              name="quote_validity_days"
+              type="number"
+              min="1"
+              max="365"
+              defaultValue={settings?.quote_validity_days ?? 14}
               className={inputClass}
             />
           </div>

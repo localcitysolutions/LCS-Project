@@ -67,6 +67,34 @@ const L = {
     "هذا مستند صادر إلكترونياً وصالح بدون توقيع.",
   ],
   noOutstanding: ["No outstanding charges.", "لا توجد مبالغ مستحقة."],
+  quotation: ["QUOTATION", "عرض سعر"],
+  quoteNo: ["Quotation no.", "رقم العرض"],
+  validUntil: ["Valid until", "صالح حتى"],
+  quoteFor: ["QUOTATION FOR", "عرض سعر إلى"],
+  item: ["#", "#"],
+  billing: ["Billing", "نوع الفوترة"],
+  qty: ["Qty", "الكمية"],
+  unitPrice: ["Unit price", "سعر الوحدة"],
+  lineTotal: ["Line total", "الإجمالي"],
+  oneOffSubtotal: ["One-off subtotal", "المجموع لمرة واحدة"],
+  discount: ["Discount", "الخصم"],
+  dueOnAcceptance: ["TOTAL DUE ON ACCEPTANCE", "المستحق عند القبول"],
+  recurring: ["Recurring monthly", "الاشتراك الشهري"],
+  recurringNote: [
+    "Billed every month after acceptance. Not included in the total above.",
+    "يُحتسب شهرياً بعد القبول، وهو غير مشمول في الإجمالي أعلاه.",
+  ],
+  notes: ["Notes", "ملاحظات"],
+  terms: ["Terms & conditions", "الشروط والأحكام"],
+  acceptance: ["ACCEPTANCE", "الموافقة"],
+  acceptanceNote: [
+    "Sign and return this quotation to confirm the scope and pricing above.",
+    "يُرجى التوقيع وإعادة هذا العرض لتأكيد النطاق والأسعار أعلاه.",
+  ],
+  signature: ["Client signature", "توقيع العميل"],
+  nameLabel: ["Name", "الاسم"],
+  dateLabel: ["Date", "التاريخ"],
+  creditNote: ["CREDIT NOTE", "إشعار دائن"],
 } as const;
 
 type Pair = readonly [string, string];
@@ -194,26 +222,13 @@ function Header({ company, title }: { company: PdfCompany; title: Pair }) {
           {!!company.email && <Text style={styles.muted}>{company.email}</Text>}
           {!!company.website && <Text style={styles.muted}>{company.website}</Text>}
         </View>
-        {/* Caption line then value line. Putting a number after the Arabic
-            caption on one line lets bidi reorder it to the wrong side of the
-            label, and a colon between them migrates to the wrong end. */}
-        <View style={{ marginTop: 5 }}>
-          {!!company.vat_number && (
-            <>
-              <Text style={[styles.muted, { fontSize: 8 }]}>
-                {L.vatNo[0]} · {rlm(L.vatNo[1])}
-              </Text>
-              <Text style={{ fontWeight: 700 }}>{company.vat_number}</Text>
-            </>
-          )}
-          {!!company.cr_number && (
-            <>
-              <Text style={[styles.muted, { fontSize: 8, marginTop: 2 }]}>
-                {L.crNo[0]} · {rlm(L.crNo[1])}
-              </Text>
-              <Text style={{ fontWeight: 700 }}>{company.cr_number}</Text>
-            </>
-          )}
+        {/* Label and value as a two-column row inside a narrow box: one line
+            each instead of four, and the number never gets bidi-reordered to
+            the wrong side of the Arabic caption because they are separate
+            text nodes rather than one mixed-direction string. */}
+        <View style={{ marginTop: 5, width: 215 }}>
+          {!!company.vat_number && <Field pair={L.vatNo} value={company.vat_number} />}
+          {!!company.cr_number && <Field pair={L.crNo} value={company.cr_number} />}
         </View>
       </View>
       <View style={{ width: 168, flexShrink: 0, alignItems: "flex-end" }}>
@@ -243,10 +258,15 @@ function PartyBox({ pair, client }: { pair: Pair; client: PdfClient }) {
   );
 }
 
-function PaymentDetails({ company }: { company: PdfCompany }) {
+function PaymentDetails({ company, flush = false }: { company: PdfCompany; flush?: boolean }) {
   if (!company.bank_name && !company.iban && !company.payment_terms_en) return null;
+  // wrap={false} keeps the whole block on one page — a page break through the
+  // middle of it leaves an empty grey band at the foot of the previous page.
   return (
-    <View style={{ marginTop: 18, backgroundColor: BRAND.softBg, padding: 10 }}>
+    <View
+      style={{ marginTop: flush ? 0 : 14, backgroundColor: BRAND.softBg, padding: 10, flex: flush ? 1 : undefined }}
+      wrap={false}
+    >
       <Text style={styles.boxLabel}>
         {L.payTo[0]} · {L.payTo[1]}
       </Text>
@@ -361,10 +381,14 @@ export function InvoicePage({
   charge: PdfCharge;
   qr: string | null;
 }) {
-  const isTax = Number(charge.vat_amount) > 0;
+  const isTax = Number(charge.vat_amount) !== 0;
+  // A negative charge is a credit (a quotation discount, a write-off). It is
+  // the same document with the opposite sign, and calling it an invoice would
+  // be wrong on its face.
+  const isCredit = Number(charge.total) < 0;
   return (
     <Page size="A4" style={styles.page}>
-      <Header company={company} title={isTax ? L.taxInvoice : L.invoice} />
+      <Header company={company} title={isCredit ? L.creditNote : isTax ? L.taxInvoice : L.invoice} />
       <View style={styles.rule} />
 
       <View style={styles.twoCol}>
@@ -374,7 +398,15 @@ export function InvoicePage({
           <Field pair={L.issueDate} value={charge.created_at.slice(0, 10)} />
           <Field pair={L.dueDate} value={charge.due_date || "—"} />
           <View style={{ marginTop: 6 }}>
-            <StatusBadge status={charge.status} overdue={charge.is_overdue} />
+            {isCredit ? (
+              <View style={[styles.badge, { backgroundColor: BRAND.accent }]}>
+                <Text style={{ color: "#FFFFFF", fontSize: 8, fontWeight: 700 }}>
+                  {L.creditNote[0]} · {L.creditNote[1]}
+                </Text>
+              </View>
+            ) : (
+              <StatusBadge status={charge.status} overdue={charge.is_overdue} />
+            )}
           </View>
         </View>
       </View>
@@ -519,6 +551,219 @@ export function ReceiptDocument({
         <View style={{ marginTop: 18 }}>
           <Text>{L.thanks[0]}</Text>
           <Text style={{ textAlign: "right" }}>{rlm(L.thanks[1])}</Text>
+        </View>
+
+        <Footer company={company} />
+      </Page>
+    </Document>
+  );
+}
+
+// ── Quotation ───────────────────────────────────────────────────────────────
+
+export type PdfQuotationItem = {
+  id: string;
+  position: number;
+  description: string;
+  kind: string;
+  quantity: number;
+  unit_price: number;
+  line_total: number;
+};
+
+export type PdfQuotation = {
+  quote_number: string | null;
+  title: string | null;
+  issue_date: string;
+  valid_until: string | null;
+  currency: string;
+  discount: number;
+  subtotal: number;
+  vat_amount: number;
+  total: number;
+  monthly_total: number;
+  notes: string | null;
+  terms: string | null;
+};
+
+const KIND_LABELS: Record<string, Pair> = {
+  monthly: ["Monthly", "شهري"],
+  setup: ["Setup", "تأسيس"],
+  one_off: ["One-off", "مرة واحدة"],
+};
+
+export function QuotationDocument({
+  company,
+  client,
+  quotation,
+  items,
+}: {
+  company: PdfCompany;
+  client: PdfClient;
+  quotation: PdfQuotation;
+  items: PdfQuotationItem[];
+}) {
+  const cur = quotation.currency;
+  // `subtotal` is stored net of the discount; the PDF shows the list price
+  // first and the discount as its own line, which is what a client expects.
+  const grossOneOff = quotation.subtotal + quotation.discount;
+
+  return (
+    <Document
+      title={`Quotation ${quotation.quote_number || ""}`.trim()}
+      author={company.name_en}
+    >
+      <Page size="A4" style={styles.page}>
+        <Header company={company} title={L.quotation} />
+        <View style={styles.rule} />
+
+        <View style={styles.twoCol}>
+          <PartyBox pair={L.quoteFor} client={client} />
+          <View style={styles.col}>
+            <Field pair={L.quoteNo} value={quotation.quote_number || "—"} />
+            <Field pair={L.issueDate} value={quotation.issue_date} />
+            <Field pair={L.validUntil} value={quotation.valid_until || "—"} />
+          </View>
+        </View>
+
+        {!!quotation.title && (
+          <Text style={{ marginTop: 14, fontSize: 12, fontWeight: 700 }}>{quotation.title}</Text>
+        )}
+
+        {/* `fixed` repeats this header row at the top of every page the table
+            spills onto, so a long quote never continues with unlabelled
+            columns. Rows carry wrap={false} so none is split across a break. */}
+        <View style={{ marginTop: 12 }}>
+          <View style={styles.tableHead} fixed>
+            <Text style={[styles.qCellIndex, { fontWeight: 700, fontSize: 8 }]}>{L.item[0]}</Text>
+            <Th pair={L.description} style={styles.qCellDesc} />
+            <Th pair={L.billing} style={styles.qCellKind} />
+            <Th pair={L.qty} style={[styles.qCellQty, { alignItems: "flex-end" }]} />
+            <Th pair={L.unitPrice} style={[styles.qCellUnit, { alignItems: "flex-end" }]} />
+            <Th pair={L.lineTotal} style={[styles.qCellTotal, { alignItems: "flex-end" }]} />
+          </View>
+
+          {items.map((item, index) => {
+            const kind = KIND_LABELS[item.kind] || KIND_LABELS.one_off;
+            return (
+              <View key={item.id} style={styles.tableRow} wrap={false}>
+                <Text style={[styles.qCellIndex, styles.muted]}>{index + 1}</Text>
+                <Text style={styles.qCellDesc}>{item.description}</Text>
+                <Text style={[styles.qCellKind, styles.muted, { fontSize: 8 }]}>{kind[0]}</Text>
+                <Text style={styles.qCellQty}>{item.quantity}</Text>
+                <Text style={styles.qCellUnit}>{pdfMoney(item.unit_price, cur)}</Text>
+                <Text style={[styles.qCellTotal, { fontWeight: 700 }]}>
+                  {pdfMoney(item.line_total, cur)}
+                </Text>
+              </View>
+            );
+          })}
+        </View>
+
+        {/* Notes and terms sit to the left of the totals rather than beneath
+            them. Stacked, they leave a tall empty column next to the totals
+            box and push the signature block onto a second, near-empty page. */}
+        <View style={{ flexDirection: "row", gap: 18, marginTop: 12 }}>
+          <View style={{ flex: 1 }}>
+            {!!quotation.notes && (
+              <View style={{ marginBottom: 10 }}>
+                <Text style={styles.boxLabel}>
+                  {L.notes[0]} · {L.notes[1]}
+                </Text>
+                <Text>{quotation.notes}</Text>
+              </View>
+            )}
+            {!!quotation.terms && (
+              <View>
+                <Text style={styles.boxLabel}>
+                  {L.terms[0]} · {L.terms[1]}
+                </Text>
+                <Text>{quotation.terms}</Text>
+              </View>
+            )}
+          </View>
+
+          <View style={{ width: 252 }} wrap={false}>
+          <View style={styles.totalRow}>
+            <Text style={styles.muted}>
+              {L.oneOffSubtotal[0]} · {L.oneOffSubtotal[1]}
+            </Text>
+            <Text>{pdfMoney(grossOneOff, cur)}</Text>
+          </View>
+          {quotation.discount > 0 && (
+            <View style={styles.totalRow}>
+              <Text style={styles.muted}>
+                {L.discount[0]} · {L.discount[1]}
+              </Text>
+              <Text>− {pdfMoney(quotation.discount, cur)}</Text>
+            </View>
+          )}
+          {quotation.vat_amount > 0 && (
+            <View style={styles.totalRow}>
+              <Text style={styles.muted}>
+                {L.vat[0]} · {L.vat[1]}
+              </Text>
+              <Text>{pdfMoney(quotation.vat_amount, cur)}</Text>
+            </View>
+          )}
+          <View style={styles.grandRow}>
+            <Text style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 8.5 }}>
+              {L.dueOnAcceptance[0]}
+            </Text>
+            <Text style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 11 }}>
+              {pdfMoney(quotation.total, cur)}
+            </Text>
+          </View>
+          <Text style={{ textAlign: "right", fontSize: 8, color: BRAND.muted, marginTop: 3 }}>
+            {rlm(L.dueOnAcceptance[1])}
+          </Text>
+
+          {quotation.monthly_total > 0 && (
+            <View
+              style={{
+                marginTop: 8,
+                borderWidth: 1,
+                borderColor: BRAND.accent,
+                padding: 8,
+              }}
+            >
+              <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+                <Text style={{ fontWeight: 700, fontSize: 8.5 }}>{L.recurring[0]}</Text>
+                <Text style={{ fontWeight: 700, fontSize: 11 }}>
+                  {pdfMoney(quotation.monthly_total, cur)}
+                </Text>
+              </View>
+              <Text style={{ fontSize: 7.5, color: BRAND.muted }}>{L.recurringNote[0]}</Text>
+              <Text style={{ fontSize: 7.5, color: BRAND.muted, textAlign: "right" }}>
+                {rlm(L.recurringNote[1])}
+              </Text>
+            </View>
+          )}
+          </View>
+        </View>
+
+        {/* Side by side rather than stacked: together they are about 150pt
+            tall, which is exactly what tips a short quote onto a second,
+            nearly-empty page. */}
+        <View style={{ flexDirection: "row", gap: 14, marginTop: 14 }} wrap={false}>
+          <PaymentDetails company={company} flush />
+          <View style={{ flex: 1 }}>
+            <Text style={styles.boxLabel}>
+              {L.acceptance[0]} · {L.acceptance[1]}
+            </Text>
+            <Text style={[styles.muted, { fontSize: 8 }]}>{L.acceptanceNote[0]}</Text>
+            <Text style={[styles.muted, { fontSize: 8, textAlign: "right" }]}>
+              {rlm(L.acceptanceNote[1])}
+            </Text>
+            {[L.signature, L.nameLabel, L.dateLabel].map((pair, i) => (
+              <View key={i} style={{ marginTop: i === 0 ? 14 : 12 }}>
+                <View style={{ borderBottomWidth: 1, borderBottomColor: BRAND.line }} />
+                <Text style={{ fontSize: 7.5, color: BRAND.muted, marginTop: 2 }}>
+                  {pair[0]} · {pair[1]}
+                </Text>
+              </View>
+            ))}
+          </View>
         </View>
 
         <Footer company={company} />

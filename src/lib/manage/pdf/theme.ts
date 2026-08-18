@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
     paddingTop: 36,
     paddingBottom: 64,
     paddingHorizontal: 40,
-    lineHeight: 1.5,
+    lineHeight: 1.4,
   },
   headerRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start" },
   // lineHeight is explicit here: the page-level 1.5 leaves these two stacked
@@ -58,7 +58,7 @@ export const styles = StyleSheet.create({
   sellerName: { fontSize: 12, fontWeight: 700 },
   sellerNameAr: { fontSize: 11, fontWeight: 700, textAlign: "right" },
   muted: { color: BRAND.muted },
-  rule: { borderBottomWidth: 1, borderBottomColor: BRAND.line, marginVertical: 14 },
+  rule: { borderBottomWidth: 1, borderBottomColor: BRAND.line, marginVertical: 10 },
   twoCol: { flexDirection: "row", gap: 24 },
   col: { flex: 1 },
   boxLabel: { fontSize: 7.5, color: BRAND.muted, letterSpacing: 0.6, marginBottom: 3 },
@@ -79,6 +79,17 @@ export const styles = StyleSheet.create({
   },
   cellDesc: { flex: 4 },
   cellNum: { flex: 1.6, textAlign: "right" },
+
+  // Quotation line table. Fixed widths on every numeric column (rather than
+  // flex ratios) are what keep the decimal points in a straight line down the
+  // page, including on a continuation page where the longest description
+  // differs. Only the description column flexes.
+  qCellIndex: { width: 20 },
+  qCellDesc: { flex: 1, paddingRight: 8 },
+  qCellKind: { width: 62 },
+  qCellQty: { width: 34, textAlign: "right" },
+  qCellUnit: { width: 74, textAlign: "right" },
+  qCellTotal: { width: 82, textAlign: "right" },
   totalsBox: { marginTop: 12, alignSelf: "flex-end", width: 250 },
   totalRow: { flexDirection: "row", justifyContent: "space-between", paddingVertical: 3 },
   grandRow: {

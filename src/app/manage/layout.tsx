@@ -49,6 +49,9 @@ export default async function ManageLayout({ children }: { children: React.React
                 <Link href="/manage/clients" className={navLinkClass}>
                   {dict.nav.clients}
                 </Link>
+                <Link href="/manage/quotations" className={navLinkClass}>
+                  {dict.nav.quotations}
+                </Link>
                 <Link href="/manage/payments" className={navLinkClass}>
                   {dict.nav.payments}
                 </Link>

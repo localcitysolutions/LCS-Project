@@ -28,14 +28,18 @@ export async function GET(_request: Request, { params }: { params: Promise<{ id:
         .from("payments_with_status")
         .select("*")
         .eq("client_id", id)
-        .neq("status", "paid")
         .order("due_date", { ascending: true }),
       supabase.from("client_balances").select("*").eq("client_id", id).maybeSingle(),
     ]);
 
   if (!clientRow) return new Response("Not found", { status: 404 });
 
-  const open = (charges || []).filter((c) => Number(c.balance) > 0.005);
+  // Outstanding charges AND credit lines. Credits are stored with status
+  // 'paid' so nothing chases them, but leaving them off the statement would
+  // make the listed lines add up to more than the grand total underneath.
+  const open = (charges || []).filter(
+    (c) => Number(c.balance) > 0.005 || Number(c.total) < 0
+  );
   const currency = open[0]?.currency || "SAR";
 
   const buffer = await renderToBuffer(
