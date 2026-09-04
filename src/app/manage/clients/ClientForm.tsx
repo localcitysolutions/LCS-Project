@@ -127,6 +127,15 @@ export default function ClientForm({
         />
       </div>
       <div>
+        <label className={labelClass}>{t.tags}</label>
+        <input
+          name="tags"
+          placeholder={t.tagsHint}
+          defaultValue={client?.tags?.join(", ") || ""}
+          className={inputClass}
+        />
+      </div>
+      <div>
         <label className={labelClass}>{t.assignedTo}</label>
         <select name="assigned_to" defaultValue={client?.assigned_to || ""} className={inputClass}>
           <option value="">{t.unassigned}</option>

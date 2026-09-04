@@ -3,7 +3,12 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { clientSchema, clientServiceSchema } from "@/lib/manage/schemas";
+import {
+  clientSchema,
+  clientServiceSchema,
+  clientNoteSchema,
+  parseTags,
+} from "@/lib/manage/schemas";
 import {
   actionError,
   actionOk,
@@ -29,6 +34,7 @@ function parseClientForm(formData: FormData) {
     gmb_link: formData.get("gmb_link"),
     vat_number: formData.get("vat_number"),
     notes: formData.get("notes"),
+    tags: formData.get("tags"),
     assigned_to: formData.get("assigned_to"),
   });
 }
@@ -50,6 +56,7 @@ function clientRow(data: ReturnType<typeof clientSchema.parse>) {
     gmb_link: data.gmb_link || null,
     vat_number: data.vat_number || null,
     notes: data.notes || null,
+    tags: parseTags(data.tags),
     assigned_to: data.assigned_to || null,
   };
 }
@@ -163,5 +170,48 @@ export async function setClientServiceStatusAction(
 export async function deleteClientServiceAction(serviceId: string, clientId: string) {
   const supabase = await createClient();
   await supabase.from("client_services").delete().eq("id", serviceId);
+  revalidatePath(`/manage/clients/${clientId}`);
+}
+
+// ── Client notes (timestamped log, separate from the "about" notes field) ────
+
+export async function addClientNoteAction(
+  clientId: string,
+  _prev: ActionResult,
+  formData: FormData
+): Promise<ActionResult> {
+  const parsed = clientNoteSchema.safeParse({ body: formData.get("body") });
+  if (!parsed.success) {
+    return actionError("Please fix the errors below.", fieldErrorsFromZod(parsed.error));
+  }
+
+  const supabase = await createClient();
+  const { error } = await supabase
+    .from("client_notes")
+    .insert({ client_id: clientId, body: parsed.data.body });
+
+  if (error) {
+    return actionError(error.message);
+  }
+
+  revalidatePath(`/manage/clients/${clientId}`);
+  // Fresh object (not the shared actionOk constant) so the form can detect
+  // each success by reference and reset the textarea.
+  return { ...actionOk };
+}
+
+export async function setClientNotePinnedAction(
+  noteId: string,
+  clientId: string,
+  pinned: boolean
+) {
+  const supabase = await createClient();
+  await supabase.from("client_notes").update({ pinned }).eq("id", noteId);
+  revalidatePath(`/manage/clients/${clientId}`);
+}
+
+export async function deleteClientNoteAction(noteId: string, clientId: string) {
+  const supabase = await createClient();
+  await supabase.from("client_notes").delete().eq("id", noteId);
   revalidatePath(`/manage/clients/${clientId}`);
 }

@@ -7,6 +7,9 @@ import {
   addClientServiceAction,
   setClientServiceStatusAction,
   deleteClientServiceAction,
+  addClientNoteAction,
+  setClientNotePinnedAction,
+  deleteClientNoteAction,
 } from "../actions";
 import {
   saveBillingPlanAction,
@@ -16,16 +19,31 @@ import {
   deletePaymentAction,
 } from "../../payments/actions";
 import AddServiceForm from "./AddServiceForm";
+import AddNoteForm from "./AddNoteForm";
 import BillingPlanForm from "./BillingPlanForm";
 import RecordPaymentForm, { type OpenCharge } from "./RecordPaymentForm";
+import ConfirmForm from "../../ConfirmForm";
 import { money, riyadhToday, monthLabel } from "@/lib/manage/money";
-import type { ClientServiceStatus, PaymentStatus } from "@/types/manage";
+import type {
+  ClientActivity,
+  ClientServiceStatus,
+  ClientStatus,
+  PaymentStatus,
+  QuotationStatus,
+} from "@/types/manage";
 
 export const dynamic = "force-dynamic";
 
 function withProtocol(url: string) {
   return /^https?:\/\//i.test(url) ? url : `https://${url}`;
 }
+
+const clientStatusClasses: Record<ClientStatus, string> = {
+  lead: "bg-sky-500/15 text-sky-400",
+  active: "bg-green-500/15 text-green-400",
+  paused: "bg-amber-500/15 text-amber-400",
+  churned: "bg-white/10 text-white/50",
+};
 
 const serviceStatusClasses: Record<ClientServiceStatus, string> = {
   active: "bg-green-500/15 text-green-400",
@@ -37,6 +55,15 @@ const paymentStatusClasses: Record<PaymentStatus, string> = {
   unpaid: "bg-white/10 text-white/60",
   partial: "bg-amber-500/15 text-amber-400",
   paid: "bg-green-500/15 text-green-400",
+};
+
+const quotationStatusClasses: Record<QuotationStatus, string> = {
+  draft: "bg-white/10 text-white/60",
+  sent: "bg-sky-500/15 text-sky-400",
+  accepted: "bg-green-500/15 text-green-400",
+  declined: "bg-red-500/15 text-red-400",
+  expired: "bg-white/10 text-white/50",
+  converted: "bg-[#F5C518]/15 text-[#F5C518]",
 };
 
 export default async function ClientDetailPage({
@@ -59,6 +86,10 @@ export default async function ClientDetailPage({
     { data: plans },
     { data: balance },
     { data: receipts },
+    { data: notes },
+    { data: activity },
+    { data: quotations },
+    { data: profiles },
   ] = await Promise.all([
     supabase
       .from("client_services")
@@ -86,6 +117,26 @@ export default async function ClientDetailPage({
       .select("*")
       .eq("client_id", id)
       .order("received_at", { ascending: false }),
+    supabase
+      .from("client_notes")
+      .select("*")
+      .eq("client_id", id)
+      .order("pinned", { ascending: false })
+      .order("created_at", { ascending: false }),
+    supabase
+      .from("client_activity")
+      .select("*")
+      .eq("client_id", id)
+      .order("created_at", { ascending: false })
+      .limit(30),
+    supabase
+      .from("quotations")
+      .select("id, quote_number, title, status, issue_date, total, monthly_total, currency")
+      .eq("client_id", id)
+      .order("issue_date", { ascending: false }),
+    // All profiles (not just active) so notes/activity by deactivated staff
+    // still show a name.
+    supabase.from("profiles").select("id, full_name, email"),
   ]);
 
   // Prefer the active plan; fall back to the most recent one so a paused or
@@ -111,8 +162,20 @@ export default async function ClientDetailPage({
   const bl = dict.billing;
   const rc = dict.receipts;
   const pay = dict.payments;
+  const nt = dict.clientNotes;
+  const act = dict.activity;
   const today = riyadhToday();
   const planCurrency = plan?.currency || "SAR";
+
+  const profileName = (pid: string | null) => {
+    const p = pid ? (profiles || []).find((row) => row.id === pid) : null;
+    return p ? p.full_name || p.email || "—" : null;
+  };
+  const dateTime = (iso: string) =>
+    new Date(iso).toLocaleString(lang === "ar" ? "ar-SA" : "en-US", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
 
   const chargeLabel = (p: { kind: string; period_month: string | null; description: string | null }) =>
     p.kind === "monthly" && p.period_month
@@ -135,23 +198,131 @@ export default async function ClientDetailPage({
 
   const boundDelete = deleteClientAction.bind(null, id);
   const boundAddService = addClientServiceAction.bind(null, id);
+  const boundAddNote = addClientNoteAction.bind(null, id);
+
+  // Renders the details half of an activity row from its trigger-written meta.
+  const metaStr = (a: ClientActivity, key: string) => {
+    const v = a.meta[key];
+    return typeof v === "string" ? v : "";
+  };
+  const metaNum = (a: ClientActivity, key: string) => {
+    const v = a.meta[key];
+    return typeof v === "number" ? v : Number(v) || 0;
+  };
+  const lookup = (labels: Record<string, string>, key: string) => labels[key] || key || "—";
+  const activityDetail = (a: ClientActivity): string => {
+    const currency = metaStr(a, "currency") || "SAR";
+    switch (a.kind) {
+      case "status_changed":
+        return `${lookup(t.statusLabels, metaStr(a, "from"))} → ${lookup(t.statusLabels, metaStr(a, "to"))}`;
+      case "service_added":
+      case "service_removed":
+        return serviceLabel(metaStr(a, "service"));
+      case "service_status":
+        return `${serviceLabel(metaStr(a, "service"))}: ${lookup(sv.statusLabels, metaStr(a, "from"))} → ${lookup(sv.statusLabels, metaStr(a, "to"))}`;
+      case "plan_created":
+      case "plan_updated":
+        return `${money(metaNum(a, "monthly_amount"), currency)}${bl.perMonth} · ${lookup(bl.statusLabels, metaStr(a, "status"))}`;
+      case "charge_created":
+      case "charge_deleted":
+        return `${lookup(pay.kindLabels, metaStr(a, "kind"))} · ${money(metaNum(a, "total"), currency)}`;
+      case "payment_received":
+        return `${money(metaNum(a, "amount"), currency)} · ${lookup(rc.methodLabels, metaStr(a, "method"))}`;
+      case "receipt_deleted":
+        return money(metaNum(a, "amount"), currency);
+      case "quotation_created":
+      case "quotation_status": {
+        const parts = [metaStr(a, "quote_number") || metaStr(a, "title")];
+        if (a.kind === "quotation_status") {
+          parts.push(
+            `${lookup(dict.quotations.statusLabels, metaStr(a, "from"))} → ${lookup(
+              dict.quotations.statusLabels,
+              metaStr(a, "to")
+            )}`
+          );
+        }
+        return parts.filter(Boolean).join(" · ");
+      }
+      default:
+        return "";
+    }
+  };
+
+  const whatsappDigits = (client.whatsapp || client.phone || "").replace(/\D/g, "");
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-2">
+      <div className="flex flex-wrap items-center gap-3 mb-2">
         <h1 className="text-2xl font-bold">{client.name}</h1>
-        <div className="flex gap-2">
+        <span
+          className={`text-xs px-2 py-1 rounded-full ${clientStatusClasses[client.status]}`}
+        >
+          {t.statusLabels[client.status]}
+        </span>
+        {(client.tags || []).map((tag) => (
+          <Link
+            key={tag}
+            href={`/manage/clients?tag=${encodeURIComponent(tag)}`}
+            className="text-[11px] px-2 py-0.5 rounded-full bg-white/5 text-white/60 hover:bg-white/10"
+          >
+            {tag}
+          </Link>
+        ))}
+        <div className="flex gap-2 ms-auto">
+          <Link
+            href={`/manage/quotations/new?client_id=${id}`}
+            className="px-4 py-2 rounded-full bg-white/10 text-sm"
+          >
+            {dict.quotations.new}
+          </Link>
+          <a
+            href={`/manage/clients/${id}/statement`}
+            className="px-4 py-2 rounded-full bg-white/10 text-sm"
+            title={dict.documents.statementHint}
+          >
+            {dict.documents.statement} PDF
+          </a>
           <Link href={`/manage/clients/${id}/edit`} className="px-4 py-2 rounded-full bg-white/10 text-sm">
             {dict.common.edit}
           </Link>
-          <form action={boundDelete}>
+          <ConfirmForm action={boundDelete} message={t.confirmDelete}>
             <button type="submit" className="px-4 py-2 rounded-full bg-red-500/10 text-red-400 text-sm">
               {t.delete}
             </button>
-          </form>
+          </ConfirmForm>
         </div>
       </div>
-      {client.company && <p className="text-white/50 mb-6">{client.company}</p>}
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/50 mb-6">
+        {client.company && <span>{client.company}</span>}
+        {client.phone && (
+          <a href={`tel:${client.phone}`} className="hover:text-[#F5C518]">
+            {client.phone}
+          </a>
+        )}
+        {client.email && (
+          <a href={`mailto:${client.email}`} className="hover:text-[#F5C518]">
+            {client.email}
+          </a>
+        )}
+        {whatsappDigits && (
+          <a
+            href={`https://wa.me/${whatsappDigits}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[#F5C518]"
+          >
+            WhatsApp
+          </a>
+        )}
+        {client.assigned_to && profileName(client.assigned_to) && (
+          <span>
+            {t.assignedTo}: {profileName(client.assigned_to)}
+          </span>
+        )}
+        <span className="text-white/30">
+          {t.added}: {client.created_at.slice(0, 10)}
+        </span>
+      </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 text-sm">
         <div>
@@ -278,11 +449,14 @@ export default async function ClientDetailPage({
                       </button>
                     </form>
                   )}
-                  <form action={deleteClientServiceAction.bind(null, row.id, id)}>
+                  <ConfirmForm
+                    action={deleteClientServiceAction.bind(null, row.id, id)}
+                    message={sv.confirmDelete}
+                  >
                     <button className="text-xs px-2 py-1 rounded bg-red-500/10 text-red-400 hover:bg-red-500/20">
                       {sv.delete}
                     </button>
-                  </form>
+                  </ConfirmForm>
                 </span>
               </li>
             ))}
@@ -352,15 +526,6 @@ export default async function ClientDetailPage({
         <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-semibold">{rc.title}</h2>
-            {Number(balance?.outstanding ?? 0) > 0 && (
-              <a
-                href={`/manage/clients/${id}/statement`}
-                className="text-xs text-[#F5C518] hover:underline"
-                title={dict.documents.statementHint}
-              >
-                {dict.documents.statement} PDF
-              </a>
-            )}
           </div>
           <RecordPaymentForm
             dict={dict}
@@ -395,11 +560,15 @@ export default async function ClientDetailPage({
                         {money(unapplied, r.currency)} {rc.unapplied}
                       </span>
                     )}
-                    <form action={deleteReceiptAction.bind(null, r.id, id)} className="ms-auto">
+                    <ConfirmForm
+                      action={deleteReceiptAction.bind(null, r.id, id)}
+                      message={rc.confirmDelete}
+                      className="ms-auto"
+                    >
                       <button className="text-xs px-2 py-1 rounded bg-red-500/10 text-red-400 hover:bg-red-500/20">
                         {rc.delete}
                       </button>
-                    </form>
+                    </ConfirmForm>
                   </li>
                 );
               })}
@@ -408,7 +577,7 @@ export default async function ClientDetailPage({
         </section>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-semibold">{pay.title}</h2>
@@ -458,11 +627,14 @@ export default async function ClientDetailPage({
                           </button>
                         </form>
                       )}
-                      <form action={deletePaymentAction.bind(null, p.id, id)}>
+                      <ConfirmForm
+                        action={deletePaymentAction.bind(null, p.id, id)}
+                        message={pay.confirmDelete}
+                      >
                         <button className="text-xs px-2 py-1 rounded bg-red-500/10 text-red-400 hover:bg-red-500/20">
                           {t.delete}
                         </button>
-                      </form>
+                      </ConfirmForm>
                     </span>
                   </div>
                   <div className="text-white/40 text-xs mt-1">
@@ -478,6 +650,98 @@ export default async function ClientDetailPage({
                       <span className="text-amber-400">{money(p.balance, p.currency)}</span>
                     </div>
                   )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+
+        <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-semibold">{dict.quotations.title}</h2>
+            <Link
+              href={`/manage/quotations/new?client_id=${id}`}
+              className="text-xs text-[#F5C518] hover:underline"
+            >
+              {dict.quotations.new}
+            </Link>
+          </div>
+          {!quotations || quotations.length === 0 ? (
+            <p className="text-white/40 text-sm">{dict.quotations.empty}</p>
+          ) : (
+            <ul className="space-y-3">
+              {quotations.map((q) => (
+                <li
+                  key={q.id}
+                  className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm border-b border-white/5 pb-3 last:border-0 last:pb-0"
+                >
+                  <Link
+                    href={`/manage/quotations/${q.id}`}
+                    className="font-medium hover:text-[#F5C518]"
+                  >
+                    {q.quote_number || q.title || dict.quotations.title}
+                  </Link>
+                  <span
+                    className={`text-[11px] px-2 py-0.5 rounded-full ${
+                      quotationStatusClasses[q.status]
+                    }`}
+                  >
+                    {dict.quotations.statusLabels[q.status]}
+                  </span>
+                  <span className="text-white/40 text-xs">{q.issue_date}</span>
+                  <span className="ms-auto text-xs text-white/60">
+                    {money(q.total, q.currency)}
+                    {Number(q.monthly_total) > 0 && (
+                      <span className="text-[#F5C518]">
+                        {" "}
+                        + {money(q.monthly_total, q.currency)}
+                        {bl.perMonth}
+                      </span>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
+          <h2 className="font-semibold mb-4">{nt.title}</h2>
+          <AddNoteForm dict={dict} action={boundAddNote} />
+          {!notes || notes.length === 0 ? (
+            <p className="text-white/40 text-sm">{nt.empty}</p>
+          ) : (
+            <ul className="space-y-3">
+              {notes.map((n) => (
+                <li
+                  key={n.id}
+                  className={`text-sm border-b border-white/5 pb-3 last:border-0 last:pb-0 ${
+                    n.pinned ? "bg-[#F5C518]/[0.04] -mx-2 px-2 rounded-lg" : ""
+                  }`}
+                >
+                  <p className="whitespace-pre-wrap text-white/80">{n.body}</p>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5 text-xs text-white/40">
+                    {n.pinned && <span className="text-[#F5C518]">📌</span>}
+                    {profileName(n.created_by) && <span>{profileName(n.created_by)}</span>}
+                    <span>{dateTime(n.created_at)}</span>
+                    <span className="flex gap-1 ms-auto">
+                      <form action={setClientNotePinnedAction.bind(null, n.id, id, !n.pinned)}>
+                        <button className="px-2 py-0.5 rounded bg-white/5 hover:bg-white/10">
+                          {n.pinned ? nt.unpin : nt.pin}
+                        </button>
+                      </form>
+                      <ConfirmForm
+                        action={deleteClientNoteAction.bind(null, n.id, id)}
+                        message={nt.confirmDelete}
+                      >
+                        <button className="px-2 py-0.5 rounded bg-red-500/10 text-red-400 hover:bg-red-500/20">
+                          {nt.delete}
+                        </button>
+                      </ConfirmForm>
+                    </span>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -511,6 +775,36 @@ export default async function ClientDetailPage({
           )}
         </section>
       </div>
+
+      <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
+        <h2 className="font-semibold mb-4">{act.title}</h2>
+        {!activity || activity.length === 0 ? (
+          <p className="text-white/40 text-sm">{act.empty}</p>
+        ) : (
+          <ul className="space-y-0">
+            {activity.map((a, i) => (
+              <li key={a.id} className="flex gap-3 text-sm">
+                <span className="flex flex-col items-center">
+                  <span className="w-2 h-2 rounded-full bg-[#F5C518]/60 mt-1.5 shrink-0" />
+                  {i < activity.length - 1 && <span className="w-px flex-1 bg-white/10" />}
+                </span>
+                <span className="pb-4 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                  <span className="font-medium">
+                    {(act.kindLabels as Record<string, string>)[a.kind] || a.kind}
+                  </span>
+                  {activityDetail(a) && (
+                    <span className="text-white/60 text-xs">{activityDetail(a)}</span>
+                  )}
+                  <span className="text-white/30 text-xs">
+                    {dateTime(a.created_at)}
+                    {profileName(a.actor) ? ` · ${profileName(a.actor)}` : ""}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
     </div>
   );
 }

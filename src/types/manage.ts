@@ -34,10 +34,32 @@ export type Client = {
   gmb_link: string | null;
   vat_number: string | null;
   notes: string | null;
+  tags: string[];
   assigned_to: string | null;
   created_by: string | null;
   created_at: string;
   updated_at: string;
+};
+
+/** A timestamped, attributed note in the client's running log. */
+export type ClientNote = {
+  id: string;
+  client_id: string;
+  body: string;
+  pinned: boolean;
+  created_by: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+/** Written only by database triggers — see 0006_client_management.sql. */
+export type ClientActivity = {
+  id: string;
+  client_id: string;
+  kind: string;
+  meta: Record<string, unknown>;
+  actor: string | null;
+  created_at: string;
 };
 
 export type ClientServiceStatus = "active" | "completed" | "paused";
@@ -258,6 +280,18 @@ export type Database = {
         Row: Client;
         Insert: Partial<Client> & { name: string };
         Update: Partial<Client>;
+        Relationships: [];
+      };
+      client_notes: {
+        Row: ClientNote;
+        Insert: Partial<ClientNote> & { client_id: string; body: string };
+        Update: Partial<ClientNote>;
+        Relationships: [];
+      };
+      client_activity: {
+        Row: ClientActivity;
+        Insert: never; // trigger-written only
+        Update: never;
         Relationships: [];
       };
       client_services: {

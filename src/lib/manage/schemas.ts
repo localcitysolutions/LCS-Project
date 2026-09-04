@@ -39,10 +39,36 @@ export const clientSchema = z.object({
   gmb_link: z.string().trim().optional().or(z.literal("")),
   vat_number: z.string().trim().optional().or(z.literal("")),
   notes: z.string().trim().optional().or(z.literal("")),
+  tags: z.string().trim().optional().or(z.literal("")),
   assigned_to: z.string().uuid().optional().or(z.literal("")),
 });
 
 export type ClientInput = z.infer<typeof clientSchema>;
+
+/** Tags arrive as one comma-separated text field (either comma works in
+ * Arabic input) and are stored as text[]. Deduped case-insensitively so
+ * "VIP, vip" doesn't produce two chips. */
+export function parseTags(raw: string | undefined): string[] {
+  if (!raw) return [];
+  const seen = new Set<string>();
+  const tags: string[] = [];
+  for (const part of raw.split(/[,،]/)) {
+    const tag = part.trim().slice(0, 40);
+    if (!tag || seen.has(tag.toLowerCase())) continue;
+    seen.add(tag.toLowerCase());
+    tags.push(tag);
+    if (tags.length >= 12) break;
+  }
+  return tags;
+}
+
+export const clientNoteSchema = z.object({
+  body: z.string().trim().min(1, "Write something first"),
+});
+
+/** Sort orders the client list understands; anything else falls back to newest. */
+export const clientSortValues = ["newest", "oldest", "name"] as const;
+export type ClientSort = (typeof clientSortValues)[number];
 
 export const clientServiceSchema = z.object({
   service: z.enum(serviceTypeValues),
