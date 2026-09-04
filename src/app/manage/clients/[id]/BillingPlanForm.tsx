@@ -57,6 +57,23 @@ export default function BillingPlanForm({
         </div>
       </div>
 
+      <div>
+        <label className={labelClass}>{t.adBudgetAmount}</label>
+        <input
+          name="ad_budget_amount"
+          type="number"
+          step="0.01"
+          min="0"
+          defaultValue={plan?.ad_budget_amount || ""}
+          placeholder="0.00"
+          className={inputClass}
+        />
+        <p className="text-white/30 text-[11px] mt-1">{t.adBudgetHint}</p>
+        {field("ad_budget_amount") && (
+          <p className="text-red-400 text-xs mt-1">{field("ad_budget_amount")}</p>
+        )}
+      </div>
+
       <div className="grid grid-cols-2 gap-3">
         <div>
           <label className={labelClass}>{t.setupFee}</label>

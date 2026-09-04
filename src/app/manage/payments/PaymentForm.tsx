@@ -101,6 +101,15 @@ export default function PaymentForm({
         />
         {t.vat}
       </label>
+      <label className="flex items-center gap-2 text-sm text-white/70">
+        <input
+          type="checkbox"
+          name="is_ad_budget"
+          defaultChecked={payment?.is_ad_budget ?? false}
+          className="accent-[#F5C518]"
+        />
+        {t.adBudget}
+      </label>
 
       {vat && (
         <div className="rounded-lg bg-white/[0.03] border border-white/10 px-4 py-3 text-sm space-y-1">

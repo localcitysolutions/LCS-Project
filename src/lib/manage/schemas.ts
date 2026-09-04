@@ -93,6 +93,7 @@ export const billingPlanStatusValues = ["active", "paused", "ended"] as const;
 export const billingPlanSchema = z
   .object({
     monthly_amount: z.coerce.number().min(0, "Monthly amount must be 0 or more"),
+    ad_budget_amount: z.coerce.number().min(0, "Ad budget must be 0 or more").default(0),
     setup_fee: z.coerce.number().min(0, "Setup fee must be 0 or more"),
     currency: z.string().trim().min(1).default("SAR"),
     billing_day: z.coerce
@@ -110,8 +111,8 @@ export const billingPlanSchema = z
     message: "End date cannot be before the start date",
     path: ["end_date"],
   })
-  .refine((d) => d.monthly_amount > 0 || d.setup_fee > 0, {
-    message: "Set a monthly amount, a setup fee, or both",
+  .refine((d) => d.monthly_amount > 0 || d.setup_fee > 0 || d.ad_budget_amount > 0, {
+    message: "Set a monthly amount, an ad budget, a setup fee — at least one",
     path: ["monthly_amount"],
   });
 
@@ -132,6 +133,7 @@ export const paymentSchema = z.object({
   due_date: z.string().trim().optional().or(z.literal("")),
   period_month: z.string().trim().optional().or(z.literal("")),
   vat_enabled: checkboxField,
+  is_ad_budget: checkboxField,
   invoice_number: z.string().trim().optional().or(z.literal("")),
   notes: z.string().trim().optional().or(z.literal("")),
 });
@@ -232,9 +234,59 @@ export const receiptSchema = z.object({
   reference: z.string().trim().optional().or(z.literal("")),
   notes: z.string().trim().optional().or(z.literal("")),
   apply_to: z.string().trim().default("auto"),
+  /** Partner whose account received it. Empty → the default account. */
+  received_by: z.string().uuid().optional().or(z.literal("")),
 });
 
 export type ReceiptInput = z.infer<typeof receiptSchema>;
+
+// ── Partners, expenses, transfers ───────────────────────────────────────────
+
+export const expenseCategoryValues = [
+  "ad_spend",
+  "tools",
+  "subscriptions",
+  "salary",
+  "office",
+  "other",
+] as const;
+
+export const expenseSchema = z.object({
+  paid_by: z.string().uuid("Pick who paid"),
+  category: z.enum(expenseCategoryValues).default("other"),
+  amount: z.coerce.number().gt(0, "Amount must be greater than 0"),
+  currency: z.string().trim().min(1).default("SAR"),
+  spent_at: z.string().trim().min(1, "Date is required"),
+  client_id: z.string().uuid().optional().or(z.literal("")),
+  description: z.string().trim().optional().or(z.literal("")),
+});
+
+export type ExpenseInput = z.infer<typeof expenseSchema>;
+
+export const transferKindValues = ["settlement", "personal", "other"] as const;
+
+export const transferSchema = z
+  .object({
+    from_partner: z.string().uuid("Pick who paid"),
+    to_partner: z.string().uuid("Pick who received"),
+    amount: z.coerce.number().gt(0, "Amount must be greater than 0"),
+    currency: z.string().trim().min(1).default("SAR"),
+    transferred_at: z.string().trim().min(1, "Date is required"),
+    kind: z.enum(transferKindValues).default("settlement"),
+    note: z.string().trim().optional().or(z.literal("")),
+  })
+  .refine((d) => d.from_partner !== d.to_partner, {
+    message: "A transfer needs two different partners",
+    path: ["to_partner"],
+  });
+
+export type TransferInput = z.infer<typeof transferSchema>;
+
+export const partnerRowSchema = z.object({
+  id: z.string().uuid(),
+  name: z.string().trim().min(1, "Name is required"),
+  share_percent: z.coerce.number().min(0).max(100),
+});
 
 export const reminderChannelValues = ["dashboard", "email", "whatsapp"] as const;
 export const reminderStatusValues = ["pending", "sent", "done", "dismissed"] as const;

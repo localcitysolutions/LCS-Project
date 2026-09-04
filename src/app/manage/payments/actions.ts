@@ -52,6 +52,7 @@ function parsePaymentForm(formData: FormData) {
     due_date: formData.get("due_date"),
     period_month: formData.get("period_month"),
     vat_enabled: formData.get("vat_enabled"),
+    is_ad_budget: formData.get("is_ad_budget"),
     invoice_number: formData.get("invoice_number"),
     notes: formData.get("notes"),
   });
@@ -68,6 +69,7 @@ function paymentRow(data: ReturnType<typeof paymentSchema.parse>) {
     currency: data.currency,
     due_date: data.due_date || null,
     period_month: data.kind === "monthly" ? monthToDate(data.period_month || "") : null,
+    is_ad_budget: data.is_ad_budget,
     invoice_number: data.invoice_number || null,
     notes: data.notes || null,
   };
@@ -205,6 +207,7 @@ export async function createReceiptAction(
     reference: formData.get("reference"),
     notes: formData.get("notes"),
     apply_to: formData.get("apply_to") || "auto",
+    received_by: formData.get("received_by"),
   });
   if (!parsed.success) {
     return actionError("Please fix the errors below.", fieldErrorsFromZod(parsed.error));
@@ -221,6 +224,8 @@ export async function createReceiptAction(
       method: parsed.data.method,
       reference: parsed.data.reference || null,
       notes: parsed.data.notes || null,
+      // null → the database fills in the default partner account.
+      received_by: parsed.data.received_by || null,
     })
     .select("id")
     .single();
@@ -274,6 +279,7 @@ export async function deleteReceiptAction(receiptId: string, clientId: string) {
 function parsePlanForm(formData: FormData) {
   return billingPlanSchema.safeParse({
     monthly_amount: formData.get("monthly_amount") || 0,
+    ad_budget_amount: formData.get("ad_budget_amount") || 0,
     setup_fee: formData.get("setup_fee") || 0,
     currency: formData.get("currency") || "SAR",
     billing_day: formData.get("billing_day") || 1,
@@ -299,6 +305,7 @@ export async function saveBillingPlanAction(
   const supabase = await createClient();
   const row = {
     monthly_amount: parsed.data.monthly_amount,
+    ad_budget_amount: parsed.data.ad_budget_amount,
     setup_fee: parsed.data.setup_fee,
     currency: parsed.data.currency,
     billing_day: parsed.data.billing_day,

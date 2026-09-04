@@ -59,9 +59,14 @@ export default async function ManageLayout({ children }: { children: React.React
                   {dict.nav.reminders}
                 </Link>
                 {profile?.role === "admin" && (
-                  <Link href="/manage/team" className={navLinkClass}>
-                    {dict.nav.team}
-                  </Link>
+                  <>
+                    <Link href="/manage/partners" className={navLinkClass}>
+                      {dict.nav.partners}
+                    </Link>
+                    <Link href="/manage/team" className={navLinkClass}>
+                      {dict.nav.team}
+                    </Link>
+                  </>
                 )}
                 <Link href="/manage/settings" className={navLinkClass}>
                   {dict.nav.settings}

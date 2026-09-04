@@ -27,12 +27,15 @@ export default function RecordPaymentForm({
   openCharges,
   currency,
   today,
+  partners,
 }: {
   dict: Dict;
   action: (prevState: ActionResult, formData: FormData) => Promise<ActionResult>;
   openCharges: OpenCharge[];
   currency: string;
   today: string;
+  /** Whose bank account can receive money. Empty list hides the picker. */
+  partners: { id: string; name: string; is_default_account: boolean }[];
 }) {
   const [state, formAction, pending] = useActionState(action, initialState);
   const t = dict.receipts;
@@ -86,17 +89,35 @@ export default function RecordPaymentForm({
         </div>
       </div>
 
-      <div>
-        <label className={labelClass}>{t.applyTo}</label>
-        <select name="apply_to" defaultValue="auto" className={inputClass}>
-          <option value="auto">{t.applyAuto}</option>
-          {openCharges.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.label} — {money(c.balance, c.currency)}
-            </option>
-          ))}
-          <option value="credit">{t.applyCredit}</option>
-        </select>
+      <div className={partners.length > 0 ? "grid grid-cols-2 gap-3" : ""}>
+        <div>
+          <label className={labelClass}>{t.applyTo}</label>
+          <select name="apply_to" defaultValue="auto" className={inputClass}>
+            <option value="auto">{t.applyAuto}</option>
+            {openCharges.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.label} — {money(c.balance, c.currency)}
+              </option>
+            ))}
+            <option value="credit">{t.applyCredit}</option>
+          </select>
+        </div>
+        {partners.length > 0 && (
+          <div>
+            <label className={labelClass}>{dict.partners.receivedIn}</label>
+            <select
+              name="received_by"
+              defaultValue={partners.find((p) => p.is_default_account)?.id || partners[0].id}
+              className={inputClass}
+            >
+              {partners.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-2 gap-3">

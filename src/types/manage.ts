@@ -84,6 +84,9 @@ export type BillingPlan = {
   id: string;
   client_id: string;
   monthly_amount: number;
+  /** Client's monthly ad spend billed through us as a separate, VAT-free
+   * pass-through charge. Not revenue. */
+  ad_budget_amount: number;
   setup_fee: number;
   setup_fee_charged: boolean;
   currency: string;
@@ -122,6 +125,8 @@ export type Payment = {
   paid_at: string | null;
   invoice_number: string | null;
   notes: string | null;
+  /** True when the charge is the client's ad budget passing through us. */
+  is_ad_budget: boolean;
   created_by: string | null;
   created_at: string;
   updated_at: string;
@@ -147,6 +152,8 @@ export type PaymentReceipt = {
   method: PaymentMethod;
   reference: string | null;
   notes: string | null;
+  /** Which partner's bank account the money landed in. */
+  received_by: string | null;
   created_by: string | null;
   created_at: string;
   updated_at: string;
@@ -240,6 +247,75 @@ export type ClientBalance = {
   total_received: number;
   credit_balance: number;
   overdue_count: number;
+};
+
+/** An owner of the business. Shares should add up to 100. */
+export type Partner = {
+  id: string;
+  name: string;
+  share_percent: number;
+  is_default_account: boolean;
+  sort_order: number;
+  active: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
+export type ExpenseCategory =
+  | "ad_spend"
+  | "tools"
+  | "subscriptions"
+  | "salary"
+  | "office"
+  | "other";
+
+/** Money a partner paid out on the business's behalf. */
+export type Expense = {
+  id: string;
+  client_id: string | null;
+  paid_by: string;
+  category: ExpenseCategory;
+  amount: number;
+  currency: string;
+  spent_at: string;
+  description: string | null;
+  created_by: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type TransferKind = "settlement" | "personal" | "other";
+
+/** Money moved from one partner to another — settling a share, a personal
+ * loan, anything. One table so the balance between them is one number. */
+export type PartnerTransfer = {
+  id: string;
+  from_partner: string;
+  to_partner: string;
+  amount: number;
+  currency: string;
+  transferred_at: string;
+  kind: TransferKind;
+  note: string | null;
+  created_by: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+/** Per-partner cash totals from the partner_positions view. */
+export type PartnerPosition = {
+  partner_id: string;
+  name: string;
+  share_percent: number;
+  is_default_account: boolean;
+  sort_order: number;
+  active: boolean;
+  received: number;
+  ad_budget_received: number;
+  expenses_paid: number;
+  ad_spend_paid: number;
+  transfers_out: number;
+  transfers_in: number;
 };
 
 export type ReminderChannel = "dashboard" | "email" | "whatsapp";
@@ -352,8 +428,34 @@ export type Database = {
         Update: Partial<Reminder>;
         Relationships: [];
       };
+      partners: {
+        Row: Partner;
+        Insert: Partial<Partner> & { name: string };
+        Update: Partial<Partner>;
+        Relationships: [];
+      };
+      expenses: {
+        Row: Expense;
+        Insert: Partial<Expense> & { paid_by: string; amount: number };
+        Update: Partial<Expense>;
+        Relationships: [];
+      };
+      partner_transfers: {
+        Row: PartnerTransfer;
+        Insert: Partial<PartnerTransfer> & {
+          from_partner: string;
+          to_partner: string;
+          amount: number;
+        };
+        Update: Partial<PartnerTransfer>;
+        Relationships: [];
+      };
     };
     Views: {
+      partner_positions: {
+        Row: PartnerPosition;
+        Relationships: [];
+      };
       payments_with_status: {
         Row: PaymentWithStatus;
         Relationships: [];

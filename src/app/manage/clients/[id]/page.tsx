@@ -90,6 +90,8 @@ export default async function ClientDetailPage({
     { data: activity },
     { data: quotations },
     { data: profiles },
+    { data: partners },
+    { data: expenses },
   ] = await Promise.all([
     supabase
       .from("client_services")
@@ -137,6 +139,16 @@ export default async function ClientDetailPage({
     // All profiles (not just active) so notes/activity by deactivated staff
     // still show a name.
     supabase.from("profiles").select("id, full_name, email"),
+    supabase
+      .from("partners")
+      .select("id, name, is_default_account")
+      .eq("active", true)
+      .order("sort_order"),
+    // Admin-only table: staff simply get an empty list here.
+    supabase
+      .from("expenses")
+      .select("id, category, amount, currency, spent_at, paid_by")
+      .eq("client_id", id),
   ]);
 
   // Prefer the active plan; fall back to the most recent one so a paused or
@@ -171,6 +183,18 @@ export default async function ClientDetailPage({
     const p = pid ? (profiles || []).find((row) => row.id === pid) : null;
     return p ? p.full_name || p.email || "—" : null;
   };
+  const partnerName = (pid: string | null) =>
+    (pid && (partners || []).find((p) => p.id === pid)?.name) || null;
+
+  // Ads: the client's ad money passing through us. Billed vs actually received
+  // vs what we've paid out to the ad platform on their behalf.
+  const adCharges = (payments || []).filter((p) => p.is_ad_budget);
+  const adBudgetBilled = adCharges.reduce((sum, p) => sum + Number(p.total), 0);
+  const adBudgetPaid = adCharges.reduce((sum, p) => sum + Number(p.amount_paid), 0);
+  const adSpend = (expenses || [])
+    .filter((e) => e.category === "ad_spend")
+    .reduce((sum, e) => sum + Number(e.amount), 0);
+  const showAds = adCharges.length > 0 || adSpend > 0 || Number(plan?.ad_budget_amount ?? 0) > 0;
   const dateTime = (iso: string) =>
     new Date(iso).toLocaleString(lang === "ar" ? "ar-SA" : "en-US", {
       dateStyle: "medium",
@@ -230,6 +254,12 @@ export default async function ClientDetailPage({
         return `${money(metaNum(a, "amount"), currency)} · ${lookup(rc.methodLabels, metaStr(a, "method"))}`;
       case "receipt_deleted":
         return money(metaNum(a, "amount"), currency);
+      case "expense_added":
+      case "expense_deleted":
+        return `${lookup(dict.partners.categories, metaStr(a, "category"))} · ${money(
+          metaNum(a, "amount"),
+          currency
+        )}`;
       case "quotation_created":
       case "quotation_status": {
         const parts = [metaStr(a, "quote_number") || metaStr(a, "title")];
@@ -508,6 +538,53 @@ export default async function ClientDetailPage({
         </div>
       </div>
 
+      {showAds && (
+        <section className="bg-[#0E1A2E] border border-sky-500/20 rounded-xl p-5 mb-6">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="font-semibold">{dict.partners.adsTitle}</h2>
+            <Link
+              href={`/manage/partners?client_id=${id}`}
+              className="text-xs text-[#F5C518] hover:underline"
+            >
+              {dict.partners.recordExpense}
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+            <div>
+              <div className="text-white/40 text-[11px] uppercase tracking-wide mb-1">
+                {dict.partners.adBudgetBilled}
+              </div>
+              <div className="text-lg font-bold">{money(adBudgetBilled, planCurrency)}</div>
+            </div>
+            <div>
+              <div className="text-white/40 text-[11px] uppercase tracking-wide mb-1">
+                {dict.partners.adBudgetPaid}
+              </div>
+              <div className="text-lg font-bold">{money(adBudgetPaid, planCurrency)}</div>
+            </div>
+            <div>
+              <div className="text-white/40 text-[11px] uppercase tracking-wide mb-1">
+                {dict.partners.adSpendForClient}
+              </div>
+              <div className="text-lg font-bold">{money(adSpend, planCurrency)}</div>
+            </div>
+            <div>
+              <div className="text-white/40 text-[11px] uppercase tracking-wide mb-1">
+                {dict.partners.unspentAdBudget}
+              </div>
+              <div
+                className={`text-lg font-bold ${
+                  adBudgetPaid - adSpend > 0.005 ? "text-sky-400" : ""
+                }`}
+              >
+                {money(adBudgetPaid - adSpend, planCurrency)}
+              </div>
+            </div>
+          </div>
+          <p className="text-white/30 text-[11px] mt-3">{dict.partners.adsHint}</p>
+        </section>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
           <div className="flex items-center justify-between mb-4">
@@ -533,6 +610,7 @@ export default async function ClientDetailPage({
             openCharges={openCharges}
             currency={planCurrency}
             today={today}
+            partners={partners || []}
           />
           {!receipts || receipts.length === 0 ? (
             <p className="text-white/40 text-sm">{rc.empty}</p>
@@ -548,6 +626,11 @@ export default async function ClientDetailPage({
                     <span className="font-medium">{money(r.amount, r.currency)}</span>
                     <span className="text-white/40 text-xs">{r.received_at}</span>
                     <span className="text-white/40 text-xs">{rc.methodLabels[r.method]}</span>
+                    {partnerName(r.received_by) && (
+                      <span className="text-[11px] px-2 py-0.5 rounded-full bg-white/5 text-white/60">
+                        {partnerName(r.received_by)}
+                      </span>
+                    )}
                     {r.reference && <span className="text-white/40 text-xs">#{r.reference}</span>}
                     <a
                       href={`/manage/receipts/${r.id}`}
@@ -611,6 +694,11 @@ export default async function ClientDetailPage({
                     {p.is_overdue && (
                       <span className="text-[11px] px-2 py-0.5 rounded-full bg-red-500/15 text-red-400">
                         {pay.overdue}
+                      </span>
+                    )}
+                    {p.is_ad_budget && (
+                      <span className="text-[11px] px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-400">
+                        {pay.adBudgetShort}
                       </span>
                     )}
                     <span className="flex items-center gap-1 ms-auto">

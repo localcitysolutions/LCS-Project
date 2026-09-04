@@ -108,6 +108,11 @@ export default async function PaymentsPage({
                       {dict.payments.kindLabels[p.kind]}
                       {p.period_month ? ` · ${monthLabel(p.period_month, lang)}` : ""}
                       {p.description ? ` · ${p.description}` : ""}
+                      {p.is_ad_budget && (
+                        <span className="ms-2 text-[11px] px-1.5 py-0.5 rounded-full bg-sky-500/15 text-sky-400">
+                          {dict.payments.adBudgetShort}
+                        </span>
+                      )}
                     </div>
                   </td>
                   <td className="p-4 whitespace-nowrap">
