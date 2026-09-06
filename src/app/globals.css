@@ -15,8 +15,13 @@
   --color-gold-ink: #9A6700;
 }
 
-/* The internal tool is light; the dark scrollbar track from the public site
- * would show as a black stripe down its right edge. */
+/* The internal tool is light. The `body { … }` rule above is unlayered, so it
+ * outranks Tailwind's layered utilities on the same element — this override
+ * has to be unlayered too, and more specific than a bare `body`. */
+body.manage-app {
+  background-color: #F3F5F9;
+  color: #0E1A2E;
+}
 .manage-app ::-webkit-scrollbar-track { background: transparent; }
 .manage-app ::-webkit-scrollbar-thumb { background: rgba(14, 26, 46, 0.18); }
 
