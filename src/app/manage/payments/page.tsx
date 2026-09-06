@@ -88,7 +88,7 @@ export default async function PaymentsPage({
           {dict.payments.overdue}
         </label>
         <button type="submit" className="px-4 py-2 rounded-lg bg-ink/8 text-sm">
-          {dict.clients.search}
+          {dict.clients.searchButton}
         </button>
       </form>
 

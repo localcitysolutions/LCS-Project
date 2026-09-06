@@ -229,6 +229,7 @@ export const manageDict = {
       confirmDelete:
         "Delete this client and ALL their services, charges, receipts and quotations? This cannot be undone.",
       search: "Search name, company, email, phone...",
+      searchButton: "Search",
       empty: "No clients yet.",
       emptyFiltered: "No clients match these filters.",
       tags: "Tags",
@@ -651,6 +652,7 @@ export const manageDict = {
       confirmDelete:
         "هل تريد حذف هذا العميل وكل خدماته ورسومه ودفعاته وعروض أسعاره؟ لا يمكن التراجع عن هذا الإجراء.",
       search: "بحث بالاسم أو النشاط أو البريد أو الهاتف...",
+      searchButton: "بحث",
       empty: "لا يوجد عملاء بعد.",
       emptyFiltered: "لا يوجد عملاء مطابقون لهذه الفلاتر.",
       tags: "الوسوم",

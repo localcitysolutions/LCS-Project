@@ -197,7 +197,7 @@ export default async function ClientsPage({
           <option value="name">{t.sortName}</option>
         </select>
         <button type="submit" className="px-4 py-2 rounded-lg bg-ink/8 text-sm">
-          {t.search}
+          {t.searchButton}
         </button>
         {hasFilters && (
           <Link
