@@ -15,9 +15,9 @@ function isPaymentStatus(value: string): value is PaymentStatus {
 }
 
 const paymentStatusClasses: Record<PaymentStatus, string> = {
-  unpaid: "bg-white/10 text-white/60",
-  partial: "bg-amber-500/15 text-amber-400",
-  paid: "bg-green-500/15 text-green-400",
+  unpaid: "bg-ink/8 text-ink/60",
+  partial: "bg-amber-500/15 text-amber-700",
+  paid: "bg-green-500/15 text-green-700",
 };
 
 export const dynamic = "force-dynamic";
@@ -51,19 +51,19 @@ export default async function PaymentsPage({
           <GenerateChargesButton dict={dict} />
           <a
             href="/manage/invoices/bulk"
-            className="px-4 py-2 rounded-full bg-white/10 text-sm hover:bg-white/15 transition-all"
+            className="px-4 py-2 rounded-full bg-ink/8 text-sm hover:bg-ink/12 transition-all"
           >
             {dict.documents.bulkInvoices}
           </a>
           <a
             href="/manage/invoices/bulk?overdue=1"
-            className="px-4 py-2 rounded-full bg-red-500/10 text-red-300 text-sm hover:bg-red-500/20 transition-all"
+            className="px-4 py-2 rounded-full bg-red-500/10 text-red-600 text-sm hover:bg-red-500/20 transition-all"
           >
             {dict.documents.bulkOverdue}
           </a>
           <Link
             href="/manage/payments/new"
-            className="px-4 py-2 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm"
+            className="px-4 py-2 rounded-full bg-[#F5C518] text-ink font-bold text-sm"
           >
             {dict.payments.new}
           </Link>
@@ -74,7 +74,7 @@ export default async function PaymentsPage({
         <select
           name="status"
           defaultValue={status || ""}
-          className="bg-[#0E1A2E] border border-white/10 rounded-lg px-4 py-2 text-sm"
+          className="bg-panel border border-line rounded-lg px-4 py-2 text-sm"
         >
           <option value="">{dict.payments.status}</option>
           {paymentStatusValues.map((s) => (
@@ -83,33 +83,33 @@ export default async function PaymentsPage({
             </option>
           ))}
         </select>
-        <label className="flex items-center gap-2 text-sm text-white/60">
+        <label className="flex items-center gap-2 text-sm text-ink/60">
           <input type="checkbox" name="overdue" value="1" defaultChecked={overdue === "1"} />
           {dict.payments.overdue}
         </label>
-        <button type="submit" className="px-4 py-2 rounded-lg bg-white/10 text-sm">
+        <button type="submit" className="px-4 py-2 rounded-lg bg-ink/8 text-sm">
           {dict.clients.search}
         </button>
       </form>
 
-      <div className="bg-[#0E1A2E] border border-white/10 rounded-xl overflow-hidden">
+      <div className="bg-panel border border-line rounded-xl overflow-hidden">
         {!payments || payments.length === 0 ? (
-          <p className="p-6 text-white/40 text-sm">{dict.payments.empty}</p>
+          <p className="p-6 text-ink/40 text-sm">{dict.payments.empty}</p>
         ) : (
           <table className="w-full text-sm">
             <tbody>
               {payments.map((p) => (
-                <tr key={p.id} className="border-b border-white/5 last:border-0 hover:bg-white/[0.02]">
+                <tr key={p.id} className="border-b border-line/60 last:border-0 hover:bg-ink/[0.03]">
                   <td className="p-4">
-                    <Link href={`/manage/payments/${p.id}/edit`} className="font-medium hover:text-[#F5C518]">
+                    <Link href={`/manage/payments/${p.id}/edit`} className="font-medium hover:text-gold-ink">
                       {names.get(p.client_id) || "—"}
                     </Link>
-                    <div className="text-white/40 text-xs">
+                    <div className="text-ink/40 text-xs">
                       {dict.payments.kindLabels[p.kind]}
                       {p.period_month ? ` · ${monthLabel(p.period_month, lang)}` : ""}
                       {p.description ? ` · ${p.description}` : ""}
                       {p.is_ad_budget && (
-                        <span className="ms-2 text-[11px] px-1.5 py-0.5 rounded-full bg-sky-500/15 text-sky-400">
+                        <span className="ms-2 text-[11px] px-1.5 py-0.5 rounded-full bg-sky-500/15 text-sky-700">
                           {dict.payments.adBudgetShort}
                         </span>
                       )}
@@ -118,24 +118,24 @@ export default async function PaymentsPage({
                   <td className="p-4 whitespace-nowrap">
                     {money(p.total, p.currency)}
                     {Number(p.vat_amount) > 0 && (
-                      <div className="text-white/30 text-[11px]">
+                      <div className="text-ink/30 text-[11px]">
                         {dict.payments.vatAmount} {money(p.vat_amount, p.currency)}
                       </div>
                     )}
                   </td>
                   <td className="p-4 whitespace-nowrap">
                     {Number(p.balance) > 0 ? (
-                      <span className="text-amber-400">{money(p.balance, p.currency)}</span>
+                      <span className="text-amber-700">{money(p.balance, p.currency)}</span>
                     ) : (
-                      <span className="text-white/30">—</span>
+                      <span className="text-ink/30">—</span>
                     )}
                     {Number(p.amount_paid) > 0 && Number(p.balance) > 0 && (
-                      <div className="text-white/30 text-[11px]">
+                      <div className="text-ink/30 text-[11px]">
                         {dict.payments.received} {money(p.amount_paid, p.currency)}
                       </div>
                     )}
                   </td>
-                  <td className="p-4 text-white/60 whitespace-nowrap">{p.due_date || "—"}</td>
+                  <td className="p-4 text-ink/60 whitespace-nowrap">{p.due_date || "—"}</td>
                   <td className="p-4">
                     <span
                       className={`text-xs px-2 py-1 rounded-full ${paymentStatusClasses[p.status]}`}
@@ -143,7 +143,7 @@ export default async function PaymentsPage({
                       {dict.payments.statusLabels[p.status]}
                     </span>
                     {p.is_overdue && (
-                      <span className="ms-1 text-xs px-2 py-1 rounded-full bg-red-500/10 text-red-400">
+                      <span className="ms-1 text-xs px-2 py-1 rounded-full bg-red-500/10 text-red-600">
                         {dict.payments.overdue}
                       </span>
                     )}
@@ -151,7 +151,7 @@ export default async function PaymentsPage({
                   <td className="p-4 text-right">
                     <a
                       href={`/manage/invoices/${p.id}`}
-                      className="text-xs text-[#F5C518] hover:underline whitespace-nowrap"
+                      className="text-xs text-gold-ink hover:underline whitespace-nowrap"
                     >
                       {dict.documents.invoice} PDF
                     </a>

@@ -5,7 +5,20 @@
   --color-bg-primary: #080E1A;
   --color-bg-secondary: #0C1424;
   --color-bg-card: #0E1A2E;
+
+  /* /manage (light theme). Semantic names so the whole tool re-skins from here. */
+  --color-page: #F3F5F9;
+  --color-panel: #FFFFFF;
+  --color-field: #F7F9FC;
+  --color-ink: #0E1A2E;
+  --color-line: #E2E7EF;
+  --color-gold-ink: #9A6700;
 }
+
+/* The internal tool is light; the dark scrollbar track from the public site
+ * would show as a black stripe down its right edge. */
+.manage-app ::-webkit-scrollbar-track { background: transparent; }
+.manage-app ::-webkit-scrollbar-thumb { background: rgba(14, 26, 46, 0.18); }
 
 html {
   scroll-behavior: smooth;

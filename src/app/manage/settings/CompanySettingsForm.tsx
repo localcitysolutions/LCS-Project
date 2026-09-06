@@ -11,8 +11,8 @@ type Dict = ReturnType<typeof getDict>;
 const initialState: ActionResult = {};
 
 const inputClass =
-  "w-full bg-[#0E1A2E] border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#F5C518]/40 disabled:opacity-50";
-const labelClass = "block text-white/60 text-xs font-medium mb-1.5";
+  "w-full bg-panel border border-line rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-gold disabled:opacity-50";
+const labelClass = "block text-ink/60 text-xs font-medium mb-1.5";
 
 export default function CompanySettingsForm({
   dict,
@@ -39,7 +39,7 @@ export default function CompanySettingsForm({
               required
               className={inputClass}
             />
-            {field("name_en") && <p className="text-red-400 text-xs mt-1">{field("name_en")}</p>}
+            {field("name_en") && <p className="text-red-600 text-xs mt-1">{field("name_en")}</p>}
           </div>
           <div>
             <label className={labelClass}>{t.nameAr}</label>
@@ -61,7 +61,7 @@ export default function CompanySettingsForm({
               placeholder="3xxxxxxxxxxxxx3"
               className={inputClass}
             />
-            <p className="text-white/30 text-[11px] mt-1">{t.vatHint}</p>
+            <p className="text-ink/30 text-[11px] mt-1">{t.vatHint}</p>
           </div>
           <div>
             <label className={labelClass}>{t.crNumber}</label>
@@ -93,7 +93,7 @@ export default function CompanySettingsForm({
           <div>
             <label className={labelClass}>{t.email}</label>
             <input name="email" defaultValue={settings?.email || ""} className={inputClass} />
-            {field("email") && <p className="text-red-400 text-xs mt-1">{field("email")}</p>}
+            {field("email") && <p className="text-red-600 text-xs mt-1">{field("email")}</p>}
           </div>
           <div>
             <label className={labelClass}>{t.website}</label>
@@ -157,7 +157,7 @@ export default function CompanySettingsForm({
             />
           </div>
         </div>
-        <p className="text-white/30 text-[11px] -mt-3">{t.prefixHint}</p>
+        <p className="text-ink/30 text-[11px] -mt-3">{t.prefixHint}</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
@@ -180,13 +180,13 @@ export default function CompanySettingsForm({
           </div>
         </div>
 
-        {state.error && <p className="text-red-400 text-sm">{state.error}</p>}
-        {state.message && <p className="text-green-400 text-sm">{state.message}</p>}
+        {state.error && <p className="text-red-600 text-sm">{state.error}</p>}
+        {state.message && <p className="text-green-700 text-sm">{state.message}</p>}
 
         <button
           type="submit"
           disabled={pending}
-          className="px-6 py-2.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all disabled:opacity-50"
+          className="px-6 py-2.5 rounded-full bg-[#F5C518] text-ink font-bold text-sm hover:bg-[#F5C518]/90 transition-all disabled:opacity-50"
         >
           {pending ? dict.common.loading : t.save}
         </button>

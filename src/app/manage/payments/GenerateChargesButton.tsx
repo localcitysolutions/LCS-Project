@@ -22,12 +22,12 @@ export default function GenerateChargesButton({ dict }: { dict: Dict }) {
         type="submit"
         disabled={pending}
         title={t.generateHint}
-        className="px-4 py-2 rounded-full bg-white/10 text-sm hover:bg-white/15 transition-all disabled:opacity-50"
+        className="px-4 py-2 rounded-full bg-ink/8 text-sm hover:bg-ink/12 transition-all disabled:opacity-50"
       >
         {pending ? dict.common.loading : t.generate}
       </button>
-      {state.message && <span className="text-xs text-[#F5C518]">{state.message}</span>}
-      {state.error && <span className="text-xs text-red-400">{state.error}</span>}
+      {state.message && <span className="text-xs text-gold-ink">{state.message}</span>}
+      {state.error && <span className="text-xs text-red-600">{state.error}</span>}
     </form>
   );
 }

@@ -11,8 +11,8 @@ type Dict = ReturnType<typeof getDict>;
 const initialState: ActionResult = {};
 
 const inputClass =
-  "w-full bg-[#0A1524] border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#F5C518]/40";
-const labelClass = "block text-white/50 text-xs font-medium mb-1.5";
+  "w-full bg-field border border-line rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gold";
+const labelClass = "block text-ink/50 text-xs font-medium mb-1.5";
 
 export default function BillingPlanForm({
   dict,
@@ -48,7 +48,7 @@ export default function BillingPlanForm({
             className={inputClass}
           />
           {field("monthly_amount") && (
-            <p className="text-red-400 text-xs mt-1">{field("monthly_amount")}</p>
+            <p className="text-red-600 text-xs mt-1">{field("monthly_amount")}</p>
           )}
         </div>
         <div>
@@ -68,9 +68,9 @@ export default function BillingPlanForm({
           placeholder="0.00"
           className={inputClass}
         />
-        <p className="text-white/30 text-[11px] mt-1">{t.adBudgetHint}</p>
+        <p className="text-ink/30 text-[11px] mt-1">{t.adBudgetHint}</p>
         {field("ad_budget_amount") && (
-          <p className="text-red-400 text-xs mt-1">{field("ad_budget_amount")}</p>
+          <p className="text-red-600 text-xs mt-1">{field("ad_budget_amount")}</p>
         )}
       </div>
 
@@ -87,11 +87,11 @@ export default function BillingPlanForm({
             placeholder="300.00"
             className={inputClass}
           />
-          <p className="text-white/30 text-[11px] mt-1">{t.setupFeeHint}</p>
+          <p className="text-ink/30 text-[11px] mt-1">{t.setupFeeHint}</p>
           {plan?.setup_fee_charged && Number(setupFee) > 0 && (
-            <p className="text-amber-400/80 text-[11px] mt-1">{t.setupFeeCharged}</p>
+            <p className="text-amber-700/80 text-[11px] mt-1">{t.setupFeeCharged}</p>
           )}
-          {field("setup_fee") && <p className="text-red-400 text-xs mt-1">{field("setup_fee")}</p>}
+          {field("setup_fee") && <p className="text-red-600 text-xs mt-1">{field("setup_fee")}</p>}
         </div>
         <div>
           <label className={labelClass}>{t.billingDay}</label>
@@ -103,9 +103,9 @@ export default function BillingPlanForm({
             defaultValue={plan?.billing_day ?? 1}
             className={inputClass}
           />
-          <p className="text-white/30 text-[11px] mt-1">{t.billingDayHint}</p>
+          <p className="text-ink/30 text-[11px] mt-1">{t.billingDayHint}</p>
           {field("billing_day") && (
-            <p className="text-red-400 text-xs mt-1">{field("billing_day")}</p>
+            <p className="text-red-600 text-xs mt-1">{field("billing_day")}</p>
           )}
         </div>
       </div>
@@ -121,7 +121,7 @@ export default function BillingPlanForm({
             className={inputClass}
           />
           {field("start_date") && (
-            <p className="text-red-400 text-xs mt-1">{field("start_date")}</p>
+            <p className="text-red-600 text-xs mt-1">{field("start_date")}</p>
           )}
         </div>
         <div>
@@ -132,7 +132,7 @@ export default function BillingPlanForm({
             defaultValue={plan?.end_date || ""}
             className={inputClass}
           />
-          {field("end_date") && <p className="text-red-400 text-xs mt-1">{field("end_date")}</p>}
+          {field("end_date") && <p className="text-red-600 text-xs mt-1">{field("end_date")}</p>}
         </div>
       </div>
 
@@ -147,7 +147,7 @@ export default function BillingPlanForm({
             ))}
           </select>
         </div>
-        <label className="flex items-center gap-2 text-xs text-white/70 pb-2">
+        <label className="flex items-center gap-2 text-xs text-ink/70 pb-2">
           <input
             type="checkbox"
             name="vat_enabled"
@@ -163,12 +163,12 @@ export default function BillingPlanForm({
         <input name="notes" defaultValue={plan?.notes || ""} className={inputClass} />
       </div>
 
-      {state.error && <p className="text-red-400 text-sm">{state.error}</p>}
+      {state.error && <p className="text-red-600 text-sm">{state.error}</p>}
 
       <button
         type="submit"
         disabled={pending}
-        className="px-5 py-2 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all disabled:opacity-50"
+        className="px-5 py-2 rounded-full bg-[#F5C518] text-ink font-bold text-sm hover:bg-[#F5C518]/90 transition-all disabled:opacity-50"
       >
         {pending ? dict.common.loading : t.save}
       </button>

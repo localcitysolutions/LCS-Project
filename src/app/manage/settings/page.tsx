@@ -28,8 +28,8 @@ export default async function SettingsPage() {
   return (
     <div>
       <h1 className="text-2xl font-bold mb-2">{dict.settings.title}</h1>
-      <p className="text-white/50 text-sm mb-6">{dict.settings.intro}</p>
-      {!canEdit && <p className="text-amber-400/80 text-sm mb-4">{dict.settings.adminOnly}</p>}
+      <p className="text-ink/50 text-sm mb-6">{dict.settings.intro}</p>
+      {!canEdit && <p className="text-amber-700/80 text-sm mb-4">{dict.settings.adminOnly}</p>}
       <CompanySettingsForm dict={dict} settings={settings ?? null} canEdit={canEdit} />
     </div>
   );

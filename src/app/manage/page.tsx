@@ -59,60 +59,60 @@ export default async function DashboardPage() {
       <h1 className="text-2xl font-bold mb-6">{dict.dashboard.title}</h1>
 
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
-        <div className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
-          <div className="text-white/50 text-xs uppercase tracking-wide mb-1">
+        <div className="bg-panel border border-line rounded-xl p-5">
+          <div className="text-ink/50 text-xs uppercase tracking-wide mb-1">
             {dict.dashboard.totalClients}
           </div>
           <div className="text-3xl font-bold">{clientCount}</div>
         </div>
-        <div className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
-          <div className="text-white/50 text-xs uppercase tracking-wide mb-1">
+        <div className="bg-panel border border-line rounded-xl p-5">
+          <div className="text-ink/50 text-xs uppercase tracking-wide mb-1">
             {dict.dashboard.upcomingReminders}
           </div>
           <div className="text-3xl font-bold">{reminders.length}</div>
         </div>
-        <div className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
-          <div className="text-white/50 text-xs uppercase tracking-wide mb-1">
+        <div className="bg-panel border border-line rounded-xl p-5">
+          <div className="text-ink/50 text-xs uppercase tracking-wide mb-1">
             {dict.dashboard.overduePayments}
           </div>
-          <div className="text-3xl font-bold text-red-400">{overduePayments.length}</div>
+          <div className="text-3xl font-bold text-red-600">{overduePayments.length}</div>
         </div>
-        <div className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
-          <div className="text-white/50 text-xs uppercase tracking-wide mb-1">
+        <div className="bg-panel border border-line rounded-xl p-5">
+          <div className="text-ink/50 text-xs uppercase tracking-wide mb-1">
             {dict.dashboard.outstanding}
           </div>
           <div
-            className={`text-2xl font-bold ${totalOutstanding > 0 ? "text-red-400" : ""}`}
+            className={`text-2xl font-bold ${totalOutstanding > 0 ? "text-red-600" : ""}`}
           >
             {money(totalOutstanding)}
           </div>
         </div>
-        <div className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
-          <div className="text-white/50 text-xs uppercase tracking-wide mb-1">
+        <div className="bg-panel border border-line rounded-xl p-5">
+          <div className="text-ink/50 text-xs uppercase tracking-wide mb-1">
             {dict.dashboard.advanceHeld}
           </div>
-          <div className={`text-2xl font-bold ${totalCredit > 0 ? "text-[#F5C518]" : ""}`}>
+          <div className={`text-2xl font-bold ${totalCredit > 0 ? "text-gold-ink" : ""}`}>
             {money(totalCredit)}
           </div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
+        <section className="bg-panel border border-line rounded-xl p-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-semibold">{dict.dashboard.upcomingReminders}</h2>
-            <Link href="/manage/reminders" className="text-xs text-[#F5C518] hover:underline">
+            <Link href="/manage/reminders" className="text-xs text-gold-ink hover:underline">
               {dict.dashboard.viewAll}
             </Link>
           </div>
           {reminders.length === 0 ? (
-            <p className="text-white/40 text-sm">{dict.dashboard.noReminders}</p>
+            <p className="text-ink/40 text-sm">{dict.dashboard.noReminders}</p>
           ) : (
             <ul className="space-y-3">
               {reminders.map((r) => (
-                <li key={r.id} className="text-sm border-b border-white/5 pb-3 last:border-0 last:pb-0">
+                <li key={r.id} className="text-sm border-b border-line/60 pb-3 last:border-0 last:pb-0">
                   <div className="font-medium">{r.title}</div>
-                  <div className="text-white/40 text-xs mt-0.5">
+                  <div className="text-ink/40 text-xs mt-0.5">
                     {r.client_id ? names.get(r.client_id) : null} ·{" "}
                     {new Date(r.due_at).toLocaleString(lang === "ar" ? "ar-SA" : "en-US")}
                   </div>
@@ -122,27 +122,27 @@ export default async function DashboardPage() {
           )}
         </section>
 
-        <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
+        <section className="bg-panel border border-line rounded-xl p-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-semibold">{dict.dashboard.overduePayments}</h2>
-            <Link href="/manage/payments" className="text-xs text-[#F5C518] hover:underline">
+            <Link href="/manage/payments" className="text-xs text-gold-ink hover:underline">
               {dict.dashboard.viewAll}
             </Link>
           </div>
           {overduePayments.length === 0 ? (
-            <p className="text-white/40 text-sm">{dict.dashboard.noOverdue}</p>
+            <p className="text-ink/40 text-sm">{dict.dashboard.noOverdue}</p>
           ) : (
             <ul className="space-y-3">
               {overduePayments.map((p) => (
-                <li key={p.id} className="text-sm border-b border-white/5 pb-3 last:border-0 last:pb-0">
+                <li key={p.id} className="text-sm border-b border-line/60 pb-3 last:border-0 last:pb-0">
                   <div className="font-medium">
                     {names.get(p.client_id) || "—"} — {money(p.balance, p.currency)}
-                    <span className="text-white/40 font-normal">
+                    <span className="text-ink/40 font-normal">
                       {" "}
                       / {money(p.total, p.currency)}
                     </span>
                   </div>
-                  <div className="text-white/40 text-xs mt-0.5">
+                  <div className="text-ink/40 text-xs mt-0.5">
                     {p.description} · {dict.payments.dueDate}: {p.due_date}
                   </div>
                 </li>

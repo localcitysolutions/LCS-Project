@@ -25,15 +25,15 @@ export default function ClientForm({
   const t = dict.clients;
   const field = (name: string) => state.fieldErrors?.[name];
   const inputClass =
-    "w-full bg-[#0E1A2E] border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#F5C518]/40";
-  const labelClass = "block text-white/60 text-xs font-medium mb-1.5";
+    "w-full bg-panel border border-line rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-gold";
+  const labelClass = "block text-ink/60 text-xs font-medium mb-1.5";
 
   return (
     <form action={formAction} className="max-w-xl space-y-4">
       <div>
         <label className={labelClass}>{t.name} *</label>
         <input name="name" defaultValue={client?.name} required className={inputClass} />
-        {field("name") && <p className="text-red-400 text-xs mt-1">{field("name")}</p>}
+        {field("name") && <p className="text-red-600 text-xs mt-1">{field("name")}</p>}
       </div>
       <div className="grid grid-cols-2 gap-4">
         <div>
@@ -49,7 +49,7 @@ export default function ClientForm({
         <div>
           <label className={labelClass}>{t.email}</label>
           <input name="email" type="email" defaultValue={client?.email || ""} className={inputClass} />
-          {field("email") && <p className="text-red-400 text-xs mt-1">{field("email")}</p>}
+          {field("email") && <p className="text-red-600 text-xs mt-1">{field("email")}</p>}
         </div>
         <div>
           <label className={labelClass}>{t.phone}</label>
@@ -156,12 +156,12 @@ export default function ClientForm({
         />
       </div>
 
-      {state.error && <p className="text-red-400 text-sm">{state.error}</p>}
+      {state.error && <p className="text-red-600 text-sm">{state.error}</p>}
 
       <button
         type="submit"
         disabled={pending}
-        className="px-6 py-2.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all disabled:opacity-50"
+        className="px-6 py-2.5 rounded-full bg-[#F5C518] text-ink font-bold text-sm hover:bg-[#F5C518]/90 transition-all disabled:opacity-50"
       >
         {pending ? dict.common.loading : t.save}
       </button>

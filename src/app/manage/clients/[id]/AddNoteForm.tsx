@@ -32,15 +32,15 @@ export default function AddNoteForm({
         name="body"
         rows={2}
         placeholder={t.placeholder}
-        className="w-full bg-[#0A1524] border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#F5C518]/40 resize-none"
+        className="w-full bg-field border border-line rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-gold resize-none"
       />
       {(state.fieldErrors?.body || state.error) && (
-        <p className="text-red-400 text-xs mt-1">{state.fieldErrors?.body || state.error}</p>
+        <p className="text-red-600 text-xs mt-1">{state.fieldErrors?.body || state.error}</p>
       )}
       <button
         type="submit"
         disabled={pending}
-        className="mt-2 px-4 py-1.5 rounded-full bg-white/10 hover:bg-white/15 text-xs font-medium disabled:opacity-50"
+        className="mt-2 px-4 py-1.5 rounded-full bg-ink/8 hover:bg-ink/12 text-xs font-medium disabled:opacity-50"
       >
         {pending ? dict.common.loading : t.save}
       </button>

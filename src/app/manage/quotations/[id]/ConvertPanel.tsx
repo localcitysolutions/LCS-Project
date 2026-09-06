@@ -29,10 +29,10 @@ export default function ConvertPanel({
 
   return (
     <form action={formAction} className="space-y-3">
-      <p className="text-white/50 text-xs leading-relaxed">{t.convertHint}</p>
+      <p className="text-ink/50 text-xs leading-relaxed">{t.convertHint}</p>
 
       {hasActivePlan && (
-        <label className="flex items-start gap-2 text-xs text-amber-300/90">
+        <label className="flex items-start gap-2 text-xs text-amber-700">
           <input
             type="checkbox"
             name="replace_plan"
@@ -44,13 +44,13 @@ export default function ConvertPanel({
         </label>
       )}
 
-      {state.error && <p className="text-red-400 text-xs leading-relaxed">{state.error}</p>}
-      {state.message && <p className="text-green-400 text-xs">{state.message}</p>}
+      {state.error && <p className="text-red-600 text-xs leading-relaxed">{state.error}</p>}
+      {state.message && <p className="text-green-700 text-xs">{state.message}</p>}
 
       <button
         type="submit"
         disabled={pending}
-        className="px-5 py-2 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all disabled:opacity-50"
+        className="px-5 py-2 rounded-full bg-[#F5C518] text-ink font-bold text-sm hover:bg-[#F5C518]/90 transition-all disabled:opacity-50"
       >
         {pending ? dict.common.loading : t.convert}
       </button>

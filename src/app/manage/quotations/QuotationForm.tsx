@@ -20,8 +20,8 @@ type Row = {
 const initialState: ActionResult = {};
 
 const inputClass =
-  "w-full bg-[#0A1524] border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#F5C518]/40";
-const labelClass = "block text-white/50 text-xs font-medium mb-1.5";
+  "w-full bg-field border border-line rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gold";
+const labelClass = "block text-ink/50 text-xs font-medium mb-1.5";
 
 let keySeed = 0;
 const nextKey = () => `row-${keySeed++}`;
@@ -114,7 +114,7 @@ export default function QuotationForm({
               </option>
             ))}
           </select>
-          {field("client_id") && <p className="text-red-400 text-xs mt-1">{field("client_id")}</p>}
+          {field("client_id") && <p className="text-red-600 text-xs mt-1">{field("client_id")}</p>}
         </div>
         <div>
           <label className={labelClass}>{t.quoteTitle}</label>
@@ -147,7 +147,7 @@ export default function QuotationForm({
             className={inputClass}
           />
           {field("valid_until") && (
-            <p className="text-red-400 text-xs mt-1">{field("valid_until")}</p>
+            <p className="text-red-600 text-xs mt-1">{field("valid_until")}</p>
           )}
         </div>
         <div>
@@ -170,11 +170,11 @@ export default function QuotationForm({
             onChange={(e) => setDiscount(e.target.value)}
             className={inputClass}
           />
-          {field("discount") && <p className="text-red-400 text-xs mt-1">{field("discount")}</p>}
+          {field("discount") && <p className="text-red-600 text-xs mt-1">{field("discount")}</p>}
         </div>
       </div>
 
-      <label className="flex items-center gap-2 text-sm text-white/70">
+      <label className="flex items-center gap-2 text-sm text-ink/70">
         <input
           type="checkbox"
           name="vat_enabled"
@@ -186,19 +186,19 @@ export default function QuotationForm({
       </label>
 
       {/* ── Line items ─────────────────────────────────────────────── */}
-      <div className="bg-[#0E1A2E] border border-white/10 rounded-xl p-4">
+      <div className="bg-panel border border-line rounded-xl p-4">
         <div className="flex items-center justify-between mb-3">
           <h2 className="font-semibold text-sm">{t.items}</h2>
           <button
             type="button"
             onClick={() => setRows((prev) => [...prev, blankRow()])}
-            className="text-xs px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/15"
+            className="text-xs px-3 py-1.5 rounded-full bg-ink/8 hover:bg-ink/12"
           >
             + {t.addItem}
           </button>
         </div>
 
-        <div className="hidden md:grid grid-cols-12 gap-2 text-[11px] text-white/40 px-1 mb-1">
+        <div className="hidden md:grid grid-cols-12 gap-2 text-[11px] text-ink/40 px-1 mb-1">
           <div className="col-span-5">{t.description}</div>
           <div className="col-span-2">{t.kind}</div>
           <div className="col-span-1 text-right">{t.quantity}</div>
@@ -251,7 +251,7 @@ export default function QuotationForm({
                   <button
                     type="button"
                     onClick={() => setRows((prev) => prev.filter((r) => r.key !== row.key))}
-                    className="text-xs px-2 py-1 rounded bg-red-500/10 text-red-400 hover:bg-red-500/20"
+                    className="text-xs px-2 py-1 rounded bg-red-500/10 text-red-600 hover:bg-red-500/20"
                     aria-label={t.removeItem}
                   >
                     ×
@@ -262,38 +262,38 @@ export default function QuotationForm({
           ))}
         </div>
 
-        {field("items") && <p className="text-red-400 text-xs mt-2">{field("items")}</p>}
+        {field("items") && <p className="text-red-600 text-xs mt-2">{field("items")}</p>}
 
         {/* ── Live totals ──────────────────────────────────────────── */}
-        <div className="mt-5 pt-4 border-t border-white/10 flex justify-end">
+        <div className="mt-5 pt-4 border-t border-line flex justify-end">
           <div className="w-full max-w-xs space-y-1 text-sm">
-            <div className="flex justify-between text-white/60">
+            <div className="flex justify-between text-ink/60">
               <span>{t.subtotal}</span>
               <span>{money(totals.oneOff, currency)}</span>
             </div>
             {totals.disc > 0 && (
-              <div className="flex justify-between text-white/60">
+              <div className="flex justify-between text-ink/60">
                 <span>{t.discount}</span>
                 <span>− {money(totals.disc, currency)}</span>
               </div>
             )}
             {vat && (
-              <div className="flex justify-between text-white/60">
+              <div className="flex justify-between text-ink/60">
                 <span>{t.vatAmount}</span>
                 <span>{money(totals.vatAmount, currency)}</span>
               </div>
             )}
-            <div className="flex justify-between font-bold text-base pt-1 border-t border-white/10">
+            <div className="flex justify-between font-bold text-base pt-1 border-t border-line">
               <span>{t.total}</span>
-              <span className="text-[#F5C518]">{money(totals.total, currency)}</span>
+              <span className="text-gold-ink">{money(totals.total, currency)}</span>
             </div>
             {totals.monthly > 0 && (
               <>
                 <div className="flex justify-between pt-2">
-                  <span className="text-white/60">{t.monthlyTotal}</span>
+                  <span className="text-ink/60">{t.monthlyTotal}</span>
                   <span className="font-semibold">{money(totals.monthly, currency)}</span>
                 </div>
-                <p className="text-white/30 text-[11px]">{t.monthlyHint}</p>
+                <p className="text-ink/30 text-[11px]">{t.monthlyHint}</p>
               </>
             )}
           </div>
@@ -322,12 +322,12 @@ export default function QuotationForm({
         </div>
       </div>
 
-      {state.error && <p className="text-red-400 text-sm">{state.error}</p>}
+      {state.error && <p className="text-red-600 text-sm">{state.error}</p>}
 
       <button
         type="submit"
         disabled={pending}
-        className="px-6 py-2.5 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all disabled:opacity-50"
+        className="px-6 py-2.5 rounded-full bg-[#F5C518] text-ink font-bold text-sm hover:bg-[#F5C518]/90 transition-all disabled:opacity-50"
       >
         {pending ? dict.common.loading : t.save}
       </button>

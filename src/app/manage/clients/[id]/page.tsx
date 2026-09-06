@@ -39,31 +39,31 @@ function withProtocol(url: string) {
 }
 
 const clientStatusClasses: Record<ClientStatus, string> = {
-  lead: "bg-sky-500/15 text-sky-400",
-  active: "bg-green-500/15 text-green-400",
-  paused: "bg-amber-500/15 text-amber-400",
-  churned: "bg-white/10 text-white/50",
+  lead: "bg-sky-500/15 text-sky-700",
+  active: "bg-green-500/15 text-green-700",
+  paused: "bg-amber-500/15 text-amber-700",
+  churned: "bg-ink/8 text-ink/50",
 };
 
 const serviceStatusClasses: Record<ClientServiceStatus, string> = {
-  active: "bg-green-500/15 text-green-400",
-  completed: "bg-white/10 text-white/60",
-  paused: "bg-amber-500/15 text-amber-400",
+  active: "bg-green-500/15 text-green-700",
+  completed: "bg-ink/8 text-ink/60",
+  paused: "bg-amber-500/15 text-amber-700",
 };
 
 const paymentStatusClasses: Record<PaymentStatus, string> = {
-  unpaid: "bg-white/10 text-white/60",
-  partial: "bg-amber-500/15 text-amber-400",
-  paid: "bg-green-500/15 text-green-400",
+  unpaid: "bg-ink/8 text-ink/60",
+  partial: "bg-amber-500/15 text-amber-700",
+  paid: "bg-green-500/15 text-green-700",
 };
 
 const quotationStatusClasses: Record<QuotationStatus, string> = {
-  draft: "bg-white/10 text-white/60",
-  sent: "bg-sky-500/15 text-sky-400",
-  accepted: "bg-green-500/15 text-green-400",
-  declined: "bg-red-500/15 text-red-400",
-  expired: "bg-white/10 text-white/50",
-  converted: "bg-[#F5C518]/15 text-[#F5C518]",
+  draft: "bg-ink/8 text-ink/60",
+  sent: "bg-sky-500/15 text-sky-700",
+  accepted: "bg-green-500/15 text-green-700",
+  declined: "bg-red-500/15 text-red-600",
+  expired: "bg-ink/8 text-ink/50",
+  converted: "bg-[#F5C518]/15 text-gold-ink",
 };
 
 export default async function ClientDetailPage({
@@ -293,7 +293,7 @@ export default async function ClientDetailPage({
           <Link
             key={tag}
             href={`/manage/clients?tag=${encodeURIComponent(tag)}`}
-            className="text-[11px] px-2 py-0.5 rounded-full bg-white/5 text-white/60 hover:bg-white/10"
+            className="text-[11px] px-2 py-0.5 rounded-full bg-ink/5 text-ink/60 hover:bg-ink/8"
           >
             {tag}
           </Link>
@@ -301,36 +301,36 @@ export default async function ClientDetailPage({
         <div className="flex gap-2 ms-auto">
           <Link
             href={`/manage/quotations/new?client_id=${id}`}
-            className="px-4 py-2 rounded-full bg-white/10 text-sm"
+            className="px-4 py-2 rounded-full bg-ink/8 text-sm"
           >
             {dict.quotations.new}
           </Link>
           <a
             href={`/manage/clients/${id}/statement`}
-            className="px-4 py-2 rounded-full bg-white/10 text-sm"
+            className="px-4 py-2 rounded-full bg-ink/8 text-sm"
             title={dict.documents.statementHint}
           >
             {dict.documents.statement} PDF
           </a>
-          <Link href={`/manage/clients/${id}/edit`} className="px-4 py-2 rounded-full bg-white/10 text-sm">
+          <Link href={`/manage/clients/${id}/edit`} className="px-4 py-2 rounded-full bg-ink/8 text-sm">
             {dict.common.edit}
           </Link>
           <ConfirmForm action={boundDelete} message={t.confirmDelete}>
-            <button type="submit" className="px-4 py-2 rounded-full bg-red-500/10 text-red-400 text-sm">
+            <button type="submit" className="px-4 py-2 rounded-full bg-red-500/10 text-red-600 text-sm">
               {t.delete}
             </button>
           </ConfirmForm>
         </div>
       </div>
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/50 mb-6">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-ink/50 mb-6">
         {client.company && <span>{client.company}</span>}
         {client.phone && (
-          <a href={`tel:${client.phone}`} className="hover:text-[#F5C518]">
+          <a href={`tel:${client.phone}`} className="hover:text-gold-ink">
             {client.phone}
           </a>
         )}
         {client.email && (
-          <a href={`mailto:${client.email}`} className="hover:text-[#F5C518]">
+          <a href={`mailto:${client.email}`} className="hover:text-gold-ink">
             {client.email}
           </a>
         )}
@@ -339,7 +339,7 @@ export default async function ClientDetailPage({
             href={`https://wa.me/${whatsappDigits}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#F5C518]"
+            className="hover:text-gold-ink"
           >
             WhatsApp
           </a>
@@ -349,36 +349,36 @@ export default async function ClientDetailPage({
             {t.assignedTo}: {profileName(client.assigned_to)}
           </span>
         )}
-        <span className="text-white/30">
+        <span className="text-ink/30">
           {t.added}: {client.created_at.slice(0, 10)}
         </span>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 text-sm">
         <div>
-          <div className="text-white/40 text-xs">{t.email}</div>
+          <div className="text-ink/40 text-xs">{t.email}</div>
           {client.email || "—"}
         </div>
         <div>
-          <div className="text-white/40 text-xs">{t.phone}</div>
+          <div className="text-ink/40 text-xs">{t.phone}</div>
           {client.phone || "—"}
         </div>
         <div>
-          <div className="text-white/40 text-xs">{t.whatsapp}</div>
+          <div className="text-ink/40 text-xs">{t.whatsapp}</div>
           {client.whatsapp || "—"}
         </div>
         <div>
-          <div className="text-white/40 text-xs">{t.status}</div>
+          <div className="text-ink/40 text-xs">{t.status}</div>
           {t.statusLabels[client.status]}
         </div>
         <div>
-          <div className="text-white/40 text-xs">{t.website}</div>
+          <div className="text-ink/40 text-xs">{t.website}</div>
           {client.website ? (
             <a
               href={withProtocol(client.website)}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#F5C518] hover:underline break-all"
+              className="text-gold-ink hover:underline break-all"
             >
               {client.website}
             </a>
@@ -387,33 +387,33 @@ export default async function ClientDetailPage({
           )}
         </div>
         <div>
-          <div className="text-white/40 text-xs">{t.startDate}</div>
+          <div className="text-ink/40 text-xs">{t.startDate}</div>
           {client.start_date || "—"}
         </div>
         <div>
-          <div className="text-white/40 text-xs">{t.primaryService}</div>
+          <div className="text-ink/40 text-xs">{t.primaryService}</div>
           {serviceLabel(client.primary_service)}
         </div>
         <div>
-          <div className="text-white/40 text-xs">{t.industry}</div>
+          <div className="text-ink/40 text-xs">{t.industry}</div>
           {client.industry || "—"}
         </div>
         <div>
-          <div className="text-white/40 text-xs">{t.gmbName}</div>
+          <div className="text-ink/40 text-xs">{t.gmbName}</div>
           {client.gmb_name || "—"}
         </div>
         <div>
-          <div className="text-white/40 text-xs">{t.gmbLocation}</div>
+          <div className="text-ink/40 text-xs">{t.gmbLocation}</div>
           {client.gmb_location || "—"}
         </div>
         <div>
-          <div className="text-white/40 text-xs">{t.gmbLink}</div>
+          <div className="text-ink/40 text-xs">{t.gmbLink}</div>
           {client.gmb_link ? (
             <a
               href={withProtocol(client.gmb_link)}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#F5C518] hover:underline break-all"
+              className="text-gold-ink hover:underline break-all"
             >
               {t.gmbLink}
             </a>
@@ -422,29 +422,29 @@ export default async function ClientDetailPage({
           )}
         </div>
         <div>
-          <div className="text-white/40 text-xs">{t.vatNumber}</div>
+          <div className="text-ink/40 text-xs">{t.vatNumber}</div>
           {client.vat_number || "—"}
         </div>
       </div>
 
       {client.notes && (
         <div className="mb-8">
-          <div className="text-white/40 text-xs mb-1">{t.notes}</div>
-          <p className="text-sm text-white/80 whitespace-pre-wrap">{client.notes}</p>
+          <div className="text-ink/40 text-xs mb-1">{t.notes}</div>
+          <p className="text-sm text-ink/80 whitespace-pre-wrap">{client.notes}</p>
         </div>
       )}
 
-      <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5 mb-6">
+      <section className="bg-panel border border-line rounded-xl p-5 mb-6">
         <h2 className="font-semibold mb-4">{sv.title}</h2>
         <AddServiceForm dict={dict} action={boundAddService} />
         {!services || services.length === 0 ? (
-          <p className="text-white/40 text-sm">{sv.empty}</p>
+          <p className="text-ink/40 text-sm">{sv.empty}</p>
         ) : (
           <ul className="space-y-3">
             {services.map((row) => (
               <li
                 key={row.id}
-                className="flex flex-wrap items-center gap-x-3 gap-y-2 border-b border-white/5 pb-3 last:border-0 last:pb-0 text-sm"
+                className="flex flex-wrap items-center gap-x-3 gap-y-2 border-b border-line/60 pb-3 last:border-0 last:pb-0 text-sm"
               >
                 <span className="font-medium">{serviceLabel(row.service)}</span>
                 <span
@@ -452,29 +452,29 @@ export default async function ClientDetailPage({
                 >
                   {sv.statusLabels[row.status]}
                 </span>
-                <span className="text-white/40 text-xs">
+                <span className="text-ink/40 text-xs">
                   {row.started_at || "—"}
                   {row.ended_at ? ` → ${row.ended_at}` : ""}
                 </span>
-                {row.notes && <span className="text-white/50 text-xs">· {row.notes}</span>}
+                {row.notes && <span className="text-ink/50 text-xs">· {row.notes}</span>}
                 <span className="flex gap-1 ms-auto">
                   {row.status !== "active" && (
                     <form action={setClientServiceStatusAction.bind(null, row.id, id, "active")}>
-                      <button className="text-xs px-2 py-1 rounded bg-white/5 hover:bg-white/10">
+                      <button className="text-xs px-2 py-1 rounded bg-ink/5 hover:bg-ink/8">
                         {sv.markActive}
                       </button>
                     </form>
                   )}
                   {row.status !== "paused" && (
                     <form action={setClientServiceStatusAction.bind(null, row.id, id, "paused")}>
-                      <button className="text-xs px-2 py-1 rounded bg-white/5 hover:bg-white/10">
+                      <button className="text-xs px-2 py-1 rounded bg-ink/5 hover:bg-ink/8">
                         {sv.markPaused}
                       </button>
                     </form>
                   )}
                   {row.status !== "completed" && (
                     <form action={setClientServiceStatusAction.bind(null, row.id, id, "completed")}>
-                      <button className="text-xs px-2 py-1 rounded bg-white/5 hover:bg-white/10">
+                      <button className="text-xs px-2 py-1 rounded bg-ink/5 hover:bg-ink/8">
                         {sv.markCompleted}
                       </button>
                     </form>
@@ -483,7 +483,7 @@ export default async function ClientDetailPage({
                     action={deleteClientServiceAction.bind(null, row.id, id)}
                     message={sv.confirmDelete}
                   >
-                    <button className="text-xs px-2 py-1 rounded bg-red-500/10 text-red-400 hover:bg-red-500/20">
+                    <button className="text-xs px-2 py-1 rounded bg-red-500/10 text-red-600 hover:bg-red-500/20">
                       {sv.delete}
                     </button>
                   </ConfirmForm>
@@ -495,112 +495,112 @@ export default async function ClientDetailPage({
       </section>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-[#0E1A2E] border border-white/10 rounded-xl p-4">
-          <div className="text-white/40 text-[11px] uppercase tracking-wide mb-1">
+        <div className="bg-panel border border-line rounded-xl p-4">
+          <div className="text-ink/40 text-[11px] uppercase tracking-wide mb-1">
             {bl.totalCharged}
           </div>
           <div className="text-lg font-bold">
             {money(balance?.total_charged ?? 0, planCurrency)}
           </div>
         </div>
-        <div className="bg-[#0E1A2E] border border-white/10 rounded-xl p-4">
-          <div className="text-white/40 text-[11px] uppercase tracking-wide mb-1">
+        <div className="bg-panel border border-line rounded-xl p-4">
+          <div className="text-ink/40 text-[11px] uppercase tracking-wide mb-1">
             {bl.totalReceived}
           </div>
           <div className="text-lg font-bold">
             {money(balance?.total_received ?? 0, planCurrency)}
           </div>
         </div>
-        <div className="bg-[#0E1A2E] border border-white/10 rounded-xl p-4">
-          <div className="text-white/40 text-[11px] uppercase tracking-wide mb-1">
+        <div className="bg-panel border border-line rounded-xl p-4">
+          <div className="text-ink/40 text-[11px] uppercase tracking-wide mb-1">
             {bl.outstanding}
           </div>
           <div
             className={`text-lg font-bold ${
-              Number(balance?.outstanding ?? 0) > 0 ? "text-red-400" : ""
+              Number(balance?.outstanding ?? 0) > 0 ? "text-red-600" : ""
             }`}
           >
             {money(balance?.outstanding ?? 0, planCurrency)}
           </div>
         </div>
-        <div className="bg-[#0E1A2E] border border-white/10 rounded-xl p-4">
-          <div className="text-white/40 text-[11px] uppercase tracking-wide mb-1">{bl.credit}</div>
+        <div className="bg-panel border border-line rounded-xl p-4">
+          <div className="text-ink/40 text-[11px] uppercase tracking-wide mb-1">{bl.credit}</div>
           <div
             className={`text-lg font-bold ${
-              Number(balance?.credit_balance ?? 0) > 0 ? "text-[#F5C518]" : ""
+              Number(balance?.credit_balance ?? 0) > 0 ? "text-gold-ink" : ""
             }`}
           >
             {money(balance?.credit_balance ?? 0, planCurrency)}
           </div>
           {Number(balance?.credit_balance ?? 0) > 0 && (
-            <p className="text-white/30 text-[11px] mt-1">{bl.creditHint}</p>
+            <p className="text-ink/30 text-[11px] mt-1">{bl.creditHint}</p>
           )}
         </div>
       </div>
 
       {showAds && (
-        <section className="bg-[#0E1A2E] border border-sky-500/20 rounded-xl p-5 mb-6">
+        <section className="bg-panel border border-sky-500/20 rounded-xl p-5 mb-6">
           <div className="flex items-center justify-between mb-3">
             <h2 className="font-semibold">{dict.partners.adsTitle}</h2>
             <Link
               href={`/manage/partners?client_id=${id}`}
-              className="text-xs text-[#F5C518] hover:underline"
+              className="text-xs text-gold-ink hover:underline"
             >
               {dict.partners.recordExpense}
             </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             <div>
-              <div className="text-white/40 text-[11px] uppercase tracking-wide mb-1">
+              <div className="text-ink/40 text-[11px] uppercase tracking-wide mb-1">
                 {dict.partners.adBudgetBilled}
               </div>
               <div className="text-lg font-bold">{money(adBudgetBilled, planCurrency)}</div>
             </div>
             <div>
-              <div className="text-white/40 text-[11px] uppercase tracking-wide mb-1">
+              <div className="text-ink/40 text-[11px] uppercase tracking-wide mb-1">
                 {dict.partners.adBudgetPaid}
               </div>
               <div className="text-lg font-bold">{money(adBudgetPaid, planCurrency)}</div>
             </div>
             <div>
-              <div className="text-white/40 text-[11px] uppercase tracking-wide mb-1">
+              <div className="text-ink/40 text-[11px] uppercase tracking-wide mb-1">
                 {dict.partners.adSpendForClient}
               </div>
               <div className="text-lg font-bold">{money(adSpend, planCurrency)}</div>
             </div>
             <div>
-              <div className="text-white/40 text-[11px] uppercase tracking-wide mb-1">
+              <div className="text-ink/40 text-[11px] uppercase tracking-wide mb-1">
                 {dict.partners.unspentAdBudget}
               </div>
               <div
                 className={`text-lg font-bold ${
-                  adBudgetPaid - adSpend > 0.005 ? "text-sky-400" : ""
+                  adBudgetPaid - adSpend > 0.005 ? "text-sky-700" : ""
                 }`}
               >
                 {money(adBudgetPaid - adSpend, planCurrency)}
               </div>
             </div>
           </div>
-          <p className="text-white/30 text-[11px] mt-3">{dict.partners.adsHint}</p>
+          <p className="text-ink/30 text-[11px] mt-3">{dict.partners.adsHint}</p>
         </section>
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
+        <section className="bg-panel border border-line rounded-xl p-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-semibold">{bl.title}</h2>
             {plan && plan.monthly_amount > 0 && (
-              <span className="text-xs text-[#F5C518]">
+              <span className="text-xs text-gold-ink">
                 {money(plan.monthly_amount, plan.currency)}
                 {bl.perMonth}
               </span>
             )}
           </div>
-          {!plan && <p className="text-white/40 text-sm mb-4">{bl.none}</p>}
+          {!plan && <p className="text-ink/40 text-sm mb-4">{bl.none}</p>}
           <BillingPlanForm dict={dict} action={boundSavePlan} plan={plan} today={today} />
         </section>
 
-        <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
+        <section className="bg-panel border border-line rounded-xl p-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-semibold">{rc.title}</h2>
           </div>
@@ -613,7 +613,7 @@ export default async function ClientDetailPage({
             partners={partners || []}
           />
           {!receipts || receipts.length === 0 ? (
-            <p className="text-white/40 text-sm">{rc.empty}</p>
+            <p className="text-ink/40 text-sm">{rc.empty}</p>
           ) : (
             <ul className="space-y-3">
               {receipts.map((r) => {
@@ -621,25 +621,25 @@ export default async function ClientDetailPage({
                 return (
                   <li
                     key={r.id}
-                    className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm border-b border-white/5 pb-3 last:border-0 last:pb-0"
+                    className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm border-b border-line/60 pb-3 last:border-0 last:pb-0"
                   >
                     <span className="font-medium">{money(r.amount, r.currency)}</span>
-                    <span className="text-white/40 text-xs">{r.received_at}</span>
-                    <span className="text-white/40 text-xs">{rc.methodLabels[r.method]}</span>
+                    <span className="text-ink/40 text-xs">{r.received_at}</span>
+                    <span className="text-ink/40 text-xs">{rc.methodLabels[r.method]}</span>
                     {partnerName(r.received_by) && (
-                      <span className="text-[11px] px-2 py-0.5 rounded-full bg-white/5 text-white/60">
+                      <span className="text-[11px] px-2 py-0.5 rounded-full bg-ink/5 text-ink/60">
                         {partnerName(r.received_by)}
                       </span>
                     )}
-                    {r.reference && <span className="text-white/40 text-xs">#{r.reference}</span>}
+                    {r.reference && <span className="text-ink/40 text-xs">#{r.reference}</span>}
                     <a
                       href={`/manage/receipts/${r.id}`}
-                      className="text-xs text-[#F5C518] hover:underline"
+                      className="text-xs text-gold-ink hover:underline"
                     >
                       {dict.documents.receipt} PDF
                     </a>
                     {unapplied > 0.005 && (
-                      <span className="text-[11px] px-2 py-0.5 rounded-full bg-[#F5C518]/15 text-[#F5C518]">
+                      <span className="text-[11px] px-2 py-0.5 rounded-full bg-[#F5C518]/15 text-gold-ink">
                         {money(unapplied, r.currency)} {rc.unapplied}
                       </span>
                     )}
@@ -648,7 +648,7 @@ export default async function ClientDetailPage({
                       message={rc.confirmDelete}
                       className="ms-auto"
                     >
-                      <button className="text-xs px-2 py-1 rounded bg-red-500/10 text-red-400 hover:bg-red-500/20">
+                      <button className="text-xs px-2 py-1 rounded bg-red-500/10 text-red-600 hover:bg-red-500/20">
                         {rc.delete}
                       </button>
                     </ConfirmForm>
@@ -661,26 +661,26 @@ export default async function ClientDetailPage({
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
+        <section className="bg-panel border border-line rounded-xl p-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-semibold">{pay.title}</h2>
             <Link
               href={`/manage/payments/new?client_id=${id}`}
-              className="text-xs text-[#F5C518] hover:underline"
+              className="text-xs text-gold-ink hover:underline"
             >
               {pay.new}
             </Link>
           </div>
           {!payments || payments.length === 0 ? (
-            <p className="text-white/40 text-sm">{pay.empty}</p>
+            <p className="text-ink/40 text-sm">{pay.empty}</p>
           ) : (
             <ul className="space-y-3">
               {payments.map((p) => (
-                <li key={p.id} className="text-sm border-b border-white/5 pb-3 last:border-0 last:pb-0">
+                <li key={p.id} className="text-sm border-b border-line/60 pb-3 last:border-0 last:pb-0">
                   <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                     <Link
                       href={`/manage/payments/${p.id}/edit`}
-                      className="font-medium hover:text-[#F5C518]"
+                      className="font-medium hover:text-gold-ink"
                     >
                       {money(p.total, p.currency)}
                     </Link>
@@ -692,25 +692,25 @@ export default async function ClientDetailPage({
                       {pay.statusLabels[p.status]}
                     </span>
                     {p.is_overdue && (
-                      <span className="text-[11px] px-2 py-0.5 rounded-full bg-red-500/15 text-red-400">
+                      <span className="text-[11px] px-2 py-0.5 rounded-full bg-red-500/15 text-red-600">
                         {pay.overdue}
                       </span>
                     )}
                     {p.is_ad_budget && (
-                      <span className="text-[11px] px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-400">
+                      <span className="text-[11px] px-2 py-0.5 rounded-full bg-sky-500/15 text-sky-700">
                         {pay.adBudgetShort}
                       </span>
                     )}
                     <span className="flex items-center gap-1 ms-auto">
                       <a
                         href={`/manage/invoices/${p.id}`}
-                        className="text-xs px-2 py-1 rounded bg-white/5 hover:bg-white/10 text-[#F5C518]"
+                        className="text-xs px-2 py-1 rounded bg-ink/5 hover:bg-ink/8 text-gold-ink"
                       >
                         {dict.documents.invoice} PDF
                       </a>
                       {Number(p.balance) > 0 && (
                         <form action={markPaymentPaidAction.bind(null, p.id, id)}>
-                          <button className="text-xs px-2 py-1 rounded bg-white/5 hover:bg-white/10">
+                          <button className="text-xs px-2 py-1 rounded bg-ink/5 hover:bg-ink/8">
                             {pay.markPaid}
                           </button>
                         </form>
@@ -719,13 +719,13 @@ export default async function ClientDetailPage({
                         action={deletePaymentAction.bind(null, p.id, id)}
                         message={pay.confirmDelete}
                       >
-                        <button className="text-xs px-2 py-1 rounded bg-red-500/10 text-red-400 hover:bg-red-500/20">
+                        <button className="text-xs px-2 py-1 rounded bg-red-500/10 text-red-600 hover:bg-red-500/20">
                           {t.delete}
                         </button>
                       </ConfirmForm>
                     </span>
                   </div>
-                  <div className="text-white/40 text-xs mt-1">
+                  <div className="text-ink/40 text-xs mt-1">
                     {chargeLabel(p)}
                     {p.due_date ? ` · ${pay.dueDate}: ${p.due_date}` : ""}
                     {Number(p.vat_amount) > 0
@@ -733,9 +733,9 @@ export default async function ClientDetailPage({
                       : ""}
                   </div>
                   {Number(p.amount_paid) > 0 && Number(p.balance) > 0 && (
-                    <div className="text-white/50 text-xs mt-0.5">
+                    <div className="text-ink/50 text-xs mt-0.5">
                       {pay.received}: {money(p.amount_paid, p.currency)} · {pay.balance}:{" "}
-                      <span className="text-amber-400">{money(p.balance, p.currency)}</span>
+                      <span className="text-amber-700">{money(p.balance, p.currency)}</span>
                     </div>
                   )}
                 </li>
@@ -744,28 +744,28 @@ export default async function ClientDetailPage({
           )}
         </section>
 
-        <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
+        <section className="bg-panel border border-line rounded-xl p-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-semibold">{dict.quotations.title}</h2>
             <Link
               href={`/manage/quotations/new?client_id=${id}`}
-              className="text-xs text-[#F5C518] hover:underline"
+              className="text-xs text-gold-ink hover:underline"
             >
               {dict.quotations.new}
             </Link>
           </div>
           {!quotations || quotations.length === 0 ? (
-            <p className="text-white/40 text-sm">{dict.quotations.empty}</p>
+            <p className="text-ink/40 text-sm">{dict.quotations.empty}</p>
           ) : (
             <ul className="space-y-3">
               {quotations.map((q) => (
                 <li
                   key={q.id}
-                  className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm border-b border-white/5 pb-3 last:border-0 last:pb-0"
+                  className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm border-b border-line/60 pb-3 last:border-0 last:pb-0"
                 >
                   <Link
                     href={`/manage/quotations/${q.id}`}
-                    className="font-medium hover:text-[#F5C518]"
+                    className="font-medium hover:text-gold-ink"
                   >
                     {q.quote_number || q.title || dict.quotations.title}
                   </Link>
@@ -776,11 +776,11 @@ export default async function ClientDetailPage({
                   >
                     {dict.quotations.statusLabels[q.status]}
                   </span>
-                  <span className="text-white/40 text-xs">{q.issue_date}</span>
-                  <span className="ms-auto text-xs text-white/60">
+                  <span className="text-ink/40 text-xs">{q.issue_date}</span>
+                  <span className="ms-auto text-xs text-ink/60">
                     {money(q.total, q.currency)}
                     {Number(q.monthly_total) > 0 && (
-                      <span className="text-[#F5C518]">
+                      <span className="text-gold-ink">
                         {" "}
                         + {money(q.monthly_total, q.currency)}
                         {bl.perMonth}
@@ -795,28 +795,28 @@ export default async function ClientDetailPage({
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
+        <section className="bg-panel border border-line rounded-xl p-5">
           <h2 className="font-semibold mb-4">{nt.title}</h2>
           <AddNoteForm dict={dict} action={boundAddNote} />
           {!notes || notes.length === 0 ? (
-            <p className="text-white/40 text-sm">{nt.empty}</p>
+            <p className="text-ink/40 text-sm">{nt.empty}</p>
           ) : (
             <ul className="space-y-3">
               {notes.map((n) => (
                 <li
                   key={n.id}
-                  className={`text-sm border-b border-white/5 pb-3 last:border-0 last:pb-0 ${
+                  className={`text-sm border-b border-line/60 pb-3 last:border-0 last:pb-0 ${
                     n.pinned ? "bg-[#F5C518]/[0.04] -mx-2 px-2 rounded-lg" : ""
                   }`}
                 >
-                  <p className="whitespace-pre-wrap text-white/80">{n.body}</p>
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5 text-xs text-white/40">
-                    {n.pinned && <span className="text-[#F5C518]">📌</span>}
+                  <p className="whitespace-pre-wrap text-ink/80">{n.body}</p>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5 text-xs text-ink/40">
+                    {n.pinned && <span className="text-gold-ink">📌</span>}
                     {profileName(n.created_by) && <span>{profileName(n.created_by)}</span>}
                     <span>{dateTime(n.created_at)}</span>
                     <span className="flex gap-1 ms-auto">
                       <form action={setClientNotePinnedAction.bind(null, n.id, id, !n.pinned)}>
-                        <button className="px-2 py-0.5 rounded bg-white/5 hover:bg-white/10">
+                        <button className="px-2 py-0.5 rounded bg-ink/5 hover:bg-ink/8">
                           {n.pinned ? nt.unpin : nt.pin}
                         </button>
                       </form>
@@ -824,7 +824,7 @@ export default async function ClientDetailPage({
                         action={deleteClientNoteAction.bind(null, n.id, id)}
                         message={nt.confirmDelete}
                       >
-                        <button className="px-2 py-0.5 rounded bg-red-500/10 text-red-400 hover:bg-red-500/20">
+                        <button className="px-2 py-0.5 rounded bg-red-500/10 text-red-600 hover:bg-red-500/20">
                           {nt.delete}
                         </button>
                       </ConfirmForm>
@@ -836,24 +836,24 @@ export default async function ClientDetailPage({
           )}
         </section>
 
-        <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
+        <section className="bg-panel border border-line rounded-xl p-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="font-semibold">{dict.reminders.title}</h2>
             <Link
               href={`/manage/reminders/new?client_id=${id}`}
-              className="text-xs text-[#F5C518] hover:underline"
+              className="text-xs text-gold-ink hover:underline"
             >
               {dict.reminders.new}
             </Link>
           </div>
           {!reminders || reminders.length === 0 ? (
-            <p className="text-white/40 text-sm">{dict.reminders.empty}</p>
+            <p className="text-ink/40 text-sm">{dict.reminders.empty}</p>
           ) : (
             <ul className="space-y-3">
               {reminders.map((r) => (
-                <li key={r.id} className="text-sm border-b border-white/5 pb-3 last:border-0 last:pb-0">
+                <li key={r.id} className="text-sm border-b border-line/60 pb-3 last:border-0 last:pb-0">
                   <div className="font-medium">{r.title}</div>
-                  <div className="text-white/40 text-xs mt-0.5">
+                  <div className="text-ink/40 text-xs mt-0.5">
                     {new Date(r.due_at).toLocaleString(lang === "ar" ? "ar-SA" : "en-US")} ·{" "}
                     {dict.reminders.statusLabels[r.status]}
                   </div>
@@ -864,26 +864,26 @@ export default async function ClientDetailPage({
         </section>
       </div>
 
-      <section className="bg-[#0E1A2E] border border-white/10 rounded-xl p-5">
+      <section className="bg-panel border border-line rounded-xl p-5">
         <h2 className="font-semibold mb-4">{act.title}</h2>
         {!activity || activity.length === 0 ? (
-          <p className="text-white/40 text-sm">{act.empty}</p>
+          <p className="text-ink/40 text-sm">{act.empty}</p>
         ) : (
           <ul className="space-y-0">
             {activity.map((a, i) => (
               <li key={a.id} className="flex gap-3 text-sm">
                 <span className="flex flex-col items-center">
-                  <span className="w-2 h-2 rounded-full bg-[#F5C518]/60 mt-1.5 shrink-0" />
-                  {i < activity.length - 1 && <span className="w-px flex-1 bg-white/10" />}
+                  <span className="w-2 h-2 rounded-full bg-gold mt-1.5 shrink-0" />
+                  {i < activity.length - 1 && <span className="w-px flex-1 bg-ink/8" />}
                 </span>
                 <span className="pb-4 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
                   <span className="font-medium">
                     {(act.kindLabels as Record<string, string>)[a.kind] || a.kind}
                   </span>
                   {activityDetail(a) && (
-                    <span className="text-white/60 text-xs">{activityDetail(a)}</span>
+                    <span className="text-ink/60 text-xs">{activityDetail(a)}</span>
                   )}
-                  <span className="text-white/30 text-xs">
+                  <span className="text-ink/30 text-xs">
                     {dateTime(a.created_at)}
                     {profileName(a.actor) ? ` · ${profileName(a.actor)}` : ""}
                   </span>

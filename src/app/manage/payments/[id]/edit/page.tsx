@@ -30,7 +30,7 @@ export default async function EditPaymentPage({
           {dict.common.edit} — {dict.payments.title}
         </h1>
         <form action={boundDelete}>
-          <button type="submit" className="px-4 py-2 rounded-full bg-red-500/10 text-red-400 text-sm">
+          <button type="submit" className="px-4 py-2 rounded-full bg-red-500/10 text-red-600 text-sm">
             {dict.clients.delete}
           </button>
         </form>

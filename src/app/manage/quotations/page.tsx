@@ -10,12 +10,12 @@ import type { QuotationStatus } from "@/types/manage";
 export const dynamic = "force-dynamic";
 
 const statusClasses: Record<QuotationStatus, string> = {
-  draft: "bg-white/10 text-white/60",
+  draft: "bg-ink/8 text-ink/60",
   sent: "bg-blue-500/15 text-blue-300",
-  accepted: "bg-green-500/15 text-green-400",
-  declined: "bg-red-500/15 text-red-400",
-  expired: "bg-white/10 text-white/40",
-  converted: "bg-[#F5C518]/15 text-[#F5C518]",
+  accepted: "bg-green-500/15 text-green-700",
+  declined: "bg-red-500/15 text-red-600",
+  expired: "bg-ink/8 text-ink/40",
+  converted: "bg-[#F5C518]/15 text-gold-ink",
 };
 
 export default async function QuotationsPage() {
@@ -42,15 +42,15 @@ export default async function QuotationsPage() {
         <h1 className="text-2xl font-bold">{t.title}</h1>
         <Link
           href="/manage/quotations/new"
-          className="px-4 py-2 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm"
+          className="px-4 py-2 rounded-full bg-[#F5C518] text-ink font-bold text-sm"
         >
           {t.new}
         </Link>
       </div>
 
-      <div className="bg-[#0E1A2E] border border-white/10 rounded-xl overflow-hidden">
+      <div className="bg-panel border border-line rounded-xl overflow-hidden">
         {!quotes || quotes.length === 0 ? (
-          <p className="p-6 text-white/40 text-sm">{t.empty}</p>
+          <p className="p-6 text-ink/40 text-sm">{t.empty}</p>
         ) : (
           <table className="w-full text-sm">
             <tbody>
@@ -59,16 +59,16 @@ export default async function QuotationsPage() {
                 return (
                   <tr
                     key={q.id}
-                    className="border-b border-white/5 last:border-0 hover:bg-white/[0.02]"
+                    className="border-b border-line/60 last:border-0 hover:bg-ink/[0.03]"
                   >
                     <td className="p-4">
                       <Link
                         href={`/manage/quotations/${q.id}`}
-                        className="font-medium hover:text-[#F5C518]"
+                        className="font-medium hover:text-gold-ink"
                       >
                         {client?.company || client?.name || "—"}
                       </Link>
-                      <div className="text-white/40 text-xs">
+                      <div className="text-ink/40 text-xs">
                         {q.quote_number}
                         {q.title ? ` · ${q.title}` : ""}
                       </div>
@@ -76,12 +76,12 @@ export default async function QuotationsPage() {
                     <td className="p-4 whitespace-nowrap">
                       {money(q.total, q.currency)}
                       {Number(q.monthly_total) > 0 && (
-                        <div className="text-white/40 text-[11px]">
+                        <div className="text-ink/40 text-[11px]">
                           + {money(q.monthly_total, q.currency)}/mo
                         </div>
                       )}
                     </td>
-                    <td className="p-4 text-white/60 whitespace-nowrap">{q.valid_until || "—"}</td>
+                    <td className="p-4 text-ink/60 whitespace-nowrap">{q.valid_until || "—"}</td>
                     <td className="p-4">
                       <span className={`text-xs px-2 py-1 rounded-full ${statusClasses[q.status]}`}>
                         {t.statusLabels[q.status]}
@@ -90,7 +90,7 @@ export default async function QuotationsPage() {
                     <td className="p-4 text-right">
                       <a
                         href={`/manage/quotations/${q.id}/pdf`}
-                        className="text-xs text-[#F5C518] hover:underline whitespace-nowrap"
+                        className="text-xs text-gold-ink hover:underline whitespace-nowrap"
                       >
                         PDF
                       </a>

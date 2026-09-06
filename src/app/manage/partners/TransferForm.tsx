@@ -10,8 +10,8 @@ type Dict = ReturnType<typeof getDict>;
 const initialState: ActionResult = {};
 
 const inputClass =
-  "w-full bg-[#0A1524] border border-white/10 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#F5C518]/40";
-const labelClass = "block text-white/50 text-xs font-medium mb-1.5";
+  "w-full bg-field border border-line rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-gold";
+const labelClass = "block text-ink/50 text-xs font-medium mb-1.5";
 
 export default function TransferForm({
   dict,
@@ -61,7 +61,7 @@ export default function TransferForm({
             ))}
           </select>
           {field("to_partner") && (
-            <p className="text-red-400 text-xs mt-1">{field("to_partner")}</p>
+            <p className="text-red-600 text-xs mt-1">{field("to_partner")}</p>
           )}
         </div>
       </div>
@@ -78,7 +78,7 @@ export default function TransferForm({
             placeholder="0.00"
             className={inputClass}
           />
-          {field("amount") && <p className="text-red-400 text-xs mt-1">{field("amount")}</p>}
+          {field("amount") && <p className="text-red-600 text-xs mt-1">{field("amount")}</p>}
         </div>
         <div>
           <label className={labelClass}>{t.date} *</label>
@@ -110,12 +110,12 @@ export default function TransferForm({
       </div>
       <input type="hidden" name="currency" value="SAR" />
 
-      {state.error && <p className="text-red-400 text-sm">{state.error}</p>}
+      {state.error && <p className="text-red-600 text-sm">{state.error}</p>}
 
       <button
         type="submit"
         disabled={pending}
-        className="px-5 py-2 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm hover:bg-[#F5C518]/90 transition-all disabled:opacity-50"
+        className="px-5 py-2 rounded-full bg-[#F5C518] text-ink font-bold text-sm hover:bg-[#F5C518]/90 transition-all disabled:opacity-50"
       >
         {pending ? dict.common.loading : t.save}
       </button>

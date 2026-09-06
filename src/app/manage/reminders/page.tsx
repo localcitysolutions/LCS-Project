@@ -46,7 +46,7 @@ export default async function RemindersPage({
         <h1 className="text-2xl font-bold">{dict.reminders.title}</h1>
         <Link
           href="/manage/reminders/new"
-          className="px-4 py-2 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm"
+          className="px-4 py-2 rounded-full bg-[#F5C518] text-ink font-bold text-sm"
         >
           {dict.reminders.new}
         </Link>
@@ -56,7 +56,7 @@ export default async function RemindersPage({
         <select
           name="status"
           defaultValue={status || ""}
-          className="bg-[#0E1A2E] border border-white/10 rounded-lg px-4 py-2 text-sm"
+          className="bg-panel border border-line rounded-lg px-4 py-2 text-sm"
         >
           <option value="">{dict.reminders.title}</option>
           {Object.entries(dict.reminders.statusLabels).map(([value, label]) => (
@@ -65,28 +65,28 @@ export default async function RemindersPage({
             </option>
           ))}
         </select>
-        <button type="submit" className="px-4 py-2 rounded-lg bg-white/10 text-sm">
+        <button type="submit" className="px-4 py-2 rounded-lg bg-ink/8 text-sm">
           {dict.clients.search}
         </button>
       </form>
 
-      <div className="bg-[#0E1A2E] border border-white/10 rounded-xl overflow-hidden">
+      <div className="bg-panel border border-line rounded-xl overflow-hidden">
         {!reminders || reminders.length === 0 ? (
-          <p className="p-6 text-white/40 text-sm">{dict.reminders.empty}</p>
+          <p className="p-6 text-ink/40 text-sm">{dict.reminders.empty}</p>
         ) : (
           <table className="w-full text-sm">
             <tbody>
               {reminders.map((r) => (
-                <tr key={r.id} className="border-b border-white/5 last:border-0 hover:bg-white/[0.02]">
+                <tr key={r.id} className="border-b border-line/60 last:border-0 hover:bg-ink/[0.03]">
                   <td className="p-4">
                     <div className="font-medium">{r.title}</div>
-                    <div className="text-white/40 text-xs">
+                    <div className="text-ink/40 text-xs">
                       {r.client_id ? names.get(r.client_id) : null} ·{" "}
                       {new Date(r.due_at).toLocaleString(lang === "ar" ? "ar-SA" : "en-US")}
                     </div>
                   </td>
                   <td className="p-4">
-                    <span className="text-xs px-2 py-1 rounded-full bg-white/5">
+                    <span className="text-xs px-2 py-1 rounded-full bg-ink/5">
                       {dict.reminders.statusLabels[r.status]}
                     </span>
                   </td>
@@ -94,12 +94,12 @@ export default async function RemindersPage({
                     {(r.status === "pending" || r.status === "sent") && (
                       <div className="flex gap-3 justify-end">
                         <form action={updateReminderStatusAction.bind(null, r.id, "done")}>
-                          <button type="submit" className="text-xs text-[#F5C518] hover:underline">
+                          <button type="submit" className="text-xs text-gold-ink hover:underline">
                             {dict.reminders.markDone}
                           </button>
                         </form>
                         <form action={updateReminderStatusAction.bind(null, r.id, "dismissed")}>
-                          <button type="submit" className="text-xs text-white/40 hover:text-white/70">
+                          <button type="submit" className="text-xs text-ink/40 hover:text-ink/70">
                             {dict.reminders.dismiss}
                           </button>
                         </form>

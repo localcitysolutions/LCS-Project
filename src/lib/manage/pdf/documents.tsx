@@ -871,3 +871,150 @@ export function StatementDocument({
     </Document>
   );
 }
+
+// ── Partner account statement ───────────────────────────────────────────────
+// The running ledger between the two owners: every payment received, expense
+// paid and transfer made, each with its effect on what partner A owes partner
+// B, and the balance after it — read like a bank statement.
+
+const PL = {
+  title: ["PARTNER ACCOUNT STATEMENT", "كشف حساب الشركاء"],
+  partners: ["PARTNERS", "الشركاء"],
+  asOf: ["As of", "حتى تاريخ"],
+  date: ["Date", "التاريخ"],
+  entry: ["Entry", "البند"],
+  amount: ["Amount", "المبلغ"],
+  effect: ["Effect", "الأثر"],
+  balance: ["Balance", "الرصيد"],
+  owes: ["owes", "مدين لـ"],
+  allSquare: ["All square — nothing owed.", "الحساب متساوٍ — لا مستحقات."],
+  noEntries: ["No entries yet.", "لا توجد سجلات."],
+} as const;
+
+export type PdfLedgerEntry = {
+  id: string;
+  date: string;
+  title: string;
+  detail: string;
+  amount: number;
+  currency: string;
+  effect: number;
+  balanceAfter: number;
+};
+
+export function PartnerStatementDocument({
+  company,
+  partnerA,
+  partnerB,
+  entries,
+  finalBalance,
+  currency,
+  asOf,
+}: {
+  company: PdfCompany;
+  partnerA: string;
+  partnerB: string;
+  /** Oldest first. */
+  entries: PdfLedgerEntry[];
+  /** What partnerA owes partnerB; negative means the reverse. */
+  finalBalance: number;
+  currency: string;
+  asOf: string;
+}) {
+  const owing =
+    finalBalance > 0.005
+      ? `${partnerA} ${PL.owes[0]} ${partnerB}`
+      : finalBalance < -0.005
+        ? `${partnerB} ${PL.owes[0]} ${partnerA}`
+        : null;
+  const owingAr =
+    finalBalance > 0.005
+      ? `${partnerA} ${PL.owes[1]} ${partnerB}`
+      : finalBalance < -0.005
+        ? `${partnerB} ${PL.owes[1]} ${partnerA}`
+        : null;
+  const signed = (v: number) => `${v > 0.005 ? "+" : v < -0.005 ? "−" : ""}${pdfMoney(Math.abs(v), currency)}`;
+
+  return (
+    <Document title="Partner account statement" author={company.name_en}>
+      <Page size="A4" style={styles.page}>
+        <Header company={company} title={PL.title} />
+        <View style={styles.rule} />
+
+        <View style={styles.twoCol}>
+          <View style={styles.col}>
+            <Text style={styles.boxLabel}>
+              {PL.partners[0]} · {PL.partners[1]}
+            </Text>
+            <Text style={{ fontWeight: 700, fontSize: 10 }}>
+              {partnerA} · {partnerB}
+            </Text>
+            <Text style={[styles.muted, { fontSize: 7.5, marginTop: 2 }]}>
+              {PL.effect[0]} / {PL.balance[0]}: {partnerA} {PL.owes[0]} {partnerB}
+            </Text>
+          </View>
+          <View style={styles.col}>
+            <Field pair={PL.asOf} value={asOf} />
+          </View>
+        </View>
+
+        <View style={{ marginTop: 18 }}>
+          <View style={styles.tableHead} fixed>
+            <Th pair={PL.date} style={{ width: 60 }} />
+            <Th pair={PL.entry} style={{ flex: 1, paddingRight: 8 }} />
+            <Th pair={PL.amount} style={{ width: 78, alignItems: "flex-end" }} />
+            <Th pair={PL.effect} style={{ width: 78, alignItems: "flex-end" }} />
+            <Th pair={PL.balance} style={{ width: 86, alignItems: "flex-end" }} />
+          </View>
+
+          {entries.length === 0 && (
+            <View style={styles.tableRow}>
+              <Text>
+                {PL.noEntries[0]} · {PL.noEntries[1]}
+              </Text>
+            </View>
+          )}
+
+          {entries.map((e) => (
+            <View key={e.id} style={styles.tableRow} wrap={false}>
+              <Text style={{ width: 60 }}>{e.date}</Text>
+              <View style={{ flex: 1, paddingRight: 8 }}>
+                <Text>{e.title}</Text>
+                <Text style={[styles.muted, { fontSize: 7.5 }]}>{e.detail}</Text>
+              </View>
+              <Text style={{ width: 78, textAlign: "right" }}>{pdfMoney(e.amount, e.currency)}</Text>
+              <Text
+                style={{
+                  width: 78,
+                  textAlign: "right",
+                  color: e.effect > 0.005 ? BRAND.danger : e.effect < -0.005 ? BRAND.good : BRAND.muted,
+                }}
+              >
+                {signed(e.effect)}
+              </Text>
+              <Text style={{ width: 86, textAlign: "right", fontWeight: 700 }}>
+                {signed(e.balanceAfter)}
+              </Text>
+            </View>
+          ))}
+        </View>
+
+        <View style={styles.totalsBox}>
+          <View style={styles.grandRow}>
+            <Text style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 9 }}>
+              {owing || PL.allSquare[0]}
+            </Text>
+            <Text style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 11 }}>
+              {pdfMoney(Math.abs(finalBalance), currency)}
+            </Text>
+          </View>
+          <Text style={{ textAlign: "right", fontSize: 8, color: BRAND.muted, marginTop: 3 }}>
+            {rlm(owingAr || PL.allSquare[1])}
+          </Text>
+        </View>
+
+        <Footer company={company} />
+      </Page>
+    </Document>
+  );
+}

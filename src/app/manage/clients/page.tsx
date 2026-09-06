@@ -11,10 +11,10 @@ export const dynamic = "force-dynamic";
 const PAGE_SIZE = 25;
 
 const statusClasses: Record<ClientStatus, string> = {
-  lead: "bg-sky-500/15 text-sky-400",
-  active: "bg-green-500/15 text-green-400",
-  paused: "bg-amber-500/15 text-amber-400",
-  churned: "bg-white/10 text-white/50",
+  lead: "bg-sky-500/15 text-sky-700",
+  active: "bg-green-500/15 text-green-700",
+  paused: "bg-amber-500/15 text-amber-700",
+  churned: "bg-ink/8 text-ink/50",
 };
 
 export default async function ClientsPage({
@@ -100,7 +100,7 @@ export default async function ClientsPage({
   const hasFilters = Boolean(
     filters.q || filters.status || filters.service || filters.assigned || filters.tag
   );
-  const selectClass = "bg-[#0E1A2E] border border-white/10 rounded-lg px-3 py-2 text-sm";
+  const selectClass = "bg-panel border border-line rounded-lg px-3 py-2 text-sm";
 
   const stats: { label: string; value: string; accent?: string }[] = [
     { label: t.statsTotal, value: String((allClients || []).length) },
@@ -109,12 +109,12 @@ export default async function ClientsPage({
     {
       label: t.statsOutstanding,
       value: money(totalOutstanding, "SAR"),
-      accent: totalOutstanding > 0 ? "text-red-400" : undefined,
+      accent: totalOutstanding > 0 ? "text-red-600" : undefined,
     },
     {
       label: t.statsOverdue,
       value: String(overdueClients),
-      accent: overdueClients > 0 ? "text-amber-400" : undefined,
+      accent: overdueClients > 0 ? "text-amber-700" : undefined,
     },
   ];
 
@@ -126,13 +126,13 @@ export default async function ClientsPage({
           {/* Route handler, not a page — plain <a> so the browser downloads it. */}
           <a
             href={`/manage/clients/export${qs({})}`}
-            className="px-4 py-2 rounded-full bg-white/10 text-sm hover:bg-white/15"
+            className="px-4 py-2 rounded-full bg-ink/8 text-sm hover:bg-ink/12"
           >
             {t.exportCsv}
           </a>
           <Link
             href="/manage/clients/new"
-            className="px-4 py-2 rounded-full bg-[#F5C518] text-[#080E1A] font-bold text-sm"
+            className="px-4 py-2 rounded-full bg-[#F5C518] text-ink font-bold text-sm"
           >
             {t.new}
           </Link>
@@ -141,8 +141,8 @@ export default async function ClientsPage({
 
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
         {stats.map((s) => (
-          <div key={s.label} className="bg-[#0E1A2E] border border-white/10 rounded-xl p-4">
-            <div className="text-white/40 text-[11px] uppercase tracking-wide mb-1">{s.label}</div>
+          <div key={s.label} className="bg-panel border border-line rounded-xl p-4">
+            <div className="text-ink/40 text-[11px] uppercase tracking-wide mb-1">{s.label}</div>
             <div className={`text-lg font-bold ${s.accent || ""}`}>{s.value}</div>
           </div>
         ))}
@@ -154,7 +154,7 @@ export default async function ClientsPage({
           name="q"
           defaultValue={filters.q}
           placeholder={t.search}
-          className="flex-1 min-w-[200px] bg-[#0E1A2E] border border-white/10 rounded-lg px-4 py-2 text-sm"
+          className="flex-1 min-w-[200px] bg-panel border border-line rounded-lg px-4 py-2 text-sm"
         />
         <select name="status" defaultValue={filters.status} className={selectClass}>
           <option value="">{t.allStatuses}</option>
@@ -196,27 +196,27 @@ export default async function ClientsPage({
           <option value="oldest">{t.sortOldest}</option>
           <option value="name">{t.sortName}</option>
         </select>
-        <button type="submit" className="px-4 py-2 rounded-lg bg-white/10 text-sm">
+        <button type="submit" className="px-4 py-2 rounded-lg bg-ink/8 text-sm">
           {t.search}
         </button>
         {hasFilters && (
           <Link
             href="/manage/clients"
-            className="px-4 py-2 rounded-lg text-sm text-white/50 hover:text-white"
+            className="px-4 py-2 rounded-lg text-sm text-ink/50 hover:text-ink"
           >
             {t.reset}
           </Link>
         )}
       </form>
 
-      <div className="bg-[#0E1A2E] border border-white/10 rounded-xl overflow-hidden">
+      <div className="bg-panel border border-line rounded-xl overflow-hidden">
         {!clients || clients.length === 0 ? (
-          <p className="p-6 text-white/40 text-sm">{hasFilters ? t.emptyFiltered : t.empty}</p>
+          <p className="p-6 text-ink/40 text-sm">{hasFilters ? t.emptyFiltered : t.empty}</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-white/10 text-white/40 text-xs text-start">
+                <tr className="border-b border-line text-ink/40 text-xs text-start">
                   <th className="p-4 text-start font-medium">{t.name}</th>
                   <th className="p-4 text-start font-medium">{t.contact}</th>
                   <th className="p-4 text-start font-medium">{t.primaryService}</th>
@@ -232,21 +232,21 @@ export default async function ClientsPage({
                   return (
                     <tr
                       key={c.id}
-                      className="border-b border-white/5 last:border-0 hover:bg-white/[0.02]"
+                      className="border-b border-line/60 last:border-0 hover:bg-ink/[0.03]"
                     >
                       <td className="p-4">
                         <Link
                           href={`/manage/clients/${c.id}`}
-                          className="font-medium hover:text-[#F5C518]"
+                          className="font-medium hover:text-gold-ink"
                         >
                           {c.name}
                         </Link>
-                        {c.company && <div className="text-white/40 text-xs">{c.company}</div>}
+                        {c.company && <div className="text-ink/40 text-xs">{c.company}</div>}
                       </td>
-                      <td className="p-4 text-white/60">{c.email || c.phone || "—"}</td>
+                      <td className="p-4 text-ink/60">{c.email || c.phone || "—"}</td>
                       <td className="p-4">
                         {serviceLabel(c.primary_service) && (
-                          <span className="text-xs px-2 py-1 rounded-full bg-[#F5C518]/10 text-[#F5C518] whitespace-nowrap">
+                          <span className="text-xs px-2 py-1 rounded-full bg-[#F5C518]/10 text-gold-ink whitespace-nowrap">
                             {serviceLabel(c.primary_service)}
                           </span>
                         )}
@@ -257,23 +257,23 @@ export default async function ClientsPage({
                             <Link
                               key={tag}
                               href={`/manage/clients${qs({ tag, page: undefined })}`}
-                              className="text-[11px] px-2 py-0.5 rounded-full bg-white/5 text-white/60 hover:bg-white/10"
+                              className="text-[11px] px-2 py-0.5 rounded-full bg-ink/5 text-ink/60 hover:bg-ink/8"
                             >
                               {tag}
                             </Link>
                           ))}
                         </span>
                       </td>
-                      <td className="p-4 text-white/60 text-xs">
+                      <td className="p-4 text-ink/60 text-xs">
                         {(c.assigned_to && staffById.get(c.assigned_to)) || "—"}
                       </td>
                       <td className="p-4">
                         {outstanding > 0.005 ? (
-                          <span className="text-red-400 font-medium whitespace-nowrap">
+                          <span className="text-red-600 font-medium whitespace-nowrap">
                             {money(outstanding, "SAR")}
                           </span>
                         ) : (
-                          <span className="text-white/30">—</span>
+                          <span className="text-ink/30">—</span>
                         )}
                       </td>
                       <td className="p-4">
@@ -295,7 +295,7 @@ export default async function ClientsPage({
       </div>
 
       {pageCount > 1 && (
-        <div className="flex items-center justify-between mt-4 text-sm text-white/50">
+        <div className="flex items-center justify-between mt-4 text-sm text-ink/50">
           <span>
             {t.pageLabel} {page} {t.of} {pageCount} · {total}
           </span>
@@ -303,7 +303,7 @@ export default async function ClientsPage({
             {page > 1 && (
               <Link
                 href={`/manage/clients${qs({ page: page - 1 > 1 ? page - 1 : undefined })}`}
-                className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10"
+                className="px-3 py-1.5 rounded-lg bg-ink/5 hover:bg-ink/8"
               >
                 {t.prev}
               </Link>
@@ -311,7 +311,7 @@ export default async function ClientsPage({
             {page < pageCount && (
               <Link
                 href={`/manage/clients${qs({ page: page + 1 })}`}
-                className="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10"
+                className="px-3 py-1.5 rounded-lg bg-ink/5 hover:bg-ink/8"
               >
                 {t.next}
               </Link>

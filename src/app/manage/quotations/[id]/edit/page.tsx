@@ -38,7 +38,7 @@ export default async function EditQuotationPage({
   return (
     <div>
       <h1 className="text-2xl font-bold mb-1">{dict.common.edit}</h1>
-      <p className="text-white/40 text-sm mb-6">{quotation.quote_number}</p>
+      <p className="text-ink/40 text-sm mb-6">{quotation.quote_number}</p>
       <QuotationForm
         dict={dict}
         action={updateQuotationAction.bind(null, id)}
